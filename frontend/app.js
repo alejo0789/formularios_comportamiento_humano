@@ -4,7 +4,7 @@
  */
 
 // API Configuration - Uses relative URL so it works from any host
-const API_BASE_URL = '';
+const API_BASE_URL = '/cuestionarios';
 
 // State Management
 const state = {

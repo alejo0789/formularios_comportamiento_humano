@@ -23,7 +23,8 @@ DATA_DIR = os.path.join(BACKEND_DIR, "data")
 app = FastAPI(
     title="Sistema de Cuestionarios",
     description="API for managing multiple questionnaires and responses",
-    version="2.0.0"
+    version="2.0.0",
+    root_path="/cuestionarios"
 )
 
 # CORS middleware
