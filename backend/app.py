@@ -129,6 +129,7 @@ async def get_questionnaire(questionnaire_id: str):
     return {
         "id": data.get("id"),
         "name": data.get("name"),
+        "short_name": data.get("short_name"),
         "description": data.get("description"),
         "version": data.get("version"),
         "icon": data.get("icon", "📋"),

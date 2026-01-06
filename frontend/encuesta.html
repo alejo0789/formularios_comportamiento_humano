@@ -233,7 +233,7 @@
                 buildQuestionsList();
 
                 document.title = state.questionnaire.name;
-                elements.logoText.textContent = state.questionnaire.name.split(' ').slice(0, 3).join(' ');
+                elements.logoText.textContent = state.questionnaire.short_name || state.questionnaire.name;
 
                 hideLoading();
                 startConversation();

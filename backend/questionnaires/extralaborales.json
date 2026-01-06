@@ -1,6 +1,7 @@
 {
     "id": "extralaborales",
     "name": "Cuestionario de Factores Psicosociales Extralaborales",
+    "short_name": "Factores Extralaborales",
     "description": "Este cuestionario busca conocer su opinión sobre algunos aspectos de su vida familiar y personal. Sus respuestas serán manejadas de forma absolutamente confidencial.",
     "version": "1.0",
     "icon": "🏠",

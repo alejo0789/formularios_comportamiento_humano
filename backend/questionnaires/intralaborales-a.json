@@ -1,6 +1,7 @@
 {
     "id": "intralaborales-a",
     "name": "Cuestionario de Factores de Riesgo Psicosocial Intralaboral",
+    "short_name": "Intralaboral Forma A",
     "description": "Este cuestionario busca conocer su opinión sobre algunos aspectos de su trabajo. Las respuestas que usted de no son ni buenas ni malas, lo importante es que reflejen su manera de pensar sobre su trabajo.",
     "version": "Forma A",
     "icon": "🏢",

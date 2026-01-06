@@ -1,6 +1,7 @@
 {
     "id": "estres",
     "name": "Cuestionario para la Evaluación del Estrés",
+    "short_name": "Evaluación del Estrés",
     "description": "Señale la frecuencia con que se le han presentado los siguientes malestares en los últimos tres meses.",
     "version": "Tercera Versión",
     "icon": "🧘",
