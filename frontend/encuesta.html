@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Cuestionario interactivo">
+    <title>Cuestionario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .section-message {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 1px solid #c7d2fe;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-message .section-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-message .section-title::before {
+            content: '📋';
+        }
+
+        .section-message .section-text {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.5;
+        }
+
+        .yesno-container {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .yesno-btn {
+            flex: 1;
+            max-width: 200px;
+            padding: var(--spacing-lg);
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .yesno-btn:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .yesno-btn .yesno-emoji {
+            font-size: 2.5rem;
+        }
+
+        .yesno-btn .yesno-text {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .conditional-info {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            color: #9a3412;
+            font-size: var(--font-size-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-app">
+        <!-- Header -->
+        <header class="chat-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon" id="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="logo-info">
+                        <span class="logo-text" id="logo-text">Cuestionario</span>
+                        <span class="logo-status">
+                            <span class="status-dot"></span>
+                            En línea
+                        </span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <a href="/" class="header-btn" title="Volver al inicio">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <button class="header-btn" id="restart-btn" title="Reiniciar conversación">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M20.49 9C19.9828 7.56678 19.1209 6.28532 17.9845 5.27542C16.8482 4.26551 15.4745 3.55976 13.9917 3.22426C12.5089 2.88875 10.9652 2.93434 9.50481 3.35677C8.04437 3.77921 6.71475 4.56471 5.64 5.64L1 10M23 14L18.36 18.36C17.2853 19.4353 15.9556 20.2208 14.4952 20.6432C13.0348 21.0657 11.4911 21.1112 10.0083 20.7757C8.52547 20.4402 7.15183 19.7345 6.01547 18.7246C4.87912 17.7147 4.01717 16.4332 3.51 15"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="chat-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">Pregunta 0 de 0</span>
+            </div>
+        </header>
+
+        <!-- Chat Messages Container -->
+        <main class="chat-messages" id="chat-messages">
+        </main>
+
+        <!-- Chat Input Area -->
+        <footer class="chat-input-area" id="chat-input-area">
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loading">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <span>Cargando...</span>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast hidden" id="toast">
+        <div class="toast-icon"></div>
+        <span class="toast-message"></span>
+    </div>
+
+    <script>
+        /**
+         * Cuestionario Dinámico con Secciones y Preguntas Condicionales
+         */
+
+        const API_BASE_URL = '';
+        const pathParts = window.location.pathname.split('/');
+        const questionnaireId = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+
+        // State Management
+        const state = {
+            questionnaire: null,
+            questions: [],           // Filtered list of questions to show
+            sections: [],            // Sections config
+            currentQuestionIndex: 0,
+            currentSectionIndex: -1, // Track current section
+            lastShownSection: -1,    // Last section message shown
+            userResponses: {},
+            conditionalAnswers: {},  // Store yes/no answers
+            respondentInfo: { name: null, email: null, department: null },
+            conversationPhase: 'welcome',
+            isTyping: false
+        };
+
+        const elements = {
+            chatMessages: document.getElementById('chat-messages'),
+            chatInputArea: document.getElementById('chat-input-area'),
+            progressFill: document.getElementById('progress-fill'),
+            progressText: document.getElementById('progress-text'),
+            loadingOverlay: document.getElementById('loading'),
+            toast: document.getElementById('toast'),
+            restartBtn: document.getElementById('restart-btn'),
+            logoText: document.getElementById('logo-text'),
+            logoIcon: document.getElementById('logo-icon')
+        };
+
+        const BOT_AVATAR = `<svg viewBox="0 0 24 24" fill="none"><path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        const USER_AVATAR = `<svg viewBox="0 0 24 24" fill="none"><path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>`;
+
+        async function init() {
+            elements.restartBtn.addEventListener('click', restartConversation);
+            await loadQuestionnaire();
+        }
+
+        async function loadQuestionnaire() {
+            try {
+                showLoading();
+                const response = await fetch(`${API_BASE_URL}/api/questionnaires/${questionnaireId}`);
+                if (!response.ok) throw new Error('Questionnaire not found');
+
+                state.questionnaire = await response.json();
+                state.sections = state.questionnaire.sections || [];
+
+                // Build questions list (will be filtered later based on conditions)
+                buildQuestionsList();
+
+                document.title = state.questionnaire.name;
+                elements.logoText.textContent = state.questionnaire.name.split(' ').slice(0, 3).join(' ');
+
+                hideLoading();
+                startConversation();
+            } catch (error) {
+                hideLoading();
+                console.error('Error:', error);
+                elements.chatMessages.innerHTML = `
+                    <div class="message bot">
+                        <div class="message-avatar">${BOT_AVATAR}</div>
+                        <div class="message-bubble">
+                            <div class="message-text">
+                                ❌ Error: No se pudo cargar el cuestionario "${questionnaireId}".<br><br>
+                                <a href="/" style="color: var(--primary-color);">← Volver al inicio</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function buildQuestionsList() {
+            // Initially include all non-conditional questions
+            state.questions = state.questionnaire.questions.filter(q => !q.conditional);
+        }
+
+        function rebuildQuestionsWithConditions() {
+            // Rebuild based on conditional answers
+            const allQuestions = state.questionnaire.questions;
+            const conditionalQuestions = state.questionnaire.conditional_questions || [];
+
+            state.questions = [];
+
+            for (const q of allQuestions) {
+                if (q.conditional) {
+                    // Check if this question's section condition is met
+                    const section = state.sections.find(s => s.questions && s.questions.includes(q.id));
+                    if (section && section.conditional) {
+                        const conditionMet = state.conditionalAnswers[section.condition_question] === section.condition_value;
+                        if (conditionMet) {
+                            state.questions.push(q);
+                        }
+                    }
+                } else {
+                    state.questions.push(q);
+                }
+            }
+        }
+
+        function getQuestionSection(questionId) {
+            if (!state.sections.length) return null;
+            for (let i = 0; i < state.sections.length; i++) {
+                const section = state.sections[i];
+                if (section.questions && section.questions.includes(questionId)) {
+                    return { section, index: i };
+                }
+            }
+            return null;
+        }
+
+        function startConversation() {
+            state.conversationPhase = 'welcome';
+            updateProgress();
+            showWelcomeMessage();
+        }
+
+        async function showWelcomeMessage() {
+            const q = state.questionnaire;
+            const timeInfo = q.estimated_time ? `<li>Tiempo estimado: ${q.estimated_time}</li>` : '';
+
+            await addBotMessage(`
+                <div class="welcome-content">
+                    <div class="welcome-emoji">${q.icon}</div>
+                    <div class="welcome-title">¡Hola! Bienvenido al ${q.name}</div>
+                    <div class="welcome-subtitle">${q.description}</div>
+                    <ul class="instructions-list">
+                        <li>Tus respuestas son confidenciales</li>
+                        <li>No hay respuestas correctas o incorrectas</li>
+                        ${timeInfo}
+                    </ul>
+                </div>
+            `);
+            showStartButton();
+        }
+
+        function showStartButton() {
+            elements.chatInputArea.innerHTML = `
+                <button class="continue-btn" onclick="startQuestions()">
+                    <span>Comenzar Encuesta</span>
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            `;
+        }
+
+        async function startQuestions() {
+            await addUserMessage("¡Estoy listo para comenzar!");
+            state.conversationPhase = 'info';
+            await delay(500);
+            await askForName();
+        }
+
+        async function askForName() {
+            await addBotMessage("Primero, ¿podrías decirme tu nombre? <span style='color: var(--text-muted);'>(Opcional)</span>");
+            showTextInput('name', 'Tu nombre (opcional)', () => {
+                const input = document.getElementById('text-input-name');
+                state.respondentInfo.name = input.value.trim() || null;
+                handleNameResponse();
+            });
+        }
+
+        async function handleNameResponse() {
+            if (state.respondentInfo.name) {
+                await addUserMessage(state.respondentInfo.name);
+                await delay(500);
+                await addBotMessage(`¡Mucho gusto, ${state.respondentInfo.name}! 😊`);
+            } else {
+                await addUserMessage("Prefiero no decirlo");
+                await delay(500);
+                await addBotMessage("¡No hay problema! 🔒");
+            }
+            await delay(500);
+            await askForDepartment();
+        }
+
+        async function askForDepartment() {
+            await addBotMessage("¿En qué departamento trabajas? <span style='color: var(--text-muted);'>(Opcional)</span>");
+            showTextInput('department', 'Tu departamento (opcional)', () => {
+                const input = document.getElementById('text-input-department');
+                state.respondentInfo.department = input.value.trim() || null;
+                handleDepartmentResponse();
+            });
+        }
+
+        async function handleDepartmentResponse() {
+            if (state.respondentInfo.department) {
+                await addUserMessage(state.respondentInfo.department);
+            } else {
+                await addUserMessage("Prefiero no decirlo");
+            }
+
+            await delay(500);
+            await addBotMessage("¡Perfecto! Ahora comenzaremos con las preguntas. 📝");
+            await delay(800);
+            await addBotMessage(`Son <strong>${state.questions.length} preguntas</strong>. Selecciona la opción que mejor refleje tu situación.`);
+
+            await delay(1000);
+            state.conversationPhase = 'questions';
+            state.currentQuestionIndex = 0;
+            state.lastShownSection = -1;
+            showCurrentQuestion();
+        }
+
+        async function showCurrentQuestion() {
+            // First check if there are pending conditional sections to ask about
+            const pendingConditional = getPendingConditionalQuestion();
+            if (pendingConditional) {
+                await showConditionalQuestion(pendingConditional);
+                return;
+            }
+
+            if (state.currentQuestionIndex >= state.questions.length) {
+                await finishQuestionnaire();
+                return;
+            }
+
+            const question = state.questions[state.currentQuestionIndex];
+            updateProgress();
+
+            // Check if we need to show a section message
+            const sectionInfo = getQuestionSection(question.id);
+            if (sectionInfo && sectionInfo.index !== state.lastShownSection) {
+                state.lastShownSection = sectionInfo.index;
+
+                // Show section message
+                await addBotMessage(`
+                    <div class="section-message">
+                        <div class="section-title">${sectionInfo.section.title}</div>
+                        <div class="section-text">${sectionInfo.section.message}</div>
+                    </div>
+                `);
+                await delay(800);
+            }
+
+            const questionMessage = `
+                <div class="question-badge">Pregunta ${state.currentQuestionIndex + 1} de ${state.questions.length}</div>
+                <div class="category-badge">${question.category}</div>
+                <div style="margin-top: 8px; font-size: 1.1rem;">${question.text}</div>
+            `;
+
+            await addBotMessage(questionMessage);
+            showResponseOptions(question.id);
+        }
+
+        function getPendingConditionalQuestion() {
+            // Check if there are conditional questions that haven't been asked yet
+            const conditionalQuestions = state.questionnaire.conditional_questions || [];
+
+            for (const cq of conditionalQuestions) {
+                // If this conditional question hasn't been answered yet
+                if (!state.conditionalAnswers.hasOwnProperty(cq.id)) {
+                    // Check if we've completed all questions before this conditional section
+                    const section = state.sections.find(s => s.id === cq.show_before_section);
+                    if (section) {
+                        // Get the first question ID of the conditional section
+                        const firstQuestionOfSection = section.questions ? section.questions[0] : null;
+
+                        // Check if we've progressed past all non-conditional questions
+                        // that come before this conditional section
+                        const allQuestionsBeforeSection = state.questionnaire.questions.filter(q => {
+                            if (q.conditional) return false;
+                            // Check if this question belongs to a section before the conditional one
+                            const qSection = getQuestionSection(q.id);
+                            if (!qSection) return true;
+                            return qSection.index < state.sections.indexOf(section);
+                        });
+
+                        const answeredCount = Object.keys(state.userResponses).length;
+                        if (answeredCount >= allQuestionsBeforeSection.length) {
+                            return cq;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        async function showConditionalQuestion(conditionalQ) {
+            await addBotMessage(`
+                <div class="conditional-info">
+                    ⚠️ Antes de continuar, por favor responde:
+                </div>
+                <div style="margin-top: 8px; font-size: 1.1rem; font-weight: 500;">${conditionalQ.text}</div>
+            `);
+
+            let html = '<div class="yesno-container">';
+            for (const opt of conditionalQ.options) {
+                html += `
+                    <button class="yesno-btn" onclick="handleConditionalAnswer('${conditionalQ.id}', '${opt.value}', '${opt.label}')">
+                        <span class="yesno-emoji">${opt.emoji}</span>
+                        <span class="yesno-text">${opt.label}</span>
+                    </button>
+                `;
+            }
+            html += '</div>';
+            elements.chatInputArea.innerHTML = html;
+        }
+
+        async function handleConditionalAnswer(questionId, value, label) {
+            state.conditionalAnswers[questionId] = value;
+            await addUserMessage(label);
+
+            // Rebuild questions list based on new condition
+            rebuildQuestionsWithConditions();
+            updateProgress();
+
+            await delay(600);
+
+            if (value === 'no') {
+                await addBotMessage("Entendido, esa sección no aplica para ti. 👍");
+                await delay(600);
+                // Check if there are more conditional questions or questions pending
+                showCurrentQuestion();
+            } else {
+                // User said yes, show the section message and continue with conditional questions
+                const conditionalQ = (state.questionnaire.conditional_questions || []).find(cq => cq.id === questionId);
+                if (conditionalQ) {
+                    const section = state.sections.find(s => s.id === conditionalQ.show_before_section);
+                    if (section) {
+                        await addBotMessage(`
+                            <div class="section-message">
+                                <div class="section-title">${section.title}</div>
+                                <div class="section-text">${section.message}</div>
+                            </div>
+                        `);
+                        await delay(800);
+                    }
+                }
+                showCurrentQuestion();
+            }
+        }
+
+        function showResponseOptions(questionId) {
+            const options = state.questionnaire.options;
+            let html = '<div class="options-container">';
+            for (const opt of options) {
+                html += `
+                    <button class="option-btn" onclick="selectOption(${questionId}, ${opt.value}, '${opt.label.replace(/'/g, "\\'")}')">
+                        <span class="option-emoji">${opt.emoji || ''}</span>
+                        <span class="option-text">${opt.label}</span>
+                    </button>
+                `;
+            }
+            html += '</div>';
+            elements.chatInputArea.innerHTML = html;
+            setTimeout(() => scrollToBottom(), 100);
+        }
+
+        async function selectOption(questionId, value, label) {
+            state.userResponses[questionId] = value;
+            await addUserMessage(label);
+            state.currentQuestionIndex++;
+
+            await delay(600);
+            // Always call showCurrentQuestion - it handles checking for completion
+            showCurrentQuestion();
+        }
+
+        async function finishQuestionnaire() {
+            state.conversationPhase = 'complete';
+            updateProgress();
+            await addBotMessage("¡Excelente! Has completado todas las preguntas. 🎉");
+            await delay(500);
+            await addBotMessage("¿Listo para enviar tus respuestas?");
+            showSubmitOptions();
+        }
+
+        function showSubmitOptions() {
+            elements.chatInputArea.innerHTML = `
+                <div class="submit-section">
+                    <button class="submit-btn" onclick="submitSurvey()">
+                        <span>Enviar Respuestas</span>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            `;
+        }
+
+        async function submitSurvey() {
+            try {
+                await addUserMessage("¡Enviar mis respuestas!");
+                showLoading();
+
+                const submissionData = {
+                    questionnaire_id: questionnaireId,
+                    respondent_name: state.respondentInfo.name,
+                    respondent_email: state.respondentInfo.email,
+                    department: state.respondentInfo.department,
+                    responses: Object.entries(state.userResponses).map(([qid, val]) => ({
+                        question_id: parseInt(qid),
+                        response_value: val
+                    }))
+                };
+
+                const response = await fetch(`${API_BASE_URL}/api/submit`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(submissionData)
+                });
+
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.detail || 'Failed to submit');
+                }
+
+                const result = await response.json();
+                hideLoading();
+                await showSuccess(result.submission_id);
+            } catch (error) {
+                hideLoading();
+                await addBotMessage(`❌ Error: ${error.message}`);
+                showSubmitOptions();
+            }
+        }
+
+        async function showSuccess(submissionId) {
+            await addBotMessage(`
+                <div class="success-message">
+                    <div class="success-icon">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="success-title">¡Encuesta Enviada!</div>
+                    <div class="success-text">Gracias por completar el cuestionario.</div>
+                    <div class="success-id">ID: ${submissionId}</div>
+                </div>
+            `);
+
+            showToast('¡Encuesta enviada exitosamente!', 'success');
+
+            elements.chatInputArea.innerHTML = `
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="continue-btn" onclick="restartConversation()" style="flex: 1;">Nueva Encuesta</button>
+                    <a href="/" class="continue-btn" style="flex: 1; text-decoration: none; background: linear-gradient(135deg, #64748b, #475569);">← Inicio</a>
+                </div>
+            `;
+        }
+
+        function restartConversation() {
+            state.currentQuestionIndex = 0;
+            state.userResponses = {};
+            state.conditionalAnswers = {};
+            state.respondentInfo = { name: null, email: null, department: null };
+            state.conversationPhase = 'welcome';
+            state.lastShownSection = -1;
+            elements.chatMessages.innerHTML = '';
+            buildQuestionsList();
+            startConversation();
+        }
+
+        async function addBotMessage(content) {
+            showTypingIndicator();
+            const typingDelay = Math.min(1200, Math.max(400, content.length * 5));
+            await delay(typingDelay);
+            removeTypingIndicator();
+
+            elements.chatMessages.insertAdjacentHTML('beforeend', `
+                <div class="message bot">
+                    <div class="message-avatar">${BOT_AVATAR}</div>
+                    <div class="message-bubble"><div class="message-text">${content}</div></div>
+                </div>
+            `);
+            scrollToBottom();
+        }
+
+        async function addUserMessage(content) {
+            elements.chatMessages.insertAdjacentHTML('beforeend', `
+                <div class="message user">
+                    <div class="message-avatar">${USER_AVATAR}</div>
+                    <div class="message-bubble"><div class="message-text">${content}</div></div>
+                </div>
+            `);
+            scrollToBottom();
+            elements.chatInputArea.innerHTML = '';
+        }
+
+        function showTypingIndicator() {
+            state.isTyping = true;
+            elements.chatMessages.insertAdjacentHTML('beforeend', `
+                <div class="message bot typing-message">
+                    <div class="message-avatar">${BOT_AVATAR}</div>
+                    <div class="message-bubble">
+                        <div class="typing-indicator">
+                            <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            `);
+            scrollToBottomImmediate();
+        }
+
+        function removeTypingIndicator() {
+            state.isTyping = false;
+            const t = document.querySelector('.typing-message');
+            if (t) t.remove();
+        }
+
+        function showTextInput(fieldId, placeholder, onSubmit) {
+            elements.chatInputArea.innerHTML = `
+                <div class="text-input-container">
+                    <input type="text" id="text-input-${fieldId}" class="text-input" placeholder="${placeholder}"
+                        onkeydown="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('send-btn-${fieldId}').click(); }">
+                    <button id="send-btn-${fieldId}" class="send-btn" onclick="(${onSubmit.toString()})()">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            `;
+            setTimeout(() => document.getElementById(`text-input-${fieldId}`).focus(), 100);
+        }
+
+        function updateProgress() {
+            const total = state.questions.length || 0;
+            let current = 0, text = '';
+
+            if (state.conversationPhase === 'welcome' || state.conversationPhase === 'info') {
+                text = 'Preparando cuestionario...';
+            } else if (state.conversationPhase === 'questions') {
+                current = state.currentQuestionIndex;
+                text = `Pregunta ${Math.min(current + 1, total)} de ${total}`;
+            } else if (state.conversationPhase === 'complete') {
+                current = total;
+                text = '¡Completado!';
+            }
+
+            const pct = total > 0 ? (current / total) * 100 : 0;
+            elements.progressFill.style.width = `${pct}%`;
+            elements.progressText.textContent = text;
+        }
+
+        function scrollToBottom() {
+            requestAnimationFrame(() => {
+                elements.chatMessages.scrollTo({ top: elements.chatMessages.scrollHeight, behavior: 'smooth' });
+            });
+        }
+        function scrollToBottomImmediate() { elements.chatMessages.scrollTop = elements.chatMessages.scrollHeight; }
+        function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+        function showLoading() { elements.loadingOverlay.classList.remove('hidden'); }
+        function hideLoading() { elements.loadingOverlay.classList.add('hidden'); }
+        function showToast(message, type = 'success') {
+            elements.toast.className = `toast ${type}`;
+            elements.toast.querySelector('.toast-message').textContent = message;
+            elements.toast.classList.remove('hidden');
+            setTimeout(() => elements.toast.classList.add('hidden'), 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

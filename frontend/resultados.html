@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resultados del Cuestionario">
+    <title>Resultados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Results Page Specific Styles */
+        body {
+            overflow-y: auto !important;
+            overflow-x: hidden;
+        }
+
+        .results-app {
+            min-height: 100vh;
+            padding: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-y: visible;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .results-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .results-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .results-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-xs);
+        }
+
+        .questions-results {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .question-result-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .question-result-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .question-result-number {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: var(--font-size-md);
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .question-result-content {
+            flex: 1;
+        }
+
+        .question-result-category {
+            font-size: var(--font-size-xs);
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+
+        .question-result-text {
+            font-size: var(--font-size-md);
+            line-height: 1.5;
+            color: var(--text-primary);
+        }
+
+        .question-result-average {
+            text-align: right;
+        }
+
+        .average-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .average-label {
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+        }
+
+        .distribution-bars {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .distribution-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .distribution-label {
+            width: 150px;
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .distribution-bar-container {
+            flex: 1;
+            height: 24px;
+            background: #e2e8f0;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .distribution-bar-fill {
+            height: 100%;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: var(--spacing-sm);
+            min-width: 30px;
+        }
+
+        .distribution-count {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            color: white;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            color: var(--text-muted);
+        }
+
+        .no-data-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .refresh-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            font-family: var(--font-family);
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            margin-top: var(--spacing-lg);
+            text-decoration: none;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .refresh-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .results-app {
+                padding: var(--spacing-md);
+            }
+
+            .results-title {
+                font-size: var(--font-size-xl);
+            }
+
+            .stat-value {
+                font-size: var(--font-size-2xl);
+            }
+
+            .distribution-label {
+                width: 100px;
+                font-size: var(--font-size-xs);
+            }
+
+            .question-result-header {
+                flex-direction: column;
+            }
+
+            .question-result-average {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="results-app">
+        <div class="results-header">
+            <div class="results-icon" id="results-icon">📊</div>
+            <h1 class="results-title" id="results-title">Resultados del Cuestionario</h1>
+            <p class="results-subtitle" id="results-subtitle">Estadísticas agregadas</p>
+            <a href="/" class="back-link">← Volver al inicio</a>
+        </div>
+
+        <div class="stats-summary" id="stats-summary">
+            <!-- Summary stats will be inserted here -->
+        </div>
+
+        <div class="questions-results" id="questions-results">
+            <!-- Question results will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <span>Cargando resultados...</span>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = '';
+
+        // Get questionnaire ID from URL
+        const pathParts = window.location.pathname.split('/');
+        const questionnaireId = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+
+        let questionnaireOptions = [];
+
+        async function loadResults() {
+            const loading = document.getElementById('loading');
+            const statsSummary = document.getElementById('stats-summary');
+            const questionsResults = document.getElementById('questions-results');
+
+            try {
+                loading.classList.remove('hidden');
+
+                const response = await fetch(`${API_BASE_URL}/api/statistics/${questionnaireId}`);
+                if (!response.ok) throw new Error('Questionnaire not found');
+
+                const stats = await response.json();
+
+                // Update page title and header
+                document.title = `Resultados - ${stats.questionnaire_name}`;
+                document.getElementById('results-title').textContent = `📊 Resultados: ${stats.questionnaire_name}`;
+                document.getElementById('results-subtitle').textContent = `${stats.total_responses} respuestas recibidas`;
+
+                // Store options for rendering
+                questionnaireOptions = stats.options || [];
+
+                loading.classList.add('hidden');
+
+                if (stats.total_responses === 0) {
+                    showNoData();
+                    return;
+                }
+
+                // Show summary
+                statsSummary.innerHTML = `
+                    <div class="stat-box">
+                        <div class="stat-value">${stats.total_responses}</div>
+                        <div class="stat-label">Respuestas Totales</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${Object.keys(stats.question_stats).length}</div>
+                        <div class="stat-label">Preguntas Evaluadas</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${calculateOverallAverage(stats.question_stats)}</div>
+                        <div class="stat-label">Promedio General</div>
+                    </div>
+                `;
+
+                // Show question results
+                let questionsHTML = '';
+                for (const [questionId, qStats] of Object.entries(stats.question_stats)) {
+                    const maxCount = Math.max(...Object.values(qStats.distribution));
+
+                    let distributionHTML = '';
+                    for (const option of questionnaireOptions) {
+                        const count = qStats.distribution[option.value] || 0;
+                        distributionHTML += renderDistributionBar(
+                            `${option.emoji || ''} ${option.label}`,
+                            count,
+                            maxCount
+                        );
+                    }
+
+                    questionsHTML += `
+                        <div class="question-result-card">
+                            <div class="question-result-header">
+                                <div class="question-result-number">${questionId}</div>
+                                <div class="question-result-content">
+                                    <div class="question-result-category">${qStats.category}</div>
+                                    <div class="question-result-text">${qStats.question_text}</div>
+                                </div>
+                                <div class="question-result-average">
+                                    <div class="average-value">${qStats.average.toFixed(1)}</div>
+                                    <div class="average-label">promedio</div>
+                                </div>
+                            </div>
+                            <div class="distribution-bars">
+                                ${distributionHTML}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                questionsHTML += `
+                    <div style="text-align: center; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="refresh-btn" onclick="loadResults()">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.49 9C19.9828 7.56678 19.1209 6.28532 17.9845 5.27542C16.8482 4.26551 15.4745 3.55976 13.9917 3.22426C12.5089 2.88875 10.9652 2.93434 9.50481 3.35677C8.04437 3.77921 6.71475 4.56471 5.64 5.64L1 10M23 14L18.36 18.36C17.2853 19.4353 15.9556 20.2208 14.4952 20.6432C13.0348 21.0657 11.4911 21.1112 10.0083 20.7757C8.52547 20.4402 7.15183 19.7345 6.01547 18.7246C4.87912 17.7147 4.01717 16.4332 3.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Actualizar
+                        </button>
+                        <a href="/encuesta/${questionnaireId}" class="refresh-btn" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                            📝 Nueva Encuesta
+                        </a>
+                    </div>
+                `;
+
+                questionsResults.innerHTML = questionsHTML;
+
+            } catch (error) {
+                loading.classList.add('hidden');
+                console.error('Error loading results:', error);
+                showNoData(error.message);
+            }
+        }
+
+        function renderDistributionBar(label, count, maxCount) {
+            const percentage = maxCount > 0 ? (count / maxCount) * 100 : 0;
+            return `
+                <div class="distribution-row">
+                    <span class="distribution-label">${label}</span>
+                    <div class="distribution-bar-container">
+                        <div class="distribution-bar-fill" style="width: ${Math.max(percentage, 10)}%">
+                            <span class="distribution-count">${count}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function calculateOverallAverage(questionStats) {
+            const averages = Object.values(questionStats).map(q => q.average);
+            if (averages.length === 0) return '0.0';
+            const overall = averages.reduce((a, b) => a + b, 0) / averages.length;
+            return overall.toFixed(1);
+        }
+
+        function showNoData(errorMessage = null) {
+            document.getElementById('stats-summary').innerHTML = '';
+            document.getElementById('questions-results').innerHTML = `
+                <div class="no-data">
+                    <div class="no-data-icon">📭</div>
+                    <h2>No hay resultados todavía</h2>
+                    <p>${errorMessage || 'Aún no se han recibido respuestas a este cuestionario.'}</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+                        <button class="refresh-btn" onclick="loadResults()">
+                            Reintentar
+                        </button>
+                        <a href="/encuesta/${questionnaireId}" class="refresh-btn" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                            📝 Iniciar Encuesta
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load results on page load
+        document.addEventListener('DOMContentLoaded', loadResults);
+    </script>
+</body>
+
+</html>

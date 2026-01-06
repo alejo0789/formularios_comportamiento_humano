@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sistema de Cuestionarios - Selecciona un cuestionario para responder">
+    <title>Sistema de Cuestionarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .selector-app {
+            min-height: 100vh;
+            padding: var(--spacing-xl);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .selector-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .selector-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .selector-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .selector-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+        }
+
+        .questionnaires-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .questionnaire-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .questionnaire-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+        }
+
+        .card-meta {
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card-version {
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-lg);
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .card-stats {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .card-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            transition: all var(--transition-fast);
+        }
+
+        .card-btn.primary {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+        }
+
+        .card-btn.primary:hover {
+            box-shadow: var(--shadow-glow);
+        }
+
+        .card-btn.secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-btn.secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .no-questionnaires {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+        }
+
+        .no-questionnaires-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .selector-app {
+                padding: var(--spacing-md);
+            }
+
+            .selector-title {
+                font-size: var(--font-size-xl);
+            }
+
+            .questionnaires-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="selector-app">
+        <div class="selector-header">
+            <div class="selector-icon">📋</div>
+            <h1 class="selector-title">Sistema de Cuestionarios</h1>
+            <p class="selector-subtitle">Selecciona un cuestionario para comenzar</p>
+        </div>
+
+        <div class="questionnaires-grid" id="questionnaires-grid">
+            <!-- Questionnaires will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <span>Cargando cuestionarios...</span>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = '';
+
+        async function loadQuestionnaires() {
+            const loading = document.getElementById('loading');
+            const grid = document.getElementById('questionnaires-grid');
+
+            try {
+                loading.classList.remove('hidden');
+
+                const response = await fetch(`${API_BASE_URL}/api/questionnaires`);
+                if (!response.ok) throw new Error('Failed to load questionnaires');
+
+                const data = await response.json();
+                loading.classList.add('hidden');
+
+                if (data.questionnaires.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-questionnaires">
+                            <div class="no-questionnaires-icon">📭</div>
+                            <h2>No hay cuestionarios disponibles</h2>
+                            <p>Agrega archivos JSON en la carpeta <code>questionnaires</code></p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                grid.innerHTML = data.questionnaires.map(q => `
+                    <div class="questionnaire-card" onclick="window.location.href='/encuesta/${q.id}'">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: ${q.color}20; color: ${q.color}">
+                                ${q.icon}
+                            </div>
+                            <div class="card-meta">
+                                <div class="card-title">${q.name}</div>
+                                <div class="card-version">${q.version || ''}</div>
+                            </div>
+                        </div>
+                        <p class="card-description">${q.description || 'Sin descripción'}</p>
+                        <div class="card-footer">
+                            <span class="card-stats">📝 ${q.question_count} preguntas</span>
+                            <div class="card-actions">
+                                <a href="/resultados/${q.id}" class="card-btn secondary" onclick="event.stopPropagation()">
+                                    📊 Resultados
+                                </a>
+                                <a href="/encuesta/${q.id}" class="card-btn primary" onclick="event.stopPropagation()">
+                                    Iniciar →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                loading.classList.add('hidden');
+                console.error('Error:', error);
+                grid.innerHTML = `
+                    <div class="no-questionnaires">
+                        <div class="no-questionnaires-icon">❌</div>
+                        <h2>Error al cargar</h2>
+                        <p>${error.message}</p>
+                        <button class="card-btn primary" onclick="loadQuestionnaires()" style="margin-top: 1rem;">
+                            Reintentar
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadQuestionnaires);
+    </script>
+</body>
+
+</html>

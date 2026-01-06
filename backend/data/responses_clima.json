@@ -1,0 +1,485 @@
+[
+  {
+    "id": "3d033c49-b124-4d28-a4e3-5294983c905e",
+    "submitted_at": "2025-12-17T13:29:51.792079",
+    "respondent_name": "alejandro carvajal",
+    "respondent_email": "alejo0789@hotmail.com",
+    "department": "sistemas",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Me siento muy satisfecho con mi ambiente de trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 2,
+        "question_text": "En mi organización está claramente definida su Misión y Visión",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 3,
+        "question_text": "La dirección manifiesta sus objetivos de tal forma que se crea un sentido común de misión e identidad entre sus miembros",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Existe un plan para lograr los objetivos de la organización",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 5,
+        "question_text": "Yo aporto al proceso de planificación en mi área de trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En esta Institución, la gente planifica cuidadosamente antes de tomar acción",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Si hay un nuevo Plan Estratégico, estoy dispuesto a servir de voluntario para iniciar los cambios",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Está conforme con la limpieza, higiene y salubridad en su lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cuento con los materiales y equipos necesarios para realizar mi trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Me gusta mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      }
+    ]
+  },
+  {
+    "id": "3ec607e2-1a62-45d0-9440-834897311685",
+    "submitted_at": "2025-12-17T13:31:08.243734",
+    "respondent_name": null,
+    "respondent_email": null,
+    "department": null,
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Me siento muy satisfecho con mi ambiente de trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 2,
+        "question_text": "En mi organización está claramente definida su Misión y Visión",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 3,
+        "question_text": "La dirección manifiesta sus objetivos de tal forma que se crea un sentido común de misión e identidad entre sus miembros",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Existe un plan para lograr los objetivos de la organización",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 5,
+        "question_text": "Yo aporto al proceso de planificación en mi área de trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En esta Institución, la gente planifica cuidadosamente antes de tomar acción",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Si hay un nuevo Plan Estratégico, estoy dispuesto a servir de voluntario para iniciar los cambios",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Está conforme con la limpieza, higiene y salubridad en su lugar de trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cuento con los materiales y equipos necesarios para realizar mi trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Me gusta mi trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      }
+    ]
+  },
+  {
+    "id": "ae9173e6-dc4b-48ef-b61e-29ef8fa3085e",
+    "submitted_at": "2025-12-17T14:55:41.628974",
+    "respondent_name": "alejandro carvajal",
+    "respondent_email": null,
+    "department": "sistemas",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Me siento muy satisfecho con mi ambiente de trabajo",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 2,
+        "question_text": "En mi organización está claramente definida su Misión y Visión",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 3,
+        "question_text": "La dirección manifiesta sus objetivos de tal forma que se crea un sentido común de misión e identidad entre sus miembros",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Existe un plan para lograr los objetivos de la organización",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 5,
+        "question_text": "Yo aporto al proceso de planificación en mi área de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En esta Institución, la gente planifica cuidadosamente antes de tomar acción",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Si hay un nuevo Plan Estratégico, estoy dispuesto a servir de voluntario para iniciar los cambios",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Está conforme con la limpieza, higiene y salubridad en su lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cuento con los materiales y equipos necesarios para realizar mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Me gusta mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      }
+    ]
+  },
+  {
+    "id": "53ea6a1e-2f8e-44ec-9fd1-15418cb2d5f9",
+    "submitted_at": "2025-12-17T15:06:17.150348",
+    "respondent_name": "alejandro",
+    "respondent_email": null,
+    "department": "sistemas",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Me siento muy satisfecho con mi ambiente de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 2,
+        "question_text": "En mi organización está claramente definida su Misión y Visión",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 3,
+        "question_text": "La dirección manifiesta sus objetivos de tal forma que se crea un sentido común de misión e identidad entre sus miembros",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Existe un plan para lograr los objetivos de la organización",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 5,
+        "question_text": "Yo aporto al proceso de planificación en mi área de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En esta Institución, la gente planifica cuidadosamente antes de tomar acción",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Si hay un nuevo Plan Estratégico, estoy dispuesto a servir de voluntario para iniciar los cambios",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Está conforme con la limpieza, higiene y salubridad en su lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cuento con los materiales y equipos necesarios para realizar mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Me gusta mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      }
+    ]
+  },
+  {
+    "id": "c5623ad5-9b9a-42e1-835e-f10aa51f9a9b",
+    "submitted_at": "2025-12-17T15:16:03.128018",
+    "respondent_name": "alejandro",
+    "respondent_email": null,
+    "department": "sistemas",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Me siento muy satisfecho con mi ambiente de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 2,
+        "question_text": "En mi organización está claramente definida su Misión y Visión",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 3,
+        "question_text": "La dirección manifiesta sus objetivos de tal forma que se crea un sentido común de misión e identidad entre sus miembros",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Existe un plan para lograr los objetivos de la organización",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 5,
+        "question_text": "Yo aporto al proceso de planificación en mi área de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En esta Institución, la gente planifica cuidadosamente antes de tomar acción",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Si hay un nuevo Plan Estratégico, estoy dispuesto a servir de voluntario para iniciar los cambios",
+        "response_value": 3,
+        "response_label": "En desacuerdo"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Está conforme con la limpieza, higiene y salubridad en su lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cuento con los materiales y equipos necesarios para realizar mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Me gusta mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      }
+    ]
+  },
+  {
+    "id": "60740521-edff-4364-9d72-6cbc0e0fd555",
+    "submitted_at": "2025-12-17T16:01:05.922714",
+    "respondent_name": "Alejandro carvajal",
+    "respondent_email": null,
+    "department": "Sistemas",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Me siento muy satisfecho con mi ambiente de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 2,
+        "question_text": "En mi organización está claramente definida su Misión y Visión",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 3,
+        "question_text": "La dirección manifiesta sus objetivos de tal forma que se crea un sentido común de misión e identidad entre sus miembros",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Existe un plan para lograr los objetivos de la organización",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 5,
+        "question_text": "Yo aporto al proceso de planificación en mi área de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En esta Institución, la gente planifica cuidadosamente antes de tomar acción",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Si hay un nuevo Plan Estratégico, estoy dispuesto a servir de voluntario para iniciar los cambios",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Está conforme con la limpieza, higiene y salubridad en su lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cuento con los materiales y equipos necesarios para realizar mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Me gusta mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      }
+    ]
+  },
+  {
+    "id": "111ad747-9258-403e-8262-c94db8448390",
+    "submitted_at": "2025-12-17T16:04:52.334626",
+    "respondent_name": "Alejandro",
+    "respondent_email": null,
+    "department": "Sistemas",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Me siento muy satisfecho con mi ambiente de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 2,
+        "question_text": "En mi organización está claramente definida su Misión y Visión",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 3,
+        "question_text": "La dirección manifiesta sus objetivos de tal forma que se crea un sentido común de misión e identidad entre sus miembros",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Existe un plan para lograr los objetivos de la organización",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 5,
+        "question_text": "Yo aporto al proceso de planificación en mi área de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En esta Institución, la gente planifica cuidadosamente antes de tomar acción",
+        "response_value": 2,
+        "response_label": "Parcialmente de acuerdo"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Si hay un nuevo Plan Estratégico, estoy dispuesto a servir de voluntario para iniciar los cambios",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Está conforme con la limpieza, higiene y salubridad en su lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cuento con los materiales y equipos necesarios para realizar mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Me gusta mi trabajo",
+        "response_value": 1,
+        "response_label": "Totalmente de acuerdo"
+      }
+    ]
+  }
+]

@@ -1,0 +1,134 @@
+{
+    "id": "test-condicional",
+    "name": "Test de Lógica Condicional",
+    "description": "Cuestionario de prueba para verificar la funcionalidad de preguntas condicionales Sí/No.",
+    "version": "Test",
+    "icon": "🧪",
+    "color": "#ef4444",
+    "options": [
+        {
+            "value": 1,
+            "label": "Siempre",
+            "emoji": "⚫"
+        },
+        {
+            "value": 2,
+            "label": "Casi siempre",
+            "emoji": "🔵"
+        },
+        {
+            "value": 3,
+            "label": "Algunas veces",
+            "emoji": "🟣"
+        },
+        {
+            "value": 4,
+            "label": "Casi nunca",
+            "emoji": "🟤"
+        },
+        {
+            "value": 5,
+            "label": "Nunca",
+            "emoji": "⚪"
+        }
+    ],
+    "sections": [
+        {
+            "id": "seccion1",
+            "title": "Sección 1 - Preguntas Generales",
+            "message": "Estas son las primeras preguntas del cuestionario.",
+            "questions": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": "seccion2",
+            "title": "Sección 2 - Más Preguntas",
+            "message": "Esta es la segunda sección de preguntas.",
+            "questions": [
+                4,
+                5
+            ]
+        },
+        {
+            "id": "clientes",
+            "title": "Sección 3 - Atención a Clientes",
+            "message": "Estas preguntas son sobre atención a clientes y usuarios.",
+            "conditional": true,
+            "condition_question": "atiende_clientes",
+            "condition_value": "si",
+            "questions": [
+                6,
+                7,
+                8
+            ]
+        }
+    ],
+    "conditional_questions": [
+        {
+            "id": "atiende_clientes",
+            "text": "¿En tu trabajo debes atender clientes o usuarios?",
+            "type": "yesno",
+            "options": [
+                {
+                    "value": "si",
+                    "label": "Sí",
+                    "emoji": "✅"
+                },
+                {
+                    "value": "no",
+                    "label": "No",
+                    "emoji": "❌"
+                }
+            ],
+            "show_before_section": "clientes"
+        }
+    ],
+    "questions": [
+        {
+            "id": 1,
+            "text": "Pregunta de prueba 1 - Sección 1",
+            "category": "SECCIÓN 1"
+        },
+        {
+            "id": 2,
+            "text": "Pregunta de prueba 2 - Sección 1",
+            "category": "SECCIÓN 1"
+        },
+        {
+            "id": 3,
+            "text": "Pregunta de prueba 3 - Sección 1",
+            "category": "SECCIÓN 1"
+        },
+        {
+            "id": 4,
+            "text": "Pregunta de prueba 4 - Sección 2",
+            "category": "SECCIÓN 2"
+        },
+        {
+            "id": 5,
+            "text": "Pregunta de prueba 5 - Sección 2 (última antes de la condicional)",
+            "category": "SECCIÓN 2"
+        },
+        {
+            "id": 6,
+            "text": "Pregunta de CLIENTES 1 (solo si respondió SÍ)",
+            "category": "ATENCIÓN A CLIENTES",
+            "conditional": true
+        },
+        {
+            "id": 7,
+            "text": "Pregunta de CLIENTES 2 (solo si respondió SÍ)",
+            "category": "ATENCIÓN A CLIENTES",
+            "conditional": true
+        },
+        {
+            "id": 8,
+            "text": "Pregunta de CLIENTES 3 (solo si respondió SÍ)",
+            "category": "ATENCIÓN A CLIENTES",
+            "conditional": true
+        }
+    ]
+}
