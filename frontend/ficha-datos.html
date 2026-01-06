@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Ficha de Datos Generales - Sistema de Cuestionarios">
+    <title>Ficha de Datos Generales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cuestionarios/styles.css">
+    <style>
+        .form-app {
+            min-height: 100vh;
+            padding: var(--spacing-lg);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .home-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .home-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .form-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-md);
+            line-height: 1.6;
+        }
+
+        .form-progress {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: var(--bg-card-hover);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .progress-step.active {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .progress-step.completed {
+            background: var(--success-bg);
+            color: var(--success-color);
+        }
+
+        .progress-step-icon {
+            font-size: 1.1rem;
+        }
+
+        .form-sections {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .form-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-fast);
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-md);
+            font-size: 1.5rem;
+        }
+
+        .section-info {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-number {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+
+        .form-fields {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .field-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: var(--font-size-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .field-label .required {
+            color: var(--error-color);
+        }
+
+        .field-input {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            font-size: 16px;
+            transition: all var(--transition-fast);
+            width: 100%;
+        }
+
+        .field-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .field-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .field-input:invalid:not(:placeholder-shown) {
+            border-color: var(--error-color);
+        }
+
+        .field-input.error {
+            border-color: var(--error-color);
+            background: var(--error-bg);
+        }
+
+        .field-error {
+            color: var(--error-color);
+            font-size: var(--font-size-sm);
+            display: none;
+        }
+
+        .field-error.visible {
+            display: block;
+        }
+
+        /* Radio Options */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .radio-group.horizontal {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .radio-group.grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary-color);
+            background: #f0f9ff;
+        }
+
+        .radio-option.selected {
+            border-color: var(--primary-color);
+            background: #eef2ff;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .radio-circle {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
+        }
+
+        .radio-option.selected .radio-circle {
+            border-color: var(--primary-color);
+            background: var(--primary-gradient);
+        }
+
+        .radio-circle::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .radio-option.selected .radio-circle::after {
+            opacity: 1;
+        }
+
+        .radio-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Select */
+        .field-select {
+            appearance: none;
+            padding: var(--spacing-md) var(--spacing-lg);
+            padding-right: 48px;
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            font-size: 16px;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            width: 100%;
+            transition: all var(--transition-fast);
+        }
+
+        .field-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: var(--bg-card);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Radio with Number Input */
+        .radio-with-number {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .radio-number-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .number-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .number-input-wrapper .field-input {
+            max-width: 100px;
+        }
+
+        .number-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Navigation */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border-color);
+            gap: var(--spacing-md);
+        }
+
+        .nav-btn {
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-full);
+            font-family: var(--font-family);
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            border: none;
+        }
+
+        .nav-btn.prev {
+            background: var(--bg-main);
+            color: var(--text-secondary);
+            border: 2px solid var(--border-color);
+        }
+
+        .nav-btn.prev:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .nav-btn.next {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-btn.next:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav-btn.next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: none;
+        }
+
+        .success-screen.active {
+            display: block;
+            animation: successPop 0.5s ease-out;
+        }
+
+        @keyframes successPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--success-color);
+        }
+
+        .success-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .success-text {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .success-id {
+            font-family: monospace;
+            background: var(--bg-main);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .success-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Date input row */
+        .date-input-row {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .date-info {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+            margin-top: var(--spacing-sm);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .form-app {
+                padding: var(--spacing-md);
+            }
+
+            .form-header {
+                padding: var(--spacing-lg);
+            }
+
+            .form-title {
+                font-size: var(--font-size-xl);
+            }
+
+            .form-section {
+                padding: var(--spacing-lg);
+            }
+
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .radio-group.horizontal {
+                flex-direction: column;
+            }
+
+            .form-navigation {
+                flex-direction: column-reverse;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="form-app">
+        <!-- Header -->
+        <header class="form-header">
+            <!-- Home Button -->
+            <a href="/cuestionarios/" class="home-btn" title="Volver al inicio">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <div class="form-icon">📝</div>
+            <h1 class="form-title">Ficha de Datos Generales</h1>
+            <p class="form-subtitle">
+                Las siguientes son algunas preguntas que se refieren a información general de usted o su ocupación.
+                Por favor seleccione una sola respuesta para cada pregunta.
+            </p>
+            <div class="form-progress" id="form-progress">
+                <!-- Progress steps will be rendered here -->
+            </div>
+        </header>
+
+        <!-- Form Sections Container -->
+        <div class="form-sections" id="form-sections">
+            <!-- Sections will be rendered here -->
+        </div>
+
+        <!-- Success Screen -->
+        <div class="success-screen" id="success-screen">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <h2 class="success-title">¡Datos Guardados!</h2>
+            <p class="success-text">Tu información ha sido registrada correctamente.</p>
+            <div class="success-id" id="success-id">ID: ---</div>
+            <div class="success-actions">
+                <a href="/cuestionarios/" class="nav-btn next" style="text-decoration: none;">
+                    Continuar con Cuestionarios
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loading">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <span>Guardando datos...</span>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast hidden" id="toast">
+        <div class="toast-icon"></div>
+        <span class="toast-message"></span>
+    </div>
+
+    <script>
+        const API_BASE_URL = '/cuestionarios';
+
+        // Form configuration
+        const formConfig = {
+            id: "datos-generales",
+            sections: [
+                {
+                    id: "datos_personales",
+                    title: "Datos Personales",
+                    icon: "👤",
+                    fields: [
+                        {
+                            id: "fecha_aplicacion",
+                            label: "Fecha de aplicación",
+                            type: "date",
+                            required: true
+                        },
+                        {
+                            id: "numero_identificacion",
+                            label: "Número de identificación del respondiente (ID)",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese su número de identificación"
+                        },
+                        {
+                            id: "nombre_completo",
+                            label: "Nombre completo",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese su nombre completo"
+                        },
+                        {
+                            id: "sexo",
+                            label: "Sexo",
+                            type: "radio",
+                            required: true,
+                            options: [
+                                { value: "masculino", label: "Masculino" },
+                                { value: "femenino", label: "Femenino" }
+                            ]
+                        },
+                        {
+                            id: "año_nacimiento",
+                            label: "Año de nacimiento",
+                            type: "number",
+                            required: true,
+                            placeholder: "Ej: 1990",
+                            min: 1940,
+                            max: 2010
+                        },
+                        {
+                            id: "estado_civil",
+                            label: "Estado civil",
+                            type: "radio",
+                            required: true,
+                            options: [
+                                { value: "soltero", label: "Soltero (a)" },
+                                { value: "casado", label: "Casado (a)" },
+                                { value: "union_libre", label: "Unión libre" },
+                                { value: "separado", label: "Separado (a)" },
+                                { value: "divorciado", label: "Divorciado (a)" },
+                                { value: "viudo", label: "Viudo (a)" },
+                                { value: "religioso", label: "Sacerdote / Monja" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "educacion",
+                    title: "Educación y Profesión",
+                    icon: "🎓",
+                    fields: [
+                        {
+                            id: "nivel_estudios",
+                            label: "Último nivel de estudios que alcanzó",
+                            type: "select",
+                            required: true,
+                            options: [
+                                { value: "", label: "Seleccione una opción..." },
+                                { value: "ninguno", label: "Ninguno" },
+                                { value: "primaria_incompleta", label: "Primaria incompleta" },
+                                { value: "primaria_completa", label: "Primaria completa" },
+                                { value: "bachillerato_incompleto", label: "Bachillerato incompleto" },
+                                { value: "bachillerato_completo", label: "Bachillerato completo" },
+                                { value: "tecnico_incompleto", label: "Técnico / tecnológico incompleto" },
+                                { value: "tecnico_completo", label: "Técnico / tecnológico completo" },
+                                { value: "profesional_incompleto", label: "Profesional incompleto" },
+                                { value: "profesional_completo", label: "Profesional completo" },
+                                { value: "carrera_militar", label: "Carrera militar / policía" },
+                                { value: "postgrado_incompleto", label: "Post-grado incompleto" },
+                                { value: "postgrado_completo", label: "Post-grado completo" }
+                            ]
+                        },
+                        {
+                            id: "ocupacion_profesion",
+                            label: "¿Cuál es su ocupación o profesión?",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese su ocupación o profesión"
+                        }
+                    ]
+                },
+                {
+                    id: "residencia",
+                    title: "Lugar de Residencia",
+                    icon: "🏠",
+                    fields: [
+                        {
+                            id: "ciudad_residencia",
+                            label: "Ciudad / municipio de residencia",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese la ciudad o municipio"
+                        },
+                        {
+                            id: "departamento_residencia",
+                            label: "Departamento de residencia",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese el departamento"
+                        },
+                        {
+                            id: "estrato",
+                            label: "Estrato de los servicios públicos de su vivienda",
+                            type: "radio",
+                            required: true,
+                            layout: "grid",
+                            options: [
+                                { value: "1", label: "1" },
+                                { value: "2", label: "2" },
+                                { value: "3", label: "3" },
+                                { value: "4", label: "4" },
+                                { value: "5", label: "5" },
+                                { value: "6", label: "6" },
+                                { value: "finca", label: "Finca" },
+                                { value: "no_se", label: "No sé" }
+                            ]
+                        },
+                        {
+                            id: "tipo_vivienda",
+                            label: "Tipo de vivienda",
+                            type: "radio",
+                            required: true,
+                            layout: "horizontal",
+                            options: [
+                                { value: "propia", label: "Propia" },
+                                { value: "arriendo", label: "En arriendo" },
+                                { value: "familiar", label: "Familiar" }
+                            ]
+                        },
+                        {
+                            id: "personas_dependientes",
+                            label: "Número de personas que dependen económicamente de usted",
+                            type: "number",
+                            required: true,
+                            placeholder: "Ej: 2",
+                            min: 0,
+                            max: 20
+                        }
+                    ]
+                },
+                {
+                    id: "trabajo",
+                    title: "Información Laboral",
+                    icon: "💼",
+                    fields: [
+                        {
+                            id: "ciudad_trabajo",
+                            label: "Ciudad / municipio donde trabaja",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese la ciudad o municipio"
+                        },
+                        {
+                            id: "departamento_trabajo",
+                            label: "Departamento donde trabaja",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese el departamento"
+                        },
+                        {
+                            id: "antiguedad_empresa",
+                            label: "¿Hace cuántos años que trabaja en esta empresa?",
+                            type: "radio_number",
+                            required: true,
+                            checkboxOption: { value: "menos_1", label: "Menos de un año" },
+                            numberLabel: "Si lleva más de un año, anote cuántos años:",
+                            min: 1,
+                            max: 50
+                        },
+                        {
+                            id: "nombre_cargo",
+                            label: "¿Cuál es el nombre del cargo que ocupa en la empresa?",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese el nombre de su cargo"
+                        },
+                        {
+                            id: "tipo_cargo",
+                            label: "Seleccione el tipo de cargo que más se parece al que usted desempeña",
+                            type: "radio",
+                            required: true,
+                            options: [
+                                { value: "jefatura", label: "Jefatura - tiene personal a cargo" },
+                                { value: "profesional", label: "Profesional, analista, técnico, tecnólogo" },
+                                { value: "auxiliar", label: "Auxiliar, asistente administrativo, asistente técnico" },
+                                { value: "operario", label: "Operario, operador, ayudante, servicios generales" }
+                            ]
+                        },
+                        {
+                            id: "antiguedad_cargo",
+                            label: "¿Hace cuántos años que desempeña el cargo actual en esta empresa?",
+                            type: "radio_number",
+                            required: true,
+                            checkboxOption: { value: "menos_1", label: "Menos de un año" },
+                            numberLabel: "Si lleva más de un año, anote cuántos años:",
+                            min: 1,
+                            max: 50
+                        },
+                        {
+                            id: "departamento_area",
+                            label: "Nombre del departamento, área o sección de la empresa en el que trabaja",
+                            type: "text",
+                            required: true,
+                            placeholder: "Ingrese el departamento o área"
+                        },
+                        {
+                            id: "tipo_contrato",
+                            label: "Tipo de contrato que tiene actualmente",
+                            type: "radio",
+                            required: true,
+                            options: [
+                                { value: "temporal_menos_1", label: "Temporal de menos de 1 año" },
+                                { value: "temporal_mas_1", label: "Temporal de 1 año o más" },
+                                { value: "indefinido", label: "Término indefinido" },
+                                { value: "cooperado", label: "Cooperado (cooperativa)" },
+                                { value: "prestacion_servicios", label: "Prestación de servicios" },
+                                { value: "no_se", label: "No sé" }
+                            ]
+                        },
+                        {
+                            id: "horas_diarias",
+                            label: "¿Cuántas horas diarias de trabajo están establecidas para su cargo?",
+                            type: "number",
+                            required: true,
+                            placeholder: "Horas de trabajo al día",
+                            min: 1,
+                            max: 24
+                        },
+                        {
+                            id: "tipo_salario",
+                            label: "Tipo de salario que recibe",
+                            type: "radio",
+                            required: true,
+                            options: [
+                                { value: "fijo", label: "Fijo (diario, semanal, quincenal o mensual)" },
+                                { value: "mixto", label: "Una parte fija y otra variable" },
+                                { value: "variable", label: "Todo variable (a destajo, por producción, por comisión)" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // State
+        const state = {
+            currentSection: 0,
+            formData: {}
+        };
+
+        // Elements
+        const elements = {
+            formProgress: document.getElementById('form-progress'),
+            formSections: document.getElementById('form-sections'),
+            successScreen: document.getElementById('success-screen'),
+            successId: document.getElementById('success-id'),
+            loading: document.getElementById('loading'),
+            toast: document.getElementById('toast')
+        };
+
+        // Initialize
+        function init() {
+            renderProgressSteps();
+            renderSections();
+            setDefaultDate();
+            showSection(0);
+        }
+
+        function setDefaultDate() {
+            const dateInput = document.getElementById('field-fecha_aplicacion');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+                state.formData['fecha_aplicacion'] = today;
+            }
+        }
+
+        function renderProgressSteps() {
+            let html = '';
+            formConfig.sections.forEach((section, index) => {
+                html += `
+                    <div class="progress-step ${index === 0 ? 'active' : ''}" data-section="${index}" onclick="goToSection(${index})">
+                        <span class="progress-step-icon">${section.icon}</span>
+                        <span>${section.title}</span>
+                    </div>
+                `;
+            });
+            elements.formProgress.innerHTML = html;
+        }
+
+        function renderSections() {
+            let html = '';
+            formConfig.sections.forEach((section, sectionIndex) => {
+                html += `
+                    <div class="form-section ${sectionIndex === 0 ? 'active' : ''}" id="section-${section.id}">
+                        <div class="section-header">
+                            <div class="section-icon">${section.icon}</div>
+                            <div class="section-info">
+                                <div class="section-number">Sección ${sectionIndex + 1} de ${formConfig.sections.length}</div>
+                                <h2 class="section-title">${section.title}</h2>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            ${section.fields.map(field => renderField(field)).join('')}
+                        </div>
+                        <div class="form-navigation">
+                            ${sectionIndex > 0 ? `
+                                <button class="nav-btn prev" onclick="prevSection()">
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    Anterior
+                                </button>
+                            ` : '<div></div>'}
+                            ${sectionIndex < formConfig.sections.length - 1 ? `
+                                <button class="nav-btn next" onclick="nextSection()">
+                                    Siguiente
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            ` : `
+                                <button class="nav-btn next" onclick="submitForm()">
+                                    Guardar Datos
+                                    <svg viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            `}
+                        </div>
+                    </div>
+                `;
+            });
+            elements.formSections.innerHTML = html;
+        }
+
+        function renderField(field) {
+            const required = field.required ? '<span class="required">*</span>' : '';
+
+            switch (field.type) {
+                case 'text':
+                    return `
+                        <div class="field-group">
+                            <label class="field-label" for="field-${field.id}">${field.label} ${required}</label>
+                            <input type="text" id="field-${field.id}" class="field-input" 
+                                placeholder="${field.placeholder || ''}"
+                                ${field.required ? 'required' : ''}
+                                onchange="updateFieldValue('${field.id}', this.value)">
+                            <span class="field-error" id="error-${field.id}">Este campo es requerido</span>
+                        </div>
+                    `;
+
+                case 'number':
+                    return `
+                        <div class="field-group">
+                            <label class="field-label" for="field-${field.id}">${field.label} ${required}</label>
+                            <input type="number" id="field-${field.id}" class="field-input" 
+                                placeholder="${field.placeholder || ''}"
+                                ${field.min !== undefined ? `min="${field.min}"` : ''}
+                                ${field.max !== undefined ? `max="${field.max}"` : ''}
+                                ${field.required ? 'required' : ''}
+                                onchange="updateFieldValue('${field.id}', this.value)">
+                            <span class="field-error" id="error-${field.id}">Este campo es requerido</span>
+                        </div>
+                    `;
+
+                case 'date':
+                    return `
+                        <div class="field-group">
+                            <label class="field-label" for="field-${field.id}">${field.label} ${required}</label>
+                            <input type="date" id="field-${field.id}" class="field-input"
+                                ${field.required ? 'required' : ''}
+                                onchange="updateFieldValue('${field.id}', this.value)">
+                            <span class="field-error" id="error-${field.id}">Este campo es requerido</span>
+                        </div>
+                    `;
+
+                case 'select':
+                    return `
+                        <div class="field-group">
+                            <label class="field-label" for="field-${field.id}">${field.label} ${required}</label>
+                            <select id="field-${field.id}" class="field-select"
+                                ${field.required ? 'required' : ''}
+                                onchange="updateFieldValue('${field.id}', this.value)">
+                                ${field.options.map(opt => `<option value="${opt.value}">${opt.label}</option>`).join('')}
+                            </select>
+                            <span class="field-error" id="error-${field.id}">Este campo es requerido</span>
+                        </div>
+                    `;
+
+                case 'radio':
+                    const layoutClass = field.layout === 'grid' ? 'grid' : (field.layout === 'horizontal' ? 'horizontal' : '');
+                    return `
+                        <div class="field-group">
+                            <label class="field-label">${field.label} ${required}</label>
+                            <div class="radio-group ${layoutClass}" id="radio-group-${field.id}">
+                                ${field.options.map(opt => `
+                                    <div class="radio-option" onclick="selectRadio('${field.id}', '${opt.value}', this)">
+                                        <div class="radio-circle"></div>
+                                        <span class="radio-label">${opt.label}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <span class="field-error" id="error-${field.id}">Seleccione una opción</span>
+                        </div>
+                    `;
+
+                case 'radio_number':
+                    return `
+                        <div class="field-group">
+                            <label class="field-label">${field.label} ${required}</label>
+                            <div class="radio-with-number" id="radio-number-${field.id}">
+                                <div class="radio-option" onclick="selectRadioNumber('${field.id}', 'menos_1', this)">
+                                    <div class="radio-circle"></div>
+                                    <span class="radio-label">${field.checkboxOption.label}</span>
+                                </div>
+                                <div class="radio-number-row">
+                                    <div class="radio-option" style="flex-shrink: 0;" onclick="selectRadioNumber('${field.id}', 'number', this)">
+                                        <div class="radio-circle"></div>
+                                        <span class="radio-label">${field.numberLabel}</span>
+                                    </div>
+                                    <div class="number-input-wrapper">
+                                        <input type="number" id="field-${field.id}-number" class="field-input" 
+                                            placeholder="Años"
+                                            min="${field.min || 1}"
+                                            max="${field.max || 50}"
+                                            onchange="updateRadioNumberValue('${field.id}', this.value)"
+                                            onclick="selectRadioNumberInput('${field.id}')">
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="field-error" id="error-${field.id}">Este campo es requerido</span>
+                        </div>
+                    `;
+
+                default:
+                    return '';
+            }
+        }
+
+        function updateFieldValue(fieldId, value) {
+            state.formData[fieldId] = value;
+            clearFieldError(fieldId);
+        }
+
+        function selectRadio(fieldId, value, element) {
+            const group = element.closest('.radio-group');
+            group.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            state.formData[fieldId] = value;
+            clearFieldError(fieldId);
+        }
+
+        function selectRadioNumber(fieldId, type, element) {
+            const container = document.getElementById(`radio-number-${fieldId}`);
+            container.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+
+            if (type === 'menos_1') {
+                state.formData[fieldId] = 'menos_1';
+                document.getElementById(`field-${fieldId}-number`).value = '';
+            } else {
+                const numberValue = document.getElementById(`field-${fieldId}-number`).value;
+                state.formData[fieldId] = numberValue ? `${numberValue}_años` : null;
+            }
+            clearFieldError(fieldId);
+        }
+
+        function selectRadioNumberInput(fieldId) {
+            const container = document.getElementById(`radio-number-${fieldId}`);
+            container.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+            const numberRow = container.querySelector('.radio-number-row .radio-option');
+            if (numberRow) numberRow.classList.add('selected');
+        }
+
+        function updateRadioNumberValue(fieldId, value) {
+            if (value) {
+                state.formData[fieldId] = `${value}_años`;
+                selectRadioNumberInput(fieldId);
+                clearFieldError(fieldId);
+            }
+        }
+
+        function showSection(index) {
+            document.querySelectorAll('.form-section').forEach((section, i) => {
+                section.classList.toggle('active', i === index);
+            });
+
+            document.querySelectorAll('.progress-step').forEach((step, i) => {
+                step.classList.remove('active', 'completed');
+                if (i < index) step.classList.add('completed');
+                if (i === index) step.classList.add('active');
+            });
+
+            state.currentSection = index;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToSection(index) {
+            // Validate all previous sections before jumping
+            for (let i = 0; i < index; i++) {
+                if (!validateSection(i)) {
+                    showToast('Complete todas las secciones anteriores', 'error');
+                    showSection(i);
+                    return;
+                }
+            }
+            showSection(index);
+        }
+
+        function nextSection() {
+            if (!validateSection(state.currentSection)) {
+                showToast('Por favor complete todos los campos requeridos', 'error');
+                return;
+            }
+
+            if (state.currentSection < formConfig.sections.length - 1) {
+                showSection(state.currentSection + 1);
+            }
+        }
+
+        function prevSection() {
+            if (state.currentSection > 0) {
+                showSection(state.currentSection - 1);
+            }
+        }
+
+        function validateSection(sectionIndex) {
+            const section = formConfig.sections[sectionIndex];
+            let isValid = true;
+
+            for (const field of section.fields) {
+                if (field.required) {
+                    const value = state.formData[field.id];
+                    if (!value || value === '') {
+                        showFieldError(field.id);
+                        isValid = false;
+                    } else {
+                        clearFieldError(field.id);
+                    }
+                }
+            }
+
+            return isValid;
+        }
+
+        function showFieldError(fieldId) {
+            const errorEl = document.getElementById(`error-${fieldId}`);
+            if (errorEl) errorEl.classList.add('visible');
+
+            const inputEl = document.getElementById(`field-${fieldId}`);
+            if (inputEl) inputEl.classList.add('error');
+        }
+
+        function clearFieldError(fieldId) {
+            const errorEl = document.getElementById(`error-${fieldId}`);
+            if (errorEl) errorEl.classList.remove('visible');
+
+            const inputEl = document.getElementById(`field-${fieldId}`);
+            if (inputEl) inputEl.classList.remove('error');
+        }
+
+        async function submitForm() {
+            // Validate all sections
+            for (let i = 0; i < formConfig.sections.length; i++) {
+                if (!validateSection(i)) {
+                    showToast('Por favor complete todos los campos requeridos', 'error');
+                    showSection(i);
+                    return;
+                }
+            }
+
+            try {
+                showLoading();
+
+                const submissionData = {
+                    form_id: formConfig.id,
+                    submitted_at: new Date().toISOString(),
+                    data: state.formData
+                };
+
+                const response = await fetch(`${API_BASE_URL}/api/submit-form`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(submissionData)
+                });
+
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.detail || 'Error al guardar');
+                }
+
+                const result = await response.json();
+                hideLoading();
+                showSuccess(result.submission_id);
+
+            } catch (error) {
+                hideLoading();
+                showToast('Error: ' + error.message, 'error');
+            }
+        }
+
+        function showSuccess(submissionId) {
+            elements.formSections.style.display = 'none';
+            elements.successScreen.classList.add('active');
+            elements.successId.textContent = `ID: ${submissionId}`;
+            showToast('¡Datos guardados exitosamente!', 'success');
+        }
+
+        function showLoading() {
+            elements.loading.classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            elements.loading.classList.add('hidden');
+        }
+
+        function showToast(message, type = 'success') {
+            elements.toast.className = `toast ${type}`;
+            elements.toast.querySelector('.toast-message').textContent = message;
+            elements.toast.classList.remove('hidden');
+            setTimeout(() => elements.toast.classList.add('hidden'), 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

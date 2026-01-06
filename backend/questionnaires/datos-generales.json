@@ -1,0 +1,404 @@
+{
+    "id": "datos-generales",
+    "name": "Ficha de Datos Generales",
+    "short_name": "Datos Generales",
+    "description": "Las siguientes son algunas preguntas que se refieren a información general de usted o su ocupación. Por favor seleccione una sola respuesta para cada pregunta.",
+    "version": "1.0",
+    "icon": "📝",
+    "color": "#6366f1",
+    "type": "form",
+    "sections": [
+        {
+            "id": "datos_personales",
+            "title": "Datos Personales",
+            "icon": "👤",
+            "fields": [
+                {
+                    "id": "nombre_completo",
+                    "label": "Nombre completo",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese su nombre completo"
+                },
+                {
+                    "id": "sexo",
+                    "label": "Sexo",
+                    "type": "radio",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "masculino",
+                            "label": "Masculino"
+                        },
+                        {
+                            "value": "femenino",
+                            "label": "Femenino"
+                        }
+                    ]
+                },
+                {
+                    "id": "año_nacimiento",
+                    "label": "Año de nacimiento",
+                    "type": "number",
+                    "required": true,
+                    "placeholder": "Ej: 1990",
+                    "min": 1940,
+                    "max": 2010
+                },
+                {
+                    "id": "estado_civil",
+                    "label": "Estado civil",
+                    "type": "radio",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "soltero",
+                            "label": "Soltero (a)"
+                        },
+                        {
+                            "value": "casado",
+                            "label": "Casado (a)"
+                        },
+                        {
+                            "value": "union_libre",
+                            "label": "Unión libre"
+                        },
+                        {
+                            "value": "separado",
+                            "label": "Separado (a)"
+                        },
+                        {
+                            "value": "divorciado",
+                            "label": "Divorciado (a)"
+                        },
+                        {
+                            "value": "viudo",
+                            "label": "Viudo (a)"
+                        },
+                        {
+                            "value": "religioso",
+                            "label": "Sacerdote / Monja"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "educacion",
+            "title": "Educación y Profesión",
+            "icon": "🎓",
+            "fields": [
+                {
+                    "id": "nivel_estudios",
+                    "label": "Último nivel de estudios que alcanzó",
+                    "type": "select",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "ninguno",
+                            "label": "Ninguno"
+                        },
+                        {
+                            "value": "primaria_incompleta",
+                            "label": "Primaria incompleta"
+                        },
+                        {
+                            "value": "primaria_completa",
+                            "label": "Primaria completa"
+                        },
+                        {
+                            "value": "bachillerato_incompleto",
+                            "label": "Bachillerato incompleto"
+                        },
+                        {
+                            "value": "bachillerato_completo",
+                            "label": "Bachillerato completo"
+                        },
+                        {
+                            "value": "tecnico_incompleto",
+                            "label": "Técnico / tecnológico incompleto"
+                        },
+                        {
+                            "value": "tecnico_completo",
+                            "label": "Técnico / tecnológico completo"
+                        },
+                        {
+                            "value": "profesional_incompleto",
+                            "label": "Profesional incompleto"
+                        },
+                        {
+                            "value": "profesional_completo",
+                            "label": "Profesional completo"
+                        },
+                        {
+                            "value": "carrera_militar",
+                            "label": "Carrera militar / policía"
+                        },
+                        {
+                            "value": "postgrado_incompleto",
+                            "label": "Post-grado incompleto"
+                        },
+                        {
+                            "value": "postgrado_completo",
+                            "label": "Post-grado completo"
+                        }
+                    ]
+                },
+                {
+                    "id": "ocupacion_profesion",
+                    "label": "¿Cuál es su ocupación o profesión?",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese su ocupación o profesión"
+                }
+            ]
+        },
+        {
+            "id": "residencia",
+            "title": "Lugar de Residencia",
+            "icon": "🏠",
+            "fields": [
+                {
+                    "id": "ciudad_residencia",
+                    "label": "Ciudad / municipio de residencia",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese la ciudad o municipio"
+                },
+                {
+                    "id": "departamento_residencia",
+                    "label": "Departamento de residencia",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese el departamento"
+                },
+                {
+                    "id": "estrato",
+                    "label": "Estrato de los servicios públicos de su vivienda",
+                    "type": "radio",
+                    "required": true,
+                    "layout": "grid",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "1"
+                        },
+                        {
+                            "value": "2",
+                            "label": "2"
+                        },
+                        {
+                            "value": "3",
+                            "label": "3"
+                        },
+                        {
+                            "value": "4",
+                            "label": "4"
+                        },
+                        {
+                            "value": "5",
+                            "label": "5"
+                        },
+                        {
+                            "value": "6",
+                            "label": "6"
+                        },
+                        {
+                            "value": "finca",
+                            "label": "Finca"
+                        },
+                        {
+                            "value": "no_se",
+                            "label": "No sé"
+                        }
+                    ]
+                },
+                {
+                    "id": "tipo_vivienda",
+                    "label": "Tipo de vivienda",
+                    "type": "radio",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "propia",
+                            "label": "Propia"
+                        },
+                        {
+                            "value": "arriendo",
+                            "label": "En arriendo"
+                        },
+                        {
+                            "value": "familiar",
+                            "label": "Familiar"
+                        }
+                    ]
+                },
+                {
+                    "id": "personas_dependientes",
+                    "label": "Número de personas que dependen económicamente de usted (aunque vivan en otro lugar)",
+                    "type": "number",
+                    "required": true,
+                    "placeholder": "Ej: 2",
+                    "min": 0,
+                    "max": 20
+                }
+            ]
+        },
+        {
+            "id": "trabajo",
+            "title": "Información Laboral",
+            "icon": "💼",
+            "fields": [
+                {
+                    "id": "ciudad_trabajo",
+                    "label": "Ciudad / municipio donde trabaja",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese la ciudad o municipio"
+                },
+                {
+                    "id": "departamento_trabajo",
+                    "label": "Departamento donde trabaja",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese el departamento"
+                },
+                {
+                    "id": "antiguedad_empresa",
+                    "label": "¿Hace cuántos años que trabaja en esta empresa?",
+                    "type": "radio_with_number",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "menos_1",
+                            "label": "Menos de un año"
+                        }
+                    ],
+                    "number_option": {
+                        "label": "Si lleva más de un año, anote cuántos años",
+                        "placeholder": "Años",
+                        "min": 1,
+                        "max": 50
+                    }
+                },
+                {
+                    "id": "nombre_cargo",
+                    "label": "¿Cuál es el nombre del cargo que ocupa en la empresa?",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese el nombre de su cargo"
+                },
+                {
+                    "id": "tipo_cargo",
+                    "label": "Seleccione el tipo de cargo que más se parece al que usted desempeña",
+                    "type": "radio",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "jefatura",
+                            "label": "Jefatura - tiene personal a cargo"
+                        },
+                        {
+                            "value": "profesional",
+                            "label": "Profesional, analista, técnico, tecnólogo"
+                        },
+                        {
+                            "value": "auxiliar",
+                            "label": "Auxiliar, asistente administrativo, asistente técnico"
+                        },
+                        {
+                            "value": "operario",
+                            "label": "Operario, operador, ayudante, servicios generales"
+                        }
+                    ]
+                },
+                {
+                    "id": "antiguedad_cargo",
+                    "label": "¿Hace cuántos años que desempeña el cargo u oficio actual en esta empresa?",
+                    "type": "radio_with_number",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "menos_1",
+                            "label": "Menos de un año"
+                        }
+                    ],
+                    "number_option": {
+                        "label": "Si lleva más de un año, anote cuántos años",
+                        "placeholder": "Años",
+                        "min": 1,
+                        "max": 50
+                    }
+                },
+                {
+                    "id": "departamento_area",
+                    "label": "Nombre del departamento, área o sección de la empresa en el que trabaja",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "Ingrese el departamento o área"
+                },
+                {
+                    "id": "tipo_contrato",
+                    "label": "Tipo de contrato que tiene actualmente",
+                    "type": "radio",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "temporal_menos_1",
+                            "label": "Temporal de menos de 1 año"
+                        },
+                        {
+                            "value": "temporal_mas_1",
+                            "label": "Temporal de 1 año o más"
+                        },
+                        {
+                            "value": "indefinido",
+                            "label": "Término indefinido"
+                        },
+                        {
+                            "value": "cooperado",
+                            "label": "Cooperado (cooperativa)"
+                        },
+                        {
+                            "value": "prestacion_servicios",
+                            "label": "Prestación de servicios"
+                        },
+                        {
+                            "value": "no_se",
+                            "label": "No sé"
+                        }
+                    ]
+                },
+                {
+                    "id": "horas_diarias",
+                    "label": "¿Cuántas horas diarias de trabajo están establecidas habitualmente por la empresa para su cargo?",
+                    "type": "number",
+                    "required": true,
+                    "placeholder": "Horas de trabajo al día",
+                    "min": 1,
+                    "max": 24
+                },
+                {
+                    "id": "tipo_salario",
+                    "label": "Tipo de salario que recibe",
+                    "type": "radio",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "fijo",
+                            "label": "Fijo (diario, semanal, quincenal o mensual)"
+                        },
+                        {
+                            "value": "mixto",
+                            "label": "Una parte fija y otra variable"
+                        },
+                        {
+                            "value": "variable",
+                            "label": "Todo variable (a destajo, por producción, por comisión)"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

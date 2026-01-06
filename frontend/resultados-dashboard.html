@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard de Resultados - Sistema de Cuestionarios">
+    <title>Dashboard de Resultados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cuestionarios/styles.css">
+    <style>
+        .dashboard-app {
+            min-height: 100vh;
+            padding: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-main);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .home-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .home-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .dashboard-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .dashboard-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+        }
+
+        /* Stats Summary */
+        .total-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .total-stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .total-stat-value {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .total-stat-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-xs);
+        }
+
+        /* Questionnaire Cards Grid */
+        .questionnaires-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .result-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .result-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .result-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .result-card-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-lg);
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .result-card-info {
+            flex: 1;
+        }
+
+        .result-card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .result-card-version {
+            font-size: var(--font-size-xs);
+            color: var(--text-muted);
+        }
+
+        /* Response Count Badge */
+        .response-count {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .response-count-number {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .response-count-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .response-count-label strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: var(--font-size-md);
+        }
+
+        /* No responses state */
+        .no-responses {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: var(--bg-main);
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Card Actions */
+        .result-card-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: auto;
+        }
+
+        .result-card-btn {
+            flex: 1;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+
+        .result-card-btn.primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .result-card-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .result-card-btn.secondary {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+        }
+
+        .result-card-btn.secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Empty state */
+        .no-data {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            color: var(--text-muted);
+        }
+
+        .no-data-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-app {
+                padding: var(--spacing-md);
+            }
+
+            .dashboard-title {
+                font-size: var(--font-size-xl);
+            }
+
+            .questionnaires-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="dashboard-app">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <a href="/cuestionarios/" class="home-btn" title="Volver al inicio">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <div class="dashboard-icon">📊</div>
+            <h1 class="dashboard-title">Dashboard de Resultados</h1>
+            <p class="dashboard-subtitle">Resumen de respuestas por cuestionario</p>
+        </header>
+
+        <!-- Total Stats -->
+        <div class="total-stats" id="total-stats">
+            <!-- Total stats will be inserted here -->
+        </div>
+
+        <!-- Questionnaires Grid -->
+        <div class="questionnaires-grid" id="questionnaires-grid">
+            <!-- Cards will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <span>Cargando resultados...</span>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = '/cuestionarios';
+
+        async function loadDashboard() {
+            const loading = document.getElementById('loading');
+            const totalStats = document.getElementById('total-stats');
+            const grid = document.getElementById('questionnaires-grid');
+
+            try {
+                loading.classList.remove('hidden');
+
+                // Load all questionnaires
+                const response = await fetch(`${API_BASE_URL}/api/questionnaires`);
+                if (!response.ok) throw new Error('Failed to load questionnaires');
+                const data = await response.json();
+
+                // Load statistics for each questionnaire
+                const statsPromises = data.questionnaires.map(async (q) => {
+                    try {
+                        const statsResponse = await fetch(`${API_BASE_URL}/api/statistics/${q.id}`);
+                        if (statsResponse.ok) {
+                            const stats = await statsResponse.json();
+                            return { ...q, responseCount: stats.total_responses };
+                        }
+                        return { ...q, responseCount: 0 };
+                    } catch {
+                        return { ...q, responseCount: 0 };
+                    }
+                });
+
+                const questionnairesWithStats = await Promise.all(statsPromises);
+
+                // Filter out datos-generales since it's a form, not a questionnaire
+                const questionnaires = questionnairesWithStats.filter(q => q.id !== 'datos-generales');
+
+                loading.classList.add('hidden');
+
+                // Calculate totals
+                const totalResponses = questionnaires.reduce((sum, q) => sum + q.responseCount, 0);
+                const answeredQuestionnaires = questionnaires.filter(q => q.responseCount > 0).length;
+
+                // Render total stats
+                totalStats.innerHTML = `
+                    <div class="total-stat-box">
+                        <div class="total-stat-value">${totalResponses}</div>
+                        <div class="total-stat-label">Respuestas Totales</div>
+                    </div>
+                    <div class="total-stat-box">
+                        <div class="total-stat-value">${questionnaires.length}</div>
+                        <div class="total-stat-label">Cuestionarios Disponibles</div>
+                    </div>
+                    <div class="total-stat-box">
+                        <div class="total-stat-value">${answeredQuestionnaires}</div>
+                        <div class="total-stat-label">Con Respuestas</div>
+                    </div>
+                `;
+
+                if (questionnaires.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-data">
+                            <div class="no-data-icon">📭</div>
+                            <h2>No hay cuestionarios disponibles</h2>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Render questionnaire cards
+                grid.innerHTML = questionnaires.map(q => `
+                    <div class="result-card" onclick="window.location.href='/cuestionarios/resultados/${q.id}'">
+                        <div class="result-card-header">
+                            <div class="result-card-icon" style="background: ${q.color}20; color: ${q.color}">
+                                ${q.icon}
+                            </div>
+                            <div class="result-card-info">
+                                <div class="result-card-title">${q.short_name || q.name}</div>
+                                <div class="result-card-version">${q.version || ''}</div>
+                            </div>
+                        </div>
+                        
+                        ${q.responseCount > 0 ? `
+                            <div class="response-count">
+                                <div class="response-count-number">${q.responseCount}</div>
+                                <div class="response-count-label">
+                                    <strong>Respuestas</strong>
+                                    recibidas
+                                </div>
+                            </div>
+                        ` : `
+                            <div class="no-responses">
+                                Sin respuestas aún
+                            </div>
+                        `}
+                        
+                        <div class="result-card-actions">
+                            <a href="/cuestionarios/resultados/${q.id}" class="result-card-btn primary" onclick="event.stopPropagation()">
+                                📊 Ver Resultados
+                            </a>
+                            ${q.responseCount > 0 ? `
+                                <a href="${API_BASE_URL}/api/export/excel/${q.id}" class="result-card-btn secondary" onclick="event.stopPropagation()">
+                                    📥 Excel
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                loading.classList.add('hidden');
+                console.error('Error:', error);
+                grid.innerHTML = `
+                    <div class="no-data">
+                        <div class="no-data-icon">❌</div>
+                        <h2>Error al cargar</h2>
+                        <p>${error.message}</p>
+                        <button class="result-card-btn primary" onclick="loadDashboard()" style="margin-top: 1rem; width: auto; padding: 0.75rem 2rem;">
+                            Reintentar
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+</body>
+
+</html>

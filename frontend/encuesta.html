@@ -195,7 +195,7 @@
             lastShownSection: -1,    // Last section message shown
             userResponses: {},
             conditionalAnswers: {},  // Store yes/no answers
-            respondentInfo: { name: null, email: null, department: null },
+            respondentInfo: { cedula: null, name: null, email: null, department: null, cargo: null },
             conversationPhase: 'welcome',
             isTyping: false
         };
@@ -331,49 +331,72 @@
             await addUserMessage("¡Estoy listo para comenzar!");
             state.conversationPhase = 'info';
             await delay(500);
-            await askForName();
+            await askForCedula();
         }
 
-        async function askForName() {
-            await addBotMessage("Primero, ¿podrías decirme tu nombre? <span style='color: var(--text-muted);'>(Opcional)</span>");
-            showTextInput('name', 'Tu nombre (opcional)', () => {
-                const input = document.getElementById('text-input-name');
-                state.respondentInfo.name = input.value.trim() || null;
-                handleNameResponse();
+        async function askForCedula() {
+            await addBotMessage("Por favor, ingresa tu <strong>número de cédula</strong> para identificar tus respuestas:");
+            showTextInput('cedula', 'Número de identificación', () => {
+                const input = document.getElementById('text-input-cedula');
+                const cedula = input.value.trim();
+                if (!cedula) {
+                    showToast('Por favor ingresa tu número de cédula', 'error');
+                    return;
+                }
+                state.respondentInfo.cedula = cedula;
+                handleCedulaResponse(cedula);
             });
         }
 
-        async function handleNameResponse() {
-            if (state.respondentInfo.name) {
-                await addUserMessage(state.respondentInfo.name);
-                await delay(500);
-                await addBotMessage(`¡Mucho gusto, ${state.respondentInfo.name}! 😊`);
-            } else {
-                await addUserMessage("Prefiero no decirlo");
-                await delay(500);
-                await addBotMessage("¡No hay problema! 🔒");
+        async function handleCedulaResponse(cedula) {
+            await addUserMessage(cedula);
+
+            // Search for existing data in datos-generales
+            try {
+                showLoading();
+                const response = await fetch(`${API_BASE_URL}/api/lookup-cedula/${cedula}`);
+                const data = await response.json();
+                hideLoading();
+
+                if (data.found) {
+                    // Person found! Use their data
+                    state.respondentInfo.name = data.nombre;
+                    state.respondentInfo.department = data.departamento;
+                    state.respondentInfo.cargo = data.cargo;
+
+                    await delay(500);
+                    await addBotMessage(`
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 2rem;">✅</span>
+                            <div>
+                                <div style="font-weight: 600; color: var(--success-color);">¡Datos encontrados!</div>
+                                <div style="margin-top: 4px;">Hola <strong>${data.nombre}</strong></div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">${data.cargo || ''} - ${data.departamento || ''}</div>
+                            </div>
+                        </div>
+                    `);
+                } else {
+                    // Person not found - continue without data
+                    await delay(500);
+                    await addBotMessage(`
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 2rem;">ℹ️</span>
+                            <div>
+                                <div style="font-weight: 500;">Cédula registrada: ${cedula}</div>
+                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+                                    Tip: Completa la <a href="/cuestionarios/ficha-datos" style="color: var(--primary-color);">Ficha de Datos Generales</a> para que tu información aparezca automáticamente.
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('Error looking up cedula:', error);
+                // Continue without data
             }
-            await delay(500);
-            await askForDepartment();
-        }
 
-        async function askForDepartment() {
-            await addBotMessage("¿En qué departamento trabajas? <span style='color: var(--text-muted);'>(Opcional)</span>");
-            showTextInput('department', 'Tu departamento (opcional)', () => {
-                const input = document.getElementById('text-input-department');
-                state.respondentInfo.department = input.value.trim() || null;
-                handleDepartmentResponse();
-            });
-        }
-
-        async function handleDepartmentResponse() {
-            if (state.respondentInfo.department) {
-                await addUserMessage(state.respondentInfo.department);
-            } else {
-                await addUserMessage("Prefiero no decirlo");
-            }
-
-            await delay(500);
+            await delay(800);
             await addBotMessage("¡Perfecto! Ahora comenzaremos con las preguntas. 📝");
             await delay(800);
             await addBotMessage(`Son <strong>${state.questions.length} preguntas</strong>. Selecciona la opción que mejor refleje tu situación.`);
@@ -567,6 +590,7 @@
 
                 const submissionData = {
                     questionnaire_id: questionnaireId,
+                    respondent_cedula: state.respondentInfo.cedula,
                     respondent_name: state.respondentInfo.name,
                     respondent_email: state.respondentInfo.email,
                     department: state.respondentInfo.department,
@@ -623,7 +647,7 @@
             state.currentQuestionIndex = 0;
             state.userResponses = {};
             state.conditionalAnswers = {};
-            state.respondentInfo = { name: null, email: null, department: null };
+            state.respondentInfo = { cedula: null, name: null, email: null, department: null, cargo: null };
             state.conversationPhase = 'welcome';
             state.lastShownSection = -1;
             elements.chatMessages.innerHTML = '';

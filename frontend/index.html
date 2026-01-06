@@ -54,6 +54,124 @@
             gap: var(--spacing-lg);
         }
 
+        /* Featured Card - Ficha de Datos */
+        .featured-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-label {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-label::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .featured-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .featured-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .featured-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-lg);
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .featured-content {
+            flex: 1;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .featured-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .featured-description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-md);
+            line-height: 1.5;
+        }
+
+        .featured-action {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: var(--font-size-md);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            transition: all var(--transition-fast);
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .featured-action:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+
+        @media (max-width: 768px) {
+            .featured-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .featured-action {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
         .questionnaire-card {
             background: var(--bg-card);
             border: 2px solid var(--border-color);
@@ -215,6 +333,31 @@
             <p class="selector-subtitle">Selecciona un cuestionario para comenzar</p>
         </div>
 
+        <!-- Featured Section: Ficha de Datos Generales -->
+        <div class="featured-section">
+            <div class="section-label">Paso 1 - Obligatorio</div>
+            <div class="featured-card" onclick="window.location.href='/cuestionarios/ficha-datos'">
+                <div class="featured-icon">📝</div>
+                <div class="featured-content">
+                    <span class="featured-badge">✓ Completa primero</span>
+                    <h2 class="featured-title">Ficha de Datos Generales</h2>
+                    <p class="featured-description">
+                        Información personal, educación y datos laborales. Este formulario debe completarse antes de
+                        responder los cuestionarios.
+                    </p>
+                </div>
+                <a href="/cuestionarios/ficha-datos" class="featured-action" onclick="event.stopPropagation()">
+                    Iniciar
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Questionnaires Section -->
+        <div class="section-label" style="margin-top: var(--spacing-xl);">Paso 2 - Cuestionarios</div>
         <div class="questionnaires-grid" id="questionnaires-grid">
             <!-- Questionnaires will be loaded here -->
         </div>
@@ -244,7 +387,10 @@
                 const data = await response.json();
                 loading.classList.add('hidden');
 
-                if (data.questionnaires.length === 0) {
+                // Filter out datos-generales as it's shown separately
+                const questionnaires = data.questionnaires.filter(q => q.id !== 'datos-generales');
+
+                if (questionnaires.length === 0) {
                     grid.innerHTML = `
                         <div class="no-questionnaires">
                             <div class="no-questionnaires-icon">📭</div>
@@ -255,7 +401,7 @@
                     return;
                 }
 
-                grid.innerHTML = data.questionnaires.map(q => `
+                grid.innerHTML = questionnaires.map(q => `
                     <div class="questionnaire-card" onclick="window.location.href='/cuestionarios/encuesta/${q.id}'">
                         <div class="card-header">
                             <div class="card-icon" style="background: ${q.color}20; color: ${q.color}">
@@ -270,9 +416,6 @@
                         <div class="card-footer">
                             <span class="card-stats">📝 ${q.question_count} preguntas</span>
                             <div class="card-actions">
-                                <a href="/cuestionarios/resultados/${q.id}" class="card-btn secondary" onclick="event.stopPropagation()">
-                                    📊 Resultados
-                                </a>
                                 <a href="/cuestionarios/encuesta/${q.id}" class="card-btn primary" onclick="event.stopPropagation()">
                                     Iniciar →
                                 </a>
