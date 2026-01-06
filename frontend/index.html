@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/cuestionarios/styles.css">
     <style>
         .selector-app {
             min-height: 100vh;
@@ -256,7 +256,7 @@
                 }
 
                 grid.innerHTML = data.questionnaires.map(q => `
-                    <div class="questionnaire-card" onclick="window.location.href='/encuesta/${q.id}'">
+                    <div class="questionnaire-card" onclick="window.location.href='/cuestionarios/encuesta/${q.id}'">
                         <div class="card-header">
                             <div class="card-icon" style="background: ${q.color}20; color: ${q.color}">
                                 ${q.icon}
@@ -270,10 +270,10 @@
                         <div class="card-footer">
                             <span class="card-stats">📝 ${q.question_count} preguntas</span>
                             <div class="card-actions">
-                                <a href="/resultados/${q.id}" class="card-btn secondary" onclick="event.stopPropagation()">
+                                <a href="/cuestionarios/resultados/${q.id}" class="card-btn secondary" onclick="event.stopPropagation()">
                                     📊 Resultados
                                 </a>
-                                <a href="/encuesta/${q.id}" class="card-btn primary" onclick="event.stopPropagation()">
+                                <a href="/cuestionarios/encuesta/${q.id}" class="card-btn primary" onclick="event.stopPropagation()">
                                     Iniciar →
                                 </a>
                             </div>

@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/cuestionarios/styles.css">
     <style>
         /* Results Page Specific Styles */
         body {
@@ -303,7 +303,7 @@
             <div class="results-icon" id="results-icon">📊</div>
             <h1 class="results-title" id="results-title">Resultados del Cuestionario</h1>
             <p class="results-subtitle" id="results-subtitle">Estadísticas agregadas</p>
-            <a href="/" class="back-link">← Volver al inicio</a>
+            <a href="/cuestionarios/" class="back-link">← Volver al inicio</a>
         </div>
 
         <div class="stats-summary" id="stats-summary">
@@ -421,7 +421,7 @@
                             </svg>
                             Actualizar
                         </button>
-                        <a href="/encuesta/${questionnaireId}" class="refresh-btn" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <a href="/cuestionarios/encuesta/${questionnaireId}" class="refresh-btn" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
                             📝 Nueva Encuesta
                         </a>
                     </div>
@@ -468,7 +468,7 @@
                         <button class="refresh-btn" onclick="loadResults()">
                             Reintentar
                         </button>
-                        <a href="/encuesta/${questionnaireId}" class="refresh-btn" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <a href="/cuestionarios/encuesta/${questionnaireId}" class="refresh-btn" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
                             📝 Iniciar Encuesta
                         </a>
                     </div>
