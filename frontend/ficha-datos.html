@@ -1262,8 +1262,14 @@
                 }
 
                 const result = await response.json();
+
+                // SAVE SESSION info
+                if (state.formData['numero_identificacion']) {
+                    localStorage.setItem('current_user_cedula', state.formData['numero_identificacion']);
+                }
+
                 hideLoading();
-                showSuccess(result.submission_id);
+                showSuccess(result.submission_id, result.next_step);
 
             } catch (error) {
                 hideLoading();
@@ -1271,11 +1277,22 @@
             }
         }
 
-        function showSuccess(submissionId) {
+        function showSuccess(submissionId, nextStep) {
             elements.formSections.style.display = 'none';
             elements.successScreen.classList.add('active');
             elements.successId.textContent = `ID: ${submissionId}`;
             showToast('¡Datos guardados exitosamente!', 'success');
+
+            // Validate next step link
+            const nextBtn = document.querySelector('.success-actions .nav-btn.next');
+            if (nextStep && nextStep !== 'completed') {
+                nextBtn.onclick = (e) => {
+                    e.preventDefault();
+                    window.location.href = `/cuestionarios/encuesta/${nextStep}`;
+                };
+            } else {
+                nextBtn.setAttribute('href', '/cuestionarios/');
+            }
         }
 
         function showLoading() {

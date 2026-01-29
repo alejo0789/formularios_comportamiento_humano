@@ -283,6 +283,22 @@
                 text-align: left;
             }
         }
+
+        .centrica-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: color 0.2s;
+        }
+
+        .centrica-btn:hover {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 
@@ -333,6 +349,9 @@
         let questionnaireOptions = [];
 
         async function loadResults() {
+            // Auth Check
+            await initAuth();
+
             const loading = document.getElementById('loading');
             const statsSummary = document.getElementById('stats-summary');
             const questionsResults = document.getElementById('questions-results');
@@ -443,6 +462,85 @@
                 console.error('Error loading results:', error);
                 showNoData(error.message);
             }
+        }
+
+        async function initAuth() {
+            // 1. Bypass Localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.log('Localhost bypass active - Auth skipped');
+                // Even if skipped, we add the button
+                addCentricaButton();
+                return;
+            }
+
+            // 2. Fetch Config
+            let allowedId = null;
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/auth-config`);
+                if (res.ok) {
+                    const data = await res.json();
+                    allowedId = data.allowed_user_id;
+                    console.log('Auth requirement loaded:', allowedId);
+                }
+            } catch (e) {
+                console.warn('Auth config fetch failed:', e);
+            }
+
+            // 3. Check Identity
+            const identityStr = localStorage.getItem('identity');
+            if (!identityStr) {
+                console.log('No identity found');
+                window.location.href = 'https://saman.lafortuna.com.co';
+                return;
+            }
+
+            try {
+                const identity = JSON.parse(identityStr);
+
+                // Token check
+                if (!identity.token) {
+                    console.log('No token found in identity');
+                    throw new Error('No token');
+                }
+
+                // ID Check
+                if (allowedId) {
+                    const userId = identity.usuario?.id;
+                    // Loose equality check (string vs number)
+                    if (userId != allowedId) {
+                        console.log(`User ID mismatch: Got ${userId}, Expected ${allowedId}`);
+                        throw new Error('Unauthorized User ID');
+                    }
+                }
+
+                console.log('Auth check passed');
+
+            } catch (e) {
+                console.error('Auth validation failed:', e);
+                window.location.href = 'https://saman.lafortuna.com.co';
+                return;
+            }
+
+            // 4. Add Button
+            addCentricaButton();
+        }
+
+        function addCentricaButton() {
+            const header = document.querySelector('.results-header');
+            if (!header || document.querySelector('.centrica-btn')) return;
+
+            const btn = document.createElement('a');
+            btn.href = 'https://saman.lafortuna.com.co/#/home';
+            btn.className = 'centrica-btn';
+            btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>CÉNTRICA</span>
+            `;
+
+            // Insert at the top of header
+            header.insertBefore(btn, header.firstChild);
         }
 
         function renderDistributionBar(label, count, maxCount) {

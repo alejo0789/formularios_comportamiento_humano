@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir PDF - Sistema de Formularios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cuestionarios/styles.css">
+    <style>
+        .upload-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .upload-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .upload-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .upload-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .drop-zone {
+            background: var(--bg-card);
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.drag-over {
+            border-color: var(--primary-color);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .drop-zone-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            transition: color var(--transition-fast);
+        }
+
+        .drop-zone:hover .drop-zone-icon {
+            color: var(--primary-color);
+        }
+
+        .drop-zone-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .drop-zone-subtext {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-progress {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .progress-bar-container {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-status {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Template Suggestions */
+        .suggestions-container {
+            margin-top: 3rem;
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .suggestions-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .template-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .template-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .template-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-md);
+        }
+
+        .template-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .template-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .template-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--bg-card-hover);
+            color: var(--text-secondary);
+            align-self: flex-start;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="upload-container">
+        <header class="upload-header">
+            <h1 class="upload-title">Transforma tus Formularios</h1>
+            <p class="upload-subtitle">Sube tu PDF y nuestra IA generará una versión digital interactiva</p>
+        </header>
+
+        <div class="drop-zone" id="dropZone">
+            <div class="drop-zone-icon">📄</div>
+            <div class="drop-zone-text">Arrastra tu PDF aquí</div>
+            <div class="drop-zone-subtext">o haz clic para seleccionar archivo</div>
+            <input type="file" id="fileInput" class="file-input" accept=".pdf">
+        </div>
+
+        <div class="upload-progress" id="uploadProgress">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-status">
+                <span id="progressText">Subiendo archivo...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+        </div>
+
+        <div class="suggestions-container" id="suggestionsContainer">
+            <h2 class="suggestions-title">✨ Plantillas Sugeridas</h2>
+            <div class="suggestions-grid" id="suggestionsGrid">
+                <!-- Templates generated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const progressPercent = document.getElementById('progressPercent');
+        const suggestionsContainer = document.getElementById('suggestionsContainer');
+        const suggestionsGrid = document.getElementById('suggestionsGrid');
+
+        // Store process state
+        let currentUploadId = null;
+        let currentSuggestions = [];
+
+        // Drag & Drop events
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type === 'application/pdf') {
+                handleFileUpload(files[0]);
+            } else {
+                alert('Por favor sube un archivo PDF válido');
+            }
+        });
+
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileUpload(e.target.files[0]);
+            }
+        });
+
+        async function handleFileUpload(file) {
+            // UI Reset
+            dropZone.style.display = 'none';
+            uploadProgress.style.display = 'block';
+            suggestionsContainer.style.display = 'none';
+            progressText.innerText = `Procesando ${file.name}...`;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                // Simalute progress for better UX
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    if (progress > 90) clearInterval(interval);
+                    progressBar.style.width = `${progress}%`;
+                    progressPercent.innerText = `${progress}%`;
+                }, 100);
+
+                const response = await fetch('/cuestionarios/api/upload-pdf', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                progressPercent.innerText = '100%';
+
+                if (!response.ok) throw new Error('Error en la carga');
+
+                const data = await response.json();
+
+                // Store state
+                currentUploadId = data.id;
+                currentSuggestions = data.suggested_templates;
+
+                setTimeout(() => {
+                    showSuggestions(data.suggested_templates);
+                }, 500);
+
+            } catch (error) {
+                console.error(error);
+                progressText.innerText = 'Error al procesar el archivo';
+                progressText.style.color = 'var(--error-color)';
+                setTimeout(() => {
+                    dropZone.style.display = 'block';
+                    uploadProgress.style.display = 'none';
+                }, 2000);
+            }
+        }
+
+        function showSuggestions(templates) {
+            suggestionsGrid.innerHTML = templates.map(t => `
+                <div class="template-card" onclick="selectTemplate('${t.id}')">
+                    <div class="template-icon">${t.icon}</div>
+                    <div class="template-info">
+                        <h3>${t.name}</h3>
+                        <p>${t.description}</p>
+                    </div>
+                    <span class="template-badge">${t.category.toUpperCase()}</span>
+                </div>
+            `).join('');
+
+            uploadProgress.style.display = 'none';
+            suggestionsContainer.style.display = 'block';
+        }
+
+        async function selectTemplate(id) {
+            const template = currentSuggestions.find(t => t.id === id);
+            if (!template) return;
+
+            // Show loading state again
+            suggestionsContainer.style.display = 'none';
+            uploadProgress.style.display = 'block';
+            progressText.innerText = 'Generando formulario...';
+            progressBar.style.width = '100%';
+
+            try {
+                const response = await fetch('/cuestionarios/api/generate-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        template_id: template.id,
+                        config: template.preview_config,
+                        pdf_id: currentUploadId
+                    })
+                });
+
+                if (!response.ok) throw new Error('Error generando formulario');
+
+                const result = await response.json();
+
+                // Redirect to the new form
+                window.location.href = result.url;
+
+            } catch (error) {
+                console.error(error);
+                alert('Hubo un error generando el formulario. Intenta de nuevo.');
+                suggestionsContainer.style.display = 'block';
+                uploadProgress.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

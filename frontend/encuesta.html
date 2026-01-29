@@ -217,6 +217,20 @@
 
         async function init() {
             elements.restartBtn.addEventListener('click', restartConversation);
+
+            // Check for session
+            const storedCedula = localStorage.getItem('current_user_cedula');
+            if (!storedCedula) {
+                // If no session, redirect to index or prompt? 
+                // For now, let's redirect to index to force flow, or maybe just ask for it?
+                // The requirements say "link all... to a single cedula provided in datos-generales".
+                // So strict mode: redirect to index if not found.
+                alert("No hay una sesión activa. Por favor inicia desde el menú principal.");
+                window.location.href = '/cuestionarios/';
+                return;
+            }
+
+            state.respondentInfo.cedula = storedCedula;
             await loadQuestionnaire();
         }
 
@@ -236,7 +250,19 @@
                 elements.logoText.textContent = state.questionnaire.short_name || state.questionnaire.name;
 
                 hideLoading();
+                hideLoading();
+                // Skip welcome button wait if we want auto-start, 
+                // but keeping it is good for UX to let user prepare.
                 startConversation();
+
+                // Auto-fetch user name to personalize
+                fetch(`${API_BASE_URL}/api/session/${state.respondentInfo.cedula}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.found) {
+                            state.respondentInfo.name = data.name;
+                        }
+                    });
             } catch (error) {
                 hideLoading();
                 console.error('Error:', error);
@@ -330,22 +356,22 @@
         async function startQuestions() {
             await addUserMessage("¡Estoy listo para comenzar!");
             state.conversationPhase = 'info';
+
+            // Safeguard: Ensure we have cedula
+            const storedConditions = localStorage.getItem('current_user_cedula');
+            if (storedConditions && !state.respondentInfo.cedula) {
+                state.respondentInfo.cedula = storedConditions;
+            }
+
             await delay(500);
             await askForCedula();
         }
 
         async function askForCedula() {
-            await addBotMessage("Por favor, ingresa tu <strong>número de cédula</strong> para identificar tus respuestas:");
-            showTextInput('cedula', 'Número de identificación', () => {
-                const input = document.getElementById('text-input-cedula');
-                const cedula = input.value.trim();
-                if (!cedula) {
-                    showToast('Por favor ingresa tu número de cédula', 'error');
-                    return;
-                }
-                state.respondentInfo.cedula = cedula;
-                handleCedulaResponse(cedula);
-            });
+            // SKIP asking for cedula, we already have it from init
+            await addBotMessage(`¡Hola de nuevo ${state.respondentInfo.name || ''}! Continuemos con tu proceso. 🚀`);
+            await delay(500);
+            handleCedulaResponse(state.respondentInfo.cedula);
         }
 
         async function handleCedulaResponse(cedula) {
@@ -613,7 +639,7 @@
 
                 const result = await response.json();
                 hideLoading();
-                await showSuccess(result.submission_id);
+                await showSuccess(result.submission_id, result.next_step);
             } catch (error) {
                 hideLoading();
                 await addBotMessage(`❌ Error: ${error.message}`);
@@ -621,7 +647,7 @@
             }
         }
 
-        async function showSuccess(submissionId) {
+        async function showSuccess(submissionId, nextStep) {
             await addBotMessage(`
                 <div class="success-message">
                     <div class="success-icon">
@@ -635,12 +661,20 @@
 
             showToast('¡Encuesta enviada exitosamente!', 'success');
 
-            elements.chatInputArea.innerHTML = `
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <button class="continue-btn" onclick="restartConversation()" style="flex: 1;">Nueva Encuesta</button>
-                    <a href="/cuestionarios/" class="continue-btn" style="flex: 1; text-decoration: none; background: linear-gradient(135deg, #64748b, #475569);">← Inicio</a>
-                </div>
-            `;
+            await delay(1500);
+
+            if (nextStep && nextStep !== 'completed') {
+                await addBotMessage(`Redirigiendo al siguiente paso: <strong>${nextStep}</strong>... ⏳`);
+                await delay(2000);
+                window.location.href = `/cuestionarios/encuesta/${nextStep}`;
+            } else {
+                await addBotMessage(`¡Has completado todo el proceso! 🎉`);
+                await delay(2000);
+                window.location.href = `/cuestionarios/`;
+            }
+
+            // Remove old success actions used previously
+            elements.chatInputArea.innerHTML = '';
         }
 
         function restartConversation() {

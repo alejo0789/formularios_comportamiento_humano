@@ -14,6 +14,10 @@ import os
 import uuid
 import glob
 import io
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Paths
 BACKEND_DIR = os.path.dirname(__file__)
@@ -37,10 +41,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Models
+
+# ==========================================
+# CONSTANTS & CONFIGURATION
+# ==========================================
+# Sequence of questionnaires for the linear flow
+SEQUENCE = ["datos-generales", "estres", "extralaborales", "intralaborales-a", "intralaborales-b"]
+
+# ==========================================
+# MODELS
+# ==========================================
+
+class Session(BaseModel):
+    cedula: str
+    name: Optional[str] = None
+    completed_forms: List[str] = []
+    current_step: str = "datos-generales"
+    last_active: str
+
 class QuestionResponse(BaseModel):
     question_id: int
     response_value: int
+
 
 class SurveySubmission(BaseModel):
     questionnaire_id: str
@@ -61,7 +83,43 @@ def ensure_dirs():
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(QUESTIONNAIRES_DIR, exist_ok=True)
 
+def get_sessions_file() -> str:
+    """Get the sessions file path"""
+    ensure_dirs()
+    return os.path.join(DATA_DIR, "sessions.json")
+
+def load_sessions() -> Dict[str, dict]:
+    """Load all sessions"""
+    file_path = get_sessions_file()
+    if not os.path.exists(file_path):
+        return {}
+    
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (json.JSONDecodeError, FileNotFoundError):
+        return {}
+
+def save_session(session_data: dict):
+    """Save/Update a session"""
+    file_path = get_sessions_file()
+    sessions = load_sessions()
+    
+    # Update specific session
+    sessions[session_data["cedula"]] = session_data
+    
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(sessions, f, ensure_ascii=False, indent=2)
+
+def get_next_step(completed_forms: List[str]) -> str:
+    """Determine the next step based on completed starts"""
+    for step in SEQUENCE:
+        if step not in completed_forms:
+            return step
+    return "completed"
+
 def load_questionnaire(questionnaire_id: str) -> Dict[str, Any]:
+
     """Load a questionnaire by ID"""
     file_path = os.path.join(QUESTIONNAIRES_DIR, f"{questionnaire_id}.json")
     if not os.path.exists(file_path):
@@ -235,6 +293,31 @@ async def submit_survey(submission: SurveySubmission):
     # Save to file
     save_response(submission.questionnaire_id, response_data)
     
+    # --- SESSION UPDATE LOGIC ---
+    if submission.respondent_cedula:
+        sessions = load_sessions()
+        existing_session = sessions.get(submission.respondent_cedula)
+        
+        if existing_session:
+            completed = set(existing_session.get("completed_forms", []))
+            completed.add(submission.questionnaire_id)
+            
+            existing_session["completed_forms"] = list(completed)
+            existing_session["last_active"] = datetime.now().isoformat()
+            
+            # Determine next step
+            next_step = get_next_step(list(completed))
+            existing_session["current_step"] = next_step
+            
+            save_session(existing_session)
+            
+            return {
+                "success": True,
+                "message": "Encuesta enviada exitosamente",
+                "submission_id": response_id,
+                "next_step": next_step
+            }
+    
     return {
         "success": True,
         "message": "Encuesta enviada exitosamente",
@@ -268,6 +351,37 @@ async def submit_form(submission: FormSubmission):
     # Save to file
     save_form_response(submission.form_id, response_data)
     
+    # --- SESSION UPDATE LOGIC ---
+    if submission.form_id == "datos-generales":
+        cedula = submission.data.get("numero_identificacion")
+        nombre = submission.data.get("nombre_completo")
+        
+        if cedula:
+            sessions = load_sessions()
+            existing_session = sessions.get(cedula, {})
+            
+            # Merge completed forms
+            completed = set(existing_session.get("completed_forms", []))
+            completed.add(submission.form_id)
+            
+            new_session = {
+                "cedula": cedula,
+                "name": nombre or existing_session.get("name"),
+                "completed_forms": list(completed),
+                "last_active": datetime.now().isoformat(),
+            }
+            # Determine next step (re-calculation)
+            new_session["current_step"] = get_next_step(new_session["completed_forms"])
+            
+            save_session(new_session)
+            
+            return {
+                "success": True,
+                "message": "Datos guardados exitosamente",
+                "submission_id": response_id,
+                "next_step": new_session["current_step"]
+            }
+
     return {
         "success": True,
         "message": "Datos guardados exitosamente",
@@ -441,6 +555,40 @@ async def export_excel(questionnaire_id: str):
         headers={"Content-Disposition": f"attachment; filename={filename}"}
     )
 
+@app.get("/api/auth-config")
+async def get_auth_config():
+    """Get authentication configuration"""
+    return {
+        "allowed_user_id": os.getenv("ALLOWED_USER_ID")
+    }
+
+# --- SESSION ENDPOINTS ---
+
+@app.get("/api/session/{cedula}")
+async def get_session(cedula: str):
+    """Get session status for a user"""
+    sessions = load_sessions()
+    session = sessions.get(cedula)
+    
+    if session:
+        # Calculate progress
+        completed_count = len(session.get("completed_forms", []))
+        total_forms = len(SEQUENCE)
+        progress = int((completed_count / total_forms) * 100)
+        
+        return {
+            "found": True,
+            "cedula": session["cedula"],
+            "name": session.get("name"),
+            "completed_forms": session.get("completed_forms", []),
+            "current_step": session.get("current_step"),
+            "progress": progress,
+            "finished": session.get("current_step") == "completed"
+        }
+    
+    return {"found": False}
+
+
 # Serve frontend static files
 @app.get("/")
 async def serve_index():
@@ -485,15 +633,20 @@ if __name__ == "__main__":
     import uvicorn
     ensure_dirs()
     print("\n" + "="*60)
-    print("🚀 Sistema de Cuestionarios iniciado!")
+    print("Sistema de Cuestionarios iniciado!")
     print("="*60)
-    print("\n📋 SELECTOR DE CUESTIONARIOS:")
+    print("\n SELECTOR DE CUESTIONARIOS:")
     print("   http://localhost:8000/")
-    print("\n📝 ENCUESTA (ejemplo):")
+    print("\n ENCUESTA (ejemplo):")
     print("   http://localhost:8000/encuesta/estres")
-    print("\n📊 RESULTADOS (ejemplo):")
+    print("\n RESULTADOS (ejemplo):")
     print("   http://localhost:8000/resultados/estres")
-    print("\n💡 Agrega nuevos cuestionarios en:")
+    print(" IMPORTANTE: No cerrar esta ventana mientras se usen los cuestionarios")
+    print("\n Agrega nuevos cuestionarios en:")
     print(f"   {QUESTIONNAIRES_DIR}")
     print("="*60 + "\n")
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+    print("="*60 + "\n")
+
+

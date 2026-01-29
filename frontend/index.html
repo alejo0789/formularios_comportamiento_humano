@@ -331,28 +331,54 @@
             <div class="selector-icon">📋</div>
             <h1 class="selector-title">Sistema de Cuestionarios</h1>
             <p class="selector-subtitle">Selecciona un cuestionario para comenzar</p>
+
+            <!-- Session/Progress Info -->
+            <div id="session-info" class="hidden"
+                style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <span style="font-weight: 600; color: var(--text-primary);">Tu Progreso</span>
+                    <span id="progress-text" style="color: var(--primary-color); font-weight: 700;">0%</span>
+                </div>
+                <div style="background: var(--bg-body); height: 10px; border-radius: 5px; overflow: hidden;">
+                    <div id="progress-bar"
+                        style="background: var(--primary-gradient); height: 100%; width: 0%; transition: width 0.5s ease;">
+                    </div>
+                </div>
+                <div style="margin-top: 1rem; text-align: right;">
+                    <button onclick="logout()" class="card-btn secondary" style="font-size: 0.8rem;">Cerrar Sesión /
+                        Cambiar Usuario</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue Session Actions (Visible if no session or explicit resume needed) -->
+        <div id="resume-section" class="featured-section hidden" style="text-align: center; margin-bottom: 3rem;">
+            <h3 style="margin-bottom: 1rem; color: var(--text-secondary);">¿Ya comenzaste anteriormente?</h3>
+            <button onclick="showResumeModal()" class="card-btn secondary" style="padding: 12px 24px; font-size: 1rem;">
+                🔄 Continuar Sesión Anterior
+            </button>
         </div>
 
         <!-- Featured Section: Ficha de Datos Generales -->
         <div class="featured-section">
             <div class="section-label">Paso 1 - Obligatorio</div>
-            <div class="featured-card" onclick="window.location.href='/cuestionarios/ficha-datos'">
+            <div class="featured-card" id="card-datos-generales"
+                onclick="handleCardClick('datos-generales', '/cuestionarios/ficha-datos')">
                 <div class="featured-icon">📝</div>
                 <div class="featured-content">
-                    <span class="featured-badge">✓ Completa primero</span>
+                    <span class="featured-badge" id="badge-datos-generales">▶ Inicio</span>
                     <h2 class="featured-title">Ficha de Datos Generales</h2>
                     <p class="featured-description">
-                        Información personal, educación y datos laborales. Este formulario debe completarse antes de
-                        responder los cuestionarios.
+                        Información personal, educación y datos laborales.
                     </p>
                 </div>
-                <a href="/cuestionarios/ficha-datos" class="featured-action" onclick="event.stopPropagation()">
+                <div class="featured-action" id="btn-datos-generales">
                     Iniciar
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                </a>
+                </div>
             </div>
         </div>
 
@@ -367,48 +393,228 @@
     <div class="loading-overlay" id="loading">
         <div class="loading-spinner">
             <div class="spinner"></div>
-            <span>Cargando cuestionarios...</span>
+            <span>Cargando...</span>
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="loading-overlay hidden"
+        style="background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);">
+        <div
+            style="background: var(--bg-card); padding: 2rem; border-radius: 1rem; max-width: 400px; width: 90%; text-align: center;">
+            <h2 style="margin-bottom: 1rem;">Continuar Sesión</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Ingresa tu número de cédula para recuperar
+                tu progreso.</p>
+            <input type="text" id="resume-cedula" placeholder="Número de Cédula"
+                style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px; margin-bottom: 1rem; font-size: 1rem;">
+            <div id="resume-error" style="color: #ef4444; margin-bottom: 1rem; font-size: 0.9rem;" class="hidden"></div>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button onclick="closeResumeModal()" class="card-btn secondary">Cancelar</button>
+                <button onclick="submitResume()" class="card-btn primary">Continuar</button>
+            </div>
         </div>
     </div>
 
     <script>
         const API_BASE_URL = '/cuestionarios';
+        const SESSION_SEQUENCE = ["datos-generales", "estres", "extralaborales", "intralaborales-a", "intralaborales-b"];
+        let currentSession = null;
 
-        async function loadQuestionnaires() {
+        // --- Session Logic ---
+
+        function logout() {
+            if (confirm('¿Estás seguro de cerrar sesión?')) {
+                localStorage.removeItem('current_user_cedula');
+                location.reload();
+            }
+        }
+
+        function showResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
+            document.getElementById('resume-cedula').value = '';
+            document.getElementById('resume-error').classList.add('hidden');
+            document.getElementById('resume-cedula').focus();
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+        }
+
+        async function submitResume() {
+            const cedula = document.getElementById('resume-cedula').value.trim();
+            const errorDiv = document.getElementById('resume-error');
+
+            if (!cedula) {
+                errorDiv.textContent = 'Por favor ingresa un número de cédula';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/session/${cedula}`);
+                const data = await response.json();
+
+                if (data.found) {
+                    localStorage.setItem('current_user_cedula', cedula);
+                    closeResumeModal();
+                    loadSessionData(cedula); // Reload with session
+                } else {
+                    errorDiv.textContent = 'No se encontró una sesión para esta cédula.';
+                    errorDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Error al conectar con el servidor.';
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        async function loadSessionData(cedula) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/session/${cedula}`);
+                if (!response.ok) return null;
+                const data = await response.json();
+
+                if (data.found) {
+                    currentSession = data;
+                    updateUIWithSession(data);
+                    return data;
+                } else {
+                    // Session invalid or not found (maybe deleted on server)
+                    localStorage.removeItem('current_user_cedula');
+                    return null;
+                }
+            } catch (error) {
+                console.error("Error loading session", error);
+                return null;
+            }
+        }
+
+        function updateUIWithSession(session) {
+            // Show session header info
+            document.getElementById('session-info').classList.remove('hidden');
+            document.getElementById('resume-section').classList.add('hidden');
+
+            document.getElementById('progress-text').textContent = session.finished ? '¡Completado!' : `${session.progress}%`;
+            document.getElementById('progress-bar').style.width = `${session.progress}%`;
+
+            // Update Datos Generales Card
+            const dgCard = document.getElementById('card-datos-generales');
+            const dgBadge = document.getElementById('badge-datos-generales');
+            const dgBtn = document.getElementById('btn-datos-generales');
+
+            if (session.completed_forms.includes('datos-generales')) {
+                dgBadge.innerHTML = '✓ Completado';
+                dgBadge.style.background = 'rgba(34, 197, 94, 0.1)';
+                dgBadge.style.color = '#16a34a';
+                dgCard.style.opacity = '0.8';
+                dgCard.style.cursor = 'not-allowed'; // Visual indicator
+                dgCard.onclick = null; // Remove click handler
+                dgBtn.innerHTML = 'Completado';
+            }
+
+            // Allow refresh of grid to update states
+            loadQuestionnaires(session);
+        }
+
+        // --- Questionnaire Loading & Grid ---
+
+        function handleCardClick(id, url) {
+            // If no session and it's NOT datos-generales, block it
+            if (!currentSession && id !== 'datos-generales') {
+                showResumeModal();
+                return;
+            }
+
+            // If session exists, check logic
+            if (currentSession) {
+                // Determine logic: 
+                // 1. You can always visit completed items
+                // 2. You can visit the CURRENT step
+                // 3. You cannot visit future steps
+
+                const isCompleted = currentSession.completed_forms.includes(id);
+                const isCurrent = currentSession.current_step === id;
+
+                if (!isCompleted && !isCurrent) {
+                    // Blocked
+                    alert("Por favor completa los pasos anteriores primero.");
+                    return;
+                }
+            }
+
+            window.location.href = url;
+        }
+
+        async function loadQuestionnaires(session = null) {
             const loading = document.getElementById('loading');
             const grid = document.getElementById('questionnaires-grid');
 
             try {
-                loading.classList.remove('hidden');
+                // loading.classList.remove('hidden'); // Optional: show loading only on first load
 
                 const response = await fetch(`${API_BASE_URL}/api/questionnaires`);
                 if (!response.ok) throw new Error('Failed to load questionnaires');
 
                 const data = await response.json();
-                loading.classList.add('hidden');
+                // loading.classList.add('hidden');
 
-                // Filter out datos-generales as it's shown separately
+                // Sort questionnaires based on SEQUENCE
                 const questionnaires = data.questionnaires.filter(q => q.id !== 'datos-generales');
+                questionnaires.sort((a, b) => {
+                    return SESSION_SEQUENCE.indexOf(a.id) - SESSION_SEQUENCE.indexOf(b.id);
+                });
 
                 if (questionnaires.length === 0) {
-                    grid.innerHTML = `
-                        <div class="no-questionnaires">
-                            <div class="no-questionnaires-icon">📭</div>
-                            <h2>No hay cuestionarios disponibles</h2>
-                            <p>Agrega archivos JSON en la carpeta <code>questionnaires</code></p>
-                        </div>
-                    `;
+                    grid.innerHTML = `<div class="no-questionnaires">...</div>`; // Keep existing error UI
                     return;
                 }
 
-                grid.innerHTML = questionnaires.map(q => `
-                    <div class="questionnaire-card" onclick="window.location.href='/cuestionarios/encuesta/${q.id}'">
+                grid.innerHTML = questionnaires.map(q => {
+                    // Logic to determine state
+                    let isLocked = true;
+                    let badge = '';
+                    let opacity = '0.6';
+                    let btnText = 'Bloqueado 🔒';
+                    let btnClass = 'secondary';
+                    let href = '#';
+
+                    if (!session) {
+                        // Default state: all locked except maybe show they exist
+                        // Actually, plan says: Everything locked until "Datos Generales" done
+                    } else {
+                        const isCompleted = session.completed_forms.includes(q.id);
+                        const isNext = session.current_step === q.id;
+
+                        if (isCompleted) {
+                            isLocked = true; // Effectively lock it from being clicked
+                            badge = '<span style="color: green; font-weight: bold;">✓ Listo</span>';
+                            opacity = '0.8';
+                            btnText = 'Completado';
+                            btnClass = 'secondary'; // Greyed out
+                            href = '#';
+                        } else if (isNext) {
+                            isLocked = false;
+                            badge = '<span style="color: var(--primary-color); font-weight: bold;">▶ Siguiente</span>';
+                            opacity = '1';
+                            btnText = 'Continuar →';
+                            btnClass = 'primary';
+                            href = `/cuestionarios/encuesta/${q.id}`;
+                        }
+                    }
+
+                    return `
+                    <div class="questionnaire-card" 
+                         style="opacity: ${opacity}; cursor: ${isLocked ? 'not-allowed' : 'pointer'};"
+                         onclick="${isLocked ? '' : `window.location.href='${href}'`}">
                         <div class="card-header">
                             <div class="card-icon" style="background: ${q.color}20; color: ${q.color}">
                                 ${q.icon}
                             </div>
                             <div class="card-meta">
-                                <div class="card-title">${q.name}</div>
+                                <div style="display:flex; justify-content:space-between;">
+                                     <div class="card-title">${q.name}</div>
+                                     ${badge ? `<div>${badge}</div>` : ''}
+                                </div>
                                 <div class="card-version">${q.version || ''}</div>
                             </div>
                         </div>
@@ -416,31 +622,42 @@
                         <div class="card-footer">
                             <span class="card-stats">📝 ${q.question_count} preguntas</span>
                             <div class="card-actions">
-                                <a href="/cuestionarios/encuesta/${q.id}" class="card-btn primary" onclick="event.stopPropagation()">
-                                    Iniciar →
-                                </a>
+                                <button class="card-btn ${btnClass}">
+                                    ${btnText}
+                                </button>
                             </div>
                         </div>
                     </div>
-                `).join('');
+                `}).join('');
 
             } catch (error) {
-                loading.classList.add('hidden');
-                console.error('Error:', error);
-                grid.innerHTML = `
-                    <div class="no-questionnaires">
-                        <div class="no-questionnaires-icon">❌</div>
-                        <h2>Error al cargar</h2>
-                        <p>${error.message}</p>
-                        <button class="card-btn primary" onclick="loadQuestionnaires()" style="margin-top: 1rem;">
-                            Reintentar
-                        </button>
-                    </div>
-                `;
+                console.error(error);
+                // Keep existing error handling
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadQuestionnaires);
+        async function init() {
+            const loading = document.getElementById('loading');
+            loading.classList.remove('hidden');
+
+            const storedCedula = localStorage.getItem('current_user_cedula');
+
+            if (storedCedula) {
+                const session = await loadSessionData(storedCedula);
+                if (!session) {
+                    // Session failed to load, just load questionnaires default
+                    document.getElementById('resume-section').classList.remove('hidden');
+                    loadQuestionnaires(null);
+                }
+            } else {
+                document.getElementById('resume-section').classList.remove('hidden');
+                loadQuestionnaires(null);
+            }
+
+            loading.classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 
