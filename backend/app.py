@@ -364,6 +364,20 @@ async def submit_form(submission: FormSubmission):
             completed = set(existing_session.get("completed_forms", []))
             completed.add(submission.form_id)
             
+            # Logic for Intralaboral Form Selection
+            # If has personnel (Si) -> Do Intralaboral A (Skip B)
+            # If no personnel (No) -> Do Intralaboral B (Skip A)
+            personal_cargo = submission.data.get("tiene_personal_cargo")
+            
+            if personal_cargo == "si":
+                completed.add("intralaborales-b")
+                if "intralaborales-a" in completed:
+                    completed.remove("intralaborales-a")
+            elif personal_cargo == "no":
+                completed.add("intralaborales-a")
+                if "intralaborales-b" in completed:
+                    completed.remove("intralaborales-b")
+            
             new_session = {
                 "cedula": cedula,
                 "name": nombre or existing_session.get("name"),

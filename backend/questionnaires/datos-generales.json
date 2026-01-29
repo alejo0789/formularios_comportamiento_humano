@@ -250,6 +250,22 @@
             "icon": "💼",
             "fields": [
                 {
+                    "id": "tiene_personal_cargo",
+                    "label": "¿Tiene personal a cargo bajo su mando?",
+                    "type": "radio",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "si",
+                            "label": "Sí"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ]
+                },
+                {
                     "id": "ciudad_trabajo",
                     "label": "Ciudad / municipio donde trabaja",
                     "type": "text",

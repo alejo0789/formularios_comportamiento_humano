@@ -569,6 +569,37 @@
                 justify-content: center;
             }
         }
+
+        .highlight-question {
+            background-color: #f0fdf4;
+            border: 2px solid #22c55e;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .highlight-question .field-label {
+            font-size: 1.25rem;
+            color: #15803d;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 
@@ -821,6 +852,17 @@
                     icon: "💼",
                     fields: [
                         {
+                            id: "tiene_personal_cargo",
+                            label: "¿TIENE PERSONAL A CARGO BAJO SU MANDO?",
+                            type: "radio",
+                            required: true,
+                            customClass: "highlight-question",
+                            options: [
+                                { value: "si", label: "SÍ" },
+                                { value: "no", label: "NO" }
+                            ]
+                        },
+                        {
                             id: "ciudad_trabajo",
                             label: "Ciudad / municipio donde trabaja",
                             type: "text",
@@ -1061,8 +1103,9 @@
 
                 case 'radio':
                     const layoutClass = field.layout === 'grid' ? 'grid' : (field.layout === 'horizontal' ? 'horizontal' : '');
+                    const customClass = field.customClass || '';
                     return `
-                        <div class="field-group">
+                        <div class="field-group ${customClass}">
                             <label class="field-label">${field.label} ${required}</label>
                             <div class="radio-group ${layoutClass}" id="radio-group-${field.id}">
                                 ${field.options.map(opt => `
