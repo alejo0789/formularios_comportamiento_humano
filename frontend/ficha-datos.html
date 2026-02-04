@@ -793,18 +793,22 @@
                     icon: "🏠",
                     fields: [
                         {
-                            id: "ciudad_residencia",
-                            label: "Ciudad / municipio de residencia",
-                            type: "text",
-                            required: true,
-                            placeholder: "Ingrese la ciudad o municipio"
-                        },
-                        {
                             id: "departamento_residencia",
                             label: "Departamento de residencia",
-                            type: "text",
+                            type: "select",
                             required: true,
-                            placeholder: "Ingrese el departamento"
+                            options: [
+                                { value: "", label: "Seleccione un departamento..." }
+                            ]
+                        },
+                        {
+                            id: "ciudad_residencia",
+                            label: "Ciudad / municipio de residencia",
+                            type: "select",
+                            required: true,
+                            options: [
+                                { value: "", label: "Seleccione un departamento primero..." }
+                            ]
                         },
                         {
                             id: "estrato",
@@ -863,18 +867,22 @@
                             ]
                         },
                         {
-                            id: "ciudad_trabajo",
-                            label: "Ciudad / municipio donde trabaja",
-                            type: "text",
-                            required: true,
-                            placeholder: "Ingrese la ciudad o municipio"
-                        },
-                        {
                             id: "departamento_trabajo",
                             label: "Departamento donde trabaja",
-                            type: "text",
+                            type: "select",
                             required: true,
-                            placeholder: "Ingrese el departamento"
+                            options: [
+                                { value: "", label: "Seleccione un departamento..." }
+                            ]
+                        },
+                        {
+                            id: "ciudad_trabajo",
+                            label: "Ciudad / municipio donde trabaja",
+                            type: "select",
+                            required: true,
+                            options: [
+                                { value: "", label: "Seleccione un departamento primero..." }
+                            ]
                         },
                         {
                             id: "antiguedad_empresa",
@@ -978,11 +986,72 @@
         };
 
         // Initialize
-        function init() {
+        async function init() {
             renderProgressSteps();
             renderSections();
             setDefaultDate();
             showSection(0);
+
+            // Load Colombia data and setup dropdowns
+            await loadColombiaData();
+        }
+
+        async function loadColombiaData() {
+            try {
+                // Show a small loading state specifically for the data if needed
+                const response = await fetch('https://raw.githubusercontent.com/marcovega/colombia-json/master/colombia.json');
+                const data = await response.json();
+                window.colombiaGeoData = data;
+
+                setupColombiaDropdowns();
+            } catch (error) {
+                console.error('Error cargando datos de Colombia:', error);
+                // Fallback: minimal data if fetch fails
+                window.colombiaGeoData = [
+                    { departamento: "Bogotá D.C.", ciudades: ["Bogotá D.C."] },
+                    { departamento: "Antioquia", ciudades: ["Medellín"] },
+                    { departamento: "Valle del Cauca", ciudades: ["Cali"] }
+                ];
+                setupColombiaDropdowns();
+            }
+        }
+
+        function setupColombiaDropdowns() {
+            const deptoRes = document.getElementById('field-departamento_residencia');
+            const deptoTrab = document.getElementById('field-departamento_trabajo');
+
+            if (!deptoRes || !deptoTrab) return;
+
+            // Sort departments alphabetically
+            const departments = window.colombiaGeoData.map(d => d.departamento).sort();
+
+            const optionsHtml = '<option value="">Seleccione un departamento...</option>' +
+                departments.map(d => `<option value="${d}">${d}</option>`).join('');
+
+            deptoRes.innerHTML = optionsHtml;
+            deptoTrab.innerHTML = optionsHtml;
+
+            // Add change listeners
+            deptoRes.addEventListener('change', (e) => updateCities('residencia', e.target.value));
+            deptoTrab.addEventListener('change', (e) => updateCities('trabajo', e.target.value));
+        }
+
+        function updateCities(type, departamento) {
+            const citySelect = document.getElementById(`field-ciudad_${type}`);
+            if (!citySelect) return;
+
+            if (!departamento) {
+                citySelect.innerHTML = '<option value="">Seleccione un departamento primero...</option>';
+                state.formData[`ciudad_${type}`] = "";
+                return;
+            }
+
+            const deptInfo = window.colombiaGeoData.find(d => d.departamento === departamento);
+            if (deptInfo) {
+                const cities = deptInfo.ciudades.sort();
+                citySelect.innerHTML = '<option value="">Seleccione una ciudad...</option>' +
+                    cities.map(c => `<option value="${c}">${c}</option>`).join('');
+            }
         }
 
         function setDefaultDate() {
@@ -1155,6 +1224,13 @@
         function updateFieldValue(fieldId, value) {
             state.formData[fieldId] = value;
             clearFieldError(fieldId);
+
+            // Special handling for department changes to reset city value in state
+            if (fieldId === 'departamento_residencia') {
+                state.formData['ciudad_residencia'] = "";
+            } else if (fieldId === 'departamento_trabajo') {
+                state.formData['ciudad_trabajo'] = "";
+            }
         }
 
         function selectRadio(fieldId, value, element) {
