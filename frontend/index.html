@@ -20,14 +20,16 @@
         .brand-header {
             display: flex;
             justify-content: center;
-            margin-bottom: var(--spacing-xl);
-            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
         }
 
         .brand-logo {
-            max-width: 280px;
+            max-width: 100%;
+            width: 450px;
             height: auto;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            border-radius: var(--radius-sm);
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
             animation: fadeInDown 0.8s ease-out;
         }
 
@@ -393,12 +395,12 @@
     </div>
 
     <div class="selector-app">
-        <!-- Brand Header -->
-        <div class="brand-header">
-            <img src="/cuestionarios/assets/acertemos logo.png" alt="Acertemos Logo" class="brand-logo">
-        </div>
-
         <div class="selector-header">
+            <!-- Brand Header -->
+            <div class="brand-header">
+                <img src="/cuestionarios/assets/acertemos logo.png" alt="Acertemos Logo" class="brand-logo">
+            </div>
+
             <h1 class="selector-title">Gesti&oacute;n de Bienestar Laboral</h1>
             <p class="selector-subtitle">Plataforma integral para la evaluaci&oacute;n del comportamiento humano y clima
                 organizacional</p>
