@@ -12,11 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/cuestionarios/styles.css">
     <style>
-        :root {
-            --acertemos-blue: #002147;
-            --acertemos-gold: #ffcc00;
-        }
-
         .brand-header {
             display: flex;
             justify-content: center;
@@ -71,8 +66,9 @@
 
         .info-chip:hover {
             transform: translateY(-2px);
-            border-color: var(--primary-color);
-            background: white;
+            border-color: var(--accent-color);
+            background: #fffdf0;
+            color: var(--primary-color);
         }
 
         .chip-icon {
@@ -103,17 +99,21 @@
 
         .selector-title {
             font-size: var(--font-size-3xl);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: var(--spacing-sm);
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #004e89 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.5px;
         }
 
         .selector-subtitle {
             color: var(--text-secondary);
             font-size: var(--font-size-lg);
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .questionnaires-grid {
@@ -148,8 +148,8 @@
         }
 
         .featured-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
-            border: 2px solid rgba(99, 102, 241, 0.3);
+            background: linear-gradient(135deg, rgba(0, 42, 92, 0.05) 0%, rgba(255, 204, 0, 0.05) 100%);
+            border: 2px solid rgba(0, 42, 92, 0.2);
             border-radius: var(--radius-lg);
             padding: var(--spacing-xl);
             cursor: pointer;
@@ -161,9 +161,10 @@
         }
 
         .featured-card:hover {
-            border-color: var(--primary-color);
+            border-color: var(--accent-color);
+            background: linear-gradient(135deg, rgba(0, 42, 92, 0.08) 0%, rgba(255, 204, 0, 0.08) 100%);
             transform: translateY(-4px);
-            box-shadow: var(--shadow-glow);
+            box-shadow: 0 10px 25px rgba(0, 42, 92, 0.15);
         }
 
         .featured-icon {

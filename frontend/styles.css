@@ -4,14 +4,15 @@
    =================================== */
 :root {
     /* Colors - Modern vibrant palette */
-    --primary-hue: 250;
-    --primary-color: hsl(var(--primary-hue), 100%, 55%);
-    --primary-light: hsl(var(--primary-hue), 100%, 65%);
-    --primary-dark: hsl(var(--primary-hue), 100%, 45%);
-    --primary-gradient: linear-gradient(135deg, hsl(var(--primary-hue), 100%, 55%), hsl(280, 100%, 55%));
+    /* Colors - Corporate Identity (Acertemos Blue & Gold) */
+    --primary-hue: 212;
+    --primary-color: #002a5c;
+    --primary-light: #00408c;
+    --primary-dark: #001a38;
+    --primary-gradient: linear-gradient(135deg, #002a5c 0%, #004e89 100%);
 
-    --accent-color: hsl(170, 80%, 45%);
-    --accent-gradient: linear-gradient(135deg, hsl(170, 80%, 45%), hsl(200, 80%, 50%));
+    --accent-color: #ffcc00;
+    --accent-gradient: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
 
     /* Background colors - Light theme */
     --bg-main: #f8fafc;
@@ -44,9 +45,9 @@
 
     /* Shadows */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
-    --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    --shadow-md: 0 4px 12px rgba(0, 33, 71, 0.12);
+    --shadow-lg: 0 10px 30px rgba(0, 33, 71, 0.15);
+    --shadow-glow: 0 0 25px rgba(0, 42, 92, 0.25);
 
     /* Spacing */
     --spacing-xs: 0.25rem;
@@ -131,10 +132,10 @@ body {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(ellipse at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(79, 70, 229, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 70%),
-        linear-gradient(180deg, #f8fafc 0%, #eef2ff 50%, #f8fafc 100%);
+        radial-gradient(ellipse at 20% 30%, rgba(0, 33, 71, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(255, 204, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 42, 92, 0.03) 0%, transparent 70%),
+        linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
 }
 
 .floating-shapes {
@@ -155,7 +156,7 @@ body {
 .shape-1 {
     width: 400px;
     height: 400px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(168, 85, 247, 0.2));
+    background: linear-gradient(135deg, rgba(0, 33, 71, 0.15), rgba(0, 64, 140, 0.1));
     top: -100px;
     left: -100px;
     animation-delay: 0s;
@@ -164,7 +165,7 @@ body {
 .shape-2 {
     width: 300px;
     height: 300px;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.3), rgba(99, 102, 241, 0.2));
+    background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(255, 153, 0, 0.1));
     top: 50%;
     right: -50px;
     animation-delay: -5s;
@@ -173,7 +174,7 @@ body {
 .shape-3 {
     width: 350px;
     height: 350px;
-    background: linear-gradient(135deg, rgba(45, 212, 191, 0.25), rgba(6, 182, 212, 0.15));
+    background: linear-gradient(135deg, rgba(0, 33, 71, 0.1), rgba(45, 212, 191, 0.05));
     bottom: -100px;
     left: 30%;
     animation-delay: -10s;
@@ -182,7 +183,7 @@ body {
 .shape-4 {
     width: 250px;
     height: 250px;
-    background: linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(249, 115, 22, 0.15));
+    background: linear-gradient(135deg, rgba(255, 204, 0, 0.1), rgba(0, 33, 71, 0.05));
     top: 20%;
     right: 20%;
     animation-delay: -15s;
