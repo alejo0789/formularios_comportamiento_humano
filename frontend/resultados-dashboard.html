@@ -327,6 +327,16 @@
             <div class="dashboard-icon">📊</div>
             <h1 class="dashboard-title">Dashboard de Resultados</h1>
             <p class="dashboard-subtitle">Resumen de respuestas por cuestionario</p>
+            <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
+                <a href="/cuestionarios/reporte-premium" class="result-card-btn primary"
+                    style="width: auto; display: inline-flex; padding: 12px 24px; font-size: 1rem; background: #1e3a8a;">
+                    <span>💎 Generar Reporte Premium (8 Págs)</span>
+                </a>
+                <a href="/cuestionarios/reporte-global" class="result-card-btn"
+                    style="width: auto; display: inline-flex; padding: 12px 24px; font-size: 1rem; background: #64748b; color: white;">
+                    <span>📊 Reporte Resumido</span>
+                </a>
+            </div>
         </header>
 
         <!-- Total Stats -->
@@ -484,13 +494,12 @@
             }
 
             // 2. Fetch Config
-            let allowedId = null;
+            let authConfig = {};
             try {
                 const res = await fetch(`${API_BASE_URL}/api/auth-config`);
                 if (res.ok) {
-                    const data = await res.json();
-                    allowedId = data.allowed_user_id;
-                    console.log('Auth requirement loaded:', allowedId);
+                    authConfig = await res.json();
+                    console.log('Auth requirement loaded:', authConfig);
                 }
             } catch (e) {
                 console.warn('Auth config fetch failed:', e);
@@ -513,12 +522,29 @@
                     throw new Error('No token');
                 }
 
-                // ID Check
-                if (allowedId) {
+                // Auth Validation (Cedula and Email)
+                if (authConfig.allowed_cedula || authConfig.allowed_email) {
+                    const userCedula = identity.usuario?.cedula;
+                    const userEmail = identity.usuario?.email;
+
+                    let isAuthorized = true;
+
+                    if (authConfig.allowed_cedula && userCedula != authConfig.allowed_cedula) {
+                        isAuthorized = false;
+                    }
+                    if (authConfig.allowed_email && userEmail != authConfig.allowed_email) {
+                        isAuthorized = false;
+                    }
+
+                    if (!isAuthorized) {
+                        console.log('Auth failed: Cedula/Email mismatch');
+                        throw new Error('Unauthorized');
+                    }
+                } else if (authConfig.allowed_user_id) {
+                    // Fallback to ID if no cedula/email config
                     const userId = identity.usuario?.id;
-                    if (userId != allowedId) {
-                        console.log(`User ID mismatch: Got ${userId}, Expected ${allowedId}`);
-                        throw new Error('Unauthorized User ID');
+                    if (userId != authConfig.allowed_user_id) {
+                        throw new Error('Unauthorized');
                     }
                 }
 

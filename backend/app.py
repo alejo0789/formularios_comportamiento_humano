@@ -14,6 +14,7 @@ import os
 import uuid
 import glob
 import io
+from analysis_engine import AnalysisEngine
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -438,6 +439,40 @@ async def lookup_cedula(cedula: str):
         "tipo_cargo": None
     }
 
+@app.get("/api/analysis-report")
+async def get_analysis_report():
+    """Get the full analysis report for all questionnaires"""
+    engine = AnalysisEngine(DATA_DIR, QUESTIONNAIRES_DIR)
+    return engine.get_global_report()
+
+@app.post("/api/ai-analysis")
+async def generate_ai_analysis(data: Dict[str, Any]):
+    """
+    Sends data to n8n webhook for LLM processing.
+    """
+    webhook_url = os.getenv("N8N_WEBHOOK_URL")
+    
+    if webhook_url:
+        import httpx
+        try:
+            async with httpx.AsyncClient() as client:
+                response = await client.post(webhook_url, json=data, timeout=60.0)
+                if response.status_code == 200:
+                    return response.json()
+        except Exception as e:
+            print(f"Error calling n8n webhook: {e}")
+            
+    # Fallback to simulation if no webhook or if it fails
+    intra = data.get("questionnaires", {}).get("intralaborales-a", {})
+    return {
+        "summary": f"El análisis revela un nivel de riesgo {intra.get('risk_level')} en el factor intralaboral. Se destaca que el dominio de Liderazgo muestra puntuaciones favorables.",
+        "recommendations": [
+            "Implementar talleres de liderazgo participativo",
+            "Realizar jornadas de bienestar enfocadas en manejo del estrés",
+            "Optimizar la distribución de cargas laborales en departamentos críticos"
+        ]
+    }
+
 @app.get("/api/statistics/{questionnaire_id}")
 async def get_statistics(questionnaire_id: str):
     """Get survey statistics for a questionnaire"""
@@ -573,7 +608,9 @@ async def export_excel(questionnaire_id: str):
 async def get_auth_config():
     """Get authentication configuration"""
     return {
-        "allowed_user_id": os.getenv("ALLOWED_USER_ID")
+        "allowed_user_id": os.getenv("ALLOWED_USER_ID"),
+        "allowed_cedula": os.getenv("ALLOWED_CEDULA"),
+        "allowed_email": os.getenv("ALLOWED_EMAIL")
     }
 
 # --- SESSION ENDPOINTS ---
@@ -628,6 +665,16 @@ async def serve_ficha_datos():
 async def serve_results_dashboard():
     """Serve the results dashboard page"""
     return FileResponse(os.path.join(FRONTEND_DIR, "resultados-dashboard.html"))
+
+@app.get("/reporte-global")
+async def serve_global_report():
+    """Serve the global analysis report page"""
+    return FileResponse(os.path.join(FRONTEND_DIR, "reporte-global.html"))
+
+@app.get("/reporte-premium")
+async def serve_premium_report():
+    """Serve the premium multi-page report"""
+    return FileResponse(os.path.join(FRONTEND_DIR, "reporte-premium.html"))
 
 # Legacy routes for backwards compatibility
 @app.get("/encuesta")

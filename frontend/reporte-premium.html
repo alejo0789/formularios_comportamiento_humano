@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Premium de Riesgo Psicosocial 2024</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            /* Deep Blue from PDF */
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --risk-sin: #10b981;
+            --risk-bajo: #84cc16;
+            --risk-medio: #facc15;
+            --risk-alto: #f97316;
+            --risk-muy-alto: #ef4444;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open+Sans', sans-serif;
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+            color: white;
+        }
+
+        .cover-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .cover-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+
+        .cover-client {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cover-footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            width: 100%;
+        }
+
+        /* Headers & Footers (for print) */
+        .page-header {
+            position: absolute;
+            top: 20mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 10mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 5px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .content {
+            margin-top: 25mm;
+        }
+
+        h2.section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .intro-text {
+            line-height: 1.7;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        /* Tables */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .custom-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .custom-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .risk-tag {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: white;
+        }
+
+        /* Dashboard Styles */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .chart-container {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .summary-box {
+            background: #eff6ff;
+            border-left: 6px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+
+        .print-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        /* Infographic Styles */
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card.intra .card-header {
+            background: #1e3a8a;
+        }
+
+        .info-card.extra .card-header {
+            background: #2563eb;
+        }
+
+        .info-card.stress .card-header {
+            background: #3b82f6;
+        }
+
+        .info-card.socio .card-header {
+            background: #0ea5e9;
+        }
+
+        .card-header {
+            padding: 20px;
+            color: #fff;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .card-header .icon {
+            font-size: 1.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .card-body {
+            padding: 25px;
+            min-height: 180px;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .card-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-body li {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+            color: #475569;
+        }
+
+        .card-body li::before {
+            content: "→";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+        }
+
+        .page-socio {
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('assets/bg-socio.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Coverage Infographic Styles */
+        .coverage-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: stretch;
+        }
+
+        .coverage-viz {
+            flex: 1.5;
+            position: relative;
+            height: 350px;
+            background: rgba(30, 58, 138, 0.05);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .bubble-1 {
+            width: 180px;
+            height: 180px;
+            background: #1e3a8a;
+            left: 10px;
+            bottom: 10px;
+            z-index: 3;
+        }
+
+        .bubble-2 {
+            width: 160px;
+            height: 160px;
+            background: #3b82f6;
+            top: 10px;
+            left: 150px;
+            z-index: 2;
+        }
+
+        .bubble-3 {
+            width: 170px;
+            height: 170px;
+            background: #0ea5e9;
+            right: 10px;
+            bottom: 30px;
+            z-index: 1;
+        }
+
+        .bubble .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            padding: 0 15px;
+        }
+
+        .bubble .value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .bubble .number {
+            position: absolute;
+            font-size: 4rem;
+            font-weight: 900;
+            opacity: 0.15;
+            top: -10px;
+            left: -10px;
+        }
+
+        .criteria-box {
+            flex: 1;
+            background: #eff6ff;
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 8px solid var(--primary);
+        }
+
+        .criteria-box h3 {
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .criteria-box p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #334155;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-fab no-print" onclick="window.print()">DESCARGAR REPORTE (PDF)</button>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page cover-page">
+        <div style="margin-bottom: 30px;">
+            <img src="assets/logo_nuevo.png" alt="Logo Empresa"
+                style="max-width: 250px; height: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));">
+        </div>
+        <h1 class="cover-title">INFORME DE RESULTADOS</h1>
+        <p class="cover-subtitle">Evaluación de Riesgo Psicosocial Batería MinTrabajo</p>
+
+        <div class="cover-client">CLIENTE: <span id="client-name">ACERTEMOS S.A.S.</span></div>
+        <div style="font-size: 1.2rem; margin-top: 10px;">Vigencia: 2024 - 2025</div>
+
+        <div class="cover-footer">
+            <p>Elaborado por:</p>
+            <p><strong>SISTEMA AUTOMATIZADO DE GESTIÓN PSICOSOCIAL</strong></p>
+            <p id="current-date-cover"></p>
+        </div>
+    </div>
+
+    <!-- PAGE 2: INTRO & METHODOLOGY -->
+    <div class="page">
+        <div class="page-header">1. INTRODUCCIÓN Y METODOLOGÍA</div>
+        <div class="content">
+            <h2 class="section-title">INTRODUCCIÓN</h2>
+            <div class="intro-text">
+                <p>En cumplimiento de la Resolución 2764 de 2022 y la Resolución 2646 de 2008 del Ministerio del Trabajo
+                    de Colombia,
+                    se presenta el informe de resultados de la evaluación de factores de riesgo psicosocial para la
+                    empresa ACERTEMOS S.A.S.</p>
+                <br>
+                <p>El riesgo psicosocial se define como las condiciones presentes en una situación laboral directamente
+                    relacionadas con la organización, el contenido del trabajo y la realización de las tareas, que
+                    pueden afectar tanto al bienestar como a la salud de los trabajadores.</p>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 40px;">METODOLOGÍA</h2>
+            <div class="intro-text">
+                <p>Se aplicó la <strong>Batería de Instrumentos para la Evaluación de Factores de Riesgo
+                        Psicosocial</strong>, validada para la población colombiana. Los instrumentos utilizados fueron:
+                </p>
+                <ul style="margin: 15px 0 0 30px;">
+                    <li>Ficha de Datos Generales (Sociodemográfico).</li>
+                    <li>Cuestionario de Factores de Riesgo Psicosocial Intralaboral (Forma A).</li>
+                    <li>Cuestionario de Factores de Riesgo Psicosocial Extralaboral.</li>
+                    <li>Cuestionario para la Evaluación del Estrés.</li>
+                </ul>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 40px;">CRITERIOS DE CALIFICACIÓN</h2>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Puntaje Transformado</th>
+                        <th>Nivel de Riesgo</th>
+                        <th>Acción Requerida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0 - 24.9</td>
+                        <td><span class="risk-tag" style="background: var(--risk-sin)">Sin Riesgo</span></td>
+                        <td>Monitoreo preventivo</td>
+                    </tr>
+                    <tr>
+                        <td>25 - 49.9</td>
+                        <td><span class="risk-tag" style="background: var(--risk-bajo)">Bajo</span></td>
+                        <td>Intervención básica</td>
+                    </tr>
+                    <tr>
+                        <td>50 - 69.9</td>
+                        <td><span class="risk-tag" style="background: var(--risk-medio)">Medio</span></td>
+                        <td>Intervención específica</td>
+                    </tr>
+                    <tr>
+                        <td>70 - 84.9</td>
+                        <td><span class="risk-tag" style="background: var(--risk-alto)">Alto</span></td>
+                        <td>Intervención prioritaria</td>
+                    </tr>
+                    <tr>
+                        <td>85 - 100</td>
+                        <td><span class="risk-tag" style="background: var(--risk-muy-alto)">Muy Alto</span></td>
+                        <td>Intervención inmediata</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 2</span></div>
+    </div>
+
+    <!-- PAGE 3: EVALUATION MODEL (NEW) -->
+    <div class="page">
+        <div class="page-header">2. ALCANCE DE LA EVALUACIÓN</div>
+        <div class="content">
+            <h2 class="section-title">MODELO DE FACTORES EVALUADOS</h2>
+            <p style="margin-bottom: 30px;">La evaluación contempla cuatro ejes fundamentales que permiten un
+                diagnóstico integral del clima psicosocial en la organización, siguiendo los lineamientos técnicos del
+                Ministerio del Trabajo:</p>
+
+            <div class="infographic-grid">
+                <!-- CARD 1 -->
+                <div class="info-card intra">
+                    <div class="card-header"><span class="icon">💻</span> FACTORES INTRALABORALES</div>
+                    <div class="card-body">
+                        <p>Condiciones al interior de la empresa relacionadas con el trabajo y su organización:</p>
+                        <ul>
+                            <li>Gestión organizacional</li>
+                            <li>Condiciones de la tarea</li>
+                            <li>Funciones y jornada de trabajo</li>
+                            <li>Condiciones del medio ambiente de trabajo</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- CARD 2 -->
+                <div class="info-card extra">
+                    <div class="card-header"><span class="icon">📋</span> FACTORES EXTRALABORALES</div>
+                    <div class="card-body">
+                        <p>Aspectos fuera del contexto laboral que influyen en el bienestar del colaborador:</p>
+                        <ul>
+                            <li>Entorno familiar, social y económico</li>
+                            <li>Utilización del tiempo libre</li>
+                            <li>Redes de apoyo social</li>
+                            <li>Condiciones de la vivienda</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- CARD 3 -->
+                <div class="info-card stress">
+                    <div class="card-header"><span class="icon">🏥</span> SINTOMATOLOGÍA ESTRÉS</div>
+                    <div class="card-body">
+                        <p>Respuestas e indicadores detectados ante la exposición a factores de riesgo:</p>
+                        <ul>
+                            <li>Síntomas fisiológicos</li>
+                            <li>Sintomatología de comportamiento social</li>
+                            <li>Síntomas intelectuales y laborales</li>
+                            <li>Síntomas psico-emocionales</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- CARD 4 -->
+                <div class="info-card socio">
+                    <div class="card-header"><span class="icon">💡</span> SOCIODEMOGRÁFICOS</div>
+                    <div class="card-body">
+                        <p>Características socio-conómicas y ocupacionales propias del colaborador:</p>
+                        <ul>
+                            <li>Perfil sociodemográfico</li>
+                            <li>Características ocupacionales</li>
+                            <li>Nivel de estudios y cargo</li>
+                            <li>Lugar de residencia y entorno</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 3</span></div>
+    </div>
+
+    <!-- PAGE 4: SOCIODEMOGRAPHIC RESULTS -->
+    <div class="page page-socio">
+        <div class="page-header">3. RESULTADOS SOCIODEMOGRÁFICOS</div>
+        <div class="content">
+            <h2 class="section-title">PERFIL DE LA POBLACIÓN</h2>
+
+            <div class="coverage-container">
+                <div class="coverage-viz">
+                    <div class="bubble bubble-2">
+                        <span class="number">2</span>
+                        <span class="label">Total Empleados</span>
+                        <span class="value">305</span>
+                    </div>
+                    <div class="bubble bubble-1">
+                        <span class="number">1</span>
+                        <span class="label">Total Participantes</span>
+                        <span class="value" id="dynamic-participants">...</span>
+                    </div>
+                    <div class="bubble bubble-3">
+                        <span class="number">3</span>
+                        <span class="label">Cobertura</span>
+                        <span class="value" id="dynamic-coverage">...</span>
+                    </div>
+                </div>
+                <div class="criteria-box">
+                    <h3>Criterios de Inclusión</h3>
+                    <p>Personal directo con antigüedad de 3 meses con participación voluntaria.</p>
+
+                    <h3>Criterio de Exclusión</h3>
+                    <p>Personal con menos de tres (3 meses) de antigüedad con la empresa, aprendices, practicantes.</p>
+                </div>
+            </div>
+
+            <p style="margin-bottom: 20px;">A continuación se presenta el perfil detallado de los colaboradores que
+                participaron en el proceso:</p>
+
+            <div class="chart-grid" style="margin-top: 0;">
+                <div class="chart-container">
+                    <h3>Distribución por Sexo</h3>
+                    <div style="height: 200px;"><canvas id="sexChart"></canvas></div>
+                </div>
+                <div class="chart-container">
+                    <h3>Nivel de Estudios</h3>
+                    <div style="height: 200px;"><canvas id="eduChart"></canvas></div>
+                </div>
+                <div class="chart-container">
+                    <h3>Tipo de Cargo</h3>
+                    <div style="height: 200px;"><canvas id="cargoChart"></canvas></div>
+                </div>
+                <div class="chart-container">
+                    <h3>Estado Civil</h3>
+                    <div style="height: 200px;"><canvas id="civilChart"></canvas></div>
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <strong>Análisis Sociodemográfico:</strong>
+                <p id="socio-analysis-text">Cargando análisis inteligente...</p>
+            </div>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 4</span></div>
+    </div>
+
+    <!-- PAGE 5: SOCIODEMOGRAPHIC RESULTS PART 2 -->
+    <div class="page page-socio">
+        <div class="page-header">3. RESULTADOS SOCIODEMOGRÁFICOS (CONTINUACIÓN)</div>
+        <div class="content">
+            <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px;">
+                <div class="chart-container" style="height: 650px;">
+                    <h3>Lugar de Residencia</h3>
+                    <div style="height: 600px;"><canvas id="residenciaChart"></canvas></div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="chart-container" style="height: 315px;">
+                        <h3>Estrato Socioeconómico</h3>
+                        <div style="height: 250px;"><canvas id="estratoChart"></canvas></div>
+                    </div>
+                    <div class="chart-container" style="height: 315px;">
+                        <h3>Tipo de Vivienda</h3>
+                        <div style="height: 250px;"><canvas id="viviendaChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 5</span></div>
+    </div>
+
+    <!-- PAGE 6: SOCIODEMOGRAPHIC RESULTS PART 3 -->
+    <div class="page page-socio">
+        <div class="page-header">3. RESULTADOS SOCIODEMOGRÁFICOS (FACTORES LABORALES)</div>
+        <div class="content">
+            <h2 class="section-title">FACTORES SOCIODEMOGRÁFICOS</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px;">
+                <div class="chart-container" style="height: 500px;">
+                    <h3>JORNADA LABORAL (HORAS DIARIAS)</h3>
+                    <div style="height: 450px;"><canvas id="jornadaChart"></canvas></div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 30px;">
+                    <div class="chart-container">
+                        <h3>TIPO DE CONTRATO</h3>
+                        <table class="custom-table" id="contrato-table" style="margin:0; font-size: 0.9rem;">
+                            <thead>
+                                <tr>
+                                    <th>Opción</th>
+                                    <th>Porcentaje</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="chart-container">
+                        <h3>TIPO DE SALARIO</h3>
+                        <table class="custom-table" id="salario-table" style="margin:0; font-size: 0.9rem;">
+                            <thead>
+                                <tr>
+                                    <th>Opción</th>
+                                    <th>Porcentaje</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 6</span></div>
+    </div>
+
+    <!-- PAGE 7: GENERAL RISK RESULTS -->
+    <div class="page">
+        <div class="page-header">4. RESULTADOS GENERALES DE RIESGO</div>
+        <div class="content">
+            <h2 class="section-title">NIVEL DE RIESGO GLOBAL</h2>
+            <div style="display: flex; gap: 30px; align-items: center;">
+                <div style="flex: 1; text-align: center;">
+                    <div id="gauge-container" style="width: 250px; margin: 0 auto;">
+                        <canvas id="globalRiskGauge"></canvas>
+                    </div>
+                </div>
+                <div style="flex: 1;">
+                    <div class="summary-box" style="border-left-color: var(--risk-muy-alto);">
+                        <h4 style="color: var(--primary)">Resultado General</h4>
+                        <div style="font-size: 2.5rem; font-weight: 800; color: #1e3a8a;" id="global-risk-val">
+                            Cargando...</div>
+                        <p id="global-risk-desc">Calculando el impacto en la organización...</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 40px;">DISTRIBUCIÓN POR FACTORES</h2>
+            <div style="height: 300px; width: 100%;">
+                <canvas id="factorsComparisonChart"></canvas>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <p><strong>Observación:</strong> Se observa una mayor prevalencia de riesgo en las dimensiones
+                    <span id="priority-dimensions">...</span>, lo que sugiere una necesidad de intervención focalizada.
+                </p>
+            </div>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 7</span></div>
+    </div>
+
+    <!-- PAGE 8: DETAIL INTRALABORAL - DEMANDAS -->
+    <div class="page">
+        <div class="page-header">5. DETALLE POR DOMINIOS - DEMANDAS DEL TRABAJO</div>
+        <div class="content">
+            <div style="background: #1e3a8a; color: white; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+                <strong>DEFINICIÓN:</strong> Referente a las exigencias que el trabajo impone al individuo.
+            </div>
+
+            <div class="chart-container" style="height: 350px;">
+                <canvas id="demandasChart"></canvas>
+            </div>
+
+            <table class="custom-table" id="demandas-table">
+                <thead>
+                    <tr>
+                        <th>Dimensión</th>
+                        <th>Puntaje</th>
+                        <th>Riesgo</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 8</span></div>
+    </div>
+
+    <!-- PAGE 9: DETAIL INTRALABORAL - LIDERAZGO -->
+    <div class="page">
+        <div class="page-header">6. DETALLE POR DOMINIOS - LIDERAZGO Y RELACIONES</div>
+        <div class="content">
+            <div style="background: #1e3a8a; color: white; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+                <strong>DEFINICIÓN:</strong> Características del liderazgo y las relaciones sociales en el trabajo.
+            </div>
+
+            <div class="chart-container" style="height: 350px;">
+                <canvas id="liderazgoChart"></canvas>
+            </div>
+
+            <table class="custom-table" id="liderazgo-table">
+                <thead>
+                    <tr>
+                        <th>Dimensión</th>
+                        <th>Puntaje</th>
+                        <th>Riesgo</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 9</span></div>
+    </div>
+
+    <!-- PAGE 10: EXTRALABORAL & STRESS -->
+    <div class="page">
+        <div class="page-header">7. EXTRALABORAL Y ESTRÉS</div>
+        <div class="content">
+            <h2 class="section-title">FACTORES EXTRALABORALES</h2>
+            <div class="chart-grid">
+                <div class="chart-container" style="height: 250px;"><canvas id="extraDoughnut"></canvas></div>
+                <div class="summary-box">
+                    <p>Evalúa el entorno familiar, social y económico del trabajador fuera del entorno laboral.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 50px;">SINTOMATOLOGÍA DE ESTRÉS</h2>
+            <div class="chart-container" style="height: 300px;">
+                <canvas id="stressDetailedChart"></canvas>
+            </div>
+            <div class="summary-box" id="stress-summary">
+                Cargando análisis de síntomas...
+            </div>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 10</span></div>
+    </div>
+
+    <!-- PAGE 11: RECOMMENDATIONS -->
+    <div class="page">
+        <div class="page-header">8. RECOMENDACIONES Y CIERRE</div>
+        <div class="content">
+            <h2 class="section-title">ACCIONES RECOMENDADAS</h2>
+            <div id="ai-recommendations-container">
+                <p>Generando recomendaciones basadas en inteligencia artificial...</p>
+            </div>
+
+            <div style="margin-top: 60px; border: 1px dashed var(--primary); padding: 30px; border-radius: 8px;">
+                <h3 style="color: var(--primary); margin-bottom: 20px;">FIRMA DE RESPONSABILIDAD</h3>
+                <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+                    <div style="text-align: center;">
+                        <div style="width: 200px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+                        <p>Especialista en SSO</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 200px; border-bottom: 1px solid black; margin-bottom: 5px;"></div>
+                        <p>Representante Legal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer"><img src="assets/logo_nuevo.png" alt="Logo"
+                style="height: 25px; opacity: 0.8;"><span>Página 11</span></div>
+    </div>
+
+    <script>
+        // Registramos el plugin para mostrar etiquetas en los gráficos
+        Chart.register(ChartDataLabels);
+
+        document.getElementById('current-date-cover').textContent = new Date().toLocaleDateString('es-ES', {
+            year: 'numeric', month: 'long', day: 'numeric'
+        });
+
+        async function initReport() {
+            // Auth Check
+            await initAuth();
+
+            try {
+                const response = await fetch('/cuestionarios/api/analysis-report');
+                const data = await response.json();
+
+                renderSociodemographics(data.sociodemographics);
+                renderGeneralRisk(data.questionnaires);
+                renderDetailedIntra(data.questionnaires['intralaborales-a']);
+                renderExtraAndStress(data.questionnaires);
+
+                // AI Analysis Integration
+                generateAIAnalysis(data);
+
+            } catch (error) {
+                console.error('Error init report:', error);
+            }
+        }
+
+        async function initAuth() {
+            // 1. Bypass Localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.log('Localhost bypass active - Auth skipped');
+                return;
+            }
+
+            // 2. Fetch Config
+            let authConfig = {};
+            try {
+                const res = await fetch('/cuestionarios/api/auth-config');
+                if (res.ok) {
+                    authConfig = await res.json();
+                }
+            } catch (e) { }
+
+            // 3. Check Identity
+            const identityStr = localStorage.getItem('identity');
+            if (!identityStr) {
+                window.location.href = 'https://saman.lafortuna.com.co';
+                return;
+            }
+
+            try {
+                const identity = JSON.parse(identityStr);
+                if (!identity.token) throw new Error('No token');
+
+                // Auth Validation (Cedula and Email)
+                if (authConfig.allowed_cedula || authConfig.allowed_email) {
+                    const userCedula = identity.usuario?.cedula;
+                    const userEmail = identity.usuario?.email;
+
+                    let isAuthorized = true;
+                    if (authConfig.allowed_cedula && userCedula != authConfig.allowed_cedula) {
+                        isAuthorized = false;
+                    }
+                    if (authConfig.allowed_email && userEmail != authConfig.allowed_email) {
+                        isAuthorized = false;
+                    }
+
+                    if (!isAuthorized) throw new Error('Unauthorized');
+                } else if (authConfig.allowed_user_id) {
+                    if (identity.usuario?.id != authConfig.allowed_user_id) throw new Error('Unauthorized');
+                }
+            } catch (e) {
+                window.location.href = 'https://saman.lafortuna.com.co';
+                return;
+            }
+        }
+
+        function renderDetailedIntra(intra) {
+            if (!intra) return;
+
+            // Group dimensions by dominion for tables
+            const structure = {
+                "Demandas del trabajo": ["Demandas ambientales", "Demandas cuantitativas", "Demandas de carga mental", "Demandas emocionales", "Demandas de responsabilidad del cargo", "Demandas de jornada de trabajo", "Consistencia del rol", "Influencia del trabajo sobre el entorno extralaboral"],
+                "Liderazgo y relaciones sociales": ["Características del liderazgo", "Relaciones sociales en el trabajo", "Retroalimentación del desempeño", "Relación con los colaboradores"]
+            };
+
+            // Demandas Page
+            const demandasDims = structure["Demandas del trabajo"];
+            const demandasData = demandasDims.map(d => intra.dimensions[d] || 0);
+
+            new Chart(document.getElementById('demandasChart'), {
+                type: 'bar',
+                data: {
+                    labels: demandasDims,
+                    datasets: [{ label: 'Puntaje', data: demandasData, backgroundColor: '#3b82f6' }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: { x: { max: 100 } },
+                    plugins: {
+                        datalabels: {
+                            color: '#000',
+                            anchor: 'end',
+                            align: 'right',
+                            formatter: (val) => val.toFixed(1)
+                        }
+                    }
+                }
+            });
+
+            populateTable('demandas-table', demandasDims, intra.dimensions);
+
+            // Liderazgo Page
+            const liderDims = structure["Liderazgo y relaciones sociales"];
+            const liderData = liderDims.map(d => intra.dimensions[d] || 0);
+
+            new Chart(document.getElementById('liderazgoChart'), {
+                type: 'bar',
+                data: {
+                    labels: liderDims,
+                    datasets: [{ label: 'Puntaje', data: liderData, backgroundColor: '#1e3a8a' }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: { x: { max: 100 } },
+                    plugins: {
+                        datalabels: {
+                            color: '#000',
+                            anchor: 'end',
+                            align: 'right',
+                            formatter: (val) => val.toFixed(1)
+                        }
+                    }
+                }
+            });
+
+            populateTable('liderazgo-table', liderDims, intra.dimensions);
+        }
+
+        function populateTable(id, dims, data) {
+            const tbody = document.querySelector(`#${id} tbody`);
+            tbody.innerHTML = dims.map(d => {
+                const score = data[d] || 0;
+                const level = getRiskLabel(score);
+                return `<tr><td>${d}</td><td>${score}</td><td><span class="risk-tag" style="background:${getRiskColor(level)}">${level}</span></td></tr>`;
+            }).join('');
+        }
+
+        function renderExtraAndStress(qs) {
+            const extra = qs['extralaborales'];
+            const stress = qs['estres'];
+
+            new Chart(document.getElementById('extraDoughnut'), {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(extra.distribution),
+                    datasets: [{ data: Object.values(extra.distribution), backgroundColor: Object.keys(extra.distribution).map(getRiskColor) }]
+                },
+                options: {
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        datalabels: {
+                            color: '#fff',
+                            font: { weight: 'bold' },
+                            formatter: (value, ctx) => {
+                                let sum = 0;
+                                let dataArr = ctx.chart.data.datasets[0].data;
+                                dataArr.map(data => { sum += data; });
+                                let percentage = (value * 100 / sum).toFixed(1) + "%";
+                                return value > 0 ? percentage : '';
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('stressDetailedChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Mínimo', 'Bajo', 'Medio', 'Alto', 'Muy Alto'],
+                    datasets: [{
+                        label: 'Distribución de Estrés',
+                        data: [0, stress.distribution['Bajo'], stress.distribution['Medio'], stress.distribution['Alto'], stress.distribution['Muy Alto']],
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                        fill: true
+                    }]
+                }
+            });
+
+            document.getElementById('stress-summary').textContent = `Se identifica que un ${stress.distribution['Muy Alto'] + stress.distribution['Alto']} colaborares presentan niveles críticos de estrés.`;
+        }
+
+        function renderSociodemographics(stats) {
+            const totalEmployees = 305;
+            const participants = stats.total;
+            const coverage = Math.round((participants / totalEmployees) * 100);
+
+            document.getElementById('dynamic-participants').textContent = participants;
+            document.getElementById('dynamic-coverage').textContent = coverage + '%';
+
+            const commonOptions = {
+                plugins: {
+                    legend: { position: 'bottom' },
+                    datalabels: {
+                        color: '#fff',
+                        font: { weight: 'bold', size: 11 },
+                        formatter: (value, ctx) => {
+                            let sum = 0;
+                            let dataArr = ctx.chart.data.datasets[0].data;
+                            dataArr.map(data => { sum += data; });
+                            let percentage = (value * 100 / sum).toFixed(1) + "%";
+                            return value > 0 ? percentage : '';
+                        }
+                    }
+                },
+                responsive: true
+            };
+
+            new Chart(document.getElementById('sexChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: stats.sexo.labels.map(l => l.charAt(0).toUpperCase() + l.slice(1)),
+                    datasets: [{ data: stats.sexo.data, backgroundColor: ['#3b82f6', '#ec4899'] }]
+                },
+                options: commonOptions
+            });
+
+            new Chart(document.getElementById('eduChart'), {
+                type: 'bar',
+                data: {
+                    labels: stats.nivel_estudios.labels.map(l => l.split('_')[0]),
+                    datasets: [{ label: 'Colaboradores', data: stats.nivel_estudios.data, backgroundColor: '#1e3a8a' }]
+                },
+                options: { ...commonOptions, indexAxis: 'y' }
+            });
+
+            new Chart(document.getElementById('cargoChart'), {
+                type: 'pie',
+                data: {
+                    labels: stats.tipo_cargo.labels,
+                    datasets: [{ data: stats.tipo_cargo.data, backgroundColor: ['#1e3a8a', '#3b82f6', '#93c5fd', '#d1d5db'] }]
+                },
+                options: commonOptions
+            });
+
+            new Chart(document.getElementById('civilChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: stats.estado_civil.labels,
+                    datasets: [{ data: stats.estado_civil.data, backgroundColor: ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe'] }]
+                },
+                options: commonOptions
+            });
+
+            // New Charts for Page 5
+            new Chart(document.getElementById('residenciaChart'), {
+                type: 'bar',
+                data: {
+                    labels: stats.ciudad_residencia.labels,
+                    datasets: [{ label: 'Colaboradores', data: stats.ciudad_residencia.data, backgroundColor: '#3b82f6' }]
+                },
+                options: { ...commonOptions, indexAxis: 'y' }
+            });
+
+            new Chart(document.getElementById('estratoChart'), {
+                type: 'pie',
+                data: {
+                    labels: stats.estrato.labels.map(l => 'Estrato ' + l),
+                    datasets: [{ data: stats.estrato.data, backgroundColor: ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#d1d5db'] }]
+                },
+                options: commonOptions
+            });
+
+            new Chart(document.getElementById('viviendaChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: stats.tipo_vivienda.labels.map(l => l.charAt(0).toUpperCase() + l.slice(1)),
+                    datasets: [{ data: stats.tipo_vivienda.data, backgroundColor: ['#1e3a8a', '#3b82f6', '#93c5fd'] }]
+                },
+                options: commonOptions
+            });
+
+            // New Charts for Page 6
+            new Chart(document.getElementById('jornadaChart'), {
+                type: 'pie',
+                data: {
+                    labels: stats.horas_diarias.labels.map(l => l + ' Horas'),
+                    datasets: [{ data: stats.horas_diarias.data, backgroundColor: ['#3b82f6', '#1e3a8a', '#60a5fa', '#93c5fd'] }]
+                },
+                options: commonOptions
+            });
+
+            populateSimpleTable('contrato-table', stats.tipo_contrato);
+            populateSimpleTable('salario-table', stats.tipo_salario);
+        }
+
+        function populateSimpleTable(id, data) {
+            const tbody = document.querySelector(`#${id} tbody`);
+            const total = data.data.reduce((a, b) => a + b, 0);
+            tbody.innerHTML = data.labels.map((l, i) => {
+                const perc = ((data.data[i] / total) * 100).toFixed(1);
+                const label = l.replace(/_/g, ' ').charAt(0).toUpperCase() + l.replace(/_/g, ' ').slice(1);
+                return `<tr><td>${label}</td><td>${perc}%</td></tr>`;
+            }).join('');
+        }
+
+        function renderGeneralRisk(questionnaires) {
+            const intra = questionnaires['intralaborales-a'];
+            const extra = questionnaires['extralaborales'];
+            const stress = questionnaires['estres'];
+
+            document.getElementById('global-risk-val').textContent = intra.risk_level;
+
+            // Gauge simulation with Chart.js
+            new Chart(document.getElementById('globalRiskGauge'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Riesgo'],
+                    datasets: [{
+                        data: [intra.average, 100 - intra.average],
+                        backgroundColor: [getRiskColor(intra.risk_level), '#e2e8f0'],
+                        circumference: 180,
+                        rotation: 270
+                    }]
+                }
+            });
+
+            // Factor Comparison
+            new Chart(document.getElementById('factorsComparisonChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Intralaboral', 'Extralaboral', 'Estrés'],
+                    datasets: [{
+                        label: 'Puntaje Promedio',
+                        data: [intra.average, extra.average, stress.average],
+                        backgroundColor: [
+                            getRiskColor(intra.risk_level),
+                            getRiskColor(extra.risk_level),
+                            getRiskColor(stress.risk_level)
+                        ]
+                    }]
+                },
+                options: {
+                    plugins: {
+                        datalabels: {
+                            color: '#000',
+                            anchor: 'end',
+                            align: 'top',
+                            formatter: (val) => val.toFixed(1)
+                        }
+                    },
+                    scales: { y: { beginAtZero: true, max: 100 } }
+                }
+            });
+        }
+
+        function getRiskLabel(score) {
+            if (score < 25) return 'Sin Riesgo';
+            if (score < 50) return 'Bajo';
+            if (score < 70) return 'Medio';
+            if (score < 85) return 'Alto';
+            return 'Muy Alto';
+        }
+
+        function getRiskColor(level) {
+            const colors = {
+                'Sin Riesgo': '#10b981',
+                'Bajo': '#84cc16',
+                'Medio': '#facc15',
+                'Alto': '#f97316',
+                'Muy Alto': '#ef4444'
+            };
+            return colors[level] || '#94a3b8';
+        }
+
+        async function generateAIAnalysis(data) {
+            try {
+                const res = await fetch('/cuestionarios/api/ai-analysis', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok) {
+                    const aiData = await res.json();
+
+                    // Update Summary Text
+                    document.getElementById('socio-analysis-text').textContent = aiData.summary;
+                    document.getElementById('global-risk-desc').textContent = "Impacto proyectado: " + aiData.summary.split('.')[0] + ".";
+
+                    // Update Recommendations Page
+                    const container = document.getElementById('ai-recommendations-container');
+                    container.innerHTML = `
+                        <div class="summary-box">
+                            <strong>ANÁLISIS ESTRATÉGICO:</strong>
+                            <p>${aiData.summary}</p>
+                        </div>
+                        <ul style="margin: 20px 0 0 40px; line-height: 2;">
+                            ${aiData.recommendations.map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                    `;
+                }
+            } catch (e) {
+                console.error('Error generating AI analysis:', e);
+            }
+        }
+
+        initReport();
+    </script>
+</body>
+
+</html>
