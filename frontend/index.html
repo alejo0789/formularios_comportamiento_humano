@@ -12,19 +12,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/cuestionarios/styles.css">
     <style>
+        :root {
+            --acertemos-blue: #002147;
+            --acertemos-gold: #ffcc00;
+            --acertemos-gold-dark: #e6b800;
+        }
+
+        body {
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
         .brand-header {
-            display: flex;
-            justify-content: center;
-            margin-bottom: var(--spacing-md);
-            padding: var(--spacing-sm);
+            background: var(--acertemos-blue);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--acertemos-gold);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 100;
         }
 
         .brand-logo {
             max-width: 100%;
-            width: 450px;
+            width: 480px;
             height: auto;
-            border-radius: var(--radius-sm);
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
             animation: fadeInDown 0.8s ease-out;
         }
 
@@ -40,131 +54,122 @@
             }
         }
 
+        .selector-app {
+            max-width: 1000px;
+            margin: -30px auto 0;
+            padding: 0 1.5rem 3rem;
+            position: relative;
+            z-index: 110;
+        }
+
+        .selector-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 1.2rem;
+            box-shadow: 0 10px 40px rgba(0, 33, 71, 0.12);
+            border: 1px solid rgba(0, 33, 71, 0.05);
+        }
+
+        .selector-title {
+            font-size: 2.5rem;
+            font-weight: 850;
+            margin-bottom: 0.5rem;
+            color: var(--acertemos-blue);
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .selector-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
         .header-info-chips {
             display: flex;
             justify-content: center;
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
+            gap: 1rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
         .info-chip {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(4px);
-            padding: 8px 16px;
-            border-radius: var(--radius-full);
+            background: #f8fafc;
+            padding: 10px 20px;
+            border-radius: 50px;
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--acertemos-blue);
             box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
         }
 
         .info-chip:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
-            background: #fffdf0;
-            color: var(--primary-color);
-        }
-
-        .chip-icon {
-            font-size: 1rem;
-        }
-
-        .selector-app {
-            min-height: 100vh;
-            padding: var(--spacing-xl);
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .selector-header {
-            text-align: center;
-            margin-bottom: var(--spacing-2xl);
-            padding: var(--spacing-xl);
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
+            transform: translateY(-3px);
+            border-color: var(--acertemos-gold);
+            background: white;
             box-shadow: var(--shadow-md);
         }
 
-        .selector-icon {
-            font-size: 4rem;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .selector-title {
-            font-size: var(--font-size-3xl);
-            font-weight: 800;
-            margin-bottom: var(--spacing-sm);
-            background: linear-gradient(135deg, var(--primary-color) 0%, #004e89 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .selector-subtitle {
-            color: var(--text-secondary);
-            font-size: var(--font-size-lg);
-            font-weight: 500;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .questionnaires-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-        }
-
-        /* Featured Card - Ficha de Datos */
-        .featured-section {
-            margin-bottom: var(--spacing-xl);
-        }
-
         .section-label {
-            font-size: var(--font-size-sm);
-            font-weight: 600;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--acertemos-blue);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: var(--spacing-md);
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: var(--spacing-sm);
+            gap: 0.75rem;
+            opacity: 0.8;
         }
 
         .section-label::before {
             content: '';
-            width: 4px;
-            height: 16px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
+            width: 6px;
+            height: 20px;
+            background: var(--acertemos-gold);
+            border-radius: 3px;
         }
 
         .featured-card {
-            background: linear-gradient(135deg, rgba(0, 42, 92, 0.05) 0%, rgba(255, 204, 0, 0.05) 100%);
-            border: 2px solid rgba(0, 42, 92, 0.2);
+            background: white;
+            border: 2px solid var(--border-color);
             border-radius: var(--radius-lg);
             padding: var(--spacing-xl);
             cursor: pointer;
-            transition: all var(--transition-fast);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
             gap: var(--spacing-xl);
             box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--acertemos-gold);
         }
 
         .featured-card:hover {
-            border-color: var(--accent-color);
-            background: linear-gradient(135deg, rgba(0, 42, 92, 0.08) 0%, rgba(255, 204, 0, 0.08) 100%);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 42, 92, 0.15);
+            border-color: var(--acertemos-gold);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 33, 71, 0.2);
         }
 
         .featured-icon {
@@ -173,47 +178,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary-gradient);
-            border-radius: var(--radius-lg);
+            background: var(--acertemos-blue);
+            border-radius: var(--radius-md);
             font-size: 2.5rem;
             flex-shrink: 0;
             box-shadow: var(--shadow-md);
-        }
-
-        .featured-content {
-            flex: 1;
-        }
-
-        .featured-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(34, 197, 94, 0.1);
-            color: #16a34a;
-            font-size: var(--font-size-xs);
-            font-weight: 600;
-            border-radius: var(--radius-full);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .featured-title {
-            font-size: var(--font-size-xl);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .featured-description {
-            color: var(--text-secondary);
-            font-size: var(--font-size-md);
-            line-height: 1.5;
+            color: var(--acertemos-gold);
         }
 
         .featured-action {
             padding: var(--spacing-md) var(--spacing-xl);
-            background: var(--primary-gradient);
-            color: white;
+            background: var(--acertemos-gold);
+            color: var(--acertemos-blue);
             border-radius: var(--radius-full);
-            font-weight: 600;
+            font-weight: 800;
             font-size: var(--font-size-md);
             text-decoration: none;
             display: inline-flex;
@@ -221,12 +199,14 @@
             gap: var(--spacing-sm);
             transition: all var(--transition-fast);
             flex-shrink: 0;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+            text-transform: uppercase;
         }
 
         .featured-action:hover {
+            background: var(--acertemos-gold-dark);
             transform: scale(1.05);
-            box-shadow: var(--shadow-glow);
+            box-shadow: 0 6px 15px rgba(255, 204, 0, 0.4);
         }
 
         @media (max-width: 768px) {
@@ -243,11 +223,11 @@
 
         .questionnaire-card {
             background: var(--bg-card);
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             padding: var(--spacing-xl);
             cursor: pointer;
-            transition: all var(--transition-fast);
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: flex;
@@ -256,16 +236,9 @@
         }
 
         .questionnaire-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-4px);
+            border-color: var(--acertemos-gold);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
         }
 
         .card-icon {
@@ -277,6 +250,8 @@
             justify-content: center;
             border-radius: var(--radius-md);
             flex-shrink: 0;
+            background: #f0f4f8;
+            color: var(--acertemos-blue);
         }
 
         .card-meta {
@@ -395,13 +370,13 @@
         </div>
     </div>
 
+    <!-- Brand Header -->
+    <header class="brand-header">
+        <img src="/cuestionarios/assets/acertemos logo.png" alt="Acertemos Logo" class="brand-logo">
+    </header>
+
     <div class="selector-app">
         <div class="selector-header">
-            <!-- Brand Header -->
-            <div class="brand-header">
-                <img src="/cuestionarios/assets/acertemos logo.png" alt="Acertemos Logo" class="brand-logo">
-            </div>
-
             <h1 class="selector-title">Gesti&oacute;n de Bienestar Laboral</h1>
             <p class="selector-subtitle">Plataforma integral para la evaluaci&oacute;n del comportamiento humano y clima
                 organizacional</p>
@@ -439,7 +414,7 @@
                 <div
                     style="background: rgba(0,0,0,0.05); height: 12px; border-radius: 6px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);">
                     <div id="progress-bar"
-                        style="background: var(--primary-gradient); height: 100%; width: 0%; transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);">
+                        style="background: var(--acertemos-gold); height: 100%; width: 0%; transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);">
                     </div>
                 </div>
                 <div style="margin-top: 1.25rem; text-align: right;">
