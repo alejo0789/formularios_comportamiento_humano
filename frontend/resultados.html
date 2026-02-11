@@ -504,26 +504,24 @@
 
                 // Auth Validation (Cedula and Email)
                 if (authConfig.allowed_cedula || authConfig.allowed_email) {
-                    const userCedula = identity.usuario?.cedula;
+                    const userCedula = String(identity.usuario?.cedula);
                     const userEmail = identity.usuario?.email;
 
-                    let isAuthorized = true;
+                    const allowedCedulas = authConfig.allowed_cedula ? authConfig.allowed_cedula.split(',').map(s => s.trim()) : [];
+                    const allowedEmails = authConfig.allowed_email ? authConfig.allowed_email.split(',').map(s => s.trim()) : [];
 
-                    if (authConfig.allowed_cedula && userCedula != authConfig.allowed_cedula) {
-                        isAuthorized = false;
-                    }
-                    if (authConfig.allowed_email && userEmail != authConfig.allowed_email) {
-                        isAuthorized = false;
-                    }
+                    const cedulaMatch = allowedCedulas.length === 0 || allowedCedulas.includes(userCedula);
+                    const emailMatch = allowedEmails.length === 0 || allowedEmails.includes(userEmail);
 
-                    if (!isAuthorized) {
+                    if (!cedulaMatch || !emailMatch) {
                         console.log('Auth failed: Cedula/Email mismatch');
                         throw new Error('Unauthorized');
                     }
                 } else if (authConfig.allowed_user_id) {
                     // Fallback to ID if no cedula/email config
                     const userId = identity.usuario?.id;
-                    if (userId != authConfig.allowed_user_id) {
+                    const allowedIds = authConfig.allowed_user_id.split(',').map(s => s.trim());
+                    if (!allowedIds.includes(String(userId))) {
                         throw new Error('Unauthorized');
                     }
                 }

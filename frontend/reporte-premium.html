@@ -910,20 +910,19 @@
 
                 // Auth Validation (Cedula and Email)
                 if (authConfig.allowed_cedula || authConfig.allowed_email) {
-                    const userCedula = identity.usuario?.cedula;
+                    const userCedula = String(identity.usuario?.cedula);
                     const userEmail = identity.usuario?.email;
 
-                    let isAuthorized = true;
-                    if (authConfig.allowed_cedula && userCedula != authConfig.allowed_cedula) {
-                        isAuthorized = false;
-                    }
-                    if (authConfig.allowed_email && userEmail != authConfig.allowed_email) {
-                        isAuthorized = false;
-                    }
+                    const allowedCedulas = authConfig.allowed_cedula ? authConfig.allowed_cedula.split(',').map(s => s.trim()) : [];
+                    const allowedEmails = authConfig.allowed_email ? authConfig.allowed_email.split(',').map(s => s.trim()) : [];
 
-                    if (!isAuthorized) throw new Error('Unauthorized');
+                    const cedulaMatch = allowedCedulas.length === 0 || allowedCedulas.includes(userCedula);
+                    const emailMatch = allowedEmails.length === 0 || allowedEmails.includes(userEmail);
+
+                    if (!cedulaMatch || !emailMatch) throw new Error('Unauthorized');
                 } else if (authConfig.allowed_user_id) {
-                    if (identity.usuario?.id != authConfig.allowed_user_id) throw new Error('Unauthorized');
+                    const allowedIds = authConfig.allowed_user_id.split(',').map(s => s.trim());
+                    if (!allowedIds.includes(String(identity.usuario?.id))) throw new Error('Unauthorized');
                 }
             } catch (e) {
                 window.location.href = 'https://saman.lafortuna.com.co';
