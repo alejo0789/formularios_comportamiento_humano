@@ -2,7 +2,7 @@
 Backend API for Multi-Questionnaire System
 Supports multiple questionnaires loaded from JSON files
 """
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, StreamingResponse
@@ -25,6 +25,7 @@ BACKEND_DIR = os.path.dirname(__file__)
 FRONTEND_DIR = os.path.join(os.path.dirname(BACKEND_DIR), "frontend")
 QUESTIONNAIRES_DIR = os.path.join(BACKEND_DIR, "questionnaires")
 DATA_DIR = os.path.join(BACKEND_DIR, "data")
+RESULTS_PDF_DIR = os.path.join(DATA_DIR, "resultados_pdf")
 
 app = FastAPI(
     title="Sistema de Cuestionarios",
@@ -32,6 +33,361 @@ app = FastAPI(
     version="2.0.0",
     root_path="/cuestionarios"
 )
+
+# Ensure directories exist
+os.makedirs(RESULTS_PDF_DIR, exist_ok=True)
+
+from fastapi import UploadFile, File
+import shutil
+from xhtml2pdf import pisa
+
+@app.post("/api/save-pdf")
+async def save_pdf(file: UploadFile = File(...)):
+    """Save a PDF file to the results directory"""
+    file_path = os.path.join(RESULTS_PDF_DIR, file.filename)
+    with open(file_path, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    return {"success": True, "filename": file.filename, "path": file_path}
+
+
+class PDFGenerationRequest(BaseModel):
+    respondent_cedula: str
+    submitted_at: str
+    responses: List[Dict[str, Any]]
+
+
+def build_report_html(data: PDFGenerationRequest, img_colombia: str, img_javeriana: str) -> str:
+    """Build the full HTML for the stress report, identical to the frontend version."""
+    questions = [
+        (1, "Dolores en el cuello y espalda o tensión muscular."),
+        (2, "Problemas gastrointestinales, úlcera péptica, acidez, problemas digestivos o del colon."),
+        (3, "Problemas respiratorios."),
+        (4, "Dolor de cabeza."),
+        (5, "Trastornos del sueño como somnolencia durante el día o desvelo en la noche."),
+        (6, "Palpitaciones en el pecho o problemas cardíacos."),
+        (7, "Cambios fuertes del apetito."),
+        (8, "Problemas relacionados con la función de los órganos genitales (impotencia, frigidez)."),
+        (9, "Dificultad en las relaciones familiares."),
+        (10, "Dificultad para permanecer quieto o dificultad para iniciar actividades."),
+        (11, "Dificultad en las relaciones con otras personas."),
+        (12, "Sensación de aislamiento y desinterés."),
+        (13, "Sentimiento de sobrecarga de trabajo."),
+        (14, "Dificultad para concentrarse, olvidos frecuentes."),
+        (15, "Aumento en el número de accidentes de trabajo."),
+        (16, "Sentimiento de frustración, de no haber hecho lo que se quería en la vida."),
+        (17, "Cansancio, tedio o desgano."),
+        (18, "Disminución del rendimiento en el trabajo o poca creatividad."),
+        (19, "Deseo de no asistir al trabajo."),
+        (20, "Bajo compromiso o poco interés con lo que se hace."),
+        (21, "Dificultad para tomar decisiones."),
+        (22, "Deseo de cambiar de empleo."),
+        (23, "Sentimiento de soledad y miedo."),
+        (24, "Sentimiento de irritabilidad, actitudes y pensamientos negativos."),
+        (25, "Sentimiento de angustia, preocupación o tristeza."),
+        (26, "Consumo de drogas para aliviar la tensión o los nervios."),
+        (27, 'Sentimientos de que "no vale nada" o "no sirve para nada".'),
+        (28, "Consumo de bebidas alcohólicas o café o cigarrillo."),
+        (29, "Sentimiento de que está perdiendo la razón."),
+        (30, "Comportamientos rígidos, obstinación o terquedad."),
+        (31, "Sensación de no poder manejar los problemas de la vida."),
+    ]
+
+    responses_map = {r["question_id"]: r["response_value"] for r in data.responses}
+
+    from datetime import datetime as dt
+    submission_date = dt.fromisoformat(data.submitted_at.replace("Z", "+00:00"))
+    day = str(submission_date.day).zfill(2)
+    month = str(submission_date.month).zfill(2)
+    year = submission_date.year
+
+    table_rows = ""
+    for qid, qtext in questions:
+        val = responses_map.get(qid, 0)
+        table_rows += f"""
+        <tr>
+            <td class="question-cell"><span class="question-number">{qid}.</span> {qtext}</td>
+            <td class="response-cell">{"X" if val == 1 else ""}</td>
+            <td class="response-cell">{"X" if val == 2 else ""}</td>
+            <td class="response-cell">{"X" if val == 3 else ""}</td>
+            <td class="response-cell">{"X" if val == 4 else ""}</td>
+        </tr>"""
+
+    return f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte - CC: {data.respondent_cedula}</title>
+    <style>
+        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+
+        @page {{
+            size: letter;
+            margin: 1.5cm 2cm;
+        }}
+
+        body {{
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.3;
+            color: #000;
+            background: white;
+        }}
+
+        /* === CARÁTULA === */
+        .cover-page {{
+            page-break-after: always;
+        }}
+
+        .cover-header-table {{
+            width: 100%;
+            margin-bottom: 3cm;
+            margin-top: 1cm;
+        }}
+
+        .cover-header-table td {{
+            vertical-align: middle;
+            padding: 5px;
+        }}
+
+        .cover-data-label {{
+            font-size: 10pt;
+            text-align: right;
+            width: 200px;
+        }}
+
+        .box {{
+            border: 1pt solid #000;
+            height: 28px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 10pt;
+            padding: 2px 4px;
+        }}
+
+        .day-box, .month-box {{ width: 30px; }}
+        .year-box {{ width: 60px; }}
+        .id-box {{ width: 120px; }}
+
+        .box-sublabel {{
+            font-size: 7pt;
+            color: #666;
+            text-align: center;
+        }}
+
+        .cover-main {{
+            text-align: center;
+            margin-top: 5cm;
+            margin-bottom: 5cm;
+        }}
+
+        .green-title {{
+            color: #2e7d32;
+            font-size: 15pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 1.5;
+        }}
+
+        .cover-footer-table {{
+            width: 100%;
+            margin-top: 2cm;
+        }}
+
+        .cover-footer-table td {{
+            vertical-align: bottom;
+            text-align: center;
+        }}
+
+        .footer-logo-left img {{ height: 110px; }}
+        .footer-logo-left .org-name {{ font-size: 9pt; font-weight: bold; display: block; }}
+        .footer-logo-left .org-sub {{ font-size: 9pt; display: block; }}
+        .footer-logo-right img {{ height: 106px; }}
+
+        /* === PÁGINA DE CONTENIDO === */
+        .header-table {{
+            width: 100%;
+            margin-bottom: 5px;
+        }}
+
+        .header-table td {{
+            vertical-align: middle;
+        }}
+
+        .logo-left-cell {{ width: 50%; text-align: left; }}
+        .logo-right-cell {{ width: 50%; text-align: right; }}
+        .logo-left-cell img, .logo-right-cell img {{ height: 65px; width: auto; }}
+
+        .logo-text {{ font-size: 9pt; line-height: 1.2; vertical-align: middle; padding-left: 8px; }}
+        .logo-text strong {{ display: block; font-size: 10pt; }}
+
+        .title {{
+            text-align: center;
+            font-size: 10.5pt;
+            font-weight: bold;
+            margin: 5px 0;
+            text-transform: uppercase;
+        }}
+
+        .instructions {{
+            margin-bottom: 5px;
+            font-size: 9pt;
+            text-align: justify;
+        }}
+
+        .questionnaire-table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }}
+
+        .questionnaire-table th {{
+            border: 1pt solid #000;
+            padding: 4px 5px;
+            text-align: center;
+            font-size: 9pt;
+            font-weight: bold;
+            background-color: #d8d8d8;
+        }}
+
+        .questionnaire-table td {{
+            border: 1pt solid #000;
+            padding: 2px 8px;
+            font-size: 9pt;
+            vertical-align: middle;
+        }}
+
+        .question-cell {{ text-align: left; width: 55%; }}
+        .response-cell {{ text-align: center; width: 11.25%; font-size: 11pt; font-weight: bold; }}
+        .question-number {{ font-weight: normal; margin-right: 5px; }}
+    </style>
+</head>
+<body>
+
+    <!-- CARÁTULA -->
+    <div class="cover-page">
+
+        <!-- Fecha e ID alineados a la derecha -->
+        <table class="cover-header-table">
+            <tr>
+                <td class="cover-data-label">Fecha de aplicación:</td>
+                <td>
+                    <table><tr>
+                        <td>
+                            <table><tr>
+                                <td class="box day-box">{day}</td>
+                                <td class="box month-box">{month}</td>
+                                <td class="box year-box">{year}</td>
+                            </tr><tr>
+                                <td class="box-sublabel">dd</td>
+                                <td class="box-sublabel">mm</td>
+                                <td class="box-sublabel">aaaa</td>
+                            </tr></table>
+                        </td>
+                    </tr></table>
+                </td>
+            </tr>
+            <tr>
+                <td class="cover-data-label">Número de Identificación<br/>del respondiente (ID):</td>
+                <td><table><tr><td class="box id-box">{data.respondent_cedula}</td></tr></table></td>
+            </tr>
+        </table>
+
+        <!-- Título verde centrado -->
+        <div class="cover-main">
+            <div class="green-title">
+                CUESTIONARIO PARA LA EVALUACIÓN<br/>DEL ESTRÉS TERCERA VERSIÓN
+            </div>
+        </div>
+
+        <!-- Logos pie de página -->
+        <table class="cover-footer-table">
+            <tr>
+                <td class="footer-logo-left" style="text-align:left; padding-left:1cm;">
+                    <img src="{img_colombia}" alt="Escudo de Colombia"><br/>
+                    <span class="org-name">Ministerio de la Protección Social</span>
+                    <span class="org-sub">República de Colombia</span>
+                </td>
+                <td class="footer-logo-right" style="text-align:right; padding-right:1cm;">
+                    <img src="{img_javeriana}" alt="Logo Javeriana">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PÁGINA DE CONTENIDO -->
+    <div class="content-page">
+
+        <!-- Encabezado con logos -->
+        <table class="header-table">
+            <tr>
+                <td class="logo-left-cell">
+                    <table><tr>
+                        <td><img src="{img_colombia}" alt="Escudo de Colombia"></td>
+                        <td class="logo-text"><strong>Ministerio de la Protección Social</strong>República de Colombia</td>
+                    </tr></table>
+                </td>
+                <td class="logo-right-cell">
+                    <img src="{img_javeriana}" alt="Logo Javeriana">
+                </td>
+            </tr>
+        </table>
+
+        <div class="title">
+            CUESTIONARIO PARA LA EVALUACIÓN DEL ESTRÉS – TERCERA VERSIÓN
+        </div>
+
+        <div class="instructions">
+            <strong>Señale con una X la casilla que indique la frecuencia con que se le han presentado los siguientes malestares en los últimos tres meses.</strong>
+        </div>
+
+        <table class="questionnaire-table">
+            <thead>
+                <tr>
+                    <th style="width:55%;">Malestares</th>
+                    <th style="width:11.25%;">Siempre</th>
+                    <th style="width:11.25%;">Casi<br/>siempre</th>
+                    <th style="width:11.25%;">A veces</th>
+                    <th style="width:11.25%;">Nunca</th>
+                </tr>
+            </thead>
+            <tbody>
+                {table_rows}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>"""
+
+
+class PDFFromHTMLRequest(BaseModel):
+    html: str
+    filename: str
+
+
+@app.post("/api/generate-pdf-server")
+async def generate_pdf_server(data: PDFFromHTMLRequest):
+    """Receive rendered HTML from the frontend and convert it to PDF using Playwright."""
+    from playwright.async_api import async_playwright
+
+    file_dir = os.path.join(RESULTS_PDF_DIR, "stress")
+    os.makedirs(file_dir, exist_ok=True)
+    file_path = os.path.join(file_dir, data.filename)
+
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        page = await browser.new_page()
+        await page.set_content(data.html, wait_until="networkidle")
+        await page.pdf(
+            path=file_path,
+            format="Letter",
+            margin={"top": "1.01cm", "bottom": "1.01cm", "left": "1.01cm", "right": "1.01cm"},
+            print_background=True,
+        )
+        await browser.close()
+
+    return {"success": True, "filename": data.filename}
+
 
 # CORS middleware
 app.add_middleware(

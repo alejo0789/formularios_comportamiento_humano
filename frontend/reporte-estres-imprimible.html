@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte - Evaluación del Estrés</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: letter;
+            margin: 1.5cm;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+
+        /* Header con logos */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 3px solid #8b5cf6;
+            margin-bottom: 30px;
+        }
+
+        .header-logo {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .header-left {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .header-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Título del reporte */
+        .title-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title-section h1 {
+            color: #8b5cf6;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .title-section .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Información del respondente */
+        .respondent-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .respondent-info h2 {
+            color: #8b5cf6;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #333;
+            font-size: 14px;
+        }
+
+        /* Resumen de resultados */
+        .summary-section {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-section h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .score-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .score-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+            backdrop-filter: blur(10px);
+        }
+
+        .score-label {
+            font-size: 14px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .score-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .score-level {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* Tabla de respuestas por categoría */
+        .responses-section {
+            margin-bottom: 30px;
+        }
+
+        .responses-section h2 {
+            color: #8b5cf6;
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .category-group {
+            margin-bottom: 25px;
+            break-inside: avoid;
+        }
+
+        .category-title {
+            background: #8b5cf6;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px 6px 0 0;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .questions-table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .questions-table th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
+            color: #555;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .questions-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        .questions-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .questions-table tr:hover {
+            background: #f9fafb;
+        }
+
+        .question-number {
+            width: 50px;
+            font-weight: bold;
+            color: #8b5cf6;
+        }
+
+        .response-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .response-1 {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .response-2 {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .response-3 {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .response-4 {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            .category-group {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Botón de impresión */
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Interpretación de niveles */
+        .interpretation {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .interpretation h3 {
+            color: #8b5cf6;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .interpretation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .interpretation-item {
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .interpretation-item.muy-bajo {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .interpretation-item.bajo {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .interpretation-item.medio {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .interpretation-item.alto {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .interpretation-item.muy-alto {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .interpretation-item .level-name {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .interpretation-item .level-range {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-button no-print" onclick="window.print()">🖨️ Imprimir Reporte</button>
+
+    <!-- Header con logos -->
+    <div class="header">
+        <div class="header-left">
+            <img src="../imagnes_impresion/escudo colombia.png" alt="Escudo de Colombia" class="header-logo">
+        </div>
+        <div class="header-right">
+            <img src="../imagnes_impresion/logo javeriana.png" alt="Logo Javeriana" class="header-logo">
+        </div>
+    </div>
+
+    <!-- Título del reporte -->
+    <div class="title-section">
+        <h1>🧘 CUESTIONARIO PARA LA EVALUACIÓN DEL ESTRÉS</h1>
+        <p class="subtitle">Tercera Versión</p>
+    </div>
+
+    <!-- Información del respondente -->
+    <div class="respondent-info">
+        <h2>📋 Información del Evaluado</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">Cédula:</span>
+                <span class="info-value">81742442</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Fecha de Aplicación:</span>
+                <span class="info-value">04 de Febrero de 2026</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">ID de Respuesta:</span>
+                <span class="info-value">44045b5f-8cd3-4188-9033-b5edf8cf098a</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Hora de Envío:</span>
+                <span class="info-value">17:31:30</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resumen de resultados -->
+    <div class="summary-section">
+        <h2>📊 Resultado General</h2>
+        <div class="score-container">
+            <div class="score-card">
+                <div class="score-label">Puntaje Total</div>
+                <div class="score-value">95</div>
+                <div class="score-level">NIVEL ALTO</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interpretación de niveles -->
+    <div class="interpretation">
+        <h3>📖 Interpretación de Niveles de Estrés</h3>
+        <div class="interpretation-grid">
+            <div class="interpretation-item muy-bajo">
+                <div class="level-name">Muy Bajo</div>
+                <div class="level-range">0 - 7.8</div>
+            </div>
+            <div class="interpretation-item bajo">
+                <div class="level-name">Bajo</div>
+                <div class="level-range">7.9 - 12.6</div>
+            </div>
+            <div class="interpretation-item medio">
+                <div class="level-name">Medio</div>
+                <div class="level-range">12.7 - 17.7</div>
+            </div>
+            <div class="interpretation-item alto">
+                <div class="level-name">Alto</div>
+                <div class="level-range">17.8 - 25.0</div>
+            </div>
+            <div class="interpretation-item muy-alto">
+                <div class="level-name">Muy Alto</div>
+                <div class="level-range">25.1 - 100</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Respuestas por categoría -->
+    <div class="responses-section">
+        <h2>📝 Respuestas Detalladas por Categoría</h2>
+
+        <!-- SÍNTOMAS FISIOLÓGICOS -->
+        <div class="category-group">
+            <div class="category-title">SÍNTOMAS FISIOLÓGICOS</div>
+            <table class="questions-table">
+                <thead>
+                    <tr>
+                        <th class="question-number">#</th>
+                        <th>Pregunta</th>
+                        <th style="width: 150px; text-align: center;">Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="question-number">1</td>
+                        <td>Dolores en el cuello y espalda o tensión muscular</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">2</td>
+                        <td>Problemas gastrointestinales, úlcera péptica, acidez, problemas digestivos o del colon</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-2">😟 Casi siempre</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">3</td>
+                        <td>Problemas respiratorios</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">4</td>
+                        <td>Dolor de cabeza</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-1">😰 Siempre</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">5</td>
+                        <td>Trastornos del sueño como somnolencia durante el día o desvelo en la noche</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">6</td>
+                        <td>Palpitaciones en el pecho o problemas cardíacos</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">7</td>
+                        <td>Cambios fuertes del apetito</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">8</td>
+                        <td>Problemas relacionados con la función de los órganos genitales (impotencia, frigidez)</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SÍNTOMAS COMPORTAMENTALES -->
+        <div class="category-group">
+            <div class="category-title">SÍNTOMAS COMPORTAMENTALES</div>
+            <table class="questions-table">
+                <thead>
+                    <tr>
+                        <th class="question-number">#</th>
+                        <th>Pregunta</th>
+                        <th style="width: 150px; text-align: center;">Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="question-number">9</td>
+                        <td>Dificultad en las relaciones familiares</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">10</td>
+                        <td>Dificultad para permanecer quieto o dificultad para iniciar actividades</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">11</td>
+                        <td>Dificultad en las relaciones con otras personas</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">26</td>
+                        <td>Consumo de drogas para aliviar la tensión o los nervios</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">28</td>
+                        <td>Consumo de bebidas alcohólicas o café o cigarrillo</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">30</td>
+                        <td>Comportamientos rígidos, obstinación o terquedad</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-2">😟 Casi siempre</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SÍNTOMAS EMOCIONALES -->
+        <div class="category-group page-break">
+            <div class="category-title">SÍNTOMAS EMOCIONALES</div>
+            <table class="questions-table">
+                <thead>
+                    <tr>
+                        <th class="question-number">#</th>
+                        <th>Pregunta</th>
+                        <th style="width: 150px; text-align: center;">Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="question-number">12</td>
+                        <td>Sensación de aislamiento y desinterés</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">16</td>
+                        <td>Sentimiento de frustración, de no haber hecho lo que se quería en la vida</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">17</td>
+                        <td>Cansancio, tedio o desgano</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">23</td>
+                        <td>Sentimiento de soledad y miedo</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">24</td>
+                        <td>Sentimiento de irritabilidad, actitudes y pensamientos negativos</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">25</td>
+                        <td>Sentimiento de angustia, preocupación o tristeza</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">27</td>
+                        <td>Sentimientos de que "no vale nada" o "no sirve para nada"</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-2">😟 Casi siempre</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">29</td>
+                        <td>Sentimiento de que está perdiendo la razón</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-2">😟 Casi siempre</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">31</td>
+                        <td>Sensación de no poder manejar los problemas de la vida</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SÍNTOMAS LABORALES -->
+        <div class="category-group">
+            <div class="category-title">SÍNTOMAS LABORALES</div>
+            <table class="questions-table">
+                <thead>
+                    <tr>
+                        <th class="question-number">#</th>
+                        <th>Pregunta</th>
+                        <th style="width: 150px; text-align: center;">Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="question-number">13</td>
+                        <td>Sentimiento de sobrecarga de trabajo</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">15</td>
+                        <td>Aumento en el número de accidentes de trabajo</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-1">😰 Siempre</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">18</td>
+                        <td>Disminución del rendimiento en el trabajo o poca creatividad</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-2">😟 Casi siempre</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">19</td>
+                        <td>Deseo de no asistir al trabajo</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">20</td>
+                        <td>Bajo compromiso o poco interés con lo que se hace</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">22</td>
+                        <td>Deseo de cambiar de empleo</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-3">😐 A veces</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SÍNTOMAS INTELECTUALES -->
+        <div class="category-group">
+            <div class="category-title">SÍNTOMAS INTELECTUALES</div>
+            <table class="questions-table">
+                <thead>
+                    <tr>
+                        <th class="question-number">#</th>
+                        <th>Pregunta</th>
+                        <th style="width: 150px; text-align: center;">Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="question-number">14</td>
+                        <td>Dificultad para concentrarse, olvidos frecuentes</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-4">😊 Nunca</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="question-number">21</td>
+                        <td>Dificultad para tomar decisiones</td>
+                        <td style="text-align: center;">
+                            <span class="response-badge response-2">😟 Casi siempre</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>Pontificia Universidad Javeriana</strong></p>
+        <p>Cuestionario para la Evaluación del Estrés - Tercera Versión</p>
+        <p>Este documento es confidencial y de uso exclusivo para fines de evaluación psicosocial</p>
+        <p style="margin-top: 10px;">Generado el: 17 de Febrero de 2026</p>
+    </div>
+
+    <script>
+        // Datos del usuario (normalmente vendrían del backend)
+        const userData = {
+            id: "44045b5f-8cd3-4188-9033-b5edf8cf098a",
+            submitted_at: "2026-02-04T17:31:30.416363",
+            respondent_cedula: "81742442",
+            responses: [
+                { question_id: 1, response_value: 3 },
+                { question_id: 2, response_value: 2 },
+                { question_id: 3, response_value: 4 },
+                { question_id: 4, response_value: 1 },
+                { question_id: 5, response_value: 3 },
+                { question_id: 6, response_value: 3 },
+                { question_id: 7, response_value: 3 },
+                { question_id: 8, response_value: 4 },
+                { question_id: 9, response_value: 4 },
+                { question_id: 10, response_value: 4 },
+                { question_id: 11, response_value: 4 },
+                { question_id: 12, response_value: 4 },
+                { question_id: 13, response_value: 3 },
+                { question_id: 14, response_value: 4 },
+                { question_id: 15, response_value: 1 },
+                { question_id: 16, response_value: 3 },
+                { question_id: 17, response_value: 4 },
+                { question_id: 18, response_value: 2 },
+                { question_id: 19, response_value: 4 },
+                { question_id: 20, response_value: 3 },
+                { question_id: 21, response_value: 2 },
+                { question_id: 22, response_value: 3 },
+                { question_id: 23, response_value: 4 },
+                { question_id: 24, response_value: 4 },
+                { question_id: 25, response_value: 4 },
+                { question_id: 26, response_value: 4 },
+                { question_id: 27, response_value: 2 },
+                { question_id: 28, response_value: 3 },
+                { question_id: 29, response_value: 2 },
+                { question_id: 30, response_value: 2 },
+                { question_id: 31, response_value: 3 }
+            ]
+        };
+
+        // Función para calcular el puntaje (esto debería venir del backend)
+        function calculateScore(responses) {
+            // Transformar respuestas según la escala de estrés
+            const transformedScores = responses.map(r => {
+                switch (r.response_value) {
+                    case 1: return 9.68; // Siempre
+                    case 2: return 6.45; // Casi siempre
+                    case 3: return 3.23; // A veces
+                    case 4: return 0;    // Nunca
+                    default: return 0;
+                }
+            });
+
+            const total = transformedScores.reduce((sum, score) => sum + score, 0);
+            return Math.round(total * 100) / 100;
+        }
+
+        // Función para determinar el nivel de estrés
+        function getStressLevel(score) {
+            if (score <= 7.8) return { level: 'Muy Bajo', class: 'muy-bajo' };
+            if (score <= 12.6) return { level: 'Bajo', class: 'bajo' };
+            if (score <= 17.7) return { level: 'Medio', class: 'medio' };
+            if (score <= 25.0) return { level: 'Alto', class: 'alto' };
+            return { level: 'Muy Alto', class: 'muy-alto' };
+        }
+
+        console.log('Datos del usuario cargados:', userData);
+        console.log('Puntaje calculado:', calculateScore(userData.responses));
+    </script>
+</body>
+
+</html>

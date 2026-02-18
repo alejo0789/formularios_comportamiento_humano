@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Reportes PDF - Evaluación del Estrés</title>
+    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cuestionarios/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            overflow-y: auto !important;
+        }
+
+        .pdf-generator-app {
+            min-height: 100vh;
+            padding: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pdf-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pdf-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .pdf-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pdf-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .search-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-section h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .search-box {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-md);
+            font-family: var(--font-family);
+            transition: all var(--transition-fast);
+            background: var(--bg-main);
+            color: var(--text-primary);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .btn {
+            padding: var(--spacing-md) var(--spacing-xl);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-family: var(--font-family);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+
+        .actions-section {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .results-info {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.1));
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .results-info p {
+            margin: var(--spacing-xs) 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .response-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            transition: all var(--transition-fast);
+        }
+
+        .response-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .response-info {
+            flex: 1;
+        }
+
+        .cedula-badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: var(--font-size-md);
+            display: inline-block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .date-text {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .response-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-small {
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: var(--font-size-sm);
+        }
+
+        .loading {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            color: #dc2626;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .success {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            color: #059669;
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .pdf-generator-app {
+                padding: var(--spacing-md);
+            }
+
+            .pdf-title {
+                font-size: var(--font-size-xl);
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .actions-section {
+                flex-direction: column;
+            }
+
+            .response-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="pdf-generator-app">
+        <a href="/cuestionarios/resultados-dashboard" class="back-link">
+            ← Volver al Dashboard
+        </a>
+
+        <div class="pdf-header">
+            <div class="pdf-icon">🖨️</div>
+            <h1 class="pdf-title">Generar Reportes PDF</h1>
+            <p class="pdf-subtitle">Cuestionario para la Evaluación del Estrés</p>
+        </div>
+
+        <!-- Sección de búsqueda -->
+        <div class="search-section">
+            <h2>🔍 Buscar por Cédula</h2>
+            <div class="search-box">
+                <input type="text" id="cedulaInput" placeholder="Ingrese el número de cédula..."
+                    onkeypress="if(event.key === 'Enter') searchByCedula()">
+                <button class="btn btn-primary" onclick="searchByCedula()">
+                    🔍 Buscar
+                </button>
+            </div>
+            <div id="searchResults"></div>
+        </div>
+
+        <!-- Sección de acciones generales -->
+        <div class="search-section">
+            <h2>📄 Acciones Generales</h2>
+            <div class="actions-section">
+                <button class="btn btn-secondary" onclick="loadAllResponses()">
+                    📋 Ver Todas las Respuestas
+                </button>
+                <button class="btn btn-danger" onclick="generateAllPDFs()">
+                    🖨️ Generar PDFs de Todos
+                </button>
+            </div>
+            <div id="progressContainer" style="display: none; margin-top: var(--spacing-lg);">
+                <div class="results-info" style="border-left-color: var(--primary-color);">
+                    <p id="progressText">Generando PDFs: 0%</p>
+                    <div
+                        style="width: 100%; height: 10px; background: #eee; border-radius: 5px; margin-top: 10px; overflow: hidden;">
+                        <div id="progressBar"
+                            style="width: 0%; height: 100%; background: var(--primary-color); transition: width 0.3s;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="allResponsesContainer" style="margin-top: var(--spacing-lg);"></div>
+        </div>
+    </div>
+
+    <!-- Template oculto para generación de PDF -->
+    <iframe id="pdfFrame" style="display: none;"></iframe>
+
+    <script>
+        const API_BASE_URL = '/cuestionarios';
+        let allResponses = [];
+        let questionnaireData = null;
+
+        // Cargar datos del cuestionario
+        async function loadQuestionnaireData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/questionnaires/estres.json`);
+                questionnaireData = await response.json();
+            } catch (error) {
+                console.error('Error loading questionnaire:', error);
+            }
+        }
+
+        // Buscar por cédula
+        async function searchByCedula() {
+            const cedula = document.getElementById('cedulaInput').value.trim();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (!cedula) {
+                resultsContainer.innerHTML = '<div class="error">Por favor ingrese un número de cédula.</div>';
+                return;
+            }
+
+            resultsContainer.innerHTML = '<div class="loading"><div class="spinner"></div>Buscando...</div>';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/responses/estres`);
+                const responseData = await response.json();
+                const allData = responseData.responses;
+
+                const userResponse = allData.find(r => r.respondent_cedula === cedula);
+
+                if (userResponse) {
+                    resultsContainer.innerHTML = `
+                        <div class="success">✅ Usuario encontrado</div>
+                        ${renderResponseCard(userResponse)}
+                    `;
+                } else {
+                    resultsContainer.innerHTML = `<div class="error">❌ No se encontraron resultados para la cédula: ${cedula}</div>`;
+                }
+            } catch (error) {
+                resultsContainer.innerHTML = `<div class="error">Error al buscar: ${error.message}</div>`;
+            }
+        }
+
+        // Cargar todas las respuestas
+        async function loadAllResponses() {
+            const container = document.getElementById('allResponsesContainer');
+            container.innerHTML = '<div class="loading"><div class="spinner"></div>Cargando respuestas...</div>';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/responses/estres`);
+                const responseData = await response.json();
+                allResponses = responseData.responses;
+
+                if (allResponses.length === 0) {
+                    container.innerHTML = '<div class="error">No hay respuestas disponibles.</div>';
+                    return;
+                }
+
+                let html = `<div class="results-info">
+                    <p><strong>Total de respuestas:</strong> ${allResponses.length}</p>
+                </div>`;
+
+                allResponses.forEach(response => {
+                    html += renderResponseCard(response);
+                });
+
+                container.innerHTML = html;
+            } catch (error) {
+                container.innerHTML = `<div class="error">Error al cargar respuestas: ${error.message}</div>`;
+            }
+        }
+
+        // Renderizar tarjeta de respuesta
+        function renderResponseCard(response) {
+            const date = new Date(response.submitted_at).toLocaleString('es-CO');
+
+            return `
+                <div class="response-card">
+                    <div class="response-header">
+                        <div class="response-info">
+                            <div class="cedula-badge">CC: ${response.respondent_cedula}</div>
+                            <div class="date-text">${date}</div>
+                        </div>
+                        <div class="response-actions">
+                            <button class="btn btn-primary btn-small" onclick='generatePDF(${JSON.stringify(response)})'>
+                                🖨️ Imprimir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Generar PDF individual
+        function generatePDF(responseData) {
+            const iframe = document.getElementById('pdfFrame');
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Generar el HTML del reporte
+            const reportHTML = generateReportHTML(responseData);
+
+            // Cargar el HTML en el iframe
+            iframeDoc.open();
+            iframeDoc.write(reportHTML);
+            iframeDoc.close();
+
+            // Esperar a que el iframe cargue e imprimir
+            iframe.onload = function () {
+                setTimeout(() => {
+                    iframe.contentWindow.print();
+                }, 500);
+            };
+        }
+
+        // Convierte una URL de imagen a base64 data URI
+        async function imgToBase64(url) {
+            const res = await fetch(url);
+            const blob = await res.blob();
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        // Generar PDF en el servidor (Playwright = idéntico a imprimir desde el navegador)
+        async function generateAndSavePDFToServer(responseData) {
+            // Generar el HTML del reporte
+            let reportHTML = generateReportHTML(responseData);
+
+            // Convertir imágenes a base64 para que Playwright no necesite acceder a URLs externas
+            const colombiaB64 = await imgToBase64('/cuestionarios/escudo_colombia.png');
+            const javerianaB64 = await imgToBase64('/cuestionarios/logo_javeriana.png');
+            reportHTML = reportHTML
+                .replace(/src="\/cuestionarios\/escudo_colombia\.png"/g, `src="${colombiaB64}"`)
+                .replace(/src="\/cuestionarios\/logo_javeriana\.png"/g, `src="${javerianaB64}"`);
+
+            const filename = `Reporte_Estres_${responseData.respondent_cedula}.pdf`;
+
+            const response = await fetch(`${API_BASE_URL}/api/generate-pdf-server`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ html: reportHTML, filename })
+            });
+
+            if (!response.ok) {
+                const err = await response.text();
+                throw new Error(`Error del servidor: ${err}`);
+            }
+
+            const result = await response.json();
+            return result.success;
+        }
+
+        // Generar todos los PDFs y guardarlos en el servidor
+        async function generateAllPDFs() {
+            // Si no hay respuestas cargadas, cargarlas primero
+            if (allResponses.length === 0) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/responses/estres`);
+                    const responseData = await response.json();
+                    allResponses = responseData.responses;
+
+                    if (allResponses.length === 0) {
+                        alert('No hay respuestas disponibles para generar reportes.');
+                        return;
+                    }
+                } catch (error) {
+                    alert('Error al cargar las respuestas: ' + error.message);
+                    return;
+                }
+            }
+
+            if (!confirm(`¿Está seguro de generar y guardar ${allResponses.length} reportes PDF directamente en el servidor? \n\nUbicación: backend/data/resultados_pdf/`)) {
+                return;
+            }
+
+            // Mostrar progreso
+            const progressContainer = document.getElementById('progressContainer');
+            const progressText = document.getElementById('progressText');
+            const progressBar = document.getElementById('progressBar');
+
+            progressContainer.style.display = 'block';
+            let successCount = 0;
+
+            // Generar uno por uno (sin delay, el servidor es rápido)
+            for (let i = 0; i < allResponses.length; i++) {
+                try {
+                    const percent = Math.round(((i + 1) / allResponses.length) * 100);
+                    progressText.innerText = `Generando y guardando PDFs: ${percent}% (${i + 1}/${allResponses.length})`;
+                    progressBar.style.width = `${percent}%`;
+
+                    await generateAndSavePDFToServer(allResponses[i]);
+                    successCount++;
+                } catch (error) {
+                    console.error(`Error en respuesta ${i}:`, error);
+                }
+            }
+
+            progressText.innerText = `✅ ¡Completado! Se guardaron ${successCount} reportes en el servidor.`;
+            alert(`Se han generado y guardado ${successCount} reportes PDF en la carpeta del servidor.`);
+        }
+
+        // Generar HTML del reporte
+        function generateReportHTML(responseData) {
+            const questions = [
+                { id: 1, text: "Dolores en el cuello y espalda o tensión muscular." },
+                { id: 2, text: "Problemas gastrointestinales, úlcera péptica, acidez, problemas digestivos o del colon." },
+                { id: 3, text: "Problemas respiratorios." },
+                { id: 4, text: "Dolor de cabeza." },
+                { id: 5, text: "Trastornos del sueño como somnolencia durante el día o desvelo en la noche." },
+                { id: 6, text: "Palpitaciones en el pecho o problemas cardíacos." },
+                { id: 7, text: "Cambios fuertes del apetito." },
+                { id: 8, text: "Problemas relacionados con la función de los órganos genitales (impotencia, frigidez)." },
+                { id: 9, text: "Dificultad en las relaciones familiares." },
+                { id: 10, text: "Dificultad para permanecer quieto o dificultad para iniciar actividades." },
+                { id: 11, text: "Dificultad en las relaciones con otras personas." },
+                { id: 12, text: "Sensación de aislamiento y desinterés." },
+                { id: 13, text: "Sentimiento de sobrecarga de trabajo." },
+                { id: 14, text: "Dificultad para concentrarse, olvidos frecuentes." },
+                { id: 15, text: "Aumento en el número de accidentes de trabajo." },
+                { id: 16, text: "Sentimiento de frustración, de no haber hecho lo que se quería en la vida." },
+                { id: 17, text: "Cansancio, tedio o desgano." },
+                { id: 18, text: "Disminución del rendimiento en el trabajo o poca creatividad." },
+                { id: 19, text: "Deseo de no asistir al trabajo." },
+                { id: 20, text: "Bajo compromiso o poco interés con lo que se hace." },
+                { id: 21, text: "Dificultad para tomar decisiones." },
+                { id: 22, text: "Deseo de cambiar de empleo." },
+                { id: 23, text: "Sentimiento de soledad y miedo." },
+                { id: 24, text: "Sentimiento de irritabilidad, actitudes y pensamientos negativos." },
+                { id: 25, text: "Sentimiento de angustia, preocupación o tristeza." },
+                { id: 26, text: "Consumo de drogas para aliviar la tensión o los nervios." },
+                { id: 27, text: 'Sentimientos de que "no vale nada" o "no sirve para nada".' },
+                { id: 28, text: "Consumo de bebidas alcohólicas o café o cigarrillo." },
+                { id: 29, text: "Sentimiento de que está perdiendo la razón." },
+                { id: 30, text: "Comportamientos rígidos, obstinación o terquedad." },
+                { id: 31, text: "Sensación de no poder manejar los problemas de la vida." }
+            ];
+
+            // Crear objeto de respuestas
+            const responsesMap = {};
+            responseData.responses.forEach(r => {
+                responsesMap[r.question_id] = r.response_value;
+            });
+
+            // Obtener fecha de aplicación
+            const submissionDate = new Date(responseData.submitted_at);
+            const day = String(submissionDate.getDate()).padStart(2, '0');
+            const month = String(submissionDate.getMonth() + 1).padStart(2, '0');
+            const year = submissionDate.getFullYear();
+
+            // Generar filas de la tabla
+            let tableRows = '';
+            questions.forEach(q => {
+                const response = responsesMap[q.id] || 0;
+                tableRows += `
+                    <tr>
+                        <td class="question-cell">
+                            <span class="question-number">${q.id}.</span> ${q.text}
+                        </td>
+                        <td class="response-cell">${response === 1 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 2 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 3 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 4 ? 'X' : ''}</td>
+                    </tr>
+                `;
+            });
+
+            return `<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte - CC: ${responseData.respondent_cedula}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @page {
+            size: letter;
+            margin: 0.4in; /* Margen de aprox 1cm */
+            margin-header: 0;
+            margin-footer: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.3;
+            color: #000;
+            background: white;
+            width: 100%;
+            padding: 0.4in;
+        }
+
+        /* Estilos Carátula */
+        .cover-page {
+            height: 23cm; /* Reducido para asegurar que quepa en una hoja */
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+            padding-top: 0.5cm;
+        }
+
+        .cover-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-bottom: 2cm;
+        }
+
+        .cover-data-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cover-data-label {
+            font-size: 10pt;
+            text-align: right;
+            width: 180px;
+        }
+
+        .date-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .date-boxes {
+            display: flex;
+        }
+
+        .box {
+            border: 1pt solid #000;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+        }
+
+        .day-box, .month-box { width: 30px; }
+        .year-box { width: 60px; }
+        .id-box { width: 120px; }
+
+        .box-sublabel {
+            font-size: 7pt;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .cover-main {
+            /* flex: 1; quitado para no empujar */
+            margin-top: 2cm;
+            margin-bottom: 2cm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .green-title {
+            color: #2e7d32; /* Verde un poco menos oscuro */
+            font-size: 15pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.4;
+            max-width: 100%; /* Permitir que ocupe todo el ancho para un solo renglón */
+        }
+
+        .cover-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+            padding-bottom: 0.5cm; /* Reducido para que quepan */
+        }
+
+        .footer-logo-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-left: 2cm; /* Desplazado un poco a la derecha */
+        }
+
+        .footer-logo-left img {
+            height: 130px; /* Logos más grandes */
+            margin-bottom: 5px;
+        }
+
+        .footer-logo-left span {
+            font-size: 9pt; /* Texto un poco más grande para el logo grande */
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .footer-logo-right img {
+            height: 126px; /* Aumentado 20% adicional */
+        }
+
+        /* Estilos Contenido */
+        .content-page {
+            padding-top: 0.5cm;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
+
+        .logo-left, .logo-right { flex: 1; }
+        .logo-left { display: flex; align-items: center; gap: 10px; }
+        .logo-right { display: flex; justify-content: flex-end; }
+        .logo-left img, .logo-right img { height: 70px; width: auto; }
+        
+        .logo-text { font-size: 9pt; line-height: 1.2; }
+        .logo-text strong { display: block; font-size: 10pt; }
+
+        .title {
+            text-align: center;
+            font-size: 10.5pt; /* Un poco más pequeña */
+            font-weight: bold;
+            margin: 5px 0 5px 0;
+            text-transform: uppercase;
+        }
+
+        .instructions {
+            margin-bottom: 5px;
+            font-size: 9pt; /* Un poco más pequeña */
+            text-align: justify;
+        }
+
+        .questionnaire-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .questionnaire-table th {
+            border: 1pt solid #000; /* Borde normal, no remarcado */
+            padding: 4px 5px;
+            text-align: center;
+            font-size: 9pt; /* Reducida 1px aprox */
+            font-weight: bold;
+            background-color: #d8d8d8; /* Gris un poco más oscuro */
+            line-height: 1.0;
+        }
+
+        .questionnaire-table td {
+            border: 1pt solid #000;
+            padding: 2px 8px;
+            font-size: 9pt; /* Reducida 1px aprox */
+            vertical-align: middle;
+            line-height: 1.1;
+        }
+
+        .questionnaire-table .question-cell {
+            text-align: left;
+            width: 55%;
+        }
+
+        .questionnaire-table .response-cell {
+            text-align: center;
+            width: 11.25%;
+            font-size: 11pt;
+            font-weight: bold;
+        }
+
+        .questionnaire-table .question-number {
+            font-weight: normal; /* Sin negrita */
+            margin-right: 5px;
+        }
+
+        @media print {
+            body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Página de Carátula -->
+    <div class="cover-page">
+        <div class="cover-header">
+            <div class="cover-data-row">
+                <div class="cover-data-label">Fecha de aplicación:</div>
+                <div style="display: flex; gap: 5px;">
+                    <div class="date-container">
+                        <div class="box day-box">${day}</div>
+                        <div class="box-sublabel">dd</div>
+                    </div>
+                    <div class="date-container">
+                        <div class="box month-box">${month}</div>
+                        <div class="box-sublabel">mm</div>
+                    </div>
+                    <div class="date-container">
+                        <div class="box year-box">${year}</div>
+                        <div class="box-sublabel">aaaa</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cover-data-row">
+                <div class="cover-data-label">Número de Identificación<br>del respondiente (ID):</div>
+                <div class="box id-box">${responseData.respondent_cedula}</div>
+            </div>
+        </div>
+
+        <div class="cover-main">
+            <div class="green-title">
+                CUESTIONARIO PARA LA EVALUACIÓN DEL ESTRÉS TERCERA VERSIÓN
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            <div class="footer-logo-left">
+                <img src="/cuestionarios/escudo_colombia.png" alt="Escudo de Colombia">
+                <span>Ministerio de la Protección Social</span>
+                <span style="font-weight: normal;">República de Colombia</span>
+            </div>
+            <div class="footer-logo-right">
+                <img src="/cuestionarios/logo_javeriana.png" alt="Logo Javeriana">
+            </div>
+        </div>
+    </div>
+
+    <!-- Página de Contenido -->
+    <div class="content-page">
+        <div class="header">
+            <div class="logo-left">
+                <img src="/cuestionarios/escudo_colombia.png" alt="Escudo de Colombia">
+                <div class="logo-text">
+                    <strong>Ministerio de la Protección Social</strong>
+                    República de Colombia
+                </div>
+            </div>
+            <div class="logo-right">
+                <img src="/cuestionarios/logo_javeriana.png" alt="Logo Javeriana">
+            </div>
+        </div>
+
+        <div class="title">
+            CUESTIONARIO PARA LA EVALUACIÓN DEL ESTRÉS – TERCERA VERSIÓN
+        </div>
+
+        <div class="instructions">
+            <strong>Señale con una X la casilla que indique la frecuencia con que se le han presentado los siguientes malestares en los últimos tres meses.</strong>
+        </div>
+
+        <table class="questionnaire-table">
+            <thead>
+                <tr>
+                    <th style="width: 55%;">Malestares</th>
+                    <th style="width: 11.25%;">Siempre</th>
+                    <th style="width: 11.25%;">Casi<br>siempre</th>
+                    <th style="width: 11.25%;">A veces</th>
+                    <th style="width: 11.25%;">Nunca</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${tableRows}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>`;
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadQuestionnaireData();
+        });
+    </script>
+</body>
+
+</html>

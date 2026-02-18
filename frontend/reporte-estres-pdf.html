@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario para la Evaluación del Estrés</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: letter;
+            margin: 1.5cm 2cm;
+            /* Eliminar encabezados y pies de página del navegador */
+            margin-top: 1.5cm;
+            margin-bottom: 1.5cm;
+        }
+
+        /* Eliminar encabezados y pies de página automáticos del navegador */
+        @page {
+            margin-header: 0;
+            margin-footer: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.3;
+            color: #000;
+            background: white;
+        }
+
+        /* Header con logos */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        .logo-left,
+        .logo-right {
+            flex: 1;
+        }
+
+        .logo-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo-left img {
+            height: 70px;
+            width: auto;
+        }
+
+        .logo-right img {
+            height: 70px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 9pt;
+            line-height: 1.2;
+        }
+
+        .logo-text strong {
+            display: block;
+            font-size: 10pt;
+        }
+
+        /* Título principal */
+        .title {
+            text-align: center;
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 20px 0 15px 0;
+            text-transform: uppercase;
+        }
+
+        /* Instrucciones */
+        .instructions {
+            margin-bottom: 15px;
+            font-size: 10pt;
+            text-align: justify;
+        }
+
+        /* Tabla principal */
+        .questionnaire-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .questionnaire-table th {
+            border: 1.5pt solid #000;
+            padding: 8px 5px;
+            text-align: center;
+            font-size: 10pt;
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        .questionnaire-table td {
+            border: 1pt solid #000;
+            padding: 6px 8px;
+            font-size: 10pt;
+            vertical-align: middle;
+        }
+
+        .questionnaire-table .question-cell {
+            text-align: left;
+            width: 55%;
+        }
+
+        .questionnaire-table .response-cell {
+            text-align: center;
+            width: 11.25%;
+            font-size: 11pt;
+            font-weight: bold;
+        }
+
+        .questionnaire-table .question-number {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* Secciones de categorías */
+        .category-header {
+            background-color: #d9d9d9;
+            font-weight: bold;
+            font-size: 10pt;
+            padding: 8px;
+            border: 1.5pt solid #000;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+
+
+        /* Botón de impresión */
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: #45a049;
+        }
+
+        @media print {
+            .print-button {
+                display: none !important;
+            }
+
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+
+    <!-- Header con logos -->
+    <div class="header">
+        <div class="logo-left">
+            <img src="../imagnes_impresion/escudo colombia.png" alt="Escudo de Colombia">
+            <div class="logo-text">
+                <strong>Ministerio de la Protección Social</strong>
+                República de Colombia
+            </div>
+        </div>
+        <div class="logo-right">
+            <img src="../imagnes_impresion/logo javeriana.png" alt="Logo Javeriana">
+        </div>
+    </div>
+
+    <!-- Título -->
+    <div class="title">
+        CUESTIONARIO PARA LA EVALUACIÓN DEL ESTRÉS – TERCERA VERSIÓN
+    </div>
+
+    <!-- Instrucciones -->
+    <div class="instructions">
+        <strong>Señale con una X la casilla que indique la frecuencia con que se le han presentado los siguientes
+            malestares en los últimos tres meses.</strong>
+    </div>
+
+    <!-- Tabla del cuestionario -->
+    <table class="questionnaire-table">
+        <thead>
+            <tr>
+                <th style="width: 55%;">Malestares</th>
+                <th style="width: 11.25%;">Siempre</th>
+                <th style="width: 11.25%;">Casi<br>siempre</th>
+                <th style="width: 11.25%;">A veces</th>
+                <th style="width: 11.25%;">Nunca</th>
+            </tr>
+        </thead>
+        <tbody id="questionnaire-body">
+            <!-- Las filas se generarán dinámicamente con JavaScript -->
+        </tbody>
+    </table>
+
+
+
+    <script>
+        // Datos del cuestionario
+        const questions = [
+            { id: 1, text: "Dolores en el cuello y espalda o tensión muscular.", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 2, text: "Problemas gastrointestinales, úlcera péptica, acidez, problemas digestivos o del colon.", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 3, text: "Problemas respiratorios.", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 4, text: "Dolor de cabeza.", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 5, text: "Trastornos del sueño como somnolencia durante el día o desvelo en la noche.", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 6, text: "Palpitaciones en el pecho o problemas cardíacos.", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 7, text: "Cambios fuertes del apetito.", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 8, text: "Problemas relacionados con la función de los órganos genitales (impotencia, frigidez).", category: "SÍNTOMAS FISIOLÓGICOS" },
+            { id: 9, text: "Dificultad en las relaciones familiares.", category: "SÍNTOMAS COMPORTAMENTALES" },
+            { id: 10, text: "Dificultad para permanecer quieto o dificultad para iniciar actividades.", category: "SÍNTOMAS COMPORTAMENTALES" },
+            { id: 11, text: "Dificultad en las relaciones con otras personas.", category: "SÍNTOMAS COMPORTAMENTALES" },
+            { id: 12, text: "Sensación de aislamiento y desinterés.", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 13, text: "Sentimiento de sobrecarga de trabajo.", category: "SÍNTOMAS LABORALES" },
+            { id: 14, text: "Dificultad para concentrarse, olvidos frecuentes.", category: "SÍNTOMAS INTELECTUALES" },
+            { id: 15, text: "Aumento en el número de accidentes de trabajo.", category: "SÍNTOMAS LABORALES" },
+            { id: 16, text: "Sentimiento de frustración, de no haber hecho lo que se quería en la vida.", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 17, text: "Cansancio, tedio o desgano.", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 18, text: "Disminución del rendimiento en el trabajo o poca creatividad.", category: "SÍNTOMAS LABORALES" },
+            { id: 19, text: "Deseo de no asistir al trabajo.", category: "SÍNTOMAS LABORALES" },
+            { id: 20, text: "Bajo compromiso o poco interés con lo que se hace.", category: "SÍNTOMAS LABORALES" },
+            { id: 21, text: "Dificultad para tomar decisiones.", category: "SÍNTOMAS INTELECTUALES" },
+            { id: 22, text: "Deseo de cambiar de empleo.", category: "SÍNTOMAS LABORALES" },
+            { id: 23, text: "Sentimiento de soledad y miedo.", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 24, text: "Sentimiento de irritabilidad, actitudes y pensamientos negativos.", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 25, text: "Sentimiento de angustia, preocupación o tristeza.", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 26, text: "Consumo de drogas para aliviar la tensión o los nervios.", category: "SÍNTOMAS COMPORTAMENTALES" },
+            { id: 27, text: "Sentimientos de que \"no vale nada\" o \"no sirve para nada\".", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 28, text: "Consumo de bebidas alcohólicas o café o cigarrillo.", category: "SÍNTOMAS COMPORTAMENTALES" },
+            { id: 29, text: "Sentimiento de que está perdiendo la razón.", category: "SÍNTOMAS EMOCIONALES" },
+            { id: 30, text: "Comportamientos rígidos, obstinación o terquedad.", category: "SÍNTOMAS COMPORTAMENTALES" },
+            { id: 31, text: "Sensación de no poder manejar los problemas de la vida.", category: "SÍNTOMAS EMOCIONALES" }
+        ];
+
+        // Respuestas del usuario (ejemplo con el primer usuario)
+        const userResponses = {
+            1: 3, 2: 2, 3: 4, 4: 1, 5: 3, 6: 3, 7: 3, 8: 4,
+            9: 4, 10: 4, 11: 4, 12: 4, 13: 3, 14: 4, 15: 1,
+            16: 3, 17: 4, 18: 2, 19: 4, 20: 3, 21: 2, 22: 3,
+            23: 4, 24: 4, 25: 4, 26: 4, 27: 2, 28: 3, 29: 2,
+            30: 2, 31: 3
+        };
+
+        // Función para generar la tabla
+        function generateQuestionnaire() {
+            const tbody = document.getElementById('questionnaire-body');
+
+            questions.forEach(question => {
+                // Obtener la respuesta del usuario
+                const response = userResponses[question.id];
+
+                // Crear fila de pregunta
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="question-cell">
+                        <span class="question-number">${question.id}.</span> ${question.text}
+                    </td>
+                    <td class="response-cell">${response === 1 ? 'X' : ''}</td>
+                    <td class="response-cell">${response === 2 ? 'X' : ''}</td>
+                    <td class="response-cell">${response === 3 ? 'X' : ''}</td>
+                    <td class="response-cell">${response === 4 ? 'X' : ''}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Generar el cuestionario al cargar la página
+        document.addEventListener('DOMContentLoaded', generateQuestionnaire);
+    </script>
+</body>
+
+</html>
