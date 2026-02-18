@@ -1048,21 +1048,29 @@ app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Iniciar servidor de Formularios")
+    parser.add_argument("--port", type=int, default=8000, help="Puerto del servidor (default: 8000)")
+    parser.add_argument("--host", type=str, default="0.0.0.0", help="Host del servidor (default: 0.0.0.0)")
+    args = parser.parse_args()
+
     ensure_dirs()
     print("\n" + "="*60)
-    print("Sistema de Cuestionarios iniciado!")
+    print(f"Sistema de Cuestionarios iniciado en puerto {args.port}!")
     print("="*60)
     print("\n SELECTOR DE CUESTIONARIOS:")
-    print("   http://localhost:8000/")
+    print(f"   http://localhost:{args.port}/")
     print("\n ENCUESTA (ejemplo):")
-    print("   http://localhost:8000/encuesta/estres")
+    print(f"   http://localhost:{args.port}/encuesta/estres")
     print("\n RESULTADOS (ejemplo):")
-    print("   http://localhost:8000/resultados/estres")
+    print(f"   http://localhost:{args.port}/resultados/estres")
     print(" IMPORTANTE: No cerrar esta ventana mientras se usen los cuestionarios")
     print("\n Agrega nuevos cuestionarios en:")
     print(f"   {QUESTIONNAIRES_DIR}")
     print("="*60 + "\n")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    
+    uvicorn.run(app, host=args.host, port=args.port)
 
     print("="*60 + "\n")
 
