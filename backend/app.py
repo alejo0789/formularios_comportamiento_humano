@@ -39,15 +39,8 @@ os.makedirs(RESULTS_PDF_DIR, exist_ok=True)
 
 from fastapi import UploadFile, File
 import shutil
-from xhtml2pdf import pisa
 
-@app.post("/api/save-pdf")
-async def save_pdf(file: UploadFile = File(...)):
-    """Save a PDF file to the results directory"""
-    file_path = os.path.join(RESULTS_PDF_DIR, file.filename)
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-    return {"success": True, "filename": file.filename, "path": file_path}
+# Endpoint eliminado: save-pdf (se reemplazó por generate-pdf-server con Playwright)
 
 
 class PDFGenerationRequest(BaseModel):
