@@ -460,8 +460,8 @@
                             <a href="/cuestionarios/resultados/${q.id}" class="result-card-btn primary" onclick="event.stopPropagation()">
                                 📊 Ver Resultados
                             </a>
-                            ${q.id === 'estres' && q.responseCount > 0 ? `
-                                <a href="/cuestionarios/generar-reportes-estres.html" class="result-card-btn" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white;" onclick="event.stopPropagation()">
+                            ${(q.id === 'estres' || q.id === 'extralaborales' || q.id === 'intralaborales-a') && q.responseCount > 0 ? `
+                                <a href="/cuestionarios/generar-reportes-${q.id}.html" class="result-card-btn" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white;" onclick="event.stopPropagation()">
                                     🖨️ Ver PDF
                                 </a>
                                 <a href="${API_BASE_URL}/api/export/excel/${q.id}" class="result-card-btn secondary" onclick="event.stopPropagation()">

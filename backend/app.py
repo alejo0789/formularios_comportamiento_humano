@@ -364,6 +364,12 @@ async def generate_pdf_server(data: PDFFromHTMLRequest):
     from playwright.async_api import async_playwright
 
     file_dir = os.path.join(RESULTS_PDF_DIR, "stress")
+    if "extralaborales" in data.filename.lower():
+        file_dir = os.path.join(RESULTS_PDF_DIR, "extralaborales")
+    elif "intralaborales-a" in data.filename.lower():
+        file_dir = os.path.join(RESULTS_PDF_DIR, "intralaborales-a")
+        
+        
     os.makedirs(file_dir, exist_ok=True)
     file_path = os.path.join(file_dir, data.filename)
 
@@ -380,6 +386,303 @@ async def generate_pdf_server(data: PDFFromHTMLRequest):
         await browser.close()
 
     return {"success": True, "filename": data.filename}
+
+
+@app.get("/api/pdfs/stress")
+async def list_generated_pdfs():
+    """List all PDF files in the stress directory."""
+    folder = os.path.join(RESULTS_PDF_DIR, "stress")
+    if not os.path.exists(folder):
+        return []
+    
+    files = []
+    for f in os.listdir(folder):
+        if f.lower().endswith(".pdf"):
+            path = os.path.join(folder, f)
+            size = os.path.getsize(path) / 1024  # KB
+            created = os.path.getctime(path)
+            files.append({
+                "filename": f,
+                "size_kb": round(size, 2),
+                "created_at": datetime.fromtimestamp(created).strftime("%Y-%m-%d %H:%M:%S")
+            })
+    
+    # Sort by newest first
+    files.sort(key=lambda x: x["created_at"], reverse=True)
+    return files
+
+
+@app.get("/api/pdfs/stress/{filename}")
+async def download_generated_pdf(filename: str):
+    """Download a specific PDF file."""
+    path = os.path.join(RESULTS_PDF_DIR, "stress", filename)
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(path, media_type="application/pdf", filename=filename)
+
+
+@app.delete("/api/pdfs/stress/{filename}")
+async def delete_generated_pdf(filename: str):
+    """Delete a specific PDF file."""
+    path = os.path.join(RESULTS_PDF_DIR, "stress", filename)
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="File not found")
+    os.remove(path)
+    return {"success": True, "message": f"Deleted {filename}"}
+
+
+@app.post("/api/pdfs/stress/bulk-download")
+async def bulk_download_pdfs(filenames: List[str]):
+    """Download multiple PDF files as a ZIP archive."""
+    import zipfile
+    import io
+    
+    if not filenames:
+        raise HTTPException(status_code=400, detail="No files specified")
+    
+    folder = os.path.join(RESULTS_PDF_DIR, "stress")
+    zip_buffer = io.BytesIO()
+    
+    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+        for fname in filenames:
+            file_path = os.path.join(folder, fname)
+            if os.path.exists(file_path):
+                zip_file.write(file_path, arcname=fname)
+    
+    zip_buffer.seek(0)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return StreamingResponse(
+        zip_buffer, 
+        media_type="application/zip", 
+        headers={"Content-Disposition": f"attachment; filename=reportes_estres_{timestamp}.zip"}
+    )
+
+
+@app.post("/api/pdfs/stress/bulk-delete")
+async def bulk_delete_pdfs(filenames: List[str]):
+    """Delete multiple PDF files."""
+    deleted_count = 0
+    errors = []
+    
+    folder = os.path.join(RESULTS_PDF_DIR, "stress")
+    
+    for fname in filenames:
+        try:
+            file_path = os.path.join(folder, fname)
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                deleted_count += 1
+        except Exception as e:
+            errors.append(f"{fname}: {str(e)}")
+            
+    return {
+        "success": True, 
+        "deleted_count": deleted_count, 
+        "errors": errors
+    }
+
+
+# ==========================================
+# EXTRALABORALES PDF ENDPOINTS
+# ==========================================
+
+# ==========================================
+# EXTRALABORALES PDF ENDPOINTS
+# ==========================================
+
+@app.get("/api/pdfs/extralaborales")
+async def list_generated_pdfs_extralaborales():
+    """List all PDF files in the extralaborales directory."""
+    folder = os.path.join(RESULTS_PDF_DIR, "extralaborales")
+    if not os.path.exists(folder):
+        return []
+    
+    files = []
+    for f in os.listdir(folder):
+        if f.lower().endswith(".pdf"):
+            path = os.path.join(folder, f)
+            size = os.path.getsize(path) / 1024  # KB
+            created = os.path.getctime(path)
+            files.append({
+                "filename": f,
+                "size_kb": round(size, 2),
+                "created_at": datetime.fromtimestamp(created).strftime("%Y-%m-%d %H:%M:%S")
+            })
+    
+    # Sort by newest first
+    files.sort(key=lambda x: x["created_at"], reverse=True)
+    return files
+
+
+@app.get("/api/pdfs/extralaborales/{filename}")
+async def download_generated_pdf_extralaborales(filename: str):
+    """Download a specific PDF file."""
+    path = os.path.join(RESULTS_PDF_DIR, "extralaborales", filename)
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(path, media_type="application/pdf", filename=filename)
+
+
+@app.delete("/api/pdfs/extralaborales/{filename}")
+async def delete_generated_pdf_extralaborales(filename: str):
+    """Delete a specific PDF file."""
+    path = os.path.join(RESULTS_PDF_DIR, "extralaborales", filename)
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="File not found")
+    os.remove(path)
+    return {"success": True, "message": f"Deleted {filename}"}
+
+
+@app.post("/api/pdfs/extralaborales/bulk-download")
+async def bulk_download_pdfs_extralaborales(filenames: List[str]):
+    """Download multiple PDF files as a ZIP archive."""
+    import zipfile
+    import io
+    
+    if not filenames:
+        raise HTTPException(status_code=400, detail="No files specified")
+    
+    folder = os.path.join(RESULTS_PDF_DIR, "extralaborales")
+    zip_buffer = io.BytesIO()
+    
+    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+        for fname in filenames:
+            file_path = os.path.join(folder, fname)
+            if os.path.exists(file_path):
+                zip_file.write(file_path, arcname=fname)
+    
+    zip_buffer.seek(0)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return StreamingResponse(
+        zip_buffer, 
+        media_type="application/zip", 
+        headers={"Content-Disposition": f"attachment; filename=reportes_extralaborales_{timestamp}.zip"}
+    )
+
+
+@app.post("/api/pdfs/extralaborales/bulk-delete")
+async def bulk_delete_pdfs_extralaborales(filenames: List[str]):
+    """Delete multiple PDF files."""
+    deleted_count = 0
+    errors = []
+    
+    folder = os.path.join(RESULTS_PDF_DIR, "extralaborales")
+    
+    for fname in filenames:
+        try:
+            file_path = os.path.join(folder, fname)
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                deleted_count += 1
+        except Exception as e:
+            errors.append(f"{fname}: {str(e)}")
+            
+    return {
+        "success": True, 
+        "deleted_count": deleted_count, 
+        "errors": errors
+    }
+
+
+# ==========================================
+# INTRALABORALES A PDF ENDPOINTS
+# ==========================================
+
+@app.get("/api/pdfs/intralaborales-a")
+async def list_generated_pdfs_intralaborales_a():
+    """List all PDF files in the intralaborales-a directory."""
+    folder = os.path.join(RESULTS_PDF_DIR, "intralaborales-a")
+    if not os.path.exists(folder):
+        return []
+    
+    files = []
+    for f in os.listdir(folder):
+        if f.lower().endswith(".pdf"):
+            path = os.path.join(folder, f)
+            size = os.path.getsize(path) / 1024  # KB
+            created = os.path.getctime(path)
+            files.append({
+                "filename": f,
+                "size_kb": round(size, 2),
+                "created_at": datetime.fromtimestamp(created).strftime("%Y-%m-%d %H:%M:%S")
+            })
+    
+    # Sort by newest first
+    files.sort(key=lambda x: x["created_at"], reverse=True)
+    return files
+
+
+@app.get("/api/pdfs/intralaborales-a/{filename}")
+async def download_generated_pdf_intralaborales_a(filename: str):
+    """Download a specific PDF file."""
+    path = os.path.join(RESULTS_PDF_DIR, "intralaborales-a", filename)
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(path, media_type="application/pdf", filename=filename)
+
+
+@app.delete("/api/pdfs/intralaborales-a/{filename}")
+async def delete_generated_pdf_intralaborales_a(filename: str):
+    """Delete a specific PDF file."""
+    path = os.path.join(RESULTS_PDF_DIR, "intralaborales-a", filename)
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="File not found")
+    os.remove(path)
+    return {"success": True, "message": f"Deleted {filename}"}
+
+
+@app.post("/api/pdfs/intralaborales-a/bulk-download")
+async def bulk_download_pdfs_intralaborales_a(filenames: List[str]):
+    """Download multiple PDF files as a ZIP archive."""
+    import zipfile
+    import io
+    
+    if not filenames:
+        raise HTTPException(status_code=400, detail="No files specified")
+    
+    folder = os.path.join(RESULTS_PDF_DIR, "intralaborales-a")
+    zip_buffer = io.BytesIO()
+    
+    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+        for fname in filenames:
+            file_path = os.path.join(folder, fname)
+            if os.path.exists(file_path):
+                zip_file.write(file_path, arcname=fname)
+    
+    zip_buffer.seek(0)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return StreamingResponse(
+        zip_buffer, 
+        media_type="application/zip", 
+        headers={"Content-Disposition": f"attachment; filename=reportes_intralaborales_a_{timestamp}.zip"}
+    )
+
+
+@app.post("/api/pdfs/intralaborales-a/bulk-delete")
+async def bulk_delete_pdfs_intralaborales_a(filenames: List[str]):
+    """Delete multiple PDF files."""
+    deleted_count = 0
+    errors = []
+    
+    folder = os.path.join(RESULTS_PDF_DIR, "intralaborales-a")
+    
+    for fname in filenames:
+        try:
+            file_path = os.path.join(folder, fname)
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                deleted_count += 1
+        except Exception as e:
+            errors.append(f"{fname}: {str(e)}")
+            
+    return {
+        "success": True, 
+        "deleted_count": deleted_count, 
+        "errors": errors
+    }
+
+
+# CORS middleware
 
 
 # CORS middleware

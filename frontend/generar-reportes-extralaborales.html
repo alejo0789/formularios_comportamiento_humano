@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generar Reportes PDF - Evaluación del Estrés</title>
+    <title>Generar Reportes PDF - Factores Extralaborales</title>
     <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -426,7 +426,7 @@
         <div class="pdf-header">
             <div class="pdf-icon">🖨️</div>
             <h1 class="pdf-title">Generar Reportes PDF</h1>
-            <p class="pdf-subtitle">Cuestionario para la Evaluación del Estrés</p>
+            <p class="pdf-subtitle">Cuestionario de Factores Psicosociales Extralaborales</p>
         </div>
 
         <!-- Sección de búsqueda -->
@@ -513,7 +513,9 @@
         // Cargar datos del cuestionario
         async function loadQuestionnaireData() {
             try {
-                const response = await fetch(`${API_BASE_URL}/questionnaires/estres.json`);
+                // Fetch from API instead of static JSON file
+                const response = await fetch(`${API_BASE_URL}/api/questionnaires/extralaborales`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 questionnaireData = await response.json();
             } catch (error) {
                 console.error('Error loading questionnaire:', error);
@@ -533,7 +535,7 @@
             resultsContainer.innerHTML = '<div class="loading"><div class="spinner"></div>Buscando...</div>';
 
             try {
-                const response = await fetch(`${API_BASE_URL}/api/responses/estres`);
+                const response = await fetch(`${API_BASE_URL}/api/responses/extralaborales`);
                 const responseData = await response.json();
                 const allData = responseData.responses;
 
@@ -562,7 +564,7 @@
             container.innerHTML = '<div class="loading"><div class="spinner"></div>Cargando respuestas...</div>';
 
             try {
-                const response = await fetch(`${API_BASE_URL}/api/responses/estres`);
+                const response = await fetch(`${API_BASE_URL}/api/responses/extralaborales`);
                 const responseData = await response.json();
                 allResponses = responseData.responses;
 
@@ -612,45 +614,53 @@
             const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
             // Generar el HTML del reporte
-            const reportHTML = generateReportHTML(responseData);
+            generateReportHTML(responseData).then(reportHTML => {
+                // Cargar el HTML en el iframe
+                iframeDoc.open();
+                iframeDoc.write(reportHTML);
+                iframeDoc.close();
 
-            // Cargar el HTML en el iframe
-            iframeDoc.open();
-            iframeDoc.write(reportHTML);
-            iframeDoc.close();
-
-            // Esperar a que el iframe cargue e imprimir
-            iframe.onload = function () {
-                setTimeout(() => {
-                    iframe.contentWindow.print();
-                }, 500);
-            };
+                // Esperar a que el iframe cargue e imprimir
+                iframe.onload = function () {
+                    setTimeout(() => {
+                        iframe.contentWindow.print();
+                    }, 500);
+                };
+            });
         }
 
         // Convierte una URL de imagen a base64 data URI
         async function imgToBase64(url) {
-            const res = await fetch(url);
-            const blob = await res.blob();
-            return new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onloadend = () => resolve(reader.result);
-                reader.readAsDataURL(blob);
-            });
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Failed to fetch image');
+                const blob = await res.blob();
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.readAsDataURL(blob);
+                });
+            } catch (e) {
+                return ''; // Retornar vacío si falla
+            }
         }
 
-        // Generar PDF en el servidor (Playwright = idéntico a imprimir desde el navegador)
+        // Generar PDF en el servidor
         async function generateAndSavePDFToServer(responseData) {
             // Generar el HTML del reporte
-            let reportHTML = generateReportHTML(responseData);
+            let reportHTML = await generateReportHTML(responseData);
 
-            // Convertir imágenes a base64 para que Playwright no necesite acceder a URLs externas
+            // Convertir imágenes a base64 (Backend necesita contenido embebido)
             const colombiaB64 = await imgToBase64('/cuestionarios/escudo_colombia.png');
             const javerianaB64 = await imgToBase64('/cuestionarios/logo_javeriana.png');
             reportHTML = reportHTML
                 .replace(/src="\/cuestionarios\/escudo_colombia\.png"/g, `src="${colombiaB64}"`)
                 .replace(/src="\/cuestionarios\/logo_javeriana\.png"/g, `src="${javerianaB64}"`);
 
-            const filename = `Reporte_Estres_${responseData.respondent_cedula}.pdf`;
+            // Images in instructions are already base64'd in generateReportHTML but let's be safe
+            // The instructions image is handled inside generateReportHTML using imgToBase64
+
+            const filename = `Reporte_Extralaborales_${responseData.respondent_cedula}.pdf`;
 
             const response = await fetch(`${API_BASE_URL}/api/generate-pdf-server`, {
                 method: 'POST',
@@ -669,10 +679,9 @@
 
         // Generar todos los PDFs y guardarlos en el servidor
         async function generateAllPDFs() {
-            // Si no hay respuestas cargadas, cargarlas primero
             if (allResponses.length === 0) {
                 try {
-                    const response = await fetch(`${API_BASE_URL}/api/responses/estres`);
+                    const response = await fetch(`${API_BASE_URL}/api/responses/extralaborales`);
                     const responseData = await response.json();
                     allResponses = responseData.responses;
 
@@ -686,11 +695,10 @@
                 }
             }
 
-            if (!confirm(`¿Está seguro de generar y guardar ${allResponses.length} reportes PDF directamente en el servidor? \n\nUbicación: backend/data/resultados_pdf/`)) {
+            if (!confirm(`¿Está seguro de generar y guardar ${allResponses.length} reportes PDF directamente en el servidor?`)) {
                 return;
             }
 
-            // Mostrar progreso
             const progressContainer = document.getElementById('progressContainer');
             const progressText = document.getElementById('progressText');
             const progressBar = document.getElementById('progressBar');
@@ -698,7 +706,6 @@
             progressContainer.style.display = 'block';
             let successCount = 0;
 
-            // Generar uno por uno (sin delay, el servidor es rápido)
             for (let i = 0; i < allResponses.length; i++) {
                 try {
                     const percent = Math.round(((i + 1) / allResponses.length) * 100);
@@ -718,40 +725,12 @@
 
 
         // Generar HTML del reporte
-        function generateReportHTML(responseData) {
-            const questions = [
-                { id: 1, text: "Dolores en el cuello y espalda o tensión muscular." },
-                { id: 2, text: "Problemas gastrointestinales, úlcera péptica, acidez, problemas digestivos o del colon." },
-                { id: 3, text: "Problemas respiratorios." },
-                { id: 4, text: "Dolor de cabeza." },
-                { id: 5, text: "Trastornos del sueño como somnolencia durante el día o desvelo en la noche." },
-                { id: 6, text: "Palpitaciones en el pecho o problemas cardíacos." },
-                { id: 7, text: "Cambios fuertes del apetito." },
-                { id: 8, text: "Problemas relacionados con la función de los órganos genitales (impotencia, frigidez)." },
-                { id: 9, text: "Dificultad en las relaciones familiares." },
-                { id: 10, text: "Dificultad para permanecer quieto o dificultad para iniciar actividades." },
-                { id: 11, text: "Dificultad en las relaciones con otras personas." },
-                { id: 12, text: "Sensación de aislamiento y desinterés." },
-                { id: 13, text: "Sentimiento de sobrecarga de trabajo." },
-                { id: 14, text: "Dificultad para concentrarse, olvidos frecuentes." },
-                { id: 15, text: "Aumento en el número de accidentes de trabajo." },
-                { id: 16, text: "Sentimiento de frustración, de no haber hecho lo que se quería en la vida." },
-                { id: 17, text: "Cansancio, tedio o desgano." },
-                { id: 18, text: "Disminución del rendimiento en el trabajo o poca creatividad." },
-                { id: 19, text: "Deseo de no asistir al trabajo." },
-                { id: 20, text: "Bajo compromiso o poco interés con lo que se hace." },
-                { id: 21, text: "Dificultad para tomar decisiones." },
-                { id: 22, text: "Deseo de cambiar de empleo." },
-                { id: 23, text: "Sentimiento de soledad y miedo." },
-                { id: 24, text: "Sentimiento de irritabilidad, actitudes y pensamientos negativos." },
-                { id: 25, text: "Sentimiento de angustia, preocupación o tristeza." },
-                { id: 26, text: "Consumo de drogas para aliviar la tensión o los nervios." },
-                { id: 27, text: 'Sentimientos de que "no vale nada" o "no sirve para nada".' },
-                { id: 28, text: "Consumo de bebidas alcohólicas o café o cigarrillo." },
-                { id: 29, text: "Sentimiento de que está perdiendo la razón." },
-                { id: 30, text: "Comportamientos rígidos, obstinación o terquedad." },
-                { id: 31, text: "Sensación de no poder manejar los problemas de la vida." }
-            ];
+        async function generateReportHTML(responseData) {
+            // Usar preguntas cargadas o fallback
+            const questions = (questionnaireData && questionnaireData.questions) ? questionnaireData.questions : [];
+
+            // Cargar imagen de instrucciones
+            const instruccionesB64 = await imgToBase64('/cuestionarios/instrucciones.png');
 
             // Crear objeto de respuestas
             const responsesMap = {};
@@ -765,19 +744,36 @@
             const month = String(submissionDate.getMonth() + 1).padStart(2, '0');
             const year = submissionDate.getFullYear();
 
-            // Generar filas de la tabla
-            let tableRows = '';
-            questions.forEach(q => {
+            // Generar filas de la tabla para la página 1 (Preguntas 1-13)
+            let tableRowsPage1 = '';
+            questions.slice(0, 13).forEach(q => {
                 const response = responsesMap[q.id] || 0;
-                tableRows += `
+                tableRowsPage1 += `
                     <tr>
-                        <td class="question-cell">
-                            <span class="question-number">${q.id}.</span> ${q.text}
-                        </td>
+                        <td class="question-id">${q.id}</td>
+                        <td class="question-cell" style="font-size: 11pt;">${q.text}</td>
                         <td class="response-cell">${response === 1 ? 'X' : ''}</td>
                         <td class="response-cell">${response === 2 ? 'X' : ''}</td>
                         <td class="response-cell">${response === 3 ? 'X' : ''}</td>
                         <td class="response-cell">${response === 4 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 5 ? 'X' : ''}</td>
+                    </tr>
+                `;
+            });
+
+            // Generar filas de la tabla para la página 2 (Preguntas 14 en adelante)
+            let tableRowsPage2 = '';
+            questions.slice(13).forEach(q => {
+                const response = responsesMap[q.id] || 0;
+                tableRowsPage2 += `
+                    <tr>
+                        <td class="question-id">${q.id}</td>
+                        <td class="question-cell" style="font-size: 11pt;">${q.text}</td>
+                        <td class="response-cell">${response === 1 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 2 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 3 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 4 ? 'X' : ''}</td>
+                        <td class="response-cell">${response === 5 ? 'X' : ''}</td>
                     </tr>
                 `;
             });
@@ -793,7 +789,7 @@
         
         @page {
             size: letter;
-            margin: 0.4in; /* Margen de aprox 1cm */
+            margin: 0.4in;
             margin-header: 0;
             margin-footer: 0;
         }
@@ -810,7 +806,7 @@
 
         /* Estilos Carátula */
         .cover-page {
-            height: 23cm; /* Reducido para asegurar que quepa en una hoja */
+            height: 23cm;
             display: flex;
             flex-direction: column;
             page-break-after: always;
@@ -867,7 +863,6 @@
         }
 
         .cover-main {
-            /* flex: 1; quitado para no empujar */
             margin-top: 2cm;
             margin-bottom: 2cm;
             display: flex;
@@ -878,12 +873,12 @@
         }
 
         .green-title {
-            color: #2e7d32; /* Verde un poco menos oscuro */
+            color: #2e7d32;
             font-size: 15pt;
             font-weight: 800;
             text-transform: uppercase;
             line-height: 1.4;
-            max-width: 100%; /* Permitir que ocupe todo el ancho para un solo renglón */
+            max-width: 100%;
         }
 
         .cover-footer {
@@ -891,7 +886,7 @@
             justify-content: space-between;
             align-items: flex-end;
             margin-top: auto;
-            padding-bottom: 0.5cm; /* Reducido para que quepan */
+            padding-bottom: 0.5cm;
         }
 
         .footer-logo-left {
@@ -899,27 +894,45 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding-left: 2cm; /* Desplazado un poco a la derecha */
+            padding-left: 2cm;
         }
 
         .footer-logo-left img {
-            height: 130px; /* Logos más grandes */
+            height: 130px;
             margin-bottom: 5px;
         }
 
         .footer-logo-left span {
-            font-size: 9pt; /* Texto un poco más grande para el logo grande */
+            font-size: 9pt;
             font-weight: bold;
             line-height: 1.1;
         }
 
         .footer-logo-right img {
-            height: 126px; /* Aumentado 20% adicional */
+            height: 126px;
+        }
+        
+        /* Instrucciones y Contenido */
+        .instructions-page-img {
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            height: 23cm;
+        }
+        
+        .instructions-page-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
-        /* Estilos Contenido */
         .content-page {
             padding-top: 0.5cm;
+            page-break-after: always;
+        }
+
+        .content-page:last-child {
+            page-break-after: auto;
         }
 
         .header {
@@ -940,15 +953,15 @@
 
         .title {
             text-align: center;
-            font-size: 10.5pt; /* Un poco más pequeña */
+            font-size: 10.5pt;
             font-weight: bold;
             margin: 5px 0 5px 0;
             text-transform: uppercase;
         }
 
-        .instructions {
+        .instructions-text {
             margin-bottom: 5px;
-            font-size: 9pt; /* Un poco más pequeña */
+            font-size: 9pt;
             text-align: justify;
         }
 
@@ -959,272 +972,45 @@
         }
 
         .questionnaire-table th {
-            border: 1pt solid #000; /* Borde normal, no remarcado */
+            border: 1pt solid #000;
             padding: 4px 5px;
             text-align: center;
-            font-size: 9pt; /* Reducida 1px aprox */
+            font-size: 9pt;
             font-weight: bold;
-            background-color: #d8d8d8; /* Gris un poco más oscuro */
+            background-color: #d8d8d8;
             line-height: 1.0;
         }
 
         .questionnaire-table td {
             border: 1pt solid #000;
             padding: 2px 8px;
-            font-size: 9pt; /* Reducida 1px aprox */
+            font-size: 9pt;
             vertical-align: middle;
             line-height: 1.1;
         }
 
+        .questionnaire-table .question-id {
+            text-align: center;
+            width: 5%;
+            border-right: 1pt solid #000;
+            font-weight: normal;
+        }
+
         .questionnaire-table .question-cell {
             text-align: left;
-            width: 55%;
+            width: 45%; 
+            padding-left: 5px;
         }
 
         .questionnaire-table .response-cell {
             text-align: center;
-            width: 11.25%;
+            width: 10%;
             font-size: 11pt;
             font-weight: bold;
         }
 
-        .questionnaire-table .question-number {
-            font-weight: normal; /* Sin negrita */
-            margin-right: 5px;
-        }
-
         @media print {
             body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-        }
-        /* Sección de Gestión de PDFs */
-        .manage-pdfs-section {
-            background-color: #ffffff !important;
-            border: 1px solid var(--border-color);
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--spacing-lg);
-            box-shadow: var(--shadow-md);
-            margin-top: var(--spacing-lg);
-            position: relative;
-            z-index: 10;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .manage-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--spacing-lg);
-            flex-wrap: wrap;
-            gap: var(--spacing-lg); /* Más espacio entre título y controles */
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: var(--spacing-md);
-        }
-
-        .manage-title {
-            font-size: var(--font-size-xl);
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .table-controls {
-            display: flex;
-            gap: var(--spacing-md);
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .bulk-actions {
-            display: flex;
-            gap: var(--spacing-sm);
-            opacity: 0.5;
-            pointer-events: none;
-            transition: opacity 0.3s;
-            margin-left: var(--spacing-md); /* Separar del botón refrescar */
-        }
-
-        .bulk-actions.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-        
-        /* Botón refrescar más separado */
-        .table-controls .btn-secondary {
-            margin-right: var(--spacing-sm);
-        }
-
-        .table-container {
-            max-height: 600px;
-            overflow-y: auto;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            background-color: #fff; /* Fondo blanco para la tabla */
-        }
-
-        .file-table {
-            width: 100%;
-            border-collapse: separate; /* Para que el sticky header no se vea raro */
-            border-spacing: 0;
-            background-color: #fff;
-        }
-
-        .file-table th {
-            position: sticky;
-            top: 0;
-            background-color: #f8fafc; /* Color gris muy suave para cabecera */
-            color: var(--text-primary);
-            font-weight: 700;
-            z-index: 5;
-            padding: var(--spacing-md);
-            text-align: left;
-            border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .file-table td {
-            padding: var(--spacing-md);
-            border-bottom: 1px solid var(--border-color);
-            vertical-align: middle;
-        }
-
-        .file-table tr:hover {
-            background-color: var(--bg-main);
-        }
-
-        .selected-row {
-            background-color: rgba(139, 92, 246, 0.1) !important;
-        }
-
-        .checkbox-cell {
-            width: 40px;
-            text-align: center;
-        }
-
-        /* Checkbox styling */
-        input[type="checkbox"] {
-            width: 1.2em;
-            height: 1.2em;
-            cursor: pointer;
-        }
-
-        .file-actions {
-            display: flex;
-            gap: var(--spacing-sm);
-        }
-        /* === ESTILOS DEFINITIVOS GESTIÓN DE PDFS === */
-        
-        /* Contenedor tipo Tarjeta */
-        .manage-pdfs-section {
-            background-color: #ffffff !important;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            margin-top: var(--spacing-lg);
-            margin-bottom: var(--spacing-lg);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            display: block;
-        }
-
-        .manage-pdfs-section.hidden {
-            display: none !important;
-        }
-
-        /* Cabecera */
-        .manage-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
-            gap: var(--spacing-md);
-        }
-
-        .manage-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        /* Controles */
-        .table-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .bulk-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-left: 1rem;
-            border-left: 1px solid var(--border-color);
-            opacity: 0.5;
-            pointer-events: none;
-            transition: opacity 0.2s;
-        }
-
-        .bulk-actions.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* Tabla */
-        .table-container {
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background: #fff;
-        }
-
-        .file-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.875rem;
-        }
-
-        .file-table th {
-            background-color: #f8fafc;
-            font-weight: 600;
-            text-align: left;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .file-table td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-primary);
-            vertical-align: middle;
-        }
-
-        .file-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .file-table tr:hover {
-            background-color: #f1f5f9;
-        }
-
-        /* Checkbox y Acciones */
-        .checkbox-cell {
-            width: 40px;
-            text-align: center;
-        }
-
-        .file-actions {
-            display: flex;
-            gap: 0.5rem;
         }
     </style>
 </head>
@@ -1257,7 +1043,7 @@
 
         <div class="cover-main">
             <div class="green-title">
-                CUESTIONARIO PARA LA EVALUACIÓN DEL ESTRÉS TERCERA VERSIÓN
+                CUESTIONARIO DE FACTORES PSICOSOCIALES EXTRALABORALES
             </div>
         </div>
 
@@ -1272,8 +1058,32 @@
             </div>
         </div>
     </div>
+    
+    <!-- Página de Instrucciones (Imagen) -->
+    <div class="instructions-page-img">
+        <div class="header">
+            <div class="logo-left">
+                <img src="/cuestionarios/escudo_colombia.png" alt="Escudo de Colombia">
+                <div class="logo-text">
+                    <strong>Ministerio de la Protección Social</strong>
+                    República de Colombia
+                </div>
+            </div>
+            <div class="logo-right">
+                <img src="/cuestionarios/logo_javeriana.png" alt="Logo Javeriana">
+            </div>
+        </div>
 
-    <!-- Página de Contenido -->
+        <div class="title" style="margin-top: 3rem; margin-bottom: 1rem; font-weight: normal;">
+            CUESTIONARIO DE FACTORES PSICOSOCIALES EXTRALABORALES
+        </div>
+
+        <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; width: 100%; margin-top: 1rem;">
+            <img src="${instruccionesB64}" alt="Instrucciones">
+        </div>
+    </div>
+
+    <!-- Página de Contenido 1 (Preguntas 1-13) -->
     <div class="content-page">
         <div class="header">
             <div class="logo-left">
@@ -1288,26 +1098,61 @@
             </div>
         </div>
 
-        <div class="title">
-            CUESTIONARIO PARA LA EVALUACIÓN DEL ESTRÉS – TERCERA VERSIÓN
+        <!-- Título Eliminado según solicitud -->
+        
+        <div class="instructions-text" style="margin-top: 3rem;">
+            Las siguientes preguntas están relacionadas con varias condiciones de la zona donde usted vive:
         </div>
 
-        <div class="instructions">
-            <strong>Señale con una X la casilla que indique la frecuencia con que se le han presentado los siguientes malestares en los últimos tres meses.</strong>
-        </div>
-
-        <table class="questionnaire-table">
+        <table class="questionnaire-table" style="margin-top: 3rem;">
             <thead>
                 <tr>
-                    <th style="width: 55%;">Malestares</th>
-                    <th style="width: 11.25%;">Siempre</th>
-                    <th style="width: 11.25%;">Casi<br>siempre</th>
-                    <th style="width: 11.25%;">A veces</th>
-                    <th style="width: 11.25%;">Nunca</th>
+                    <th colspan="2" style="background: transparent; border: none;"></th>
+                    <th style="width: 10%;">Siempre</th>
+                    <th style="width: 10%;">Casi<br>siempre</th>
+                    <th style="width: 10%;">Algunas<br>veces</th>
+                    <th style="width: 10%;">Casi<br>nunca</th>
+                    <th style="width: 10%;">Nunca</th>
                 </tr>
             </thead>
             <tbody>
-                ${tableRows}
+                ${tableRowsPage1}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Página de Contenido 2 (Preguntas 14+) -->
+    <div class="content-page">
+        <div class="header">
+            <div class="logo-left">
+                <img src="/cuestionarios/escudo_colombia.png" alt="Escudo de Colombia">
+                <div class="logo-text">
+                    <strong>Ministerio de la Protección Social</strong>
+                    República de Colombia
+                </div>
+            </div>
+            <div class="logo-right">
+                <img src="/cuestionarios/logo_javeriana.png" alt="Logo Javeriana">
+            </div>
+        </div>
+
+        <div class="instructions-text" style="margin-top: 3rem;">
+            Las siguientes preguntas están relacionadas con su vida fuera del trabajo:
+        </div>
+
+        <table class="questionnaire-table" style="margin-top: 1rem;">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background: transparent; border: none;"></th>
+                    <th style="width: 10%;">Siempre</th>
+                    <th style="width: 10%;">Casi<br>siempre</th>
+                    <th style="width: 10%;">Algunas<br>veces</th>
+                    <th style="width: 10%;">Casi<br>nunca</th>
+                    <th style="width: 10%;">Nunca</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${tableRowsPage2}
             </tbody>
         </table>
     </div>
@@ -1317,12 +1162,12 @@
 
         // === GESTIÓN DE PDFs EN SERVIDOR (TABLA AVANZADA) ===
 
-        let serverFiles = []; // Almacena la lista de archivos recien cargada
+        let serverFiles = [];
 
         function togglePDFSection() {
             const section = document.querySelector('.manage-pdfs-section');
             const responsesDiv = document.getElementById('allResponsesContainer');
-            if (responsesDiv) responsesDiv.innerHTML = ''; // Limpiar respuestas
+            if (responsesDiv) responsesDiv.innerHTML = '';
 
             section.classList.toggle('hidden');
 
@@ -1339,7 +1184,7 @@
             }
 
             try {
-                const response = await fetch(`${API_BASE_URL}/api/pdfs/stress`);
+                const response = await fetch(`${API_BASE_URL}/api/pdfs/extralaborales`);
                 serverFiles = await response.json();
 
                 if (!container) return;
@@ -1390,14 +1235,13 @@
 
                 html += '</tbody></table>';
                 container.innerHTML = html;
-                updateSelection(); // Reset buttons
+                updateSelection();
 
             } catch (error) {
                 if (container) container.innerHTML = `<div class="error">Error al cargar lista: ${error.message}</div>`;
             }
         }
 
-        // Selección Masiva
         function toggleSelectAll(source) {
             const checkboxes = document.querySelectorAll('.file-checkbox');
             checkboxes.forEach(cb => {
@@ -1410,11 +1254,9 @@
             const checkboxes = document.querySelectorAll('.file-checkbox:checked');
             const count = checkboxes.length;
 
-            // Actualizar texto
             const statusDiv = document.getElementById('selectionStatus');
             if (statusDiv) statusDiv.innerText = `${count} archivos seleccionados`;
 
-            // Activar botones bulk
             const bulkDiv = document.getElementById('bulkActions');
             if (bulkDiv) {
                 if (count > 0) {
@@ -1424,7 +1266,6 @@
                 }
             }
 
-            // Resaltar filas
             document.querySelectorAll('.file-checkbox').forEach(cb => {
                 const row = cb.closest('tr');
                 if (cb.checked) row.classList.add('selected-row');
@@ -1437,20 +1278,18 @@
             return Array.from(checkboxes).map(cb => cb.value);
         }
 
-        // Acciones Individuales
         async function downloadServerPDF(filename) {
-            window.location.href = `${API_BASE_URL}/api/pdfs/stress/${filename}`;
+            window.location.href = `${API_BASE_URL}/api/pdfs/extralaborales/${filename}`;
         }
 
         async function deleteServerPDF(filename) {
             if (!confirm(`¿Borrar "${filename}"?`)) return;
             try {
-                await fetch(`${API_BASE_URL}/api/pdfs/stress/${filename}`, { method: 'DELETE' });
+                await fetch(`${API_BASE_URL}/api/pdfs/extralaborales/${filename}`, { method: 'DELETE' });
                 loadPDFList();
             } catch (e) { alert(e.message); }
         }
 
-        // Acciones Masivas
         async function downloadSelected() {
             const selected = getSelectedFilenames();
             if (selected.length === 0) return;
@@ -1460,13 +1299,12 @@
                 return;
             }
 
-            // Descargar ZIP
             try {
                 const button = document.querySelector('#bulkActions button.btn-primary');
                 const originalText = button.innerText;
                 button.innerText = "⏳ Comprimiendo...";
 
-                const response = await fetch(`${API_BASE_URL}/api/pdfs/stress/bulk-download`, {
+                const response = await fetch(`${API_BASE_URL}/api/pdfs/extralaborales/bulk-download`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(selected)
@@ -1477,7 +1315,7 @@
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = `reportes_estres_seleccionados.zip`;
+                    a.download = `reportes_extralaborales_seleccionados.zip`;
                     document.body.appendChild(a);
                     a.click();
                     a.remove();
@@ -1497,7 +1335,7 @@
             if (!confirm(`¿Estás seguro de BORRAR ${selected.length} archivos seleccionados? esta acción no se puede deshacer.`)) return;
 
             try {
-                const response = await fetch(`${API_BASE_URL}/api/pdfs/stress/bulk-delete`, {
+                const response = await fetch(`${API_BASE_URL}/api/pdfs/extralaborales/bulk-delete`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(selected)
@@ -1511,7 +1349,6 @@
             }
         }
 
-        // Inicializar
         document.addEventListener('DOMContentLoaded', () => {
             loadQuestionnaireData();
         });
