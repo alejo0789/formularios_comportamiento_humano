@@ -1,7 +1,7 @@
 from typing import List, Dict, Any, Counter
 import json
 import os
-from scoring_config import INVERSE_QUESTIONS, INTRALABORAL_A_STRUCTURE
+from scoring_config import INVERSE_QUESTIONS, INTRALABORAL_A_STRUCTURE, INTRALABORAL_B_STRUCTURE
 
 class AnalysisEngine:
     def __init__(self, data_dir: str, questionnaires_dir: str):
@@ -16,9 +16,18 @@ class AnalysisEngine:
             return json.load(f)
 
     def get_sociodemographic_stats(self) -> Dict[str, Any]:
-        responses = self.load_responses("datos-generales")
-        if not responses:
-            return {}
+        # Load legacy responses
+        responses_legacy = self.load_responses("datos-generales")
+        
+        # Load new form responses
+        path_new = os.path.join(self.data_dir, "form_datos-generales.json")
+        responses_new = []
+        if os.path.exists(path_new):
+            try:
+                with open(path_new, "r", encoding="utf-8") as f:
+                    responses_new = json.load(f)
+            except:
+                responses_new = []
 
         stats = {
             "sexo": Counter(),
@@ -31,15 +40,25 @@ class AnalysisEngine:
             "tipo_contrato": Counter(),
             "tipo_salario": Counter(),
             "horas_diarias": Counter(),
-            "total": len(responses)
+            "total": 0
         }
 
-        for resp in responses:
+        # Process Legacy
+        for resp in responses_legacy:
+            stats["total"] += 1
             for r in resp.get("responses", []):
                 q_id = r["question_id"]
                 val = r["response_value"]
                 if q_id in stats:
                     stats[q_id][val] += 1
+
+        # Process New
+        for resp in responses_new:
+            stats["total"] += 1
+            data = resp.get("data", {})
+            for key, val in data.items():
+                if key in stats:
+                    stats[key][val] += 1
 
         # Convert counters to lists for Chart.js
         formatted = {}
@@ -59,7 +78,11 @@ class AnalysisEngine:
             return {}
 
         inverse_ids = INVERSE_QUESTIONS.get(q_id, [])
-        structure = INTRALABORAL_A_STRUCTURE if q_id == "intralaborales-a" else None
+        structure = None
+        if q_id == "intralaborales-a":
+            structure = INTRALABORAL_A_STRUCTURE
+        elif q_id == "intralaborales-b":
+            structure = INTRALABORAL_B_STRUCTURE
         
         participant_scores = []
         domain_raw_scores = {} # {domain: [scores]}
@@ -70,13 +93,34 @@ class AnalysisEngine:
             count = 0
             
             # For domain/dimension calculation per participant
-            resp_dict = {r["question_id"]: r["response_value"] - 1 for r in resp["responses"]}
+            # Original reading: val = r["response_value"] (1-5 range)
+            # Subtract 1 to get 0-4 range for simpler math if needed, but let's be explicit
+            resp_dict = {r["question_id"]: r["response_value"] for r in resp["responses"]}
             
+            # Map of processed points (0-4) for structure calculation
+            processed_points = {}
+
             for q_id_item, val in resp_dict.items():
-                points = val
-                if q_id_item in inverse_ids:
-                    points = 4 - points
+                # Logic based on scoring_config.py comments:
+                # Direct: Siempre(1)=4, Casi siempre(2)=3, A veces(3)=2, Casi nunca(4)=1, Nunca(5)=0
+                # Inverse: Siempre(1)=0, Casi siempre(2)=1, A veces(3)=2, Casi nunca(4)=3, Nunca(5)=4
                 
+                points = 0
+                if q_id_item in inverse_ids:
+                    # Inverse Question
+                    # Value 1 -> 0
+                    # Value 5 -> 4
+                    points = val - 1
+                else:
+                    # Direct Question
+                    # Value 1 -> 4
+                    # Value 5 -> 0
+                    points = 5 - val
+                
+                # Clamp points between 0 and 4 just in case
+                points = max(0, min(4, points))
+                
+                processed_points[q_id_item] = points
                 raw_sum += points
                 count += 1
             
@@ -97,9 +141,8 @@ class AnalysisEngine:
                         dim_count = 0
                         
                         for q_idx in questions:
-                            if q_idx in resp_dict:
-                                p = resp_dict[q_idx]
-                                if q_idx in inverse_ids: p = 4 - p
+                            if q_idx in processed_points:
+                                p = processed_points[q_idx]
                                 dim_sum += p
                                 dim_count += 1
                                 domain_sum += p
@@ -148,7 +191,7 @@ class AnalysisEngine:
             "questionnaires": {}
         }
         
-        for q_id in ["estres", "extralaborales", "intralaborales-a"]:
+        for q_id in ["estres", "extralaborales", "intralaborales-a", "intralaborales-b"]:
             responses = self.load_responses(q_id)
             report["questionnaires"][q_id] = self.calculate_score(q_id, responses)
             

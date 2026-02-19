@@ -869,6 +869,17 @@
                 const response = await fetch('/cuestionarios/api/analysis-report');
                 const data = await response.json();
 
+                // Merge Intralaboral A and B if both exist
+                if (data.questionnaires['intralaborales-a'] && data.questionnaires['intralaborales-b']) {
+                    data.questionnaires['intralaborales-a'] = mergeIntra(
+                        data.questionnaires['intralaborales-a'],
+                        data.questionnaires['intralaborales-b']
+                    );
+                } else if (!data.questionnaires['intralaborales-a'] && data.questionnaires['intralaborales-b']) {
+                    // Fallback if only B exists (e.g. only operational staff)
+                    data.questionnaires['intralaborales-a'] = data.questionnaires['intralaborales-b'];
+                }
+
                 renderSociodemographics(data.sociodemographics);
                 renderGeneralRisk(data.questionnaires);
                 renderDetailedIntra(data.questionnaires['intralaborales-a']);
@@ -1228,6 +1239,83 @@
                 'Muy Alto': '#ef4444'
             };
             return colors[level] || '#94a3b8';
+        }
+
+        function mergeIntra(a, b) {
+            if (!a) return b;
+            if (!b) return a;
+
+            const totalA = a.total_participants || 0;
+            const totalB = b.total_participants || 0;
+            const total = totalA + totalB;
+
+            if (total === 0) return a;
+
+            // Merge Average Score
+            const avg = ((a.average * totalA) + (b.average * totalB)) / total;
+
+            // Merge Distribution
+            const dist = {};
+            const levels = ["Sin Riesgo", "Bajo", "Medio", "Alto", "Muy Alto"];
+            levels.forEach(l => {
+                dist[l] = (a.distribution[l] || 0) + (b.distribution[l] || 0);
+            });
+
+            // Merge Domains
+            const domains = {};
+            const allDomains = new Set([...Object.keys(a.domains || {}), ...Object.keys(b.domains || {})]);
+            allDomains.forEach(d => {
+                const valA = a.domains?.[d] || 0;
+                const valB = b.domains?.[d] || 0;
+
+                let sum = 0;
+                let count = 0;
+
+                if (a.domains && a.domains[d] !== undefined) {
+                    sum += valA * totalA;
+                    count += totalA;
+                }
+                if (b.domains && b.domains[d] !== undefined) {
+                    sum += valB * totalB;
+                    count += totalB;
+                }
+
+                domains[d] = count > 0 ? sum / count : 0;
+            });
+
+            // Merge Dimensions
+            const dimensions = {};
+            const allDimensions = new Set([...Object.keys(a.dimensions || {}), ...Object.keys(b.dimensions || {})]);
+            allDimensions.forEach(d => {
+                const valA = a.dimensions?.[d] || 0;
+                const valB = b.dimensions?.[d] || 0;
+
+                let sum = 0;
+                let count = 0;
+
+                if (a.dimensions && a.dimensions[d] !== undefined) {
+                    sum += valA * totalA;
+                    count += totalA;
+                }
+                if (b.dimensions && b.dimensions[d] !== undefined) {
+                    sum += valB * totalB;
+                    count += totalB;
+                }
+
+                dimensions[d] = count > 0 ? sum / count : 0;
+            });
+
+            // Use getRiskLabel from global scope
+            const risk_level = getRiskLabel(avg);
+
+            return {
+                average: avg,
+                distribution: dist,
+                total_participants: total,
+                risk_level: risk_level,
+                domains: domains,
+                dimensions: dimensions
+            };
         }
 
         async function generateAIAnalysis(data) {
