@@ -173,7 +173,6 @@ class AnalysisEngine:
         }
 
         if domain_raw_scores:
-        if domain_raw_scores:
             result["domains"] = {d: round(sum(scores)/len(scores), 1) for d, scores in domain_raw_scores.items() if scores}
             result["dimensions"] = {d: round(sum(scores)/len(scores), 1) for d, scores in dimension_raw_scores.items() if scores}
 
