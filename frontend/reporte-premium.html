@@ -869,16 +869,23 @@
                 const response = await fetch('/cuestionarios/api/analysis-report');
                 const data = await response.json();
 
-                // Merge Intralaboral A and B if both exist
-                if (data.questionnaires['intralaborales-a'] && data.questionnaires['intralaborales-b']) {
-                    data.questionnaires['intralaborales-a'] = mergeIntra(
-                        data.questionnaires['intralaborales-a'],
-                        data.questionnaires['intralaborales-b']
-                    );
-                } else if (!data.questionnaires['intralaborales-a'] && data.questionnaires['intralaborales-b']) {
-                    // Fallback if only B exists (e.g. only operational staff)
-                    data.questionnaires['intralaborales-a'] = data.questionnaires['intralaborales-b'];
+                // Helper to checking if object has data
+                const hasData = (obj) => obj && obj.total_participants > 0;
+
+                // Merge Intralaboral A and B logic
+                const intraA = data.questionnaires['intralaborales-a'];
+                const intraB = data.questionnaires['intralaborales-b'];
+
+                if (hasData(intraA) && hasData(intraB)) {
+                    data.questionnaires['intralaborales-a'] = mergeIntra(intraA, intraB);
+                } else if (!hasData(intraA) && hasData(intraB)) {
+                    // Only B exists (e.g. only operational staff)
+                    data.questionnaires['intralaborales-a'] = intraB;
+                } else if (hasData(intraA) && !hasData(intraB)) {
+                    // Only A exists (keep as is)
+                    data.questionnaires['intralaborales-a'] = intraA;
                 }
+                // If neither has data, it stays as is (empty or undefined)
 
                 renderSociodemographics(data.sociodemographics);
                 renderGeneralRisk(data.questionnaires);
