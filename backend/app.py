@@ -830,6 +830,27 @@ class FormSubmission(BaseModel):
     data: Dict[str, Any]
 
 # Helper functions
+
+def enforce_intralaboral_exclusion(cedula: str, completed: set) -> set:
+    """Re-applies the intralaboral A/B mutex rule based on datos-generales.
+    Ensures that a user always has exactly one of intralaborales-a/b skipped."""
+    general_responses = load_form_responses("datos-generales")
+    personal_cargo = None
+    # Find the latest datos-generales entry for this cedula
+    for entry in reversed(general_responses):
+        if entry.get("data", {}).get("numero_identificacion") == cedula:
+            personal_cargo = entry["data"].get("tiene_personal_cargo")
+            break
+    if personal_cargo == "si":
+        # Tiene personal a cargo -> hace intralaborales-A, salta B
+        completed.add("intralaborales-b")
+        completed.discard("intralaborales-a")
+    elif personal_cargo == "no":
+        completed.add("intralaborales-a")
+        completed.discard("intralaborales-b")
+    return completed
+
+
 def ensure_dirs():
     """Ensure data and questionnaires directories exist"""
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -1053,6 +1074,9 @@ async def submit_survey(submission: SurveySubmission):
         if existing_session:
             completed = set(existing_session.get("completed_forms", []))
             completed.add(submission.questionnaire_id)
+            
+            # Re-enforce intralaboral A/B exclusion (prevents corruption)
+            completed = enforce_intralaboral_exclusion(submission.respondent_cedula, completed)
             
             existing_session["completed_forms"] = list(completed)
             existing_session["last_active"] = datetime.now().isoformat()

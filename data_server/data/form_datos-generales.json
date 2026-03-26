@@ -238,5 +238,65 @@
       "horas_diarias": "8",
       "tipo_salario": "fijo"
     }
+  },
+  {
+    "id": "3f741f99-3906-41af-80bd-80286ca62f1b",
+    "submitted_at": "2026-03-26T15:12:11.272Z",
+    "data": {
+      "fecha_aplicacion": "2026-03-26",
+      "numero_identificacion": "1062309527",
+      "nombre_completo": "karol daniela perez murillo",
+      "sexo": "femenino",
+      "año_nacimiento": "1993",
+      "estado_civil": "soltero",
+      "nivel_estudios": "profesional_completo",
+      "ocupacion_profesion": "Administradora de empresas",
+      "departamento_residencia": "Cauca",
+      "ciudad_residencia": "Santander de Quilichao",
+      "estrato": "2",
+      "tipo_vivienda": "arriendo",
+      "personas_dependientes": "1",
+      "tiene_personal_cargo": "si",
+      "departamento_trabajo": "Valle del Cauca",
+      "ciudad_trabajo": "Cali",
+      "antiguedad_empresa": "3_años",
+      "nombre_cargo": "Coordinadora Gestión Humana y Administrativo",
+      "tipo_cargo": "jefatura",
+      "antiguedad_cargo": "menos_1",
+      "departamento_area": "Talento Humano",
+      "tipo_contrato": "indefinido",
+      "horas_diarias": "8",
+      "tipo_salario": "fijo"
+    }
+  },
+  {
+    "id": "fc1a2de9-d8a2-4206-bd1b-f870f55e197a",
+    "submitted_at": "2026-03-26T15:32:42.516Z",
+    "data": {
+      "fecha_aplicacion": "2026-03-26",
+      "numero_identificacion": "1113783425",
+      "nombre_completo": "alejandro carvajal",
+      "sexo": "masculino",
+      "año_nacimiento": "1989",
+      "estado_civil": "soltero",
+      "nivel_estudios": "postgrado_completo",
+      "ocupacion_profesion": "ingeniero",
+      "departamento_residencia": "Valle del Cauca",
+      "ciudad_residencia": "Cali",
+      "estrato": "4",
+      "tipo_vivienda": "arriendo",
+      "personas_dependientes": "2",
+      "tiene_personal_cargo": "si",
+      "departamento_trabajo": "Valle del Cauca",
+      "ciudad_trabajo": "Cali",
+      "antiguedad_empresa": "menos_1",
+      "nombre_cargo": "ingeniero ia",
+      "tipo_cargo": "profesional",
+      "antiguedad_cargo": "menos_1",
+      "departamento_area": "ia",
+      "tipo_contrato": "indefinido",
+      "horas_diarias": "8",
+      "tipo_salario": "fijo"
+    }
   }
 ]

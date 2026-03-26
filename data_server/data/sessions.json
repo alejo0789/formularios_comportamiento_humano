@@ -3,11 +3,12 @@
     "cedula": "1062318805",
     "name": "NATALY YULE ",
     "completed_forms": [
-      "intralaborales-b",
-      "datos-generales"
+      "estres",
+      "datos-generales",
+      "intralaborales-b"
     ],
-    "last_active": "2026-02-04T16:58:43.261976",
-    "current_step": "estres"
+    "last_active": "2026-03-26T10:21:19.214963",
+    "current_step": "extralaborales"
   },
   "66782620": {
     "cedula": "66782620",
@@ -26,13 +27,14 @@
     "cedula": "sg",
     "name": "xdgv",
     "completed_forms": [
+      "intralaborales-b",
       "estres",
       "intralaborales-a",
       "datos-generales",
       "extralaborales"
     ],
-    "last_active": "2026-03-26T09:54:44.899380",
-    "current_step": "intralaborales-b"
+    "last_active": "2026-03-26T10:05:32.993158",
+    "current_step": "completed"
   },
   "25618109": {
     "cedula": "25618109",
@@ -74,10 +76,32 @@
     "cedula": "1005873376",
     "name": "Nicol Dayana Narvaez Giraldo",
     "completed_forms": [
+      "estres",
       "intralaborales-a",
-      "datos-generales"
+      "datos-generales",
+      "extralaborales"
     ],
-    "last_active": "2026-03-26T09:54:44.618933",
+    "last_active": "2026-03-26T10:05:27.453004",
+    "current_step": "intralaborales-b"
+  },
+  "1062309527": {
+    "cedula": "1062309527",
+    "name": "karol daniela perez murillo",
+    "completed_forms": [
+      "datos-generales",
+      "intralaborales-b"
+    ],
+    "last_active": "2026-03-26T10:12:11.328760",
+    "current_step": "estres"
+  },
+  "1113783425": {
+    "cedula": "1113783425",
+    "name": "alejandro carvajal",
+    "completed_forms": [
+      "datos-generales",
+      "intralaborales-b"
+    ],
+    "last_active": "2026-03-26T10:32:42.543595",
     "current_step": "estres"
   }
 }
