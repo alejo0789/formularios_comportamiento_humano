@@ -898,9 +898,79 @@
                         {
                             id: "nombre_cargo",
                             label: "¿Cuál es el nombre del cargo que ocupa en la empresa?",
-                            type: "text",
+                            type: "select",
                             required: true,
-                            placeholder: "Ingrese el nombre de su cargo"
+                            options: [
+                                { value: "", label: "Seleccione un cargo..." },
+                                { value: "ANALISTA CONTABLE", label: "ANALISTA CONTABLE" },
+                                { value: "ANALISTA DE AUDITORIA", label: "ANALISTA DE AUDITORIA" },
+                                { value: "ANALISTA DE DESARROLLO", label: "ANALISTA DE DESARROLLO" },
+                                { value: "ANALISTA DE DESARROLLO ORGANIZACIONAL", label: "ANALISTA DE DESARROLLO ORGANIZACIONAL" },
+                                { value: "ANALISTA DE MANTENIMIENTO", label: "ANALISTA DE MANTENIMIENTO" },
+                                { value: "ANALISTA DE OPERACIONES", label: "ANALISTA DE OPERACIONES" },
+                                { value: "ANALISTA LINEA AYUDA", label: "ANALISTA LINEA AYUDA" },
+                                { value: "APRENDIZ ENTIDAD AVALADA SENA", label: "APRENDIZ ENTIDAD AVALADA SENA" },
+                                { value: "ASESOR DE VENTAS", label: "ASESOR DE VENTAS" },
+                                { value: "ASISTENTE ADMINISTRATIVA Y GH", label: "ASISTENTE ADMINISTRATIVA Y GH" },
+                                { value: "ASISTENTE ADTIVO.", label: "ASISTENTE ADTIVO." },
+                                { value: "ASISTENTE ADTIVO. ZONA", label: "ASISTENTE ADTIVO. ZONA" },
+                                { value: "ASISTENTE AUDITORIA INTERNA", label: "ASISTENTE AUDITORIA INTERNA" },
+                                { value: "ASISTENTE COMERCIAL", label: "ASISTENTE COMERCIAL" },
+                                { value: "ASISTENTE CONTABLE", label: "ASISTENTE CONTABLE" },
+                                { value: "ASISTENTE DE BIENES Y SERVICIOS", label: "ASISTENTE DE BIENES Y SERVICIOS" },
+                                { value: "ASISTENTE DE DATOS CON IA", label: "ASISTENTE DE DATOS CON IA" },
+                                { value: "ASISTENTE DE ESCRUTINIO", label: "ASISTENTE DE ESCRUTINIO" },
+                                { value: "ASISTENTE DE PRODUCTOS TANGIBLES", label: "ASISTENTE DE PRODUCTOS TANGIBLES" },
+                                { value: "ASISTENTE DE SOPORTE TIC ZONA", label: "ASISTENTE DE SOPORTE TIC ZONA" },
+                                { value: "ASISTENTE LINEA DE AYUDA", label: "ASISTENTE LINEA DE AYUDA" },
+                                { value: "ASISTENTE SST", label: "ASISTENTE SST" },
+                                { value: "ASISTENTE TESORERIA", label: "ASISTENTE TESORERIA" },
+                                { value: "AUX ADMINISTRATIVA T.I.", label: "AUX ADMINISTRATIVA T.I." },
+                                { value: "AUX. DE BIENES Y SERVICIOS", label: "AUX. DE BIENES Y SERVICIOS" },
+                                { value: "AUX. SERVICIOS GENERALES MANTENIMIENTO", label: "AUX. SERVICIOS GENERALES MANTENIMIENTO" },
+                                { value: "AUX. SERV.GENERALES", label: "AUX. SERV.GENERALES" },
+                                { value: "AUX. SOPORTE TECNICO", label: "AUX. SOPORTE TECNICO" },
+                                { value: "AUX. LINEA AYUDA", label: "AUX. LINEA AYUDA" },
+                                { value: "AUXILIAR DE ARCHIVO", label: "AUXILIAR DE ARCHIVO" },
+                                { value: "AUXILIAR DE ARCHIVO ZONA", label: "AUXILIAR DE ARCHIVO ZONA" },
+                                { value: "AUXILIAR DE LOGISTICA ZONA", label: "AUXILIAR DE LOGISTICA ZONA" },
+                                { value: "AUXILIAR DE TESORERIA", label: "AUXILIAR DE TESORERIA" },
+                                { value: "AUXILIAR ESCRUTINIO", label: "AUXILIAR ESCRUTINIO" },
+                                { value: "AUXILIAR PRODUCTO", label: "AUXILIAR PRODUCTO" },
+                                { value: "AUXILIAR RECAUDO ZONA", label: "AUXILIAR RECAUDO ZONA" },
+                                { value: "CAPACITADOR(A)", label: "CAPACITADOR(A)" },
+                                { value: "COMMUNITY MANAGER", label: "COMMUNITY MANAGER" },
+                                { value: "CONDUCTOR", label: "CONDUCTOR" },
+                                { value: "CONDUCTOR MENSAJERO", label: "CONDUCTOR MENSAJERO" },
+                                { value: "COORD DE APLICACIONES", label: "COORD DE APLICACIONES" },
+                                { value: "COORD. COMERCIAL Y ADMON OWO", label: "COORD. COMERCIAL Y ADMON OWO" },
+                                { value: "COORD. DE BIENES Y SERVICIOS", label: "COORD. DE BIENES Y SERVICIOS" },
+                                { value: "COORD. DE ESCRUTINIO", label: "COORD. DE ESCRUTINIO" },
+                                { value: "COORD. LINEA DE AYUDA", label: "COORD. LINEA DE AYUDA" },
+                                { value: "COORD. ADMINISTRATIVO", label: "COORD. ADMINISTRATIVO" },
+                                { value: "COORD. COMERCIAL ZONA", label: "COORD. COMERCIAL ZONA" },
+                                { value: "COORDINADOR AUDITORIA", label: "COORDINADOR AUDITORIA" },
+                                { value: "COORDINADOR DE CALIDAD", label: "COORDINADOR DE CALIDAD" },
+                                { value: "COORDINADOR DE GESTION HUMANA Y ADMON", label: "COORDINADOR DE GESTION HUMANA Y ADMON" },
+                                { value: "COORDINADOR DE INFRAESTRUCTURA", label: "COORDINADOR DE INFRAESTRUCTURA" },
+                                { value: "COORDINADOR DE NOMINA", label: "COORDINADOR DE NOMINA" },
+                                { value: "COORDINADOR DE RIESGOS", label: "COORDINADOR DE RIESGOS" },
+                                { value: "COORDINADOR DE TECNOLOGIA", label: "COORDINADOR DE TECNOLOGIA" },
+                                { value: "COORDINADOR FINANCIER(A)", label: "COORDINADOR FINANCIER(A)" },
+                                { value: "COORDINADOR OPERATIVO Y FINANCIERO", label: "COORDINADOR OPERATIVO Y FINANCIERO" },
+                                { value: "DIRECTOR ADMINISTRATIVO", label: "DIRECTOR ADMINISTRATIVO" },
+                                { value: "DIRECTOR FINANCIERO", label: "DIRECTOR FINANCIERO" },
+                                { value: "DISENADOR CREATIVO", label: "DISENADOR CREATIVO" },
+                                { value: "GERENTE GENERAL", label: "GERENTE GENERAL" },
+                                { value: "IMPULSADOR(A)", label: "IMPULSADOR(A)" },
+                                { value: "INGENIERO DE AUTOMATIZACION CON IA", label: "INGENIERO DE AUTOMATIZACION CON IA" },
+                                { value: "LIDER DE COMUNICACIONES", label: "LIDER DE COMUNICACIONES" },
+                                { value: "LIDER DE IMPULSO", label: "LIDER DE IMPULSO" },
+                                { value: "PROMOTOR COMERCIAL", label: "PROMOTOR COMERCIAL" },
+                                { value: "SENIOR COMERCIAL", label: "SENIOR COMERCIAL" },
+                                { value: "SENIOR DE OPERACIONES", label: "SENIOR DE OPERACIONES" },
+                                { value: "SENIOR DE TESORERIA", label: "SENIOR DE TESORERIA" }
+                            ]
                         },
                         {
                             id: "tipo_cargo",
@@ -927,9 +997,11 @@
                         {
                             id: "departamento_area",
                             label: "Nombre del departamento, área o sección de la empresa en el que trabaja",
-                            type: "text",
+                            type: "select",
                             required: true,
-                            placeholder: "Ingrese el departamento o área"
+                            options: [
+                                { value: "", label: "Seleccione un cargo primero..." }
+                            ]
                         },
                         {
                             id: "tipo_contrato",
@@ -976,6 +1048,78 @@
             formData: {}
         };
 
+        // Cargo to Area Mapping
+        const cargoAreaMap = {
+            "ANALISTA CONTABLE": ["FINANCIERO"],
+            "ANALISTA DE AUDITORIA": ["AUDITORIA"],
+            "ANALISTA DE DESARROLLO": ["TI"],
+            "ANALISTA DE DESARROLLO ORGANIZACIONAL": ["ADMINISTRATIVO"],
+            "ANALISTA DE MANTENIMIENTO": ["ADMINISTRATIVO"],
+            "ANALISTA DE OPERACIONES": ["GERENCIA"],
+            "ANALISTA LINEA AYUDA": ["TI"],
+            "APRENDIZ ENTIDAD AVALADA SENA": ["APRENDIZAJE"],
+            "ASESOR DE VENTAS": ["ADMINISTRATIVO", "APRENDIZAJE"],
+            "ASISTENTE ADMINISTRATIVA Y GH": ["ADMINISTRATIVO"],
+            "ASISTENTE ADTIVO.": ["ADMINISTRATIVO"],
+            "ASISTENTE ADTIVO. ZONA": ["ADMINISTRATIVO"],
+            "ASISTENTE AUDITORIA INTERNA": ["AUDITORIA"],
+            "ASISTENTE COMERCIAL": ["COMERCIAL"],
+            "ASISTENTE CONTABLE": ["FINANCIERO"],
+            "ASISTENTE DE BIENES Y SERVICIOS": ["ADMINISTRATIVO"],
+            "ASISTENTE DE DATOS CON IA": ["GERENCIA"],
+            "ASISTENTE DE ESCRUTINIO": ["ADMINISTRATIVO"],
+            "ASISTENTE DE PRODUCTOS TANGIBLES": ["COMERCIAL"],
+            "ASISTENTE DE SOPORTE TIC ZONA": ["ADMINISTRATIVO"],
+            "ASISTENTE LINEA DE AYUDA": ["TI"],
+            "ASISTENTE SST": ["ADMINISTRATIVO"],
+            "ASISTENTE TESORERIA": ["TESORERIA"],
+            "AUX ADMINISTRATIVA T.I.": ["TI"],
+            "AUX. DE BIENES Y SERVICIOS": ["ADMINISTRATIVO"],
+            "AUX. SERVICIOS GENERALES MANTENIMIENTO": ["ADMINISTRATIVO"],
+            "AUX. SERV.GENERALES": ["ADMINISTRATIVO"],
+            "AUX. SOPORTE TECNICO": ["ADMINISTRATIVO"],
+            "AUX. LINEA AYUDA": ["TI"],
+            "AUXILIAR DE ARCHIVO": ["FINANCIERO"],
+            "AUXILIAR DE ARCHIVO ZONA": ["ADMINISTRATIVO"],
+            "AUXILIAR DE LOGISTICA ZONA": ["ADMINISTRATIVO"],
+            "AUXILIAR DE TESORERIA": ["TESORERIA"],
+            "AUXILIAR ESCRUTINIO": ["ADMINISTRATIVO"],
+            "AUXILIAR PRODUCTO": ["COMERCIAL"],
+            "AUXILIAR RECAUDO ZONA": ["TESORERIA"],
+            "CAPACITADOR(A)": ["COMERCIAL"],
+            "COMMUNITY MANAGER": ["COMERCIAL"],
+            "CONDUCTOR": ["ADMINISTRATIVO"],
+            "CONDUCTOR MENSAJERO": ["ADMINISTRATIVO"],
+            "COORD DE APLICACIONES": ["TI"],
+            "COORD. COMERCIAL Y ADMON OWO": ["COMERCIAL"],
+            "COORD. DE BIENES Y SERVICIOS": ["ADMINISTRATIVO"],
+            "COORD. DE ESCRUTINIO": ["ADMINISTRATIVO"],
+            "COORD. LINEA DE AYUDA": ["TI"],
+            "COORD. ADMINISTRATIVO": ["ADMINISTRATIVO"],
+            "COORD. COMERCIAL ZONA": ["COMERCIAL"],
+            "COORDINADOR AUDITORIA": ["AUDITORIA"],
+            "COORDINADOR DE CALIDAD": ["ADMINISTRATIVO"],
+            "COORDINADOR DE GESTION HUMANA Y ADMON": ["ADMINISTRATIVO"],
+            "COORDINADOR DE INFRAESTRUCTURA": ["TI"],
+            "COORDINADOR DE NOMINA": ["FINANCIERO"],
+            "COORDINADOR DE RIESGOS": ["ADMINISTRATIVO"],
+            "COORDINADOR DE TECNOLOGIA": ["TI"],
+            "COORDINADOR FINANCIER(A)": ["FINANCIERO"],
+            "COORDINADOR OPERATIVO Y FINANCIERO": ["FINANCIERO"],
+            "DIRECTOR ADMINISTRATIVO": ["ADMINISTRATIVO"],
+            "DIRECTOR FINANCIERO": ["FINANCIERO"],
+            "DISENADOR CREATIVO": ["COMERCIAL"],
+            "GERENTE GENERAL": ["GERENCIA"],
+            "IMPULSADOR(A)": ["COMERCIAL"],
+            "INGENIERO DE AUTOMATIZACION CON IA": ["TI"],
+            "LIDER DE COMUNICACIONES": ["COMERCIAL"],
+            "LIDER DE IMPULSO": ["COMERCIAL"],
+            "PROMOTOR COMERCIAL": ["COMERCIAL"],
+            "SENIOR COMERCIAL": ["COMERCIAL"],
+            "SENIOR DE OPERACIONES": ["GERENCIA"],
+            "SENIOR DE TESORERIA": ["TESORERIA"]
+        };
+
         // Elements
         const elements = {
             formProgress: document.getElementById('form-progress'),
@@ -1007,6 +1151,11 @@
             renderSections();
             setDefaultDate();
             showSection(0);
+
+            // If a cargo is already selected (e.g. from auto-fill), update areas
+            if (state.formData['nombre_cargo']) {
+                updateAreaOptions(state.formData['nombre_cargo']);
+            }
 
             // Load Colombia data and setup dropdowns
             await loadColombiaData();
@@ -1067,6 +1216,37 @@
                 const cities = deptInfo.ciudades.sort();
                 citySelect.innerHTML = '<option value="">Seleccione una ciudad...</option>' +
                     cities.map(c => `<option value="${c}">${c}</option>`).join('');
+            }
+        }
+
+        function updateAreaOptions(cargo) {
+            const areaSelect = document.getElementById('field-departamento_area');
+            if (!areaSelect) return;
+
+            const areas = cargoAreaMap[cargo] || [];
+            
+            if (areas.length === 0) {
+                areaSelect.innerHTML = '<option value="">Seleccione un cargo primero...</option>';
+                state.formData['departamento_area'] = "";
+            } else {
+                const optionsHtml = (areas.length > 1 ? '<option value="">Seleccionar área...</option>' : '') +
+                    areas.map(a => `<option value="${a}">${a}</option>`).join('');
+                
+                areaSelect.innerHTML = optionsHtml;
+                
+                if (areas.length === 1) {
+                    state.formData['departamento_area'] = areas[0];
+                    areaSelect.value = areas[0];
+                    clearFieldError('departamento_area');
+                } else {
+                    // Check if current area is valid for new cargo
+                    if (!state.formData['departamento_area'] || !areas.includes(state.formData['departamento_area'])) {
+                        state.formData['departamento_area'] = "";
+                        areaSelect.value = "";
+                    } else {
+                        areaSelect.value = state.formData['departamento_area'];
+                    }
+                }
             }
         }
 
@@ -1263,6 +1443,11 @@
                 state.formData['ciudad_residencia'] = "";
             } else if (fieldId === 'departamento_trabajo') {
                 state.formData['ciudad_trabajo'] = "";
+            }
+
+            // Dynamic Area Filtering
+            if (fieldId === 'nombre_cargo') {
+                updateAreaOptions(value);
             }
         }
 

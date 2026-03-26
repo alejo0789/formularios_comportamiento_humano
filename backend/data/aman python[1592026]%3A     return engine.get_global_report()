@@ -1,0 +1,19 @@
+[0;1;32m●[0m cuestionarios.service - Sistema de Cuestionarios
+   Loaded: loaded (/etc/systemd/system/cuestionarios.service; enabled; vendor preset: disabled)
+   Active: [0;1;32mactive (running)[0m since Thu 2026-02-19 11:45:50 -05; 2min 25s ago
+ Main PID: 1592026 (python)
+    Tasks: 2 (limit: 100924)
+   Memory: 36.8M
+   CGroup: /system.slice/cuestionarios.service
+           └─1592026 /var/www/html/dev/formularios_comportamiento_humano/backend/venv/bin/python app.py
+
+feb 19 11:46:06 saman python[1592026]:   File "/var/www/html/dev/formularios_comportamiento_humano/backend/app.py", line 1193, in get_analysis_report
+feb 19 11:46:06 saman python[1592026]:     return engine.get_global_report()
+feb 19 11:46:06 saman python[1592026]:            ~~~~~~~~~~~~~~~~~~~~~~~~^^
+feb 19 11:46:06 saman python[1592026]:   File "/var/www/html/dev/formularios_comportamiento_humano/backend/analysis_engine.py", line 196, in get_global_report
+feb 19 11:46:06 saman python[1592026]:     report["questionnaires"][q_id] = self.calculate_score(q_id, responses)
+feb 19 11:46:06 saman python[1592026]:                                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+feb 19 11:46:06 saman python[1592026]:   File "/var/www/html/dev/formularios_comportamiento_humano/backend/analysis_engine.py", line 177, in calculate_score
+feb 19 11:46:06 saman python[1592026]:     result["dimensions"] = {d: round(sum(scores)/len(scores), 1) for d, scores in dimension_raw_scores.items()}
+feb 19 11:46:06 saman python[1592026]:                                      ~~~~~~~~~~~^~~~~~~~~~~~
+feb 19 11:46:06 saman python[1592026]: ZeroDivisionError: division by zero
