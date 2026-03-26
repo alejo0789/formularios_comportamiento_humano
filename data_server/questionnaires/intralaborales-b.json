@@ -212,7 +212,7 @@
             "title": "Atención a Clientes y Usuarios",
             "message": "Las siguientes preguntas están relacionadas con la atención a clientes y usuarios.",
             "conditional": true,
-            "condition_question": "98",
+            "condition_question": "atiende_clientes",
             "condition_value": "si",
             "questions": [
                 89,
@@ -229,7 +229,7 @@
     ],
     "conditional_questions": [
         {
-            "id": "98",
+            "id": "atiende_clientes",
             "text": "En mi trabajo debo brindar servicio a clientes o usuarios",
             "type": "yesno",
             "options": [

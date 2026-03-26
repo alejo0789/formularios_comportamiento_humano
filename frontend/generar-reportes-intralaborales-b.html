@@ -846,7 +846,7 @@
             // Conditional Sections Data
             // Check if direct response exists OR if there are answers in the conditional range (89-97)
             const hasClientAnswers = questions.slice(88, 97).some(q => responsesMap[q.id]);
-            const atiendeClientes = responsesMap['atiende_clientes'] === 'si' || hasClientAnswers;
+            const atiendeClientes = responsesMap['98'] === 'si' || hasClientAnswers;
 
             // Form B does not have "Colaboradores" (Chief) section
 

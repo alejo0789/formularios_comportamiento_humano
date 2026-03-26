@@ -1,0 +1,786 @@
+[
+  {
+    "id": "c3605eec-a083-4051-ab04-eb2cd1ed9e5e",
+    "submitted_at": "2026-02-16T08:34:40.659454",
+    "respondent_cedula": "66782620",
+    "respondent_name": "Mariluz Fernández Muñoz ",
+    "respondent_email": null,
+    "department": "Gestión humana",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Es fácil trasportarme entre mi casa y el trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 2,
+        "question_text": "Tengo que tomar varios medios de transporte para llegar a mi lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 3,
+        "question_text": "Paso mucho tiempo viajando de ida y regreso al trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Me trasporto cómodamente entre mi casa y el trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 5,
+        "question_text": "La zona donde vivo es segura",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En la zona donde vivo se presentan hurtos y mucha delincuencia",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Desde donde vivo me es fácil llegar al centro médico donde me atienden",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Cerca a mi vivienda las vías están en buenas condiciones",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cerca a mi vivienda encuentro fácilmente transporte",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Las condiciones de mi vivienda son buenas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 11,
+        "question_text": "En mi vivienda hay servicios de agua y luz",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 12,
+        "question_text": "Las condiciones de mi vivienda me permiten descansar cuando lo requiero",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 13,
+        "question_text": "Las condiciones de mi vivienda me permiten sentirme cómodo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 14,
+        "question_text": "Me queda tiempo para actividades de recreación",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 15,
+        "question_text": "Fuera del trabajo tengo tiempo suficiente para descansar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 16,
+        "question_text": "Tengo tiempo para atender mis asuntos personales y del hogar",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 17,
+        "question_text": "Tengo tiempo para compartir con mi familia o amigos",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 18,
+        "question_text": "Tengo buena comunicación con las personas cercanas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 19,
+        "question_text": "Las relaciones con mis amigos son buenas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 20,
+        "question_text": "Converso con personas cercanas sobre diferentes temas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 21,
+        "question_text": "Mis amigos están dispuestos a escucharme cuando tengo problemas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 22,
+        "question_text": "Cuento con el apoyo de mi familia cuando tengo problemas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 23,
+        "question_text": "Puedo hablar con personas cercanas sobre las cosas que me pasan",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 24,
+        "question_text": "Mis problemas personales o familiares afectan mi trabajo",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 25,
+        "question_text": "La relación con mi familia cercana es cordial",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 26,
+        "question_text": "Mis problemas personales o familiares me quitan la energía que necesito para trabajar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 27,
+        "question_text": "Los problemas con mis familiares los resolvemos de manera amistosa",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 28,
+        "question_text": "Mis problemas personales o familiares afectan mis relaciones en el trabajo",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 29,
+        "question_text": "El dinero que ganamos en el hogar alcanza para cubrir los gastos básicos",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 30,
+        "question_text": "Tengo otros compromisos económicos que afectan mucho el presupuesto familiar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 31,
+        "question_text": "En mi hogar tenemos deudas difíciles de pagar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      }
+    ]
+  },
+  {
+    "id": "b0220c87-8b53-4a1a-9ea3-1b74314904dd",
+    "submitted_at": "2026-03-03T18:22:55.149704",
+    "respondent_cedula": "25618109",
+    "respondent_name": "Karen Sofia Quiñonez Sanchez",
+    "respondent_email": null,
+    "department": "SST",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Es fácil trasportarme entre mi casa y el trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 2,
+        "question_text": "Tengo que tomar varios medios de transporte para llegar a mi lugar de trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 3,
+        "question_text": "Paso mucho tiempo viajando de ida y regreso al trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Me trasporto cómodamente entre mi casa y el trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 5,
+        "question_text": "La zona donde vivo es segura",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En la zona donde vivo se presentan hurtos y mucha delincuencia",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Desde donde vivo me es fácil llegar al centro médico donde me atienden",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Cerca a mi vivienda las vías están en buenas condiciones",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cerca a mi vivienda encuentro fácilmente transporte",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Las condiciones de mi vivienda son buenas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 11,
+        "question_text": "En mi vivienda hay servicios de agua y luz",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 12,
+        "question_text": "Las condiciones de mi vivienda me permiten descansar cuando lo requiero",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 13,
+        "question_text": "Las condiciones de mi vivienda me permiten sentirme cómodo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 14,
+        "question_text": "Me queda tiempo para actividades de recreación",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 15,
+        "question_text": "Fuera del trabajo tengo tiempo suficiente para descansar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 16,
+        "question_text": "Tengo tiempo para atender mis asuntos personales y del hogar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 17,
+        "question_text": "Tengo tiempo para compartir con mi familia o amigos",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 18,
+        "question_text": "Tengo buena comunicación con las personas cercanas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 19,
+        "question_text": "Las relaciones con mis amigos son buenas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 20,
+        "question_text": "Converso con personas cercanas sobre diferentes temas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 21,
+        "question_text": "Mis amigos están dispuestos a escucharme cuando tengo problemas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 22,
+        "question_text": "Cuento con el apoyo de mi familia cuando tengo problemas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 23,
+        "question_text": "Puedo hablar con personas cercanas sobre las cosas que me pasan",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 24,
+        "question_text": "Mis problemas personales o familiares afectan mi trabajo",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 25,
+        "question_text": "La relación con mi familia cercana es cordial",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 26,
+        "question_text": "Mis problemas personales o familiares me quitan la energía que necesito para trabajar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 27,
+        "question_text": "Los problemas con mis familiares los resolvemos de manera amistosa",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 28,
+        "question_text": "Mis problemas personales o familiares afectan mis relaciones en el trabajo",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 29,
+        "question_text": "El dinero que ganamos en el hogar alcanza para cubrir los gastos básicos",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 30,
+        "question_text": "Tengo otros compromisos económicos que afectan mucho el presupuesto familiar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 31,
+        "question_text": "En mi hogar tenemos deudas difíciles de pagar",
+        "response_value": 5,
+        "response_label": "Nunca"
+      }
+    ]
+  },
+  {
+    "id": "166c7042-5d49-4e1a-aef9-bed5a55b6693",
+    "submitted_at": "2026-03-04T08:51:22.334536",
+    "respondent_cedula": "1061779106",
+    "respondent_name": "Bibiana Marcela Muñoz Buesaquillo",
+    "respondent_email": null,
+    "department": "Gestión Humana, área SST",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Es fácil trasportarme entre mi casa y el trabajo",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 2,
+        "question_text": "Tengo que tomar varios medios de transporte para llegar a mi lugar de trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 3,
+        "question_text": "Paso mucho tiempo viajando de ida y regreso al trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Me trasporto cómodamente entre mi casa y el trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 5,
+        "question_text": "La zona donde vivo es segura",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En la zona donde vivo se presentan hurtos y mucha delincuencia",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Desde donde vivo me es fácil llegar al centro médico donde me atienden",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Cerca a mi vivienda las vías están en buenas condiciones",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cerca a mi vivienda encuentro fácilmente transporte",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Las condiciones de mi vivienda son buenas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 11,
+        "question_text": "En mi vivienda hay servicios de agua y luz",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 12,
+        "question_text": "Las condiciones de mi vivienda me permiten descansar cuando lo requiero",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 13,
+        "question_text": "Las condiciones de mi vivienda me permiten sentirme cómodo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 14,
+        "question_text": "Me queda tiempo para actividades de recreación",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 15,
+        "question_text": "Fuera del trabajo tengo tiempo suficiente para descansar",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 16,
+        "question_text": "Tengo tiempo para atender mis asuntos personales y del hogar",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 17,
+        "question_text": "Tengo tiempo para compartir con mi familia o amigos",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 18,
+        "question_text": "Tengo buena comunicación con las personas cercanas",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 19,
+        "question_text": "Las relaciones con mis amigos son buenas",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 20,
+        "question_text": "Converso con personas cercanas sobre diferentes temas",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 21,
+        "question_text": "Mis amigos están dispuestos a escucharme cuando tengo problemas",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 22,
+        "question_text": "Cuento con el apoyo de mi familia cuando tengo problemas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 23,
+        "question_text": "Puedo hablar con personas cercanas sobre las cosas que me pasan",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 24,
+        "question_text": "Mis problemas personales o familiares afectan mi trabajo",
+        "response_value": 5,
+        "response_label": "Nunca"
+      },
+      {
+        "question_id": 25,
+        "question_text": "La relación con mi familia cercana es cordial",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 26,
+        "question_text": "Mis problemas personales o familiares me quitan la energía que necesito para trabajar",
+        "response_value": 5,
+        "response_label": "Nunca"
+      },
+      {
+        "question_id": 27,
+        "question_text": "Los problemas con mis familiares los resolvemos de manera amistosa",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 28,
+        "question_text": "Mis problemas personales o familiares afectan mis relaciones en el trabajo",
+        "response_value": 5,
+        "response_label": "Nunca"
+      },
+      {
+        "question_id": 29,
+        "question_text": "El dinero que ganamos en el hogar alcanza para cubrir los gastos básicos",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 30,
+        "question_text": "Tengo otros compromisos económicos que afectan mucho el presupuesto familiar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 31,
+        "question_text": "En mi hogar tenemos deudas difíciles de pagar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      }
+    ]
+  },
+  {
+    "id": "f38edf44-ca19-4dca-9ba0-7b8e378e9846",
+    "submitted_at": "2026-03-26T09:54:44.896404",
+    "respondent_cedula": "sg",
+    "respondent_name": "xdgv",
+    "respondent_email": null,
+    "department": "xfcvxc",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Es fácil trasportarme entre mi casa y el trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 2,
+        "question_text": "Tengo que tomar varios medios de transporte para llegar a mi lugar de trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 3,
+        "question_text": "Paso mucho tiempo viajando de ida y regreso al trabajo",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Me trasporto cómodamente entre mi casa y el trabajo",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 5,
+        "question_text": "La zona donde vivo es segura",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En la zona donde vivo se presentan hurtos y mucha delincuencia",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Desde donde vivo me es fácil llegar al centro médico donde me atienden",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Cerca a mi vivienda las vías están en buenas condiciones",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cerca a mi vivienda encuentro fácilmente transporte",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Las condiciones de mi vivienda son buenas",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 11,
+        "question_text": "En mi vivienda hay servicios de agua y luz",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 12,
+        "question_text": "Las condiciones de mi vivienda me permiten descansar cuando lo requiero",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 13,
+        "question_text": "Las condiciones de mi vivienda me permiten sentirme cómodo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 14,
+        "question_text": "Me queda tiempo para actividades de recreación",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 15,
+        "question_text": "Fuera del trabajo tengo tiempo suficiente para descansar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 16,
+        "question_text": "Tengo tiempo para atender mis asuntos personales y del hogar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 17,
+        "question_text": "Tengo tiempo para compartir con mi familia o amigos",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 18,
+        "question_text": "Tengo buena comunicación con las personas cercanas",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 19,
+        "question_text": "Las relaciones con mis amigos son buenas",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 20,
+        "question_text": "Converso con personas cercanas sobre diferentes temas",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 21,
+        "question_text": "Mis amigos están dispuestos a escucharme cuando tengo problemas",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 22,
+        "question_text": "Cuento con el apoyo de mi familia cuando tengo problemas",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 23,
+        "question_text": "Puedo hablar con personas cercanas sobre las cosas que me pasan",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 24,
+        "question_text": "Mis problemas personales o familiares afectan mi trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 25,
+        "question_text": "La relación con mi familia cercana es cordial",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 26,
+        "question_text": "Mis problemas personales o familiares me quitan la energía que necesito para trabajar",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 27,
+        "question_text": "Los problemas con mis familiares los resolvemos de manera amistosa",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 28,
+        "question_text": "Mis problemas personales o familiares afectan mis relaciones en el trabajo",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 29,
+        "question_text": "El dinero que ganamos en el hogar alcanza para cubrir los gastos básicos",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 30,
+        "question_text": "Tengo otros compromisos económicos que afectan mucho el presupuesto familiar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 31,
+        "question_text": "En mi hogar tenemos deudas difíciles de pagar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      }
+    ]
+  }
+]

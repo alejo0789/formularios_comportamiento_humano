@@ -1,0 +1,49 @@
+<!-- PAGE 5: INTRALABORAL RESULTS -->
+<div class="page" id="page-5">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES</div>
+    <div class="content">
+        <h2 class="section-title">DISTRIBUCIÓN DE RIESGO INTRALABORAL</h2>
+        <p style="margin-bottom: 25px;">A continuación se presenta el comportamiento global de los factores
+            intralaborales evaluados. Este gráfico representa el nivel de riesgo en el que se encuentra la población
+            respecto a las condiciones internas del trabajo:</p>
+
+        <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 40px;">
+            <div
+                style="flex: 1.2; height: 350px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                <canvas id="intraGlobalChart"></canvas>
+            </div>
+            <div style="flex: 0.8;">
+                <table class="custom-table" style="font-size: 0.85rem; margin: 0;">
+                    <thead>
+                        <tr>
+                            <th>Nivel de Riesgo</th>
+                            <th>Nro.</th>
+                            <th>%</th>
+                        </tr>
+                    </thead>
+                    <tbody id="intra-table-body">
+                        <!-- JS will populate this -->
+                    </tbody>
+                </table>
+                <div
+                    style="margin-top: 15px; padding: 15px; border-radius: 8px; background: #f1f5f9; font-size: 0.85rem; line-height: 1.4; color: #475569; border-left: 4px solid var(--primary);">
+                    <strong>Nota:</strong> Los porcentajes se calculan sobre el total de respondentes del cuestionario
+                    intralaboral.
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">ANÁLISIS POR DIMENSIONES (TOP RIESGO)</h2>
+        <p style="margin-bottom: 20px; font-size: 0.95rem;">Dimensiones intralaborales que presentan los mayores
+            promedios de puntaje transformado (indicadores de mayor riesgo):</p>
+
+        <div id="intra-dimensions-ranking" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- JS will populate these bars -->
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 5</span>
+    </div>
+</div>

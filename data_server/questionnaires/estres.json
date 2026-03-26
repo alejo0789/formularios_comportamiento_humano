@@ -1,0 +1,188 @@
+{
+    "id": "estres",
+    "name": "Cuestionario para la Evaluación del Estrés",
+    "short_name": "Evaluación del Estrés",
+    "description": "Señale la frecuencia con que se le han presentado los siguientes malestares en los últimos tres meses.",
+    "version": "Tercera Versión",
+    "icon": "🧘",
+    "color": "#8b5cf6",
+    "options": [
+        {
+            "value": 1,
+            "label": "Siempre",
+            "emoji": "😰"
+        },
+        {
+            "value": 2,
+            "label": "Casi siempre",
+            "emoji": "😟"
+        },
+        {
+            "value": 3,
+            "label": "A veces",
+            "emoji": "😐"
+        },
+        {
+            "value": 4,
+            "label": "Nunca",
+            "emoji": "😊"
+        }
+    ],
+    "questions": [
+        {
+            "id": 1,
+            "text": "Dolores en el cuello y espalda o tensión muscular",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 2,
+            "text": "Problemas gastrointestinales, úlcera péptica, acidez, problemas digestivos o del colon",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 3,
+            "text": "Problemas respiratorios",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 4,
+            "text": "Dolor de cabeza",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 5,
+            "text": "Trastornos del sueño como somnolencia durante el día o desvelo en la noche",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 6,
+            "text": "Palpitaciones en el pecho o problemas cardíacos",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 7,
+            "text": "Cambios fuertes del apetito",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 8,
+            "text": "Problemas relacionados con la función de los órganos genitales (impotencia, frigidez)",
+            "category": "SÍNTOMAS FISIOLÓGICOS"
+        },
+        {
+            "id": 9,
+            "text": "Dificultad en las relaciones familiares",
+            "category": "SÍNTOMAS COMPORTAMENTALES"
+        },
+        {
+            "id": 10,
+            "text": "Dificultad para permanecer quieto o dificultad para iniciar actividades",
+            "category": "SÍNTOMAS COMPORTAMENTALES"
+        },
+        {
+            "id": 11,
+            "text": "Dificultad en las relaciones con otras personas",
+            "category": "SÍNTOMAS COMPORTAMENTALES"
+        },
+        {
+            "id": 12,
+            "text": "Sensación de aislamiento y desinterés",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 13,
+            "text": "Sentimiento de sobrecarga de trabajo",
+            "category": "SÍNTOMAS LABORALES"
+        },
+        {
+            "id": 14,
+            "text": "Dificultad para concentrarse, olvidos frecuentes",
+            "category": "SÍNTOMAS INTELECTUALES"
+        },
+        {
+            "id": 15,
+            "text": "Aumento en el número de accidentes de trabajo",
+            "category": "SÍNTOMAS LABORALES"
+        },
+        {
+            "id": 16,
+            "text": "Sentimiento de frustración, de no haber hecho lo que se quería en la vida",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 17,
+            "text": "Cansancio, tedio o desgano",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 18,
+            "text": "Disminución del rendimiento en el trabajo o poca creatividad",
+            "category": "SÍNTOMAS LABORALES"
+        },
+        {
+            "id": 19,
+            "text": "Deseo de no asistir al trabajo",
+            "category": "SÍNTOMAS LABORALES"
+        },
+        {
+            "id": 20,
+            "text": "Bajo compromiso o poco interés con lo que se hace",
+            "category": "SÍNTOMAS LABORALES"
+        },
+        {
+            "id": 21,
+            "text": "Dificultad para tomar decisiones",
+            "category": "SÍNTOMAS INTELECTUALES"
+        },
+        {
+            "id": 22,
+            "text": "Deseo de cambiar de empleo",
+            "category": "SÍNTOMAS LABORALES"
+        },
+        {
+            "id": 23,
+            "text": "Sentimiento de soledad y miedo",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 24,
+            "text": "Sentimiento de irritabilidad, actitudes y pensamientos negativos",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 25,
+            "text": "Sentimiento de angustia, preocupación o tristeza",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 26,
+            "text": "Consumo de drogas para aliviar la tensión o los nervios",
+            "category": "SÍNTOMAS COMPORTAMENTALES"
+        },
+        {
+            "id": 27,
+            "text": "Sentimientos de que \"no vale nada\" o \"no sirve para nada\"",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 28,
+            "text": "Consumo de bebidas alcohólicas o café o cigarrillo",
+            "category": "SÍNTOMAS COMPORTAMENTALES"
+        },
+        {
+            "id": 29,
+            "text": "Sentimiento de que está perdiendo la razón",
+            "category": "SÍNTOMAS EMOCIONALES"
+        },
+        {
+            "id": 30,
+            "text": "Comportamientos rígidos, obstinación o terquedad",
+            "category": "SÍNTOMAS COMPORTAMENTALES"
+        },
+        {
+            "id": 31,
+            "text": "Sensación de no poder manejar los problemas de la vida",
+            "category": "SÍNTOMAS EMOCIONALES"
+        }
+    ]
+}

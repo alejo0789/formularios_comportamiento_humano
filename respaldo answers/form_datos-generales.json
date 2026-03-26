@@ -1,0 +1,32 @@
+[
+  {
+    "id": "db54cb2a-5475-4f14-b1b7-1e8a6ee00da5",
+    "submitted_at": "2026-02-18T20:43:48.558Z",
+    "data": {
+      "fecha_aplicacion": "2026-02-18",
+      "numero_identificacion": "1113783425",
+      "nombre_completo": "alejandro test",
+      "sexo": "masculino",
+      "año_nacimiento": "1989",
+      "estado_civil": "soltero",
+      "nivel_estudios": "postgrado_completo",
+      "ocupacion_profesion": "ingeniero",
+      "departamento_residencia": "Valle del Cauca",
+      "ciudad_residencia": "Cali",
+      "estrato": "3",
+      "tipo_vivienda": "arriendo",
+      "personas_dependientes": "2",
+      "tiene_personal_cargo": "si",
+      "departamento_trabajo": "Valle del Cauca",
+      "ciudad_trabajo": "Cali",
+      "antiguedad_empresa": "menos_1",
+      "nombre_cargo": "ingeniero ti",
+      "tipo_cargo": "profesional",
+      "antiguedad_cargo": "2_años",
+      "departamento_area": "ti",
+      "tipo_contrato": "temporal_mas_1",
+      "horas_diarias": "8",
+      "tipo_salario": "mixto"
+    }
+  }
+]

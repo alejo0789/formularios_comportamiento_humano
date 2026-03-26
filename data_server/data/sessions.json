@@ -1,0 +1,83 @@
+{
+  "1062318805": {
+    "cedula": "1062318805",
+    "name": "NATALY YULE ",
+    "completed_forms": [
+      "intralaborales-b",
+      "datos-generales"
+    ],
+    "last_active": "2026-02-04T16:58:43.261976",
+    "current_step": "estres"
+  },
+  "66782620": {
+    "cedula": "66782620",
+    "name": "Mariluz Fernández Muñoz ",
+    "completed_forms": [
+      "estres",
+      "datos-generales",
+      "intralaborales-b",
+      "intralaborales-a",
+      "extralaborales"
+    ],
+    "last_active": "2026-03-04T17:52:18.520196",
+    "current_step": "completed"
+  },
+  "sg": {
+    "cedula": "sg",
+    "name": "xdgv",
+    "completed_forms": [
+      "estres",
+      "intralaborales-a",
+      "datos-generales",
+      "extralaborales"
+    ],
+    "last_active": "2026-03-26T09:54:44.899380",
+    "current_step": "intralaborales-b"
+  },
+  "25618109": {
+    "cedula": "25618109",
+    "name": "Karen Sofia Quiñonez Sanchez",
+    "completed_forms": [
+      "estres",
+      "datos-generales",
+      "intralaborales-b",
+      "intralaborales-a",
+      "extralaborales"
+    ],
+    "last_active": "2026-03-03T19:05:24.827170",
+    "current_step": "completed"
+  },
+  "1061779106": {
+    "cedula": "1061779106",
+    "name": "Bibiana Marcela Muñoz Buesaquillo",
+    "completed_forms": [
+      "estres",
+      "datos-generales",
+      "intralaborales-b",
+      "intralaborales-a",
+      "extralaborales"
+    ],
+    "last_active": "2026-03-04T09:09:57.095629",
+    "current_step": "completed"
+  },
+  "1085299302": {
+    "cedula": "1085299302",
+    "name": "vanessa alejandra ruiz velasco",
+    "completed_forms": [
+      "datos-generales",
+      "intralaborales-b"
+    ],
+    "last_active": "2026-03-05T16:19:10.006957",
+    "current_step": "estres"
+  },
+  "1005873376": {
+    "cedula": "1005873376",
+    "name": "Nicol Dayana Narvaez Giraldo",
+    "completed_forms": [
+      "intralaborales-a",
+      "datos-generales"
+    ],
+    "last_active": "2026-03-26T09:54:44.618933",
+    "current_step": "estres"
+  }
+}

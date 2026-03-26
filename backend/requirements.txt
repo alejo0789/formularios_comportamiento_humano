@@ -6,3 +6,5 @@ openpyxl==3.1.2
 python-dotenv==1.0.0
 playwright
 python-multipart
+pytest
+pytest-asyncio

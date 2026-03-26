@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Oficial de Riesgo Psicosocial</title>
+    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="reportes_modulares/styles.css">
+</head>
+
+<body>
+
+    <button class="print-fab no-print" onclick="window.downloadReport()">DESCARGAR REPORTE (PDF)</button>
+
+    <div id="report-content">
+        <!-- CONTENT_PLACEHOLDER -->
+    </div>
+
+    <script>
+        window.downloadReport = function () {
+            const element = document.getElementById('report-content');
+            const opt = {
+                margin: 0,
+                filename: 'Reporte_Resultados_Grupal.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF: { unit: 'px', format: 'a4', orientation: 'portrait' }
+            };
+
+            // To prevent charts from breaking on resize, html2pdf will render them exactly as seen.
+            html2pdf().set(opt).from(element).save();
+        };
+
+        // Registra los plugins obligatorios de Chart.js
+        Chart.register(ChartDataLabels);
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const dateStr = new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+
+            const coverDate = document.getElementById('current-date-cover');
+            if (coverDate) coverDate.innerText = `Fecha de emisión: ${dateStr}`;
+
+            try {
+                // Fetch de datos grupales
+                const response = await fetch('/cuestionarios/api/analisis/grupo/resumen');
+                const json = await response.json();
+
+                if (json.success) {
+                    const data = json.data;
+
+                    // Actualizar métricas de cobertura (Página 4)
+                    const totalParticipants = data.total_respondentes;
+                    const totalEmployees = 305; // Fijo temporal
+                    const coverage = Math.round((totalParticipants / totalEmployees) * 100);
+
+                    const elParticipants = document.getElementById('dynamic-participants');
+                    const elCoverage = document.getElementById('dynamic-coverage');
+                    if (elParticipants) elParticipants.innerText = totalParticipants;
+                    if (elCoverage) elCoverage.innerText = `${coverage}%`;
+
+                    const demo = data.demografico || {};
+
+                    // Función constructora de gráficos Doughnut
+                    const createDoughnut = (ctxId, chartData, colors) => {
+                        const ctx = document.getElementById(ctxId);
+                        if (!ctx || !chartData || Object.keys(chartData).length === 0) return;
+
+                        const labels = Object.keys(chartData);
+                        const values = Object.values(chartData);
+
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    data: values,
+                                    backgroundColor: colors,
+                                    borderWidth: 1,
+                                    borderColor: '#ffffff'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                cutout: '50%',
+                                layout: {
+                                    padding: { left: 5, right: 10, top: 5, bottom: 5 }
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'right',
+                                        labels: {
+                                            boxWidth: 9,
+                                            font: { size: 9, family: 'sans-serif' },
+                                            padding: 8,
+                                            usePointStyle: true,
+                                            pointStyle: 'rectRounded'
+                                        }
+                                    },
+                                    datalabels: {
+                                        color: '#ffffff',
+                                        font: { weight: 'bold', size: 11 },
+                                        formatter: (value, ctx) => {
+                                            const sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                            const percentage = (value * 100 / sum).toFixed(0) + "%";
+                                            return percentage;
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    };
+
+                    // Función para Barras Horizontales (Residencia)
+                    const createHorizontalBar = (ctxId, chartData) => {
+                        const ctx = document.getElementById(ctxId);
+                        if (!ctx || !chartData || Object.keys(chartData).length === 0) return;
+
+                        const labels = Object.keys(chartData);
+                        const values = Object.values(chartData);
+                        const sum = values.reduce((a, b) => a + b, 0);
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    data: values,
+                                    backgroundColor: '#3b82f6',
+                                    borderRadius: 4
+                                }]
+                            },
+                            options: {
+                                indexAxis: 'y',
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { display: false },
+                                    datalabels: {
+                                        anchor: 'end',
+                                        align: 'end',
+                                        color: '#1e3a8a',
+                                        font: { weight: 'bold', size: 10 },
+                                        formatter: (value) => {
+                                            return (value * 100 / sum).toFixed(1) + "%";
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        display: false,
+                                        grid: { display: false }
+                                    },
+                                    y: {
+                                        grid: { display: false },
+                                        ticks: { font: { size: 10 } }
+                                    }
+                                }
+                            }
+                        });
+                    };
+
+                    // Función para Barra Apilada Vertical (Página 9)
+                    const createStackedBar = (ctxId, distPct) => {
+                        const ctx = document.getElementById(ctxId);
+                        if (!ctx) return;
+
+                        // Orden: Muy Alto (base) -> Alto -> Medio -> Bajo -> Sin Riesgo (top)
+                        const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                        const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Factores Intralaborales'],
+                                datasets: levels.map((lvl, i) => ({
+                                    label: lvl,
+                                    data: [distPct[lvl] || 0],
+                                    backgroundColor: colors[i],
+                                    barThickness: 180
+                                }))
+                            },
+                            options: {
+                                plugins: {
+                                    legend: { display: false },
+                                    datalabels: {
+                                        color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                        font: { weight: '800', size: 16 },
+                                        formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                    }
+                                },
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: { display: false, stacked: true },
+                                    y: { display: false, stacked: true, max: 100 }
+                                }
+                            }
+                        });
+                    };
+
+                    const bluePalette = ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#0ea5e9', '#0284c7'];
+
+                    // Gráficas Demográficas (Página 4)
+                    createDoughnut('sexChart', demo.sexo, ['#1e3a8a', '#ec4899', '#94a3b8']);
+                    createDoughnut('eduChart', demo.nivel_estudios, bluePalette);
+                    createDoughnut('cargoChart', demo.tipo_cargo, bluePalette);
+                    createDoughnut('civilChart', demo.estado_civil, bluePalette);
+
+                    // Gráficas Demográficas (Página 6)
+                    createHorizontalBar('residenceChart', demo.ciudad_residencia);
+                    createDoughnut('estratoChart', demo.estrato, bluePalette);
+                    createDoughnut('viviendaChart', demo.tipo_vivienda, bluePalette);
+
+                    // Resultados Intralaborales (Página 9)
+                    const intra = data.cuestionarios?.intralaboral;
+                    if (intra) {
+                        const dist = intra.distribucion_pct || {};
+                        const n = intra.n || 0;
+                        document.getElementById('intra-total-n').innerText = n;
+
+                        // Priorización: Medio + Alto + Muy Alto
+                        const priorHigh = (dist["Medio"] || 0) + (dist["Alto"] || 0) + (dist["Muy Alto"] || 0);
+                        const priorLow = (dist["Sin Riesgo"] || 0) + (dist["Bajo"] || 0);
+
+                        document.getElementById('val-prior-high').innerText = Math.round(priorHigh) + "%";
+                        document.getElementById('val-prior-low').innerText = Math.round(priorLow) + "%";
+
+                        createStackedBar('intraStackedChart', dist);
+                    }
+
+                    // Gráfica por Áreas (Página 10)
+                    const areaData = data.area_breakdown;
+                    if (areaData && Object.keys(areaData).length > 0) {
+                        const ctx = document.getElementById('areaBreakdownChart');
+                        if (ctx) {
+                            const areas = Object.keys(areaData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: areas.map(a => a.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: areas.map(a => areaData[a][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: { stacked: true, grid: { display: false }, ticks: { font: { size: 9, weight: 'bold' } } },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica de Dimensiones de Liderazgo (Página 12)
+                    const leadershipData = data.leadership_breakdown;
+                    if (leadershipData && Object.keys(leadershipData).length > 0) {
+                        const ctx = document.getElementById('leadershipDimensionsChart');
+                        if (ctx) {
+                            const dims = Object.keys(leadershipData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: dims.map(d => d.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: dims.map(d => leadershipData[d][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 9, weight: 'bold' },
+                                                callback: function (value) {
+                                                    const label = this.getLabelForValue(value);
+                                                    return label.length > 20 ? label.match(/.{1,20}(\s|$)/g) : label;
+                                                }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráficas de Foco por Áreas (Página 13)
+                    const focusData = data.leadership_focus_areas;
+                    if (focusData) {
+                        const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                        const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                        const renderFocusChart = (ctxId, dimData) => {
+                            const ctx = document.getElementById(ctxId);
+                            if (!ctx || !dimData) return;
+                            const areas = Object.keys(dimData);
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: areas.map(a => a.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: areas.map(a => dimData[a][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 9 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 8, weight: 'bold' },
+                                                maxRotation: 45,
+                                                minRotation: 45
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        };
+
+                        renderFocusChart('charLidAreaChart', focusData.liderazgo);
+                        renderFocusChart('relColAreaChart', focusData.colaboradores);
+                        renderFocusChart('relSocAreaChart', focusData.relaciones);
+                        renderFocusChart('retroDesAreaChart', focusData.retroalimentacion);
+                    }
+
+                    // Comparativa Liderazgo Forma A vs B (Página 15)
+                    const leadFormData = data.leadership_form_breakdown;
+                    if (leadFormData && Object.keys(leadFormData).length > 0) {
+                        const ctx = document.getElementById('leadershipFormComparisonChart');
+                        if (ctx) {
+                            const forms = Object.keys(leadFormData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: forms.map(f => f === "A" ? "FORMA A (Jefes/Profesionales)" : "FORMA B (Auxiliares/Operativos)"),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: forms.map(f => leadFormData[f][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                        barThickness: 150
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 12 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: { font: { size: 11, weight: 'bold' } }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica de Dimensiones de Demandas (Página 16)
+                    const demandsData = data.demands_breakdown;
+                    if (demandsData && Object.keys(demandsData).length > 0) {
+                        const ctx = document.getElementById('demandsDimensionsChart');
+                        if (ctx) {
+                            const dims = Object.keys(demandsData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: dims.map(d => d.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: dims.map(d => demandsData[d][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 9 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 8, weight: 'bold' },
+                                                callback: function (value) {
+                                                    const label = this.getLabelForValue(value);
+                                                    return label.length > 15 ? label.match(/.{1,15}(\s|$)/g) : label;
+                                                }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica General de Demandas (Página 16)
+                    const demandsDist = data.demands_dist;
+                    if (demandsDist && Object.keys(demandsDist).length > 0) {
+                        createStackedBar('demandsTotalStackedChart', demandsDist);
+
+                        // Priorización Alta (Muy Alto + Alto + Medio)
+                        const pHigh = (demandsDist["Muy Alto"] || 0) + (demandsDist["Alto"] || 0) + (demandsDist["Medio"] || 0);
+                        // Priorización Baja (Bajo + Sin Riesgo)
+                        const pLow = (demandsDist["Bajo"] || 0) + (demandsDist["Sin Riesgo"] || 0);
+
+                        document.getElementById('demands-prior-high').textContent = `${Math.round(pHigh)}%`;
+                        document.getElementById('demands-prior-low').textContent = `${Math.round(pLow)}%`;
+                    }
+
+                    // Gráfica de Demandas por Área (Página 18)
+                    const demandsAreaData = data.demands_area_breakdown;
+                    if (demandsAreaData && Object.keys(demandsAreaData).length > 0) {
+                        const ctx = document.getElementById('demandsAreaBreakdownChart');
+                        if (ctx) {
+                            const areas = Object.keys(demandsAreaData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: areas.map(a => a.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: areas.map(a => demandsAreaData[a][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 9, weight: 'bold' }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Comparativa Forma A vs B (Página 19)
+                    const demandsFormData = data.demands_form_breakdown;
+                    if (demandsFormData && Object.keys(demandsFormData).length > 0) {
+                        const ctx = document.getElementById('demandsFormComparisonChart');
+                        if (ctx) {
+                            const forms = Object.keys(demandsFormData); // ["A", "B"]
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: forms.map(f => f === "A" ? "FORMA A (Jefes/Profesionales)" : "FORMA B (Auxiliares/Operativos)"),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: forms.map(f => demandsFormData[f][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                        barThickness: 150
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 12 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: { font: { size: 11, weight: 'bold' } }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica General de Control (Página 22)
+                    const controlDist = data.control_dist;
+                    if (controlDist && Object.keys(controlDist).length > 0) {
+                        createStackedBar('controlTotalStackedChart', controlDist);
+
+                        const pHigh = (controlDist["Muy Alto"] || 0) + (controlDist["Alto"] || 0) + (controlDist["Medio"] || 0);
+                        const pLow = (controlDist["Bajo"] || 0) + (controlDist["Sin Riesgo"] || 0);
+
+                        const highEl = document.getElementById('control-prior-high');
+                        const lowEl = document.getElementById('control-prior-low');
+                        if (highEl) highEl.textContent = `${Math.round(pHigh)}%`;
+                        if (lowEl) lowEl.textContent = `${Math.round(pLow)}%`;
+                    }
+
+                    // Gráfica de Dimensiones de Control (Página 23)
+                    const controlData = data.control_breakdown;
+                    if (controlData && Object.keys(controlData).length > 0) {
+                        const ctx = document.getElementById('controlDimensionsChart');
+                        if (ctx) {
+                            const dims = Object.keys(controlData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: dims.map(d => d.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: dims.map(d => controlData[d][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 9, weight: 'bold' },
+                                                callback: function (value) {
+                                                    const label = this.getLabelForValue(value);
+                                                    return label.length > 20 ? label.match(/.{1,20}(\s|$)/g) : label;
+                                                }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("Error cargando los datos grupales", error);
+            }
+        });
+    </script>
+</body>
+
+</html>

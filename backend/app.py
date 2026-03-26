@@ -16,6 +16,7 @@ import glob
 import io
 from analysis_engine import AnalysisEngine
 from dotenv import load_dotenv
+from analisis.router import router as analisis_router
 
 # Load environment variables
 load_dotenv()
@@ -789,6 +790,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include the Analysis module router
+app.include_router(analisis_router)
+
 
 # ==========================================
 # CONSTANTS & CONFIGURATION
@@ -1246,11 +1250,14 @@ async def get_statistics(questionnaire_id: str):
         for response in responses:
             for r in response["responses"]:
                 if r["question_id"] == q_id:
-                    values.append(r["response_value"])
+                    try:
+                        values.append(int(r["response_value"]))
+                    except (ValueError, TypeError):
+                        pass  # skip malformed entries
         
         if values:
             avg = sum(values) / len(values)
-            distribution = {v: values.count(v) for v in option_values}
+            distribution = {int(v): values.count(int(v)) for v in option_values}
             
             question_stats[q_id] = {
                 "question_text": question["text"],
@@ -1433,6 +1440,11 @@ async def serve_survey_legacy():
 async def serve_results_legacy():
     """Redirect to selector if no questionnaire specified"""
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+
+@app.get("/analisis-dashboard")
+async def serve_analysis_dashboard():
+    """Serve the psychosocial analysis dashboard"""
+    return FileResponse(os.path.join(FRONTEND_DIR, "analisis-dashboard.html"))
 
 # Mount static files (CSS, JS) - must be after API routes
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="static")

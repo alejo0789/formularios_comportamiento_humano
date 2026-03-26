@@ -1,0 +1,4128 @@
+[
+  {
+    "id": "79322c74-37d6-4b49-933f-449fdfac6098",
+    "submitted_at": "2026-02-04T17:31:30.420095",
+    "respondent_cedula": "76694844",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 5
+      },
+      {
+        "question_id": 3,
+        "response_value": 4
+      },
+      {
+        "question_id": 4,
+        "response_value": 4
+      },
+      {
+        "question_id": 5,
+        "response_value": 5
+      },
+      {
+        "question_id": 6,
+        "response_value": 4
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 4
+      },
+      {
+        "question_id": 9,
+        "response_value": 1
+      },
+      {
+        "question_id": 10,
+        "response_value": 2
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 3
+      },
+      {
+        "question_id": 13,
+        "response_value": 4
+      },
+      {
+        "question_id": 14,
+        "response_value": 2
+      },
+      {
+        "question_id": 15,
+        "response_value": 4
+      },
+      {
+        "question_id": 16,
+        "response_value": 1
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 3
+      },
+      {
+        "question_id": 19,
+        "response_value": 2
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 4
+      },
+      {
+        "question_id": 24,
+        "response_value": 4
+      },
+      {
+        "question_id": 25,
+        "response_value": 4
+      },
+      {
+        "question_id": 26,
+        "response_value": 1
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 3
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 1
+      }
+    ]
+  },
+  {
+    "id": "f0ac5a55-3086-40af-878e-04e4c56af565",
+    "submitted_at": "2026-02-04T17:31:30.420108",
+    "respondent_cedula": "64402743",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 4
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 5
+      },
+      {
+        "question_id": 7,
+        "response_value": 1
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 4
+      },
+      {
+        "question_id": 10,
+        "response_value": 1
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 3
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 5
+      },
+      {
+        "question_id": 15,
+        "response_value": 4
+      },
+      {
+        "question_id": 16,
+        "response_value": 2
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 1
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 4
+      },
+      {
+        "question_id": 22,
+        "response_value": 5
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 3
+      },
+      {
+        "question_id": 26,
+        "response_value": 5
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 1
+      },
+      {
+        "question_id": 29,
+        "response_value": 4
+      },
+      {
+        "question_id": 30,
+        "response_value": 5
+      },
+      {
+        "question_id": 31,
+        "response_value": 2
+      }
+    ]
+  },
+  {
+    "id": "fe2bbd00-e877-4c52-8e56-3c16607ed1cd",
+    "submitted_at": "2026-02-04T17:31:30.420118",
+    "respondent_cedula": "12276914",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 1
+      },
+      {
+        "question_id": 2,
+        "response_value": 3
+      },
+      {
+        "question_id": 3,
+        "response_value": 4
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 1
+      },
+      {
+        "question_id": 6,
+        "response_value": 3
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 4
+      },
+      {
+        "question_id": 10,
+        "response_value": 2
+      },
+      {
+        "question_id": 11,
+        "response_value": 5
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 2
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 1
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 4
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 5
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 4
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 1
+      },
+      {
+        "question_id": 27,
+        "response_value": 3
+      },
+      {
+        "question_id": 28,
+        "response_value": 3
+      },
+      {
+        "question_id": 29,
+        "response_value": 4
+      },
+      {
+        "question_id": 30,
+        "response_value": 4
+      },
+      {
+        "question_id": 31,
+        "response_value": 2
+      }
+    ]
+  },
+  {
+    "id": "5ac34b55-e76d-4b77-94ec-15f80037310a",
+    "submitted_at": "2026-02-04T17:31:30.420127",
+    "respondent_cedula": "38870551",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 4
+      },
+      {
+        "question_id": 2,
+        "response_value": 4
+      },
+      {
+        "question_id": 3,
+        "response_value": 1
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 5
+      },
+      {
+        "question_id": 6,
+        "response_value": 4
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 4
+      },
+      {
+        "question_id": 11,
+        "response_value": 2
+      },
+      {
+        "question_id": 12,
+        "response_value": 5
+      },
+      {
+        "question_id": 13,
+        "response_value": 2
+      },
+      {
+        "question_id": 14,
+        "response_value": 3
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 3
+      },
+      {
+        "question_id": 18,
+        "response_value": 5
+      },
+      {
+        "question_id": 19,
+        "response_value": 1
+      },
+      {
+        "question_id": 20,
+        "response_value": 3
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 2
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 5
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 2
+      },
+      {
+        "question_id": 29,
+        "response_value": 4
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 2
+      }
+    ]
+  },
+  {
+    "id": "c4dd3bd9-a5ef-4b77-b24f-a4587ba7ea05",
+    "submitted_at": "2026-02-04T17:31:30.420137",
+    "respondent_cedula": "85318773",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 4
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 3
+      },
+      {
+        "question_id": 5,
+        "response_value": 5
+      },
+      {
+        "question_id": 6,
+        "response_value": 3
+      },
+      {
+        "question_id": 7,
+        "response_value": 1
+      },
+      {
+        "question_id": 8,
+        "response_value": 3
+      },
+      {
+        "question_id": 9,
+        "response_value": 1
+      },
+      {
+        "question_id": 10,
+        "response_value": 4
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 3
+      },
+      {
+        "question_id": 13,
+        "response_value": 5
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 4
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 5
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 5
+      },
+      {
+        "question_id": 21,
+        "response_value": 3
+      },
+      {
+        "question_id": 22,
+        "response_value": 4
+      },
+      {
+        "question_id": 23,
+        "response_value": 3
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 3
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 3
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 3
+      }
+    ]
+  },
+  {
+    "id": "ba4d0994-3139-4ce0-be65-52064482d138",
+    "submitted_at": "2026-02-04T17:31:30.420145",
+    "respondent_cedula": "25459498",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 2
+      },
+      {
+        "question_id": 2,
+        "response_value": 5
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 4
+      },
+      {
+        "question_id": 5,
+        "response_value": 1
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 5
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 4
+      },
+      {
+        "question_id": 11,
+        "response_value": 2
+      },
+      {
+        "question_id": 12,
+        "response_value": 2
+      },
+      {
+        "question_id": 13,
+        "response_value": 1
+      },
+      {
+        "question_id": 14,
+        "response_value": 5
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 5
+      },
+      {
+        "question_id": 17,
+        "response_value": 3
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 2
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 4
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 3
+      },
+      {
+        "question_id": 28,
+        "response_value": 1
+      },
+      {
+        "question_id": 29,
+        "response_value": 2
+      },
+      {
+        "question_id": 30,
+        "response_value": 4
+      },
+      {
+        "question_id": 31,
+        "response_value": 2
+      }
+    ]
+  },
+  {
+    "id": "c535db92-1593-4046-b262-0b099ac215fe",
+    "submitted_at": "2026-02-04T17:31:30.420154",
+    "respondent_cedula": "83869940",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 5
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 2
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 3
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 3
+      },
+      {
+        "question_id": 15,
+        "response_value": 1
+      },
+      {
+        "question_id": 16,
+        "response_value": 5
+      },
+      {
+        "question_id": 17,
+        "response_value": 3
+      },
+      {
+        "question_id": 18,
+        "response_value": 5
+      },
+      {
+        "question_id": 19,
+        "response_value": 4
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 1
+      },
+      {
+        "question_id": 22,
+        "response_value": 5
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 3
+      },
+      {
+        "question_id": 25,
+        "response_value": 2
+      },
+      {
+        "question_id": 26,
+        "response_value": 3
+      },
+      {
+        "question_id": 27,
+        "response_value": 3
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 4
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 4
+      }
+    ]
+  },
+  {
+    "id": "90a45875-81f1-4413-a714-593322ed7f5b",
+    "submitted_at": "2026-02-04T17:31:30.420163",
+    "respondent_cedula": "49085151",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 4
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 2
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 3
+      },
+      {
+        "question_id": 9,
+        "response_value": 5
+      },
+      {
+        "question_id": 10,
+        "response_value": 3
+      },
+      {
+        "question_id": 11,
+        "response_value": 1
+      },
+      {
+        "question_id": 12,
+        "response_value": 1
+      },
+      {
+        "question_id": 13,
+        "response_value": 4
+      },
+      {
+        "question_id": 14,
+        "response_value": 2
+      },
+      {
+        "question_id": 15,
+        "response_value": 1
+      },
+      {
+        "question_id": 16,
+        "response_value": 4
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 1
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 5
+      },
+      {
+        "question_id": 23,
+        "response_value": 3
+      },
+      {
+        "question_id": 24,
+        "response_value": 4
+      },
+      {
+        "question_id": 25,
+        "response_value": 1
+      },
+      {
+        "question_id": 26,
+        "response_value": 5
+      },
+      {
+        "question_id": 27,
+        "response_value": 2
+      },
+      {
+        "question_id": 28,
+        "response_value": 3
+      },
+      {
+        "question_id": 29,
+        "response_value": 5
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 1
+      }
+    ]
+  },
+  {
+    "id": "e5fb2b0b-369f-42ed-a462-0e853c313130",
+    "submitted_at": "2026-02-04T17:31:30.420172",
+    "respondent_cedula": "60287477",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 2
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 3
+      },
+      {
+        "question_id": 5,
+        "response_value": 5
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 1
+      },
+      {
+        "question_id": 8,
+        "response_value": 1
+      },
+      {
+        "question_id": 9,
+        "response_value": 5
+      },
+      {
+        "question_id": 10,
+        "response_value": 1
+      },
+      {
+        "question_id": 11,
+        "response_value": 5
+      },
+      {
+        "question_id": 12,
+        "response_value": 5
+      },
+      {
+        "question_id": 13,
+        "response_value": 1
+      },
+      {
+        "question_id": 14,
+        "response_value": 1
+      },
+      {
+        "question_id": 15,
+        "response_value": 1
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 4
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 4
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 4
+      },
+      {
+        "question_id": 24,
+        "response_value": 3
+      },
+      {
+        "question_id": 25,
+        "response_value": 3
+      },
+      {
+        "question_id": 26,
+        "response_value": 1
+      },
+      {
+        "question_id": 27,
+        "response_value": 3
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 4
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 2
+      }
+    ]
+  },
+  {
+    "id": "a4206b73-c430-4940-86ef-e38e15d8e2cc",
+    "submitted_at": "2026-02-04T17:31:30.420180",
+    "respondent_cedula": "51836231",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 2
+      },
+      {
+        "question_id": 3,
+        "response_value": 5
+      },
+      {
+        "question_id": 4,
+        "response_value": 1
+      },
+      {
+        "question_id": 5,
+        "response_value": 1
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 4
+      },
+      {
+        "question_id": 8,
+        "response_value": 3
+      },
+      {
+        "question_id": 9,
+        "response_value": 5
+      },
+      {
+        "question_id": 10,
+        "response_value": 1
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 3
+      },
+      {
+        "question_id": 13,
+        "response_value": 4
+      },
+      {
+        "question_id": 14,
+        "response_value": 1
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 5
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 3
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 3
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 5
+      },
+      {
+        "question_id": 24,
+        "response_value": 1
+      },
+      {
+        "question_id": 25,
+        "response_value": 4
+      },
+      {
+        "question_id": 26,
+        "response_value": 5
+      },
+      {
+        "question_id": 27,
+        "response_value": 2
+      },
+      {
+        "question_id": 28,
+        "response_value": 2
+      },
+      {
+        "question_id": 29,
+        "response_value": 5
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 5
+      }
+    ]
+  },
+  {
+    "id": "7bfc351b-1fb9-4ded-bd58-e098ba5c8a0b",
+    "submitted_at": "2026-02-04T17:31:30.420189",
+    "respondent_cedula": "71628513",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 4
+      },
+      {
+        "question_id": 2,
+        "response_value": 2
+      },
+      {
+        "question_id": 3,
+        "response_value": 4
+      },
+      {
+        "question_id": 4,
+        "response_value": 2
+      },
+      {
+        "question_id": 5,
+        "response_value": 3
+      },
+      {
+        "question_id": 6,
+        "response_value": 5
+      },
+      {
+        "question_id": 7,
+        "response_value": 4
+      },
+      {
+        "question_id": 8,
+        "response_value": 5
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 3
+      },
+      {
+        "question_id": 11,
+        "response_value": 1
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 2
+      },
+      {
+        "question_id": 14,
+        "response_value": 5
+      },
+      {
+        "question_id": 15,
+        "response_value": 3
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 2
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 3
+      },
+      {
+        "question_id": 21,
+        "response_value": 2
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 4
+      },
+      {
+        "question_id": 24,
+        "response_value": 1
+      },
+      {
+        "question_id": 25,
+        "response_value": 1
+      },
+      {
+        "question_id": 26,
+        "response_value": 3
+      },
+      {
+        "question_id": 27,
+        "response_value": 2
+      },
+      {
+        "question_id": 28,
+        "response_value": 2
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 4
+      },
+      {
+        "question_id": 31,
+        "response_value": 1
+      }
+    ]
+  },
+  {
+    "id": "606260d3-f6ee-4c28-822a-2a4cbe77527e",
+    "submitted_at": "2026-02-04T17:31:30.420198",
+    "respondent_cedula": "58994915",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 1
+      },
+      {
+        "question_id": 2,
+        "response_value": 2
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 3
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 2
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 5
+      },
+      {
+        "question_id": 10,
+        "response_value": 1
+      },
+      {
+        "question_id": 11,
+        "response_value": 1
+      },
+      {
+        "question_id": 12,
+        "response_value": 1
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 5
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 3
+      },
+      {
+        "question_id": 20,
+        "response_value": 5
+      },
+      {
+        "question_id": 21,
+        "response_value": 3
+      },
+      {
+        "question_id": 22,
+        "response_value": 5
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 3
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 1
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 2
+      }
+    ]
+  },
+  {
+    "id": "18921398-7c3f-4282-9919-925745234313",
+    "submitted_at": "2026-02-04T17:31:30.420207",
+    "respondent_cedula": "82696018",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 4
+      },
+      {
+        "question_id": 2,
+        "response_value": 3
+      },
+      {
+        "question_id": 3,
+        "response_value": 1
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 2
+      },
+      {
+        "question_id": 6,
+        "response_value": 5
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 4
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 5
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 2
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 1
+      },
+      {
+        "question_id": 16,
+        "response_value": 2
+      },
+      {
+        "question_id": 17,
+        "response_value": 5
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 4
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 4
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 5
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 1
+      },
+      {
+        "question_id": 29,
+        "response_value": 3
+      },
+      {
+        "question_id": 30,
+        "response_value": 5
+      },
+      {
+        "question_id": 31,
+        "response_value": 4
+      }
+    ]
+  },
+  {
+    "id": "12676d7e-92e3-41de-be38-6fad62fb37f5",
+    "submitted_at": "2026-02-04T17:31:30.420216",
+    "respondent_cedula": "92457038",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 2
+      },
+      {
+        "question_id": 2,
+        "response_value": 4
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 1
+      },
+      {
+        "question_id": 5,
+        "response_value": 3
+      },
+      {
+        "question_id": 6,
+        "response_value": 2
+      },
+      {
+        "question_id": 7,
+        "response_value": 1
+      },
+      {
+        "question_id": 8,
+        "response_value": 3
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 5
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 2
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 1
+      },
+      {
+        "question_id": 15,
+        "response_value": 4
+      },
+      {
+        "question_id": 16,
+        "response_value": 5
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 3
+      },
+      {
+        "question_id": 21,
+        "response_value": 4
+      },
+      {
+        "question_id": 22,
+        "response_value": 3
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 3
+      },
+      {
+        "question_id": 26,
+        "response_value": 4
+      },
+      {
+        "question_id": 27,
+        "response_value": 4
+      },
+      {
+        "question_id": 28,
+        "response_value": 2
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 4
+      }
+    ]
+  },
+  {
+    "id": "25560302-83d7-4597-8526-ea337470f948",
+    "submitted_at": "2026-02-04T17:31:30.420225",
+    "respondent_cedula": "98821837",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 4
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 4
+      },
+      {
+        "question_id": 5,
+        "response_value": 5
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 2
+      },
+      {
+        "question_id": 8,
+        "response_value": 5
+      },
+      {
+        "question_id": 9,
+        "response_value": 1
+      },
+      {
+        "question_id": 10,
+        "response_value": 4
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 2
+      },
+      {
+        "question_id": 13,
+        "response_value": 2
+      },
+      {
+        "question_id": 14,
+        "response_value": 5
+      },
+      {
+        "question_id": 15,
+        "response_value": 4
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 1
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 4
+      },
+      {
+        "question_id": 20,
+        "response_value": 5
+      },
+      {
+        "question_id": 21,
+        "response_value": 4
+      },
+      {
+        "question_id": 22,
+        "response_value": 4
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 1
+      },
+      {
+        "question_id": 26,
+        "response_value": 4
+      },
+      {
+        "question_id": 27,
+        "response_value": 3
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 2
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 5
+      }
+    ]
+  },
+  {
+    "id": "90c190f1-f44c-42d4-a1e9-ffec72e876e8",
+    "submitted_at": "2026-02-04T17:31:30.420236",
+    "respondent_cedula": "69356450",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 2
+      },
+      {
+        "question_id": 2,
+        "response_value": 3
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 2
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 2
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 5
+      },
+      {
+        "question_id": 9,
+        "response_value": 3
+      },
+      {
+        "question_id": 10,
+        "response_value": 3
+      },
+      {
+        "question_id": 11,
+        "response_value": 2
+      },
+      {
+        "question_id": 12,
+        "response_value": 3
+      },
+      {
+        "question_id": 13,
+        "response_value": 5
+      },
+      {
+        "question_id": 14,
+        "response_value": 2
+      },
+      {
+        "question_id": 15,
+        "response_value": 3
+      },
+      {
+        "question_id": 16,
+        "response_value": 1
+      },
+      {
+        "question_id": 17,
+        "response_value": 5
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 4
+      },
+      {
+        "question_id": 20,
+        "response_value": 3
+      },
+      {
+        "question_id": 21,
+        "response_value": 1
+      },
+      {
+        "question_id": 22,
+        "response_value": 4
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 3
+      },
+      {
+        "question_id": 25,
+        "response_value": 3
+      },
+      {
+        "question_id": 26,
+        "response_value": 1
+      },
+      {
+        "question_id": 27,
+        "response_value": 4
+      },
+      {
+        "question_id": 28,
+        "response_value": 4
+      },
+      {
+        "question_id": 29,
+        "response_value": 3
+      },
+      {
+        "question_id": 30,
+        "response_value": 1
+      },
+      {
+        "question_id": 31,
+        "response_value": 1
+      }
+    ]
+  },
+  {
+    "id": "66d40891-2e85-4ac2-9484-decbc6dbdd93",
+    "submitted_at": "2026-02-04T17:31:30.420244",
+    "respondent_cedula": "83123321",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 3
+      },
+      {
+        "question_id": 2,
+        "response_value": 5
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 3
+      },
+      {
+        "question_id": 5,
+        "response_value": 1
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 4
+      },
+      {
+        "question_id": 8,
+        "response_value": 5
+      },
+      {
+        "question_id": 9,
+        "response_value": 1
+      },
+      {
+        "question_id": 10,
+        "response_value": 1
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 3
+      },
+      {
+        "question_id": 13,
+        "response_value": 5
+      },
+      {
+        "question_id": 14,
+        "response_value": 1
+      },
+      {
+        "question_id": 15,
+        "response_value": 5
+      },
+      {
+        "question_id": 16,
+        "response_value": 5
+      },
+      {
+        "question_id": 17,
+        "response_value": 3
+      },
+      {
+        "question_id": 18,
+        "response_value": 2
+      },
+      {
+        "question_id": 19,
+        "response_value": 4
+      },
+      {
+        "question_id": 20,
+        "response_value": 4
+      },
+      {
+        "question_id": 21,
+        "response_value": 2
+      },
+      {
+        "question_id": 22,
+        "response_value": 3
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 1
+      },
+      {
+        "question_id": 26,
+        "response_value": 1
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 1
+      },
+      {
+        "question_id": 29,
+        "response_value": 5
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 3
+      }
+    ]
+  },
+  {
+    "id": "9b08abcb-07ce-4ba1-ba99-a815e58d019b",
+    "submitted_at": "2026-02-04T17:31:30.420253",
+    "respondent_cedula": "47951725",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 2
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 3
+      },
+      {
+        "question_id": 5,
+        "response_value": 1
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 3
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 5
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 4
+      },
+      {
+        "question_id": 14,
+        "response_value": 1
+      },
+      {
+        "question_id": 15,
+        "response_value": 3
+      },
+      {
+        "question_id": 16,
+        "response_value": 4
+      },
+      {
+        "question_id": 17,
+        "response_value": 4
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 3
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 4
+      },
+      {
+        "question_id": 22,
+        "response_value": 4
+      },
+      {
+        "question_id": 23,
+        "response_value": 3
+      },
+      {
+        "question_id": 24,
+        "response_value": 3
+      },
+      {
+        "question_id": 25,
+        "response_value": 3
+      },
+      {
+        "question_id": 26,
+        "response_value": 5
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 2
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 1
+      },
+      {
+        "question_id": 31,
+        "response_value": 1
+      }
+    ]
+  },
+  {
+    "id": "5e7b5a01-1d3d-41cf-a6a2-f883dc96ab5e",
+    "submitted_at": "2026-02-04T17:31:30.420262",
+    "respondent_cedula": "38662864",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 4
+      },
+      {
+        "question_id": 2,
+        "response_value": 2
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 2
+      },
+      {
+        "question_id": 6,
+        "response_value": 5
+      },
+      {
+        "question_id": 7,
+        "response_value": 2
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 3
+      },
+      {
+        "question_id": 10,
+        "response_value": 3
+      },
+      {
+        "question_id": 11,
+        "response_value": 1
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 4
+      },
+      {
+        "question_id": 14,
+        "response_value": 3
+      },
+      {
+        "question_id": 15,
+        "response_value": 1
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 5
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 4
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 3
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 5
+      },
+      {
+        "question_id": 24,
+        "response_value": 5
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 5
+      },
+      {
+        "question_id": 27,
+        "response_value": 3
+      },
+      {
+        "question_id": 28,
+        "response_value": 4
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 4
+      },
+      {
+        "question_id": 31,
+        "response_value": 5
+      }
+    ]
+  },
+  {
+    "id": "dd28d6d7-fe03-4507-974b-945ef1a71c3c",
+    "submitted_at": "2026-02-04T17:31:30.420270",
+    "respondent_cedula": "44650796",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 3
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 1
+      },
+      {
+        "question_id": 5,
+        "response_value": 1
+      },
+      {
+        "question_id": 6,
+        "response_value": 3
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 1
+      },
+      {
+        "question_id": 10,
+        "response_value": 2
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 2
+      },
+      {
+        "question_id": 15,
+        "response_value": 4
+      },
+      {
+        "question_id": 16,
+        "response_value": 5
+      },
+      {
+        "question_id": 17,
+        "response_value": 4
+      },
+      {
+        "question_id": 18,
+        "response_value": 2
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 1
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 1
+      },
+      {
+        "question_id": 25,
+        "response_value": 2
+      },
+      {
+        "question_id": 26,
+        "response_value": 3
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 2
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 3
+      }
+    ]
+  },
+  {
+    "id": "2b11e342-2783-48c9-8fd0-b50f5e8e1cbe",
+    "submitted_at": "2026-02-04T17:31:30.420279",
+    "respondent_cedula": "25978504",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 3
+      },
+      {
+        "question_id": 2,
+        "response_value": 3
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 2
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 5
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 5
+      },
+      {
+        "question_id": 9,
+        "response_value": 1
+      },
+      {
+        "question_id": 10,
+        "response_value": 4
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 5
+      },
+      {
+        "question_id": 13,
+        "response_value": 5
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 5
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 1
+      },
+      {
+        "question_id": 20,
+        "response_value": 4
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 3
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 1
+      }
+    ]
+  },
+  {
+    "id": "2ffc0918-542f-4b3a-a0d8-f036ef9e0182",
+    "submitted_at": "2026-02-04T17:31:30.420287",
+    "respondent_cedula": "26271548",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 2
+      },
+      {
+        "question_id": 2,
+        "response_value": 4
+      },
+      {
+        "question_id": 3,
+        "response_value": 1
+      },
+      {
+        "question_id": 4,
+        "response_value": 4
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 5
+      },
+      {
+        "question_id": 7,
+        "response_value": 2
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 5
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 1
+      },
+      {
+        "question_id": 13,
+        "response_value": 1
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 4
+      },
+      {
+        "question_id": 18,
+        "response_value": 5
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 4
+      },
+      {
+        "question_id": 21,
+        "response_value": 4
+      },
+      {
+        "question_id": 22,
+        "response_value": 5
+      },
+      {
+        "question_id": 23,
+        "response_value": 5
+      },
+      {
+        "question_id": 24,
+        "response_value": 3
+      },
+      {
+        "question_id": 25,
+        "response_value": 5
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 4
+      },
+      {
+        "question_id": 28,
+        "response_value": 3
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 5
+      }
+    ]
+  },
+  {
+    "id": "1835f426-7f4f-4983-bb43-1fb5e9d7a1dd",
+    "submitted_at": "2026-02-04T17:31:30.420296",
+    "respondent_cedula": "17994331",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 3
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 2
+      },
+      {
+        "question_id": 5,
+        "response_value": 5
+      },
+      {
+        "question_id": 6,
+        "response_value": 5
+      },
+      {
+        "question_id": 7,
+        "response_value": 2
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 4
+      },
+      {
+        "question_id": 11,
+        "response_value": 2
+      },
+      {
+        "question_id": 12,
+        "response_value": 5
+      },
+      {
+        "question_id": 13,
+        "response_value": 5
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 5
+      },
+      {
+        "question_id": 16,
+        "response_value": 5
+      },
+      {
+        "question_id": 17,
+        "response_value": 5
+      },
+      {
+        "question_id": 18,
+        "response_value": 5
+      },
+      {
+        "question_id": 19,
+        "response_value": 2
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 2
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 5
+      },
+      {
+        "question_id": 25,
+        "response_value": 1
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 5
+      },
+      {
+        "question_id": 29,
+        "response_value": 4
+      },
+      {
+        "question_id": 30,
+        "response_value": 5
+      },
+      {
+        "question_id": 31,
+        "response_value": 1
+      }
+    ]
+  },
+  {
+    "id": "632e27fb-d6ce-445e-9bdc-5f7dc7bae6bf",
+    "submitted_at": "2026-02-04T17:31:30.420305",
+    "respondent_cedula": "12145710",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 2
+      },
+      {
+        "question_id": 2,
+        "response_value": 4
+      },
+      {
+        "question_id": 3,
+        "response_value": 5
+      },
+      {
+        "question_id": 4,
+        "response_value": 4
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 4
+      },
+      {
+        "question_id": 7,
+        "response_value": 1
+      },
+      {
+        "question_id": 8,
+        "response_value": 4
+      },
+      {
+        "question_id": 9,
+        "response_value": 3
+      },
+      {
+        "question_id": 10,
+        "response_value": 4
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 1
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 3
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 3
+      },
+      {
+        "question_id": 20,
+        "response_value": 4
+      },
+      {
+        "question_id": 21,
+        "response_value": 1
+      },
+      {
+        "question_id": 22,
+        "response_value": 5
+      },
+      {
+        "question_id": 23,
+        "response_value": 3
+      },
+      {
+        "question_id": 24,
+        "response_value": 1
+      },
+      {
+        "question_id": 25,
+        "response_value": 3
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 4
+      },
+      {
+        "question_id": 28,
+        "response_value": 4
+      },
+      {
+        "question_id": 29,
+        "response_value": 5
+      },
+      {
+        "question_id": 30,
+        "response_value": 2
+      },
+      {
+        "question_id": 31,
+        "response_value": 3
+      }
+    ]
+  },
+  {
+    "id": "ae2eca3f-4f4c-4827-8cc1-bfcc4aa64acc",
+    "submitted_at": "2026-02-04T17:31:30.420313",
+    "respondent_cedula": "68331786",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 5
+      },
+      {
+        "question_id": 3,
+        "response_value": 4
+      },
+      {
+        "question_id": 4,
+        "response_value": 1
+      },
+      {
+        "question_id": 5,
+        "response_value": 3
+      },
+      {
+        "question_id": 6,
+        "response_value": 3
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 4
+      },
+      {
+        "question_id": 9,
+        "response_value": 5
+      },
+      {
+        "question_id": 10,
+        "response_value": 3
+      },
+      {
+        "question_id": 11,
+        "response_value": 1
+      },
+      {
+        "question_id": 12,
+        "response_value": 1
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 4
+      },
+      {
+        "question_id": 15,
+        "response_value": 2
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 3
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 4
+      },
+      {
+        "question_id": 22,
+        "response_value": 4
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 3
+      },
+      {
+        "question_id": 25,
+        "response_value": 2
+      },
+      {
+        "question_id": 26,
+        "response_value": 1
+      },
+      {
+        "question_id": 27,
+        "response_value": 2
+      },
+      {
+        "question_id": 28,
+        "response_value": 3
+      },
+      {
+        "question_id": 29,
+        "response_value": 3
+      },
+      {
+        "question_id": 30,
+        "response_value": 5
+      },
+      {
+        "question_id": 31,
+        "response_value": 2
+      }
+    ]
+  },
+  {
+    "id": "7c849e37-d036-4279-bd45-75a740e9b286",
+    "submitted_at": "2026-02-04T17:31:30.420322",
+    "respondent_cedula": "38732498",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 2
+      },
+      {
+        "question_id": 2,
+        "response_value": 2
+      },
+      {
+        "question_id": 3,
+        "response_value": 4
+      },
+      {
+        "question_id": 4,
+        "response_value": 2
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 1
+      },
+      {
+        "question_id": 8,
+        "response_value": 1
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 2
+      },
+      {
+        "question_id": 11,
+        "response_value": 3
+      },
+      {
+        "question_id": 12,
+        "response_value": 5
+      },
+      {
+        "question_id": 13,
+        "response_value": 5
+      },
+      {
+        "question_id": 14,
+        "response_value": 5
+      },
+      {
+        "question_id": 15,
+        "response_value": 5
+      },
+      {
+        "question_id": 16,
+        "response_value": 1
+      },
+      {
+        "question_id": 17,
+        "response_value": 3
+      },
+      {
+        "question_id": 18,
+        "response_value": 1
+      },
+      {
+        "question_id": 19,
+        "response_value": 3
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 1
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 5
+      },
+      {
+        "question_id": 25,
+        "response_value": 4
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 5
+      },
+      {
+        "question_id": 28,
+        "response_value": 2
+      },
+      {
+        "question_id": 29,
+        "response_value": 1
+      },
+      {
+        "question_id": 30,
+        "response_value": 1
+      },
+      {
+        "question_id": 31,
+        "response_value": 3
+      }
+    ]
+  },
+  {
+    "id": "56be6884-194b-44b7-8531-d37734629ad9",
+    "submitted_at": "2026-02-04T17:31:30.420330",
+    "respondent_cedula": "64848350",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 1
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 5
+      },
+      {
+        "question_id": 4,
+        "response_value": 1
+      },
+      {
+        "question_id": 5,
+        "response_value": 3
+      },
+      {
+        "question_id": 6,
+        "response_value": 3
+      },
+      {
+        "question_id": 7,
+        "response_value": 1
+      },
+      {
+        "question_id": 8,
+        "response_value": 4
+      },
+      {
+        "question_id": 9,
+        "response_value": 5
+      },
+      {
+        "question_id": 10,
+        "response_value": 1
+      },
+      {
+        "question_id": 11,
+        "response_value": 5
+      },
+      {
+        "question_id": 12,
+        "response_value": 1
+      },
+      {
+        "question_id": 13,
+        "response_value": 2
+      },
+      {
+        "question_id": 14,
+        "response_value": 2
+      },
+      {
+        "question_id": 15,
+        "response_value": 4
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 4
+      },
+      {
+        "question_id": 18,
+        "response_value": 3
+      },
+      {
+        "question_id": 19,
+        "response_value": 5
+      },
+      {
+        "question_id": 20,
+        "response_value": 2
+      },
+      {
+        "question_id": 21,
+        "response_value": 3
+      },
+      {
+        "question_id": 22,
+        "response_value": 3
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 2
+      },
+      {
+        "question_id": 26,
+        "response_value": 4
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 4
+      },
+      {
+        "question_id": 29,
+        "response_value": 3
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 3
+      }
+    ]
+  },
+  {
+    "id": "ba8a5530-8300-4e97-9b5d-cc2ff90d2bf3",
+    "submitted_at": "2026-02-04T17:31:30.420340",
+    "respondent_cedula": "15338821",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 5
+      },
+      {
+        "question_id": 3,
+        "response_value": 4
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 4
+      },
+      {
+        "question_id": 6,
+        "response_value": 3
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 1
+      },
+      {
+        "question_id": 9,
+        "response_value": 1
+      },
+      {
+        "question_id": 10,
+        "response_value": 1
+      },
+      {
+        "question_id": 11,
+        "response_value": 1
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 2
+      },
+      {
+        "question_id": 14,
+        "response_value": 5
+      },
+      {
+        "question_id": 15,
+        "response_value": 3
+      },
+      {
+        "question_id": 16,
+        "response_value": 1
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 4
+      },
+      {
+        "question_id": 20,
+        "response_value": 3
+      },
+      {
+        "question_id": 21,
+        "response_value": 1
+      },
+      {
+        "question_id": 22,
+        "response_value": 3
+      },
+      {
+        "question_id": 23,
+        "response_value": 4
+      },
+      {
+        "question_id": 24,
+        "response_value": 1
+      },
+      {
+        "question_id": 25,
+        "response_value": 4
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 3
+      },
+      {
+        "question_id": 29,
+        "response_value": 4
+      },
+      {
+        "question_id": 30,
+        "response_value": 1
+      },
+      {
+        "question_id": 31,
+        "response_value": 4
+      }
+    ]
+  },
+  {
+    "id": "7bc53f42-38af-4fe4-a13f-99ee9553ac49",
+    "submitted_at": "2026-02-04T17:31:30.420348",
+    "respondent_cedula": "46114038",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 1
+      },
+      {
+        "question_id": 3,
+        "response_value": 2
+      },
+      {
+        "question_id": 4,
+        "response_value": 2
+      },
+      {
+        "question_id": 5,
+        "response_value": 5
+      },
+      {
+        "question_id": 6,
+        "response_value": 1
+      },
+      {
+        "question_id": 7,
+        "response_value": 5
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 5
+      },
+      {
+        "question_id": 11,
+        "response_value": 4
+      },
+      {
+        "question_id": 12,
+        "response_value": 2
+      },
+      {
+        "question_id": 13,
+        "response_value": 1
+      },
+      {
+        "question_id": 14,
+        "response_value": 2
+      },
+      {
+        "question_id": 15,
+        "response_value": 5
+      },
+      {
+        "question_id": 16,
+        "response_value": 2
+      },
+      {
+        "question_id": 17,
+        "response_value": 1
+      },
+      {
+        "question_id": 18,
+        "response_value": 5
+      },
+      {
+        "question_id": 19,
+        "response_value": 1
+      },
+      {
+        "question_id": 20,
+        "response_value": 5
+      },
+      {
+        "question_id": 21,
+        "response_value": 5
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 2
+      },
+      {
+        "question_id": 24,
+        "response_value": 2
+      },
+      {
+        "question_id": 25,
+        "response_value": 2
+      },
+      {
+        "question_id": 26,
+        "response_value": 2
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 3
+      },
+      {
+        "question_id": 29,
+        "response_value": 5
+      },
+      {
+        "question_id": 30,
+        "response_value": 3
+      },
+      {
+        "question_id": 31,
+        "response_value": 5
+      }
+    ]
+  },
+  {
+    "id": "2a20be8c-ec02-4aa3-b69b-fc18ad42fa11",
+    "submitted_at": "2026-02-04T17:31:30.420356",
+    "respondent_cedula": "10198790",
+    "responses": [
+      {
+        "question_id": 1,
+        "response_value": 5
+      },
+      {
+        "question_id": 2,
+        "response_value": 4
+      },
+      {
+        "question_id": 3,
+        "response_value": 3
+      },
+      {
+        "question_id": 4,
+        "response_value": 5
+      },
+      {
+        "question_id": 5,
+        "response_value": 1
+      },
+      {
+        "question_id": 6,
+        "response_value": 2
+      },
+      {
+        "question_id": 7,
+        "response_value": 3
+      },
+      {
+        "question_id": 8,
+        "response_value": 2
+      },
+      {
+        "question_id": 9,
+        "response_value": 2
+      },
+      {
+        "question_id": 10,
+        "response_value": 3
+      },
+      {
+        "question_id": 11,
+        "response_value": 2
+      },
+      {
+        "question_id": 12,
+        "response_value": 4
+      },
+      {
+        "question_id": 13,
+        "response_value": 3
+      },
+      {
+        "question_id": 14,
+        "response_value": 2
+      },
+      {
+        "question_id": 15,
+        "response_value": 5
+      },
+      {
+        "question_id": 16,
+        "response_value": 3
+      },
+      {
+        "question_id": 17,
+        "response_value": 2
+      },
+      {
+        "question_id": 18,
+        "response_value": 4
+      },
+      {
+        "question_id": 19,
+        "response_value": 3
+      },
+      {
+        "question_id": 20,
+        "response_value": 1
+      },
+      {
+        "question_id": 21,
+        "response_value": 2
+      },
+      {
+        "question_id": 22,
+        "response_value": 1
+      },
+      {
+        "question_id": 23,
+        "response_value": 1
+      },
+      {
+        "question_id": 24,
+        "response_value": 5
+      },
+      {
+        "question_id": 25,
+        "response_value": 3
+      },
+      {
+        "question_id": 26,
+        "response_value": 3
+      },
+      {
+        "question_id": 27,
+        "response_value": 1
+      },
+      {
+        "question_id": 28,
+        "response_value": 1
+      },
+      {
+        "question_id": 29,
+        "response_value": 3
+      },
+      {
+        "question_id": 30,
+        "response_value": 4
+      },
+      {
+        "question_id": 31,
+        "response_value": 5
+      }
+    ]
+  },
+  {
+    "id": "5ee0f295-01b6-43f8-b056-86199324e4d6",
+    "submitted_at": "2026-02-19T08:18:38.967491",
+    "respondent_cedula": "1113783425",
+    "respondent_name": "alejandro test",
+    "respondent_email": null,
+    "department": "ti",
+    "responses": [
+      {
+        "question_id": 1,
+        "question_text": "Es fácil trasportarme entre mi casa y el trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 2,
+        "question_text": "Tengo que tomar varios medios de transporte para llegar a mi lugar de trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 3,
+        "question_text": "Paso mucho tiempo viajando de ida y regreso al trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 4,
+        "question_text": "Me trasporto cómodamente entre mi casa y el trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 5,
+        "question_text": "La zona donde vivo es segura",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 6,
+        "question_text": "En la zona donde vivo se presentan hurtos y mucha delincuencia",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 7,
+        "question_text": "Desde donde vivo me es fácil llegar al centro médico donde me atienden",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 8,
+        "question_text": "Cerca a mi vivienda las vías están en buenas condiciones",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 9,
+        "question_text": "Cerca a mi vivienda encuentro fácilmente transporte",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 10,
+        "question_text": "Las condiciones de mi vivienda son buenas",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 11,
+        "question_text": "En mi vivienda hay servicios de agua y luz",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 12,
+        "question_text": "Las condiciones de mi vivienda me permiten descansar cuando lo requiero",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 13,
+        "question_text": "Las condiciones de mi vivienda me permiten sentirme cómodo",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 14,
+        "question_text": "Me queda tiempo para actividades de recreación",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 15,
+        "question_text": "Fuera del trabajo tengo tiempo suficiente para descansar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 16,
+        "question_text": "Tengo tiempo para atender mis asuntos personales y del hogar",
+        "response_value": 4,
+        "response_label": "Casi nunca"
+      },
+      {
+        "question_id": 17,
+        "question_text": "Tengo tiempo para compartir con mi familia o amigos",
+        "response_value": 5,
+        "response_label": "Nunca"
+      },
+      {
+        "question_id": 18,
+        "question_text": "Tengo buena comunicación con las personas cercanas",
+        "response_value": 5,
+        "response_label": "Nunca"
+      },
+      {
+        "question_id": 19,
+        "question_text": "Las relaciones con mis amigos son buenas",
+        "response_value": 5,
+        "response_label": "Nunca"
+      },
+      {
+        "question_id": 20,
+        "question_text": "Converso con personas cercanas sobre diferentes temas",
+        "response_value": 5,
+        "response_label": "Nunca"
+      },
+      {
+        "question_id": 21,
+        "question_text": "Mis amigos están dispuestos a escucharme cuando tengo problemas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 22,
+        "question_text": "Cuento con el apoyo de mi familia cuando tengo problemas",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 23,
+        "question_text": "Puedo hablar con personas cercanas sobre las cosas que me pasan",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 24,
+        "question_text": "Mis problemas personales o familiares afectan mi trabajo",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 25,
+        "question_text": "La relación con mi familia cercana es cordial",
+        "response_value": 1,
+        "response_label": "Siempre"
+      },
+      {
+        "question_id": 26,
+        "question_text": "Mis problemas personales o familiares me quitan la energía que necesito para trabajar",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 27,
+        "question_text": "Los problemas con mis familiares los resolvemos de manera amistosa",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 28,
+        "question_text": "Mis problemas personales o familiares afectan mis relaciones en el trabajo",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 29,
+        "question_text": "El dinero que ganamos en el hogar alcanza para cubrir los gastos básicos",
+        "response_value": 2,
+        "response_label": "Casi siempre"
+      },
+      {
+        "question_id": 30,
+        "question_text": "Tengo otros compromisos económicos que afectan mucho el presupuesto familiar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      },
+      {
+        "question_id": 31,
+        "question_text": "En mi hogar tenemos deudas difíciles de pagar",
+        "response_value": 3,
+        "response_label": "Algunas veces"
+      }
+    ]
+  }
+]

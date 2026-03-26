@@ -1,0 +1,2852 @@
+[
+  {
+    "id": "0bc1ff47-5860-4323-95a7-4eb663120e32",
+    "submitted_at": "2026-02-04T17:31:30.412870",
+    "respondent_cedula": "35092325",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1981
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "casado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "tecnico_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Popayán"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "finca"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 13
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_mas_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 14
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  },
+  {
+    "id": "826b810c-6aa4-474f-a490-7ed751c3934e",
+    "submitted_at": "2026-02-04T17:31:30.412924",
+    "respondent_cedula": "52774112",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1989
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "soltero"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "tecnico_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Puerto Tejada"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "1"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 15
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "auxiliar"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "prestacion_servicios"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 23
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "76ec0363-52c7-4c5e-90a1-a239ca3d3b74",
+    "submitted_at": "2026-02-04T17:31:30.412940",
+    "respondent_cedula": "73892280",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1986
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "religioso"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "ninguno"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Timbío"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "6"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 15
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "auxiliar"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 16
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "a065bcae-ae1a-47c5-a2ee-bf24526f24f8",
+    "submitted_at": "2026-02-04T17:31:30.412953",
+    "respondent_cedula": "55089070",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1973
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "soltero"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "bachillerato_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Puerto Tejada"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "4"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 7
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "operario"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "indefinido"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 24
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "35d3837c-ed08-47fc-b181-b8db10ebedf8",
+    "submitted_at": "2026-02-04T17:31:30.412966",
+    "respondent_cedula": "34168660",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1991
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "separado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "postgrado_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Puerto Tejada"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "6"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 16
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_mas_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 3
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "d410dc13-5a08-4c07-930e-57e519acd99a",
+    "submitted_at": "2026-02-04T17:31:30.412980",
+    "respondent_cedula": "99011679",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1959
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "religioso"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "profesional_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Puerto Tejada"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "finca"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 16
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_menos_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 24
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  },
+  {
+    "id": "5acb8b5f-7b92-48ec-8970-626df6be5d40",
+    "submitted_at": "2026-02-04T17:31:30.412991",
+    "respondent_cedula": "54575089",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1991
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "divorciado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "tecnico_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Timbío"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "3"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 9
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 18
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "c9f2e4c1-4556-4b1c-94c5-425d4c77cd0d",
+    "submitted_at": "2026-02-04T17:31:30.413003",
+    "respondent_cedula": "54079696",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1997
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "divorciado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "ninguno"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Cali"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "finca"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 8
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "prestacion_servicios"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 7
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "fead84e1-7182-4432-b203-0bee766549f1",
+    "submitted_at": "2026-02-04T17:31:30.413014",
+    "respondent_cedula": "12044924",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1950
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "casado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "postgrado_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Cali"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "4"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 16
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "auxiliar"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "cooperado"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 10
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "5ee8b17e-494f-4421-9271-2e4dd8b3af2d",
+    "submitted_at": "2026-02-04T17:31:30.413028",
+    "respondent_cedula": "89875069",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1978
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "union_libre"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "profesional_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Guapi"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "1"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 8
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_mas_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 3
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "b7d1af12-74db-4220-ba71-08bfdf5439b1",
+    "submitted_at": "2026-02-04T17:31:30.413038",
+    "respondent_cedula": "84890000",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1955
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "divorciado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "profesional_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "2"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 5
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "cooperado"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 11
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  },
+  {
+    "id": "c4d84044-82c9-48a4-8de1-2e6fb48a9915",
+    "submitted_at": "2026-02-04T17:31:30.413052",
+    "respondent_cedula": "86752821",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1971
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "casado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "carrera_militar"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "finca"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 8
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "auxiliar"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 12
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "4f8eb623-64b6-4c2c-a5e0-d3f41a71ed69",
+    "submitted_at": "2026-02-04T17:31:30.413064",
+    "respondent_cedula": "84435458",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1971
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "casado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "tecnico_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "3"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 18
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 23
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "dde97eed-81e9-4aa7-8835-55d2dbc486f7",
+    "submitted_at": "2026-02-04T17:31:30.413077",
+    "respondent_cedula": "17944209",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1947
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "soltero"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "tecnico_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Popayán"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "4"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 14
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "indefinido"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 7
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "8ceaedfa-343a-4396-a3f6-be7e0e1a210d",
+    "submitted_at": "2026-02-04T17:31:30.413089",
+    "respondent_cedula": "78714723",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 2003
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "divorciado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "postgrado_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "2"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 9
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "operario"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "indefinido"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 3
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "8a8311b5-f153-49bd-9929-a35be7deced6",
+    "submitted_at": "2026-02-04T17:31:30.413104",
+    "respondent_cedula": "90262922",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1947
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "religioso"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "bachillerato_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Jamundí"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 11
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "prestacion_servicios"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 20
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "6411ac4a-e74c-4600-89b8-e7c5d7c12699",
+    "submitted_at": "2026-02-04T17:31:30.413116",
+    "respondent_cedula": "20648401",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1971
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "viudo"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "ninguno"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "2"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 0
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "prestacion_servicios"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 14
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  },
+  {
+    "id": "9dce7387-5247-4305-aeb0-f1a94ecd9cc6",
+    "submitted_at": "2026-02-04T17:31:30.413132",
+    "respondent_cedula": "42896712",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 2001
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "viudo"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "bachillerato_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Popayán"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 1
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_menos_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 12
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "b81b2b87-d53e-4e51-8bf9-ccbcb7137810",
+    "submitted_at": "2026-02-04T17:31:30.413144",
+    "respondent_cedula": "41628915",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1955
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "religioso"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "carrera_militar"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Guapi"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 15
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "operario"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_menos_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 18
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "d9a7643d-a211-4f1b-b694-c69ba9055c14",
+    "submitted_at": "2026-02-04T17:31:30.413156",
+    "respondent_cedula": "45774682",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1978
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "soltero"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "bachillerato_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Jamundí"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "4"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 9
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_menos_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 13
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  },
+  {
+    "id": "25c3a1ad-f73b-47f7-bb13-dbc63bdc5105",
+    "submitted_at": "2026-02-04T17:31:30.413352",
+    "respondent_cedula": "96912902",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1948
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "separado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "profesional_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "6"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 11
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "indefinido"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 22
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "7e853964-d8c4-4c39-8ef8-9c0de40bd7e1",
+    "submitted_at": "2026-02-04T17:31:30.413370",
+    "respondent_cedula": "33958640",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1959
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "union_libre"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "tecnico_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Timbío"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "2"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 17
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "auxiliar"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "indefinido"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 22
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  },
+  {
+    "id": "e0b7a83c-60aa-4d10-ac1b-4d572298fc45",
+    "submitted_at": "2026-02-04T17:31:30.413383",
+    "respondent_cedula": "18136871",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "femenino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1982
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "divorciado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "profesional_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "6"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 14
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_mas_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 5
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "add838f4-9139-474f-a22f-f43eebf9fd69",
+    "submitted_at": "2026-02-04T17:31:30.413394",
+    "respondent_cedula": "38188150",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1944
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "union_libre"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "ninguno"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Popayán"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "3"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 12
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_menos_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 1
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "30642d16-4423-4c16-bdf3-63c7877a3b3e",
+    "submitted_at": "2026-02-04T17:31:30.413410",
+    "respondent_cedula": "12710097",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1984
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "union_libre"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "tecnico_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Popayán"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "finca"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 6
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "jefatura"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "cooperado"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 13
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "27292bc7-ce61-4ddf-8cae-8dd298d2fa77",
+    "submitted_at": "2026-02-04T17:31:30.413424",
+    "respondent_cedula": "72546472",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1959
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "soltero"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "carrera_militar"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Cali"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 17
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "profesional"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "prestacion_servicios"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 24
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  },
+  {
+    "id": "b504362a-ab64-481a-9d7e-a4f9a8b9d115",
+    "submitted_at": "2026-02-04T17:31:30.413438",
+    "respondent_cedula": "31289029",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1940
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "soltero"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "primaria_incompleta"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Cali"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "finca"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 12
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "operario"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_menos_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 11
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "66b31efe-1050-4395-b21c-78465e4a5d37",
+    "submitted_at": "2026-02-04T17:31:30.413450",
+    "respondent_cedula": "33881237",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1969
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "casado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "carrera_militar"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Santander de Quilichao"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "2"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "arriendo"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 5
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "auxiliar"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "prestacion_servicios"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 11
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "mixto"
+      }
+    ]
+  },
+  {
+    "id": "4e1b53a3-be06-4e6d-b826-7ccc9b9fbe4b",
+    "submitted_at": "2026-02-04T17:31:30.413464",
+    "respondent_cedula": "99181277",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1946
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "casado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "bachillerato_completo"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Puerto Tejada"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "2"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "familiar"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 6
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "no"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "operario"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "temporal_mas_1"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 9
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "variable"
+      }
+    ]
+  },
+  {
+    "id": "5141218b-ee8f-4f9e-8c2b-511926f56c37",
+    "submitted_at": "2026-02-04T17:31:30.413477",
+    "respondent_cedula": "53996535",
+    "responses": [
+      {
+        "question_id": "nombre_completo",
+        "response_value": "Test nombre_completo"
+      },
+      {
+        "question_id": "sexo",
+        "response_value": "masculino"
+      },
+      {
+        "question_id": "año_nacimiento",
+        "response_value": 1990
+      },
+      {
+        "question_id": "estado_civil",
+        "response_value": "separado"
+      },
+      {
+        "question_id": "nivel_estudios",
+        "response_value": "profesional_incompleto"
+      },
+      {
+        "question_id": "ocupacion_profesion",
+        "response_value": "Test ocupacion_profesion"
+      },
+      {
+        "question_id": "ciudad_residencia",
+        "response_value": "Puerto Tejada"
+      },
+      {
+        "question_id": "departamento_residencia",
+        "response_value": "Test departamento_residencia"
+      },
+      {
+        "question_id": "estrato",
+        "response_value": "finca"
+      },
+      {
+        "question_id": "tipo_vivienda",
+        "response_value": "propia"
+      },
+      {
+        "question_id": "personas_dependientes",
+        "response_value": 17
+      },
+      {
+        "question_id": "tiene_personal_cargo",
+        "response_value": "si"
+      },
+      {
+        "question_id": "ciudad_trabajo",
+        "response_value": "Test ciudad_trabajo"
+      },
+      {
+        "question_id": "departamento_trabajo",
+        "response_value": "Test departamento_trabajo"
+      },
+      {
+        "question_id": "antiguedad_empresa",
+        "response_value": "Test antiguedad_empresa"
+      },
+      {
+        "question_id": "nombre_cargo",
+        "response_value": "Test nombre_cargo"
+      },
+      {
+        "question_id": "tipo_cargo",
+        "response_value": "auxiliar"
+      },
+      {
+        "question_id": "antiguedad_cargo",
+        "response_value": "Test antiguedad_cargo"
+      },
+      {
+        "question_id": "departamento_area",
+        "response_value": "Test departamento_area"
+      },
+      {
+        "question_id": "tipo_contrato",
+        "response_value": "no_se"
+      },
+      {
+        "question_id": "horas_diarias",
+        "response_value": 6
+      },
+      {
+        "question_id": "tipo_salario",
+        "response_value": "fijo"
+      }
+    ]
+  }
+]

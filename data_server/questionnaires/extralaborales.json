@@ -1,0 +1,193 @@
+{
+    "id": "extralaborales",
+    "name": "Cuestionario de Factores Psicosociales Extralaborales",
+    "short_name": "Factores Extralaborales",
+    "description": "Este cuestionario busca conocer su opinión sobre algunos aspectos de su vida familiar y personal. Sus respuestas serán manejadas de forma absolutamente confidencial.",
+    "version": "1.0",
+    "icon": "🏠",
+    "color": "#10b981",
+    "options": [
+        {
+            "value": 1,
+            "label": "Siempre",
+            "emoji": "⚫"
+        },
+        {
+            "value": 2,
+            "label": "Casi siempre",
+            "emoji": "🔵"
+        },
+        {
+            "value": 3,
+            "label": "Algunas veces",
+            "emoji": "🟣"
+        },
+        {
+            "value": 4,
+            "label": "Casi nunca",
+            "emoji": "🟤"
+        },
+        {
+            "value": 5,
+            "label": "Nunca",
+            "emoji": "⚪"
+        }
+    ],
+    "questions": [
+        {
+            "id": 1,
+            "text": "Es fácil trasportarme entre mi casa y el trabajo",
+            "category": "TIEMPO DE DESPLAZAMIENTO"
+        },
+        {
+            "id": 2,
+            "text": "Tengo que tomar varios medios de transporte para llegar a mi lugar de trabajo",
+            "category": "TIEMPO DE DESPLAZAMIENTO"
+        },
+        {
+            "id": 3,
+            "text": "Paso mucho tiempo viajando de ida y regreso al trabajo",
+            "category": "TIEMPO DE DESPLAZAMIENTO"
+        },
+        {
+            "id": 4,
+            "text": "Me trasporto cómodamente entre mi casa y el trabajo",
+            "category": "TIEMPO DE DESPLAZAMIENTO"
+        },
+        {
+            "id": 5,
+            "text": "La zona donde vivo es segura",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 6,
+            "text": "En la zona donde vivo se presentan hurtos y mucha delincuencia",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 7,
+            "text": "Desde donde vivo me es fácil llegar al centro médico donde me atienden",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 8,
+            "text": "Cerca a mi vivienda las vías están en buenas condiciones",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 9,
+            "text": "Cerca a mi vivienda encuentro fácilmente transporte",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 10,
+            "text": "Las condiciones de mi vivienda son buenas",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 11,
+            "text": "En mi vivienda hay servicios de agua y luz",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 12,
+            "text": "Las condiciones de mi vivienda me permiten descansar cuando lo requiero",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 13,
+            "text": "Las condiciones de mi vivienda me permiten sentirme cómodo",
+            "category": "CARACTERÍSTICAS DE LA VIVIENDA"
+        },
+        {
+            "id": 14,
+            "text": "Me queda tiempo para actividades de recreación",
+            "category": "TIEMPO FUERA DEL TRABAJO"
+        },
+        {
+            "id": 15,
+            "text": "Fuera del trabajo tengo tiempo suficiente para descansar",
+            "category": "TIEMPO FUERA DEL TRABAJO"
+        },
+        {
+            "id": 16,
+            "text": "Tengo tiempo para atender mis asuntos personales y del hogar",
+            "category": "TIEMPO FUERA DEL TRABAJO"
+        },
+        {
+            "id": 17,
+            "text": "Tengo tiempo para compartir con mi familia o amigos",
+            "category": "TIEMPO FUERA DEL TRABAJO"
+        },
+        {
+            "id": 18,
+            "text": "Tengo buena comunicación con las personas cercanas",
+            "category": "RELACIONES FAMILIARES"
+        },
+        {
+            "id": 19,
+            "text": "Las relaciones con mis amigos son buenas",
+            "category": "RELACIONES FAMILIARES"
+        },
+        {
+            "id": 20,
+            "text": "Converso con personas cercanas sobre diferentes temas",
+            "category": "RELACIONES FAMILIARES"
+        },
+        {
+            "id": 21,
+            "text": "Mis amigos están dispuestos a escucharme cuando tengo problemas",
+            "category": "COMUNICACIÓN Y APOYO SOCIAL"
+        },
+        {
+            "id": 22,
+            "text": "Cuento con el apoyo de mi familia cuando tengo problemas",
+            "category": "COMUNICACIÓN Y APOYO SOCIAL"
+        },
+        {
+            "id": 23,
+            "text": "Puedo hablar con personas cercanas sobre las cosas que me pasan",
+            "category": "COMUNICACIÓN Y APOYO SOCIAL"
+        },
+        {
+            "id": 24,
+            "text": "Mis problemas personales o familiares afectan mi trabajo",
+            "category": "INTERFERENCIA TRABAJO-FAMILIA"
+        },
+        {
+            "id": 25,
+            "text": "La relación con mi familia cercana es cordial",
+            "category": "RELACIONES FAMILIARES"
+        },
+        {
+            "id": 26,
+            "text": "Mis problemas personales o familiares me quitan la energía que necesito para trabajar",
+            "category": "INTERFERENCIA TRABAJO-FAMILIA"
+        },
+        {
+            "id": 27,
+            "text": "Los problemas con mis familiares los resolvemos de manera amistosa",
+            "category": "RELACIONES FAMILIARES"
+        },
+        {
+            "id": 28,
+            "text": "Mis problemas personales o familiares afectan mis relaciones en el trabajo",
+            "category": "INTERFERENCIA TRABAJO-FAMILIA"
+        },
+        {
+            "id": 29,
+            "text": "El dinero que ganamos en el hogar alcanza para cubrir los gastos básicos",
+            "category": "SITUACIÓN ECONÓMICA"
+        },
+        {
+            "id": 30,
+            "text": "Tengo otros compromisos económicos que afectan mucho el presupuesto familiar",
+            "category": "SITUACIÓN ECONÓMICA"
+        },
+        {
+            "id": 31,
+            "text": "En mi hogar tenemos deudas difíciles de pagar",
+            "category": "SITUACIÓN ECONÓMICA"
+        }
+    ]
+}

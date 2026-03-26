@@ -1,11 +1,11 @@
 {
-    "id": "intralaborales-b",
+    "id": "intralaborales-a",
     "name": "Cuestionario de Factores de Riesgo Psicosocial Intralaboral",
-    "short_name": "Intralaboral Forma B",
+    "short_name": "Intralaboral Forma A",
     "description": "Este cuestionario busca conocer su opinión sobre algunos aspectos de su trabajo. Las respuestas que usted de no son ni buenas ni malas, lo importante es que reflejen su manera de pensar sobre su trabajo.",
-    "version": "Forma B",
-    "icon": "🏭",
-    "color": "#3b82f6",
+    "version": "Forma A",
+    "icon": "🏢",
+    "color": "#0ea5e9",
     "estimated_time": "1 hora aproximadamente",
     "options": [
         {
@@ -73,7 +73,24 @@
                 17,
                 18,
                 19,
-                20
+                20,
+                21
+            ]
+        },
+        {
+            "id": "responsabilidades",
+            "title": "Responsabilidades y Actividades",
+            "message": "Las siguientes preguntas están relacionadas con las responsabilidades y actividades que usted debe hacer en su trabajo.",
+            "questions": [
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30
             ]
         },
         {
@@ -81,14 +98,14 @@
             "title": "Jornada de Trabajo",
             "message": "Las siguientes preguntas están relacionadas con la jornada de trabajo.",
             "questions": [
-                21,
-                22,
-                23,
-                24,
-                25,
-                26,
-                27,
-                28
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38
             ]
         },
         {
@@ -96,15 +113,15 @@
             "title": "Decisiones y Control",
             "message": "Las siguientes preguntas están relacionadas con las decisiones y el control que le permite su trabajo.",
             "questions": [
-                29,
-                30,
-                31,
-                32,
-                33,
-                34,
-                35,
-                36,
-                37
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47
             ]
         },
         {
@@ -112,9 +129,11 @@
             "title": "Cambios en el Trabajo",
             "message": "Las siguientes preguntas están relacionadas con cualquier tipo de cambio que ocurra en su trabajo.",
             "questions": [
-                38,
-                39,
-                40
+                48,
+                49,
+                50,
+                51,
+                52
             ]
         },
         {
@@ -122,11 +141,13 @@
             "title": "Información sobre el Trabajo",
             "message": "Las siguientes preguntas están relacionadas con la información que la empresa le ha dado sobre su trabajo.",
             "questions": [
-                41,
-                42,
-                43,
-                44,
-                45
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59
             ]
         },
         {
@@ -134,9 +155,9 @@
             "title": "Formación y Capacitación",
             "message": "Las siguientes preguntas están relacionadas con la formación y capacitación que la empresa le facilita para hacer su trabajo.",
             "questions": [
-                46,
-                47,
-                48
+                60,
+                61,
+                62
             ]
         },
         {
@@ -144,27 +165,6 @@
             "title": "Relación con Jefes",
             "message": "Las siguientes preguntas están relacionadas con el o los jefes con quien tenga más contacto.",
             "questions": [
-                49,
-                50,
-                51,
-                52,
-                53,
-                54,
-                55,
-                56,
-                57,
-                58,
-                59,
-                60,
-                61
-            ]
-        },
-        {
-            "id": "companeros",
-            "title": "Relaciones con Compañeros",
-            "message": "Las siguientes preguntas indagan sobre las relaciones con otras personas y el apoyo entre las personas de su trabajo.",
-            "questions": [
-                62,
                 63,
                 64,
                 65,
@@ -175,26 +175,19 @@
                 70,
                 71,
                 72,
-                73
+                73,
+                74,
+                75
             ]
         },
         {
-            "id": "retroalimentacion",
-            "title": "Retroalimentación del Desempeño",
-            "message": "Las siguientes preguntas están relacionadas con la información que usted recibe sobre su rendimiento en el trabajo.",
+            "id": "companeros",
+            "title": "Relaciones con Compañeros",
+            "message": "Las siguientes preguntas indagan sobre las relaciones con otras personas y el apoyo entre las personas de su trabajo.",
             "questions": [
-                74,
-                75,
                 76,
                 77,
-                78
-            ]
-        },
-        {
-            "id": "satisfaccion",
-            "title": "Satisfacción y Reconocimiento",
-            "message": "Las siguientes preguntas están relacionadas con la satisfacción, reconocimiento y la seguridad que le ofrece su trabajo.",
-            "questions": [
+                78,
                 79,
                 80,
                 81,
@@ -204,7 +197,38 @@
                 85,
                 86,
                 87,
-                88
+                88,
+                89
+            ]
+        },
+        {
+            "id": "retroalimentacion",
+            "title": "Retroalimentación del Desempeño",
+            "message": "Las siguientes preguntas están relacionadas con la información que usted recibe sobre su rendimiento en el trabajo.",
+            "questions": [
+                90,
+                91,
+                92,
+                93,
+                94
+            ]
+        },
+        {
+            "id": "satisfaccion",
+            "title": "Satisfacción y Reconocimiento",
+            "message": "Las siguientes preguntas están relacionadas con la satisfacción, reconocimiento y la seguridad que le ofrece su trabajo.",
+            "questions": [
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105
             ]
         },
         {
@@ -212,24 +236,43 @@
             "title": "Atención a Clientes y Usuarios",
             "message": "Las siguientes preguntas están relacionadas con la atención a clientes y usuarios.",
             "conditional": true,
-            "condition_question": "98",
+            "condition_question": "atiende_clientes",
             "condition_value": "si",
             "questions": [
-                89,
-                90,
-                91,
-                92,
-                93,
-                94,
-                95,
-                96,
-                97
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114
+            ]
+        },
+        {
+            "id": "colaboradores",
+            "title": "Supervisión de Colaboradores",
+            "message": "Las siguientes preguntas están relacionadas con las personas que usted supervisa o dirige.",
+            "conditional": true,
+            "condition_question": "es_jefe",
+            "condition_value": "si",
+            "questions": [
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123
             ]
         }
     ],
     "conditional_questions": [
         {
-            "id": "98",
+            "id": "atiende_clientes",
             "text": "En mi trabajo debo brindar servicio a clientes o usuarios",
             "type": "yesno",
             "options": [
@@ -245,6 +288,24 @@
                 }
             ],
             "show_before_section": "clientes"
+        },
+        {
+            "id": "es_jefe",
+            "text": "Soy jefe de otras personas en mi trabajo",
+            "type": "yesno",
+            "options": [
+                {
+                    "value": "si",
+                    "label": "Sí",
+                    "emoji": "✅"
+                },
+                {
+                    "value": "no",
+                    "label": "No",
+                    "emoji": "❌"
+                }
+            ],
+            "show_before_section": "colaboradores"
         }
     ],
     "questions": [
@@ -340,406 +401,545 @@
         },
         {
             "id": 19,
-            "text": "En mi trabajo tengo que hacer cálculos matemáticos",
+            "text": "En mi trabajo tengo que tomar decisiones difíciles muy rápido",
             "category": "ESFUERZO MENTAL"
         },
         {
             "id": 20,
-            "text": "Mi trabajo requiere que me fije en pequeños detalles",
+            "text": "Mi trabajo me exige atender a muchos asuntos al mismo tiempo",
             "category": "ESFUERZO MENTAL"
         },
         {
             "id": 21,
+            "text": "Mi trabajo requiere que me fije en pequeños detalles",
+            "category": "ESFUERZO MENTAL"
+        },
+        {
+            "id": 22,
+            "text": "En mi trabajo respondo por cosas de mucho valor",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 23,
+            "text": "En mi trabajo respondo por dinero de la empresa",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 24,
+            "text": "Como parte de mis funciones debo responder por la seguridad de otros",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 25,
+            "text": "Respondo ante mi jefe por los resultados de toda mi área de trabajo",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 26,
+            "text": "Mi trabajo me exige cuidar la salud de otras personas",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 27,
+            "text": "En el trabajo me dan órdenes contradictorias",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 28,
+            "text": "En mi trabajo me piden hacer cosas innecesarias",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 29,
+            "text": "En mi trabajo se presentan situaciones en las que debo pasar por alto normas o procedimientos",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 30,
+            "text": "En mi trabajo tengo que hacer cosas que se podrían hacer de una forma más práctica",
+            "category": "RESPONSABILIDADES"
+        },
+        {
+            "id": 31,
             "text": "Trabajo en horario de noche",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 22,
+            "id": 32,
             "text": "En mi trabajo es posible tomar pausas para descansar",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 23,
+            "id": 33,
             "text": "Mi trabajo me exige laborar en días de descanso, festivos o fines de semana",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 24,
+            "id": 34,
             "text": "En mi trabajo puedo tomar fines de semana o días de descanso al mes",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 25,
+            "id": 35,
             "text": "Cuando estoy en casa sigo pensando en el trabajo",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 26,
+            "id": 36,
             "text": "Discuto con mi familia o amigos por causa de mi trabajo",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 27,
+            "id": 37,
             "text": "Debo atender asuntos de trabajo cuando estoy en casa",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 28,
+            "id": 38,
             "text": "Por mi trabajo el tiempo que paso con mi familia y amigos es muy poco",
             "category": "JORNADA DE TRABAJO"
         },
         {
-            "id": 29,
-            "text": "En mi trabajo puedo hacer cosas nuevas",
-            "category": "DECISIONES Y CONTROL"
-        },
-        {
-            "id": 30,
+            "id": 39,
             "text": "Mi trabajo me permite desarrollar mis habilidades",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 31,
+            "id": 40,
             "text": "Mi trabajo me permite aplicar mis conocimientos",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 32,
+            "id": 41,
             "text": "Mi trabajo me permite aprender nuevas cosas",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 33,
+            "id": 42,
+            "text": "Me asignan el trabajo teniendo en cuenta mis capacidades",
+            "category": "DECISIONES Y CONTROL"
+        },
+        {
+            "id": 43,
             "text": "Puedo tomar pausas cuando las necesito",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 34,
+            "id": 44,
             "text": "Puedo decidir cuánto trabajo hago en el día",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 35,
+            "id": 45,
             "text": "Puedo decidir la velocidad a la que trabajo",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 36,
+            "id": 46,
             "text": "Puedo cambiar el orden de las actividades en mi trabajo",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 37,
+            "id": 47,
             "text": "Puedo parar un momento mi trabajo para atender algún asunto personal",
             "category": "DECISIONES Y CONTROL"
         },
         {
-            "id": 38,
+            "id": 48,
+            "text": "Los cambios en mi trabajo han sido beneficiosos",
+            "category": "CAMBIOS EN EL TRABAJO"
+        },
+        {
+            "id": 49,
             "text": "Me explican claramente los cambios que ocurren en mi trabajo",
             "category": "CAMBIOS EN EL TRABAJO"
         },
         {
-            "id": 39,
+            "id": 50,
             "text": "Puedo dar sugerencias sobre los cambios que ocurren en mi trabajo",
             "category": "CAMBIOS EN EL TRABAJO"
         },
         {
-            "id": 40,
+            "id": 51,
             "text": "Cuando se presentan cambios en mi trabajo se tienen en cuenta mis ideas y sugerencias",
             "category": "CAMBIOS EN EL TRABAJO"
         },
         {
-            "id": 41,
+            "id": 52,
+            "text": "Los cambios que se presentan en mi trabajo dificultan mi labor",
+            "category": "CAMBIOS EN EL TRABAJO"
+        },
+        {
+            "id": 53,
             "text": "Me informan con claridad cuáles son mis funciones",
             "category": "INFORMACIÓN SOBRE EL TRABAJO"
         },
         {
-            "id": 42,
+            "id": 54,
             "text": "Me informan cuáles son las decisiones que puedo tomar en mi trabajo",
             "category": "INFORMACIÓN SOBRE EL TRABAJO"
         },
         {
-            "id": 43,
+            "id": 55,
             "text": "Me explican claramente los resultados que debo lograr en mi trabajo",
             "category": "INFORMACIÓN SOBRE EL TRABAJO"
         },
         {
-            "id": 44,
+            "id": 56,
+            "text": "Me explican claramente el efecto de mi trabajo en la empresa",
+            "category": "INFORMACIÓN SOBRE EL TRABAJO"
+        },
+        {
+            "id": 57,
             "text": "Me explican claramente los objetivos de mi trabajo",
             "category": "INFORMACIÓN SOBRE EL TRABAJO"
         },
         {
-            "id": 45,
+            "id": 58,
+            "text": "Me informan claramente quien me puede orientar para hacer mi trabajo",
+            "category": "INFORMACIÓN SOBRE EL TRABAJO"
+        },
+        {
+            "id": 59,
             "text": "Me informan claramente con quien puedo resolver los asuntos de trabajo",
             "category": "INFORMACIÓN SOBRE EL TRABAJO"
         },
         {
-            "id": 46,
+            "id": 60,
             "text": "La empresa me permite asistir a capacitaciones relacionadas con mi trabajo",
             "category": "FORMACIÓN Y CAPACITACIÓN"
         },
         {
-            "id": 47,
+            "id": 61,
             "text": "Recibo capacitación útil para hacer mi trabajo",
             "category": "FORMACIÓN Y CAPACITACIÓN"
         },
         {
-            "id": 48,
+            "id": 62,
             "text": "Recibo capacitación que me ayuda a hacer mejor mi trabajo",
             "category": "FORMACIÓN Y CAPACITACIÓN"
         },
         {
-            "id": 49,
+            "id": 63,
+            "text": "Mi jefe me da instrucciones claras",
+            "category": "RELACIÓN CON JEFES"
+        },
+        {
+            "id": 64,
             "text": "Mi jefe ayuda a organizar mejor el trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 50,
+            "id": 65,
             "text": "Mi jefe tiene en cuenta mis puntos de vista y opiniones",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 51,
+            "id": 66,
             "text": "Mi jefe me anima para hacer mejor mi trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 52,
+            "id": 67,
             "text": "Mi jefe distribuye las tareas de forma que me facilita el trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 53,
+            "id": 68,
             "text": "Mi jefe me comunica a tiempo la información relacionada con el trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 54,
+            "id": 69,
             "text": "La orientación que me da mi jefe me ayuda a hacer mejor el trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 55,
+            "id": 70,
             "text": "Mi jefe me ayuda a progresar en el trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 56,
+            "id": 71,
             "text": "Mi jefe me ayuda a sentirme bien en el trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 57,
+            "id": 72,
             "text": "Mi jefe ayuda a solucionar los problemas que se presentan en el trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 58,
-            "text": "Mi jefe me trata con respeto",
-            "category": "RELACIÓN CON JEFES"
-        },
-        {
-            "id": 59,
+            "id": 73,
             "text": "Siento que puedo confiar en mi jefe",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 60,
+            "id": 74,
             "text": "Mi jefe me escucha cuando tengo problemas de trabajo",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 61,
+            "id": 75,
             "text": "Mi jefe me brinda su apoyo cuando lo necesito",
             "category": "RELACIÓN CON JEFES"
         },
         {
-            "id": 62,
+            "id": 76,
             "text": "Me agrada el ambiente de mi grupo de trabajo",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 63,
+            "id": 77,
             "text": "En mi grupo de trabajo me tratan de forma respetuosa",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 64,
+            "id": 78,
             "text": "Siento que puedo confiar en mis compañeros de trabajo",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 65,
+            "id": 79,
             "text": "Me siento a gusto con mis compañeros de trabajo",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 66,
+            "id": 80,
             "text": "En mi grupo de trabajo algunas personas me maltratan",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 67,
+            "id": 81,
             "text": "Entre compañeros solucionamos los problemas de forma respetuosa",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 68,
+            "id": 82,
+            "text": "Hay integración en mi grupo de trabajo",
+            "category": "RELACIONES CON COMPAÑEROS"
+        },
+        {
+            "id": 83,
             "text": "Mi grupo de trabajo es muy unido",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 69,
+            "id": 84,
+            "text": "Las personas en mi trabajo me hacen sentir parte del grupo",
+            "category": "RELACIONES CON COMPAÑEROS"
+        },
+        {
+            "id": 85,
             "text": "Cuando tenemos que realizar trabajo de grupo los compañeros colaboran",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 70,
+            "id": 86,
             "text": "Es fácil poner de acuerdo al grupo para hacer el trabajo",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 71,
+            "id": 87,
             "text": "Mis compañeros de trabajo me ayudan cuando tengo dificultades",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 72,
+            "id": 88,
             "text": "En mi trabajo las personas nos apoyamos unos a otros",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 73,
+            "id": 89,
             "text": "Algunos compañeros de trabajo me escuchan cuando tengo problemas",
             "category": "RELACIONES CON COMPAÑEROS"
         },
         {
-            "id": 74,
+            "id": 90,
             "text": "Me informan sobre lo que hago bien en mi trabajo",
             "category": "RETROALIMENTACIÓN DEL DESEMPEÑO"
         },
         {
-            "id": 75,
+            "id": 91,
             "text": "Me informan sobre lo que debo mejorar en mi trabajo",
             "category": "RETROALIMENTACIÓN DEL DESEMPEÑO"
         },
         {
-            "id": 76,
+            "id": 92,
             "text": "La información que recibo sobre mi rendimiento en el trabajo es clara",
             "category": "RETROALIMENTACIÓN DEL DESEMPEÑO"
         },
         {
-            "id": 77,
+            "id": 93,
             "text": "La forma como evalúan mi trabajo en la empresa me ayuda a mejorar",
             "category": "RETROALIMENTACIÓN DEL DESEMPEÑO"
         },
         {
-            "id": 78,
+            "id": 94,
             "text": "Me informan a tiempo sobre lo que debo mejorar en el trabajo",
             "category": "RETROALIMENTACIÓN DEL DESEMPEÑO"
         },
         {
-            "id": 79,
+            "id": 95,
+            "text": "En la empresa confían en mi trabajo",
+            "category": "SATISFACCIÓN Y RECONOCIMIENTO"
+        },
+        {
+            "id": 96,
             "text": "En la empresa me pagan a tiempo mi salario",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 80,
+            "id": 97,
             "text": "El pago que recibo es el que me ofreció la empresa",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 81,
+            "id": 98,
             "text": "El pago que recibo es el que merezco por el trabajo que realizo",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 82,
+            "id": 99,
             "text": "En mi trabajo tengo posibilidades de progresar",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 83,
+            "id": 100,
             "text": "Las personas que hacen bien el trabajo pueden progresar en la empresa",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 84,
+            "id": 101,
             "text": "La empresa se preocupa por el bienestar de los trabajadores",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 85,
+            "id": 102,
             "text": "Mi trabajo en la empresa es estable",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 86,
+            "id": 103,
             "text": "El trabajo que hago me hace sentir bien",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 87,
+            "id": 104,
             "text": "Siento orgullo de trabajar en esta empresa",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 88,
+            "id": 105,
             "text": "Hablo bien de la empresa con otras personas",
             "category": "SATISFACCIÓN Y RECONOCIMIENTO"
         },
         {
-            "id": 89,
+            "id": 106,
             "text": "Atiendo clientes o usuarios muy enojados",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 90,
+            "id": 107,
             "text": "Atiendo clientes o usuarios muy preocupados",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 91,
+            "id": 108,
             "text": "Atiendo clientes o usuarios muy tristes",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 92,
+            "id": 109,
             "text": "Mi trabajo me exige atender personas muy enfermas",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 93,
+            "id": 110,
             "text": "Mi trabajo me exige atender personas muy necesitadas de ayuda",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 94,
+            "id": 111,
             "text": "Atiendo clientes o usuarios que me maltratan",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 95,
+            "id": 112,
+            "text": "Para hacer mi trabajo debo demostrar sentimientos distintos a los míos",
+            "category": "ATENCIÓN A CLIENTES",
+            "conditional": true
+        },
+        {
+            "id": 113,
             "text": "Mi trabajo me exige atender situaciones de violencia",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 96,
+            "id": 114,
             "text": "Mi trabajo me exige atender situaciones muy tristes o dolorosas",
             "category": "ATENCIÓN A CLIENTES",
             "conditional": true
         },
         {
-            "id": 97,
-            "text": "Puedo expresar tristeza o enojo frente a las personas que atiendo",
-            "category": "ATENCIÓN A CLIENTES",
+            "id": 115,
+            "text": "Tengo colaboradores que comunican tarde los asuntos de trabajo",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 116,
+            "text": "Tengo colaboradores que tienen comportamientos irrespetuosos",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 117,
+            "text": "Tengo colaboradores que dificultan la organización del trabajo",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 118,
+            "text": "Tengo colaboradores que guardan silencio cuando les piden opiniones",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 119,
+            "text": "Tengo colaboradores que dificultan el logro de los resultados del trabajo",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 120,
+            "text": "Tengo colaboradores que expresan de forma irrespetuosa sus desacuerdos",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 121,
+            "text": "Tengo colaboradores que cooperan poco cuando se necesita",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 122,
+            "text": "Tengo colaboradores que me preocupan por su desempeño",
+            "category": "SUPERVISIÓN DE COLABORADORES",
+            "conditional": true
+        },
+        {
+            "id": 123,
+            "text": "Tengo colaboradores que ignoran las sugerencias para mejorar su trabajo",
+            "category": "SUPERVISIÓN DE COLABORADORES",
             "conditional": true
         }
     ]

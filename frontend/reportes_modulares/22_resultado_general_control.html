@@ -1,0 +1,60 @@
+<!-- PAGE 22: GENERAL CONTROL RISK DISTRIBUTION -->
+<div class="page" id="page-22">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">RESULTADO GENERAL: DOMINIO CONTROL SOBRE EL TRABAJO</h2>
+        <p style="margin-bottom: 40px; font-size: 1.1rem;">Distribución porcentual de los niveles de riesgo
+            identificados para el dominio de Control sobre el Trabajo:</p>
+
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px; gap: 80px;">
+
+            <!-- Left Label -->
+            <div style="text-align: right; min-width: 150px;">
+                <div style="font-weight: 800; color: #334155; font-size: 1rem; text-transform: uppercase;">Nivel
+                    de<br>Priorización Alta</div>
+                <div id="control-prior-high" style="font-weight: 900; color: #1e3a8a; font-size: 2.5rem;">...%</div>
+            </div>
+
+            <!-- Central Chart Section -->
+            <div
+                style="width: 250px; height: 500px; position: relative; display: flex; flex-direction: column; align-items: center;">
+                <!-- Main Stacked Canvas -->
+                <div style="width: 200px; height: 450px;">
+                    <canvas id="controlTotalStackedChart"></canvas>
+                </div>
+
+                <!-- Legend beneath chart -->
+                <div
+                    style="margin-top: 20px; width: 450px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-size: 0.75rem; font-weight: 700; color: #475569;">
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo
+                        medio</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo
+                        bajo</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #84cc16; border-radius: 2px;"></span> Sin riesgo
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Label -->
+            <div style="text-align: left; min-width: 150px; border-left: 3px solid #facc15; padding-left: 15px;">
+                <div style="font-weight: 800; color: #334155; font-size: 0.9rem; text-transform: uppercase;">Nivel
+                    de<br>Priorización Baja</div>
+                <div id="control-prior-low" style="font-weight: 900; color: #1e3a8a; font-size: 1.8rem;">...%</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 22</span>
+    </div>
+</div>

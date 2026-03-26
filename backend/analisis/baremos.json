@@ -1,0 +1,1455 @@
+{
+    "version": "1.0",
+    "descripcion": "Baremos oficiales Batería Riesgo Psicosocial - MinTrabajo Colombia 2010",
+    "nota": "Puntos de corte tomados del Manual General de la Batería",
+    "estres": {
+        "profesionales_directivos": {
+            "Sin Riesgo": [
+                0,
+                12.6
+            ],
+            "Bajo": [
+                12.7,
+                17.7
+            ],
+            "Medio": [
+                17.8,
+                25.0
+            ],
+            "Alto": [
+                25.1,
+                37.5
+            ],
+            "Muy Alto": [
+                37.6,
+                100
+            ]
+        },
+        "auxiliares_operativos": {
+            "Sin Riesgo": [
+                0,
+                7.8
+            ],
+            "Bajo": [
+                7.9,
+                12.6
+            ],
+            "Medio": [
+                12.7,
+                17.7
+            ],
+            "Alto": [
+                17.8,
+                25.0
+            ],
+            "Muy Alto": [
+                25.1,
+                100
+            ]
+        }
+    },
+    "intralaboral_a": {
+        "total": {
+            "Sin Riesgo": [
+                0,
+                10.0
+            ],
+            "Bajo": [
+                10.1,
+                21.0
+            ],
+            "Medio": [
+                21.1,
+                35.0
+            ],
+            "Alto": [
+                35.1,
+                47.0
+            ],
+            "Muy Alto": [
+                47.1,
+                100
+            ]
+        },
+        "dominios": {
+            "Demandas del trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    10.4
+                ],
+                "Bajo": [
+                    10.5,
+                    22.9
+                ],
+                "Medio": [
+                    23.0,
+                    36.4
+                ],
+                "Alto": [
+                    36.5,
+                    48.9
+                ],
+                "Muy Alto": [
+                    49.0,
+                    100
+                ]
+            },
+            "Control sobre el trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    18.8
+                ],
+                "Bajo": [
+                    18.9,
+                    29.2
+                ],
+                "Medio": [
+                    29.3,
+                    43.8
+                ],
+                "Alto": [
+                    43.9,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Liderazgo y relaciones sociales": {
+                "Sin Riesgo": [
+                    0,
+                    10.4
+                ],
+                "Bajo": [
+                    10.5,
+                    20.8
+                ],
+                "Medio": [
+                    20.9,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    47.9
+                ],
+                "Muy Alto": [
+                    48.0,
+                    100
+                ]
+            },
+            "Recompensas": {
+                "Sin Riesgo": [
+                    0,
+                    11.1
+                ],
+                "Bajo": [
+                    11.2,
+                    22.2
+                ],
+                "Medio": [
+                    22.3,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    55.6
+                ],
+                "Muy Alto": [
+                    55.7,
+                    100
+                ]
+            }
+        },
+        "dimensiones": {
+            "Demandas ambientales": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    20.8
+                ],
+                "Medio": [
+                    20.9,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Demandas cuantitativas": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    41.7
+                ],
+                "Alto": [
+                    41.8,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Demandas de carga mental": {
+                "Sin Riesgo": [
+                    0,
+                    16.7
+                ],
+                "Bajo": [
+                    16.8,
+                    33.3
+                ],
+                "Medio": [
+                    33.4,
+                    50.0
+                ],
+                "Alto": [
+                    50.1,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Demandas emocionales": {
+                "Sin Riesgo": [
+                    0,
+                    12.5
+                ],
+                "Bajo": [
+                    12.6,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    37.5
+                ],
+                "Alto": [
+                    37.6,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Demandas de responsabilidad del cargo": {
+                "Sin Riesgo": [
+                    0,
+                    0.0
+                ],
+                "Bajo": [
+                    0.1,
+                    20.0
+                ],
+                "Medio": [
+                    20.1,
+                    40.0
+                ],
+                "Alto": [
+                    40.1,
+                    60.0
+                ],
+                "Muy Alto": [
+                    60.1,
+                    100
+                ]
+            },
+            "Demandas de jornada de trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    12.5
+                ],
+                "Bajo": [
+                    12.6,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    37.5
+                ],
+                "Alto": [
+                    37.6,
+                    62.5
+                ],
+                "Muy Alto": [
+                    62.6,
+                    100
+                ]
+            },
+            "Consistencia del rol": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    16.7
+                ],
+                "Medio": [
+                    16.8,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Influencia del trabajo sobre el entorno extralaboral": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    41.7
+                ],
+                "Alto": [
+                    41.8,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Control y autonomía sobre el trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    41.7
+                ],
+                "Alto": [
+                    41.8,
+                    66.7
+                ],
+                "Muy Alto": [
+                    66.8,
+                    100
+                ]
+            },
+            "Oportunidades para el uso y desarrollo de habilidades": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    16.7
+                ],
+                "Medio": [
+                    16.8,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Participación y manejo del cambio": {
+                "Sin Riesgo": [
+                    0,
+                    20.0
+                ],
+                "Bajo": [
+                    20.1,
+                    40.0
+                ],
+                "Medio": [
+                    40.1,
+                    60.0
+                ],
+                "Alto": [
+                    60.1,
+                    80.0
+                ],
+                "Muy Alto": [
+                    80.1,
+                    100
+                ]
+            },
+            "Claridad de rol": {
+                "Sin Riesgo": [
+                    0,
+                    7.1
+                ],
+                "Bajo": [
+                    7.2,
+                    14.3
+                ],
+                "Medio": [
+                    14.4,
+                    28.6
+                ],
+                "Alto": [
+                    28.7,
+                    42.9
+                ],
+                "Muy Alto": [
+                    43.0,
+                    100
+                ]
+            },
+            "Capacitación": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    41.7
+                ],
+                "Alto": [
+                    41.8,
+                    66.7
+                ],
+                "Muy Alto": [
+                    66.8,
+                    100
+                ]
+            },
+            "Características del liderazgo": {
+                "Sin Riesgo": [
+                    0,
+                    7.7
+                ],
+                "Bajo": [
+                    7.8,
+                    19.2
+                ],
+                "Medio": [
+                    19.3,
+                    34.6
+                ],
+                "Alto": [
+                    34.7,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Relaciones sociales en el trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    7.1
+                ],
+                "Bajo": [
+                    7.2,
+                    21.4
+                ],
+                "Medio": [
+                    21.5,
+                    35.7
+                ],
+                "Alto": [
+                    35.8,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Retroalimentación del desempeño": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    50.0
+                ],
+                "Alto": [
+                    50.1,
+                    66.7
+                ],
+                "Muy Alto": [
+                    66.8,
+                    100
+                ]
+            },
+            "Relación con los colaboradores": {
+                "Sin Riesgo": [
+                    0,
+                    5.6
+                ],
+                "Bajo": [
+                    5.7,
+                    16.7
+                ],
+                "Medio": [
+                    16.8,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    55.6
+                ],
+                "Muy Alto": [
+                    55.7,
+                    100
+                ]
+            },
+            "Recompensas derivadas de la pertenencia a la organización": {
+                "Sin Riesgo": [
+                    0,
+                    12.5
+                ],
+                "Bajo": [
+                    12.6,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    37.5
+                ],
+                "Alto": [
+                    37.6,
+                    62.5
+                ],
+                "Muy Alto": [
+                    62.6,
+                    100
+                ]
+            },
+            "Reconocimiento y compensación": {
+                "Sin Riesgo": [
+                    0,
+                    11.1
+                ],
+                "Bajo": [
+                    11.2,
+                    33.3
+                ],
+                "Medio": [
+                    33.4,
+                    55.6
+                ],
+                "Alto": [
+                    55.7,
+                    77.8
+                ],
+                "Muy Alto": [
+                    77.9,
+                    100
+                ]
+            }
+        }
+    },
+    "intralaboral_b": {
+        "total": {
+            "Sin Riesgo": [
+                0,
+                12.4
+            ],
+            "Bajo": [
+                12.5,
+                24.7
+            ],
+            "Medio": [
+                24.8,
+                37.1
+            ],
+            "Alto": [
+                37.2,
+                49.4
+            ],
+            "Muy Alto": [
+                49.5,
+                100
+            ]
+        },
+        "dominios": {
+            "Demandas del trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    12.5
+                ],
+                "Bajo": [
+                    12.6,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    37.5
+                ],
+                "Alto": [
+                    37.6,
+                    52.1
+                ],
+                "Muy Alto": [
+                    52.2,
+                    100
+                ]
+            },
+            "Control sobre el trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    16.7
+                ],
+                "Bajo": [
+                    16.8,
+                    29.2
+                ],
+                "Medio": [
+                    29.3,
+                    45.8
+                ],
+                "Alto": [
+                    45.9,
+                    62.5
+                ],
+                "Muy Alto": [
+                    62.6,
+                    100
+                ]
+            },
+            "Liderazgo y relaciones sociales": {
+                "Sin Riesgo": [
+                    0,
+                    11.5
+                ],
+                "Bajo": [
+                    11.6,
+                    23.1
+                ],
+                "Medio": [
+                    23.2,
+                    38.5
+                ],
+                "Alto": [
+                    38.6,
+                    57.7
+                ],
+                "Muy Alto": [
+                    57.8,
+                    100
+                ]
+            },
+            "Recompensas": {
+                "Sin Riesgo": [
+                    0,
+                    10.0
+                ],
+                "Bajo": [
+                    10.1,
+                    20.0
+                ],
+                "Medio": [
+                    20.1,
+                    30.0
+                ],
+                "Alto": [
+                    30.1,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            }
+        },
+        "dimensiones": {
+            "Demandas ambientales": {
+                "Sin Riesgo": [
+                    0,
+                    11.1
+                ],
+                "Bajo": [
+                    11.2,
+                    22.2
+                ],
+                "Medio": [
+                    22.3,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Demandas cuantitativas": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    41.7
+                ],
+                "Alto": [
+                    41.8,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Demandas de carga mental": {
+                "Sin Riesgo": [
+                    0,
+                    14.3
+                ],
+                "Bajo": [
+                    14.4,
+                    28.6
+                ],
+                "Medio": [
+                    28.7,
+                    42.9
+                ],
+                "Alto": [
+                    43.0,
+                    57.1
+                ],
+                "Muy Alto": [
+                    57.2,
+                    100
+                ]
+            },
+            "Demandas emocionales": {
+                "Sin Riesgo": [
+                    0,
+                    10.7
+                ],
+                "Bajo": [
+                    10.8,
+                    21.4
+                ],
+                "Medio": [
+                    21.5,
+                    35.7
+                ],
+                "Alto": [
+                    35.8,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Demandas de jornada de trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    20.8
+                ],
+                "Medio": [
+                    20.9,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    54.2
+                ],
+                "Muy Alto": [
+                    54.3,
+                    100
+                ]
+            },
+            "Influencia del trabajo sobre el entorno extralaboral": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    41.7
+                ],
+                "Alto": [
+                    41.8,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Control y autonomía sobre el trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    11.1
+                ],
+                "Bajo": [
+                    11.2,
+                    22.2
+                ],
+                "Medio": [
+                    22.3,
+                    44.4
+                ],
+                "Alto": [
+                    44.5,
+                    66.7
+                ],
+                "Muy Alto": [
+                    66.8,
+                    100
+                ]
+            },
+            "Claridad de rol": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    16.7
+                ],
+                "Medio": [
+                    16.8,
+                    33.3
+                ],
+                "Alto": [
+                    33.4,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Capacitación": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    41.7
+                ],
+                "Alto": [
+                    41.8,
+                    66.7
+                ],
+                "Muy Alto": [
+                    66.8,
+                    100
+                ]
+            },
+            "Participación y manejo del cambio": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    33.3
+                ],
+                "Medio": [
+                    33.4,
+                    58.3
+                ],
+                "Alto": [
+                    58.4,
+                    83.3
+                ],
+                "Muy Alto": [
+                    83.4,
+                    100
+                ]
+            },
+            "Características del liderazgo": {
+                "Sin Riesgo": [
+                    0,
+                    7.7
+                ],
+                "Bajo": [
+                    7.8,
+                    19.2
+                ],
+                "Medio": [
+                    19.3,
+                    34.6
+                ],
+                "Alto": [
+                    34.7,
+                    50.0
+                ],
+                "Muy Alto": [
+                    50.1,
+                    100
+                ]
+            },
+            "Relaciones sociales en el trabajo": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    20.8
+                ],
+                "Medio": [
+                    20.9,
+                    37.5
+                ],
+                "Alto": [
+                    37.6,
+                    58.3
+                ],
+                "Muy Alto": [
+                    58.4,
+                    100
+                ]
+            },
+            "Retroalimentación del desempeño": {
+                "Sin Riesgo": [
+                    0,
+                    8.3
+                ],
+                "Bajo": [
+                    8.4,
+                    25.0
+                ],
+                "Medio": [
+                    25.1,
+                    50.0
+                ],
+                "Alto": [
+                    50.1,
+                    66.7
+                ],
+                "Muy Alto": [
+                    66.8,
+                    100
+                ]
+            },
+            "Recompensas derivadas de la pertenencia a la organización": {
+                "Sin Riesgo": [
+                    0,
+                    14.3
+                ],
+                "Bajo": [
+                    14.4,
+                    28.6
+                ],
+                "Medio": [
+                    28.7,
+                    42.9
+                ],
+                "Alto": [
+                    43.0,
+                    71.4
+                ],
+                "Muy Alto": [
+                    71.5,
+                    100
+                ]
+            },
+            "Reconocimiento y compensación": {
+                "Sin Riesgo": [
+                    0,
+                    11.1
+                ],
+                "Bajo": [
+                    11.2,
+                    33.3
+                ],
+                "Medio": [
+                    33.4,
+                    55.6
+                ],
+                "Alto": [
+                    55.7,
+                    77.8
+                ],
+                "Muy Alto": [
+                    77.9,
+                    100
+                ]
+            }
+        }
+    },
+    "extralaboral": {
+        "profesionales_directivos": {
+            "total": {
+                "Sin Riesgo": [
+                    0.0,
+                    11.3
+                ],
+                "Bajo": [
+                    11.4,
+                    16.9
+                ],
+                "Medio": [
+                    17.0,
+                    22.6
+                ],
+                "Alto": [
+                    22.7,
+                    29.0
+                ],
+                "Muy Alto": [
+                    29.1,
+                    100
+                ]
+            },
+            "dimensiones": {
+                "Balance entre la vida laboral y familiar": {
+                    "factor_transformacion": 16,
+                    "Sin Riesgo": [
+                        0.0,
+                        6.3
+                    ],
+                    "Bajo": [
+                        6.4,
+                        25.0
+                    ],
+                    "Medio": [
+                        25.1,
+                        37.5
+                    ],
+                    "Alto": [
+                        37.6,
+                        50.0
+                    ],
+                    "Muy Alto": [
+                        50.1,
+                        100
+                    ]
+                },
+                "Relaciones familiares": {
+                    "factor_transformacion": 12,
+                    "Sin Riesgo": [
+                        0.0,
+                        8.3
+                    ],
+                    "Bajo": [
+                        8.4,
+                        25.0
+                    ],
+                    "Medio": [
+                        25.1,
+                        33.3
+                    ],
+                    "Alto": [
+                        33.4,
+                        50.0
+                    ],
+                    "Muy Alto": [
+                        50.1,
+                        100
+                    ]
+                },
+                "Comunicación y relaciones interpersonales": {
+                    "factor_transformacion": 20,
+                    "Sin Riesgo": [
+                        0.0,
+                        0.9
+                    ],
+                    "Bajo": [
+                        1.0,
+                        10.0
+                    ],
+                    "Medio": [
+                        10.1,
+                        20.0
+                    ],
+                    "Alto": [
+                        20.1,
+                        30.0
+                    ],
+                    "Muy Alto": [
+                        30.1,
+                        100
+                    ]
+                },
+                "Situación económica del grupo familiar": {
+                    "factor_transformacion": 12,
+                    "Sin Riesgo": [
+                        0.0,
+                        8.3
+                    ],
+                    "Bajo": [
+                        8.4,
+                        25.0
+                    ],
+                    "Medio": [
+                        25.1,
+                        33.3
+                    ],
+                    "Alto": [
+                        33.4,
+                        50.0
+                    ],
+                    "Muy Alto": [
+                        50.1,
+                        100
+                    ]
+                },
+                "Características de la vivienda y de su entorno": {
+                    "factor_transformacion": 36,
+                    "Sin Riesgo": [
+                        0.0,
+                        5.6
+                    ],
+                    "Bajo": [
+                        5.7,
+                        11.1
+                    ],
+                    "Medio": [
+                        11.2,
+                        13.9
+                    ],
+                    "Alto": [
+                        14.0,
+                        22.2
+                    ],
+                    "Muy Alto": [
+                        22.3,
+                        100
+                    ]
+                },
+                "Influencia del entorno extralaboral sobre el trabajo": {
+                    "factor_transformacion": 12,
+                    "Sin Riesgo": [
+                        0.0,
+                        8.3
+                    ],
+                    "Bajo": [
+                        8.4,
+                        16.7
+                    ],
+                    "Medio": [
+                        16.8,
+                        25.0
+                    ],
+                    "Alto": [
+                        25.1,
+                        41.7
+                    ],
+                    "Muy Alto": [
+                        41.8,
+                        100
+                    ]
+                },
+                "Desplazamiento vivienda trabajo vivienda": {
+                    "factor_transformacion": 16,
+                    "Sin Riesgo": [
+                        0.0,
+                        0.9
+                    ],
+                    "Bajo": [
+                        1.0,
+                        12.5
+                    ],
+                    "Medio": [
+                        12.6,
+                        25.0
+                    ],
+                    "Alto": [
+                        25.1,
+                        43.8
+                    ],
+                    "Muy Alto": [
+                        43.9,
+                        100
+                    ]
+                }
+            }
+        },
+        "auxiliares_operativos": {
+            "total": {
+                "Sin Riesgo": [
+                    0.0,
+                    12.9
+                ],
+                "Bajo": [
+                    13.0,
+                    17.7
+                ],
+                "Medio": [
+                    17.8,
+                    24.2
+                ],
+                "Alto": [
+                    24.3,
+                    32.3
+                ],
+                "Muy Alto": [
+                    32.4,
+                    100
+                ]
+            },
+            "dimensiones": {
+                "Balance entre la vida laboral y familiar": {
+                    "factor_transformacion": 16,
+                    "Sin Riesgo": [
+                        0.0,
+                        6.3
+                    ],
+                    "Bajo": [
+                        6.4,
+                        25.0
+                    ],
+                    "Medio": [
+                        25.1,
+                        37.5
+                    ],
+                    "Alto": [
+                        37.6,
+                        50.0
+                    ],
+                    "Muy Alto": [
+                        50.1,
+                        100
+                    ]
+                },
+                "Relaciones familiares": {
+                    "factor_transformacion": 12,
+                    "Sin Riesgo": [
+                        0.0,
+                        8.3
+                    ],
+                    "Bajo": [
+                        8.4,
+                        25.0
+                    ],
+                    "Medio": [
+                        25.1,
+                        33.3
+                    ],
+                    "Alto": [
+                        33.4,
+                        50.0
+                    ],
+                    "Muy Alto": [
+                        50.1,
+                        100
+                    ]
+                },
+                "Comunicación y relaciones interpersonales": {
+                    "factor_transformacion": 20,
+                    "Sin Riesgo": [
+                        0.0,
+                        5.0
+                    ],
+                    "Bajo": [
+                        5.1,
+                        15.0
+                    ],
+                    "Medio": [
+                        15.1,
+                        25.0
+                    ],
+                    "Alto": [
+                        25.1,
+                        35.0
+                    ],
+                    "Muy Alto": [
+                        35.1,
+                        100
+                    ]
+                },
+                "Situación económica del grupo familiar": {
+                    "factor_transformacion": 12,
+                    "Sin Riesgo": [
+                        0.0,
+                        16.7
+                    ],
+                    "Bajo": [
+                        16.8,
+                        25.0
+                    ],
+                    "Medio": [
+                        25.1,
+                        41.7
+                    ],
+                    "Alto": [
+                        41.8,
+                        50.0
+                    ],
+                    "Muy Alto": [
+                        50.1,
+                        100
+                    ]
+                },
+                "Características de la vivienda y de su entorno": {
+                    "factor_transformacion": 36,
+                    "Sin Riesgo": [
+                        0.0,
+                        5.6
+                    ],
+                    "Bajo": [
+                        5.7,
+                        11.1
+                    ],
+                    "Medio": [
+                        11.2,
+                        16.7
+                    ],
+                    "Alto": [
+                        16.8,
+                        27.8
+                    ],
+                    "Muy Alto": [
+                        27.9,
+                        100
+                    ]
+                },
+                "Influencia del entorno extralaboral sobre el trabajo": {
+                    "factor_transformacion": 12,
+                    "Sin Riesgo": [
+                        0.0,
+                        0.9
+                    ],
+                    "Bajo": [
+                        1.0,
+                        16.7
+                    ],
+                    "Medio": [
+                        16.8,
+                        25.0
+                    ],
+                    "Alto": [
+                        25.1,
+                        41.7
+                    ],
+                    "Muy Alto": [
+                        41.8,
+                        100
+                    ]
+                },
+                "Desplazamiento vivienda trabajo vivienda": {
+                    "factor_transformacion": 16,
+                    "Sin Riesgo": [
+                        0.0,
+                        0.9
+                    ],
+                    "Bajo": [
+                        1.0,
+                        12.5
+                    ],
+                    "Medio": [
+                        12.6,
+                        25.0
+                    ],
+                    "Alto": [
+                        25.1,
+                        43.8
+                    ],
+                    "Muy Alto": [
+                        43.9,
+                        100
+                    ]
+                }
+            }
+        }
+    },
+    "total_general": {
+        "forma_a": {
+            "factor": 616,
+            "Sin Riesgo": [
+                0.0,
+                18.8
+            ],
+            "Bajo": [
+                18.9,
+                24.4
+            ],
+            "Medio": [
+                24.5,
+                29.5
+            ],
+            "Alto": [
+                29.6,
+                35.4
+            ],
+            "Muy Alto": [
+                35.5,
+                100
+            ]
+        },
+        "forma_b": {
+            "factor": 512,
+            "Sin Riesgo": [
+                0.0,
+                19.9
+            ],
+            "Bajo": [
+                20.0,
+                24.8
+            ],
+            "Medio": [
+                24.9,
+                29.5
+            ],
+            "Alto": [
+                29.6,
+                35.4
+            ],
+            "Muy Alto": [
+                35.5,
+                100
+            ]
+        }
+    }
+}

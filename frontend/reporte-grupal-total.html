@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Oficial de Riesgo Psicosocial</title>
+    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="reportes_modulares/styles.css">
+</head>
+
+<body>
+
+    <button class="print-fab no-print" onclick="window.downloadReport()">DESCARGAR REPORTE (PDF)</button>
+
+    <div id="report-content">
+        <!-- PAGE 1: COVER -->
+<div class="page cover-page" id="page-1">
+    <div style="margin-bottom: 30px;">
+        <img src="assets/logo_nuevo.png" alt="Logo Empresa"
+            style="max-width: 250px; height: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+    </div>
+    <h1 class="cover-title">INFORME DE RESULTADOS</h1>
+    <p class="cover-subtitle">Evaluación de Riesgo Psicosocial Batería MinTrabajo</p>
+
+    <div class="cover-client">CLIENTE: <span>ACERTEMOS S.A.S.</span></div>
+    <div style="font-size: 1.2rem; margin-top: 10px;">Vigencia: 2026 - 2027</div>
+
+    <div class="cover-footer">
+        <p>Elaborado por:</p>
+        <p><strong>SISTEMA AUTOMATIZADO DE GESTIÓN PSICOSOCIAL</strong></p>
+        <p id="current-date-cover"></p>
+    </div>
+</div>
+<!-- PAGE 2: INTRO & METHODOLOGY -->
+<div class="page" id="page-2">
+    <div class="page-header">1. INTRODUCCIÓN Y METODOLOGÍA</div>
+    <div class="content">
+        <h2 class="section-title">INTRODUCCIÓN</h2>
+        <div class="intro-text">
+            <p>En cumplimiento de la Resolución 2764 de 2022 y la Resolución 2646 de 2008 del Ministerio del Trabajo
+                de Colombia, se presenta el informe de resultados de la evaluación de factores de riesgo psicosocial
+                para la
+                empresa <span style="font-weight: bold;">ACERTEMOS S.A.S.</span></p>
+            <p style="margin-bottom: 5px;">El riesgo psicosocial se define como las condiciones presentes en una
+                situación laboral directamente
+                relacionadas con la organización, el contenido del trabajo y la realización de las tareas, que
+                pueden afectar tanto al bienestar como a la salud de los trabajadores.</p>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 20px;">METODOLOGÍA</h2>
+        <div class="intro-text">
+            <p>Se aplicó la <strong>Batería de Instrumentos para la Evaluación de Factores de Riesgo
+                    Psicosocial</strong>, validada para la población colombiana. Los instrumentos utilizados fueron:
+            </p>
+            <ul style="margin: 15px 0 0 30px;">
+                <li>Ficha de Datos Generales (Sociodemográfico).</li>
+                <li>Cuestionario de Factores de Riesgo Psicosocial Intralaboral (Forma A).</li>
+                <li>Cuestionario de Factores de Riesgo Psicosocial Extralaboral.</li>
+                <li>Cuestionario para la Evaluación del Estrés.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 20px;">CRITERIOS DE CALIFICACIÓN</h2>
+        <table class="custom-table" style="font-size: 0.9rem; margin: 10px 0;">
+            <thead>
+                <tr>
+                    <th>Puntaje Transformado</th>
+                    <th>Nivel de Riesgo</th>
+                    <th>Acción Requerida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0 - 24.9</td>
+                    <td><span class="risk-tag" style="background: var(--risk-sin);">Sin Riesgo</span></td>
+                    <td>Monitoreo preventivo</td>
+                </tr>
+                <tr>
+                    <td>25 - 49.9</td>
+                    <td><span class="risk-tag" style="background: var(--risk-bajo);">Bajo</span></td>
+                    <td>Intervención básica</td>
+                </tr>
+                <tr>
+                    <td>50 - 69.9</td>
+                    <td><span class="risk-tag" style="background: var(--risk-medio); color: #333">Medio</span></td>
+                    <td>Intervención específica</td>
+                </tr>
+                <tr>
+                    <td>70 - 84.9</td>
+                    <td><span class="risk-tag" style="background: var(--risk-alto);">Alto</span></td>
+                    <td>Intervención prioritaria</td>
+                </tr>
+                <tr>
+                    <td>85 - 100</td>
+                    <td><span class="risk-tag" style="background: var(--risk-muy-alto);">Muy Alto</span></td>
+                    <td>Intervención inmediata</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 2</span>
+    </div>
+</div>
+<!-- PAGE 3: EVALUATION MODEL -->
+<div class="page" id="page-3">
+    <div class="page-header">2. ALCANCE DE LA EVALUACIÓN</div>
+    <div class="content">
+        <h2 class="section-title">MODELO DE FACTORES EVALUADOS</h2>
+        <p style="margin-bottom: 30px;">La evaluación contempla cuatro ejes fundamentales que permiten un
+            diagnóstico integral del clima psicosocial en la organización, siguiendo los lineamientos técnicos del
+            Ministerio del Trabajo:</p>
+
+        <div class="infographic-grid">
+            <!-- CARD 1 -->
+            <div class="info-card intra">
+                <div class="card-header"><span class="icon">💻</span> FACTORES INTRALABORALES</div>
+                <div class="card-body">
+                    <p>Condiciones al interior de la empresa relacionadas con el trabajo y su organización:</p>
+                    <ul>
+                        <li>Gestión organizacional</li>
+                        <li>Condiciones de la tarea</li>
+                        <li>Funciones y jornada de trabajo</li>
+                        <li>Condiciones del medio ambiente de trabajo</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- CARD 2 -->
+            <div class="info-card extra">
+                <div class="card-header"><span class="icon">📋</span> FACTORES EXTRALABORALES</div>
+                <div class="card-body">
+                    <p>Aspectos fuera del contexto laboral que influyen en el bienestar del colaborador:</p>
+                    <ul>
+                        <li>Entorno familiar, social y económico</li>
+                        <li>Utilización del tiempo libre</li>
+                        <li>Redes de apoyo social</li>
+                        <li>Condiciones de la vivienda</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- CARD 3 -->
+            <div class="info-card stress">
+                <div class="card-header"><span class="icon">🏥</span> SINTOMATOLOGÍA ESTRÉS</div>
+                <div class="card-body">
+                    <p>Respuestas e indicadores detectados ante la exposición a factores de riesgo:</p>
+                    <ul>
+                        <li>Síntomas fisiológicos</li>
+                        <li>Sintomatología de comportamiento social</li>
+                        <li>Síntomas intelectuales y laborales</li>
+                        <li>Síntomas psico-emocionales</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- CARD 4 -->
+            <div class="info-card socio">
+                <div class="card-header"><span class="icon">💡</span> SOCIODEMOGRÁFICOS</div>
+                <div class="card-body">
+                    <p>Características socio-económicas y ocupacionales propias del colaborador:</p>
+                    <ul>
+                        <li>Perfil sociodemográfico</li>
+                        <li>Características ocupacionales</li>
+                        <li>Nivel de estudios y cargo</li>
+                        <li>Lugar de residencia y entorno</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 3</span>
+    </div>
+</div>
+<!-- PAGE 4: SOCIODEMOGRAPHIC RESULTS -->
+<div class="page page-socio" id="page-4">
+    <div class="page-header">3. RESULTADOS SOCIODEMOGRÁFICOS</div>
+    <div class="content">
+        <h2 class="section-title">PERFIL DE LA POBLACIÓN</h2>
+
+        <div class="coverage-container">
+            <div class="coverage-viz">
+                <div class="bubble bubble-2">
+                    <span class="number">2</span>
+                    <span class="label">Total Empleados</span>
+                    <span class="value">305</span>
+                </div>
+                <div class="bubble bubble-1">
+                    <span class="number">1</span>
+                    <span class="label">Total Participantes</span>
+                    <span class="value" id="dynamic-participants">...</span>
+                </div>
+                <div class="bubble bubble-3">
+                    <span class="number">3</span>
+                    <span class="label">Cobertura</span>
+                    <span class="value" id="dynamic-coverage">...</span>
+                </div>
+            </div>
+            <div class="criteria-box">
+                <h3>Criterios de Inclusión</h3>
+                <p>Personal directo con antigüedad de 3 meses con participación voluntaria.</p>
+
+                <h3>Criterios de Exclusión</h3>
+                <p>Personal con menos de tres (3 meses) de antigüedad con la empresa, aprendices, practicantes.</p>
+            </div>
+        </div>
+
+        <p style="margin-bottom: 10px; font-size: 0.95rem;">A continuación se presenta el perfil detallado de los
+            colaboradores que participaron en el proceso:</p>
+
+        <div class="chart-grid">
+            <div class="chart-container">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); margin-bottom: 10px; font-size: 1rem;">
+                    Distribución por Sexo</h3>
+                <div style="height: 160px; position: relative; width: 100%; display: flex; justify-content: center;">
+                    <canvas id="sexChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); margin-bottom: 10px; font-size: 1rem;">
+                    Nivel de Estudios</h3>
+                <div style="height: 160px; position: relative; width: 100%; display: flex; justify-content: center;">
+                    <canvas id="eduChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); margin-bottom: 10px; font-size: 1rem;">
+                    Tipo de Cargo</h3>
+                <div style="height: 160px; position: relative; width: 100%; display: flex; justify-content: center;">
+                    <canvas id="cargoChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); margin-bottom: 10px; font-size: 1rem;">
+                    Estado Civil</h3>
+                <div style="height: 160px; position: relative; width: 100%; display: flex; justify-content: center;">
+                    <canvas id="civilChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 4</span>
+    </div>
+</div>
+<!-- PAGE 6: SOCIODEMOGRAPHIC PROFILE CONTINUATION -->
+<div class="page page-socio-2" id="page-6">
+    <div class="page-header">3. RESULTADOS SOCIODEMOGRÁFICOS (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">LUGAR DE RESIDENCIA</h2>
+        <div
+            style="height: 400px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 30px;">
+            <canvas id="residenceChart"></canvas>
+        </div>
+
+        <div class="chart-grid">
+            <div class="chart-container">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); margin-bottom: 10px; font-size: 1rem;">
+                    Estrato Socioeconómico</h3>
+                <div style="height: 180px; position: relative; width: 100%; display: flex; justify-content: center;">
+                    <canvas id="estratoChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); margin-bottom: 10px; font-size: 1rem;">
+                    Tipo de Vivienda</h3>
+                <div style="height: 180px; position: relative; width: 100%; display: flex; justify-content: center;">
+                    <canvas id="viviendaChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 6</span>
+    </div>
+</div>
+<!-- PAGE 7: SECTION COVER - INTRALABORAL FACTORS -->
+<div class="page cover-page" id="page-7" style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);">
+    <div class="content"
+        style="display: flex; flex-direction: column; justify-content: center; height: 100%; text-align: left; padding: 40px; color: white; margin-top: 0;">
+
+        <div style="border-left: 8px solid #facc15; padding-left: 30px; margin-bottom: 60px;">
+            <h1
+                style="font-family: 'Montserrat', sans-serif; font-size: 3.5rem; font-weight: 800; line-height: 1.1; text-transform: uppercase;">
+                RESULTADOS POR FACTOR<br>INTRALABORAL
+            </h1>
+        </div>
+
+        <div style="margin-bottom: 50px;">
+            <h2
+                style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; color: #facc15; margin-bottom: 30px; letter-spacing: 2px;">
+                DOMINIOS EVALUADOS:
+            </h2>
+            <ul
+                style="list-style: none; font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 600; line-height: 2;">
+                <li style="display: flex; align-items: center; gap: 15px;">
+                    <span style="color: #facc15; font-size: 1.8rem;">•</span> Liderazgo y relaciones sociales en el
+                    trabajo
+                </li>
+                <li style="display: flex; align-items: center; gap: 15px;">
+                    <span style="color: #facc15; font-size: 1.8rem;">•</span> Demandas del trabajo
+                </li>
+                <li style="display: flex; align-items: center; gap: 15px;">
+                    <span style="color: #facc15; font-size: 1.8rem;">•</span> Control sobre el trabajo
+                </li>
+                <li style="display: flex; align-items: center; gap: 15px;">
+                    <span style="color: #facc15; font-size: 1.8rem;">•</span> Recompensas
+                </li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 50px; opacity: 0.6; font-size: 1rem; font-style: italic;">
+            Evaluación basada en la Batería de Instrumentos para la Evaluación de Factores de Riesgo Psicosocial.
+        </div>
+    </div>
+
+    <div class="page-footer" style="border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; filter: brightness(0) invert(1); opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Sección II: Factores Intralaborales</span>
+    </div>
+</div>
+<!-- PAGE 8: INTRALABORAL DOMAINS DEFINITIONS -->
+<div class="page" id="page-8">
+    <div class="page-header">FACTORES INTRALABORALES: DOMINIOS Y DIMENSIONES</div>
+    <div class="content">
+        <h2 class="section-title">DESCRIPCIÓN DE LOS DOMINIOS EVALUADOS</h2>
+        <p style="margin-bottom: 25px; font-size: 0.95rem;">Los factores intralaborales comprenden las condiciones
+            internas del trabajo, organizadas en cuatro grandes dominios que agrupan dimensiones específicas de la
+            realidad laboral:</p>
+
+        <div class="infographic-grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+            <!-- Liderazgo -->
+            <div class="info-card intra" style="border-top: 5px solid #2563eb;">
+                <div class="card-header" style="background: #2563eb; padding: 12px 20px;">
+                    Liderazgo y Relaciones Sociales
+                </div>
+                <div class="card-body" style="padding: 15px; min-height: auto;">
+                    <ul style="margin: 0; padding-left: 0;">
+                        <li>Características de liderazgo</li>
+                        <li>Relaciones sociales en el trabajo</li>
+                        <li>Retroalimentación del desempeño</li>
+                        <li>Relación con los colaboradores**</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Demandas -->
+            <div class="info-card extra" style="border-top: 5px solid #f97316;">
+                <div class="card-header" style="background: #f97316; padding: 12px 20px;">
+                    Demandas del Trabajo
+                </div>
+                <div class="card-body" style="padding: 15px; min-height: auto;">
+                    <ul style="margin: 0; padding-left: 0;">
+                        <li>Demandas ambientales y de esfuerzo físico</li>
+                        <li>Demandas emocionales</li>
+                        <li>Demandas cuantitativas</li>
+                        <li>Demandas de carga mental</li>
+                        <li>Demandas de la jornada de trabajo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Control -->
+            <div class="info-card stress" style="border-top: 5px solid #10b981;">
+                <div class="card-header" style="background: #10b981; padding: 12px 20px;">
+                    Control sobre el Trabajo
+                </div>
+                <div class="card-body" style="padding: 15px; min-height: auto;">
+                    <ul style="margin: 0; padding-left: 0;">
+                        <li>Claridad del rol</li>
+                        <li>Capacitación</li>
+                        <li>Participación y manejo del cambio</li>
+                        <li>Oportunidades para el uso y desarrollo</li>
+                        <li>Control y autonomía sobre el trabajo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Recompensas -->
+            <div class="info-card socio" style="border-top: 5px solid #facc15;">
+                <div class="card-header" style="background: #facc15; padding: 12px 20px; color: #333;">
+                    Recompensas
+                </div>
+                <div class="card-body" style="padding: 15px; min-height: auto;">
+                    <ul style="margin: 0; padding-left: 0;">
+                        <li>Reconocimiento y compensación</li>
+                        <li>Recompensas derivadas de la pertenencia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Dimensions Info (The specific ones from the image) -->
+        <div
+            style="margin-top: 25px; padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <h3
+                style="font-family: 'Montserrat', sans-serif; color: var(--primary); font-size: 1rem; margin-bottom: 10px;">
+                Otras dimensiones evaluadas:</h3>
+            <ul style="columns: 2; font-size: 0.85rem; color: #475569; list-style: none;">
+                <li style="margin-bottom: 8px;">• Influencia del trabajo sobre el entorno extralaboral</li>
+                <li style="margin-bottom: 8px;">• Exigencias de responsabilidad del cargo**</li>
+                <li style="margin-bottom: 8px;">• Consistencia del rol**</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 20px; font-size: 0.8rem; color: #64748b; font-style: italic;">
+            ** Solo se mide para la Forma A (Jefaturas, profesionales y técnicos).
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 8</span>
+    </div>
+</div>
+<!-- PAGE 9: GENERAL INTRALABORAL RISK DISTRIBUTION -->
+<div class="page" id="page-9">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">RESULTADO GENERAL DE RIESGO INTRALABORAL</h2>
+        <p style="margin-bottom: 40px; font-size: 1.1rem;">A continuación se presenta la distribución porcentual de los
+            niveles de riesgo identificados para el factor intralaboral en la población total evaluada:</p>
+
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 50px;">
+            <!-- Left Info -->
+            <div style="text-align: center;">
+                <div
+                    style="font-family: 'Montserrat', sans-serif; font-weight: 800; color: #64748b; font-size: 1.2rem; text-transform: uppercase;">
+                    TOTAL</div>
+                <div id="intra-total-n"
+                    style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #1e3a8a; font-size: 3.5rem;">
+                    ...</div>
+            </div>
+
+            <!-- Central Chart Section -->
+            <div
+                style="width: 300px; height: 500px; position: relative; background: #fff; display: flex; flex-direction: column; align-items: center;">
+                <!-- Priorización Baja Label (Top) -->
+                <div
+                    style="position: absolute; right: -120px; top: 15%; text-align: left; border-left: 3px solid #22c55e; padding-left: 10px;">
+                    <div style="font-weight: 800; color: #334155; font-size: 0.8rem; text-transform: uppercase;">Nivel
+                        de<br>Priorización Baja</div>
+                    <div id="val-prior-low" style="font-weight: 900; color: #1e3a8a; font-size: 1.5rem;">...%</div>
+                </div>
+
+                <!-- Main Stacked Canvas -->
+                <div style="width: 220px; height: 450px;">
+                    <canvas id="intraStackedChart"></canvas>
+                </div>
+
+                <!-- Legend beneath chart -->
+                <div
+                    style="margin-top: 20px; width: 450px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-size: 0.75rem; font-weight: 700; color: #475569;">
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo
+                        medio</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo
+                        bajo</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #84cc16; border-radius: 2px;"></span> Sin riesgo
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Info (Priorización High) -->
+            <div style="text-align: center;">
+                <div
+                    style="font-family: 'Montserrat', sans-serif; font-weight: 800; color: #64748b; font-size: 1rem; text-transform: uppercase;">
+                    PRIORIZACIÓN<br>DE INTERVENCIÓN</div>
+                <div id="val-prior-high"
+                    style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #1e3a8a; font-size: 3rem;">
+                    ...%</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 9</span>
+    </div>
+</div>
+<!-- PAGE 10: INTRALABORAL BY DEPARTMENT/AREA -->
+<div class="page" id="page-10">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">PERCEPCIÓN RIESGO INTRALABORAL POR ÁREAS / PROCESOS</h2>
+        <p style="margin-bottom: 20px; font-size: 0.95rem;">Distribución de los niveles de riesgo intralaboral
+            desglosado por los diferentes departamentos o procesos de la organización:</p>
+
+        <div
+            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 20px;">
+            <canvas id="areaBreakdownChart"></canvas>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 10</span>
+    </div>
+</div>
+<!-- PAGE 11: DOMAIN COVER - LIDERAZGO Y RELACIONES SOCIALES -->
+<div class="page" id="page-11" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
+    <div class="content"
+        style="display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 50px; color: white; margin-top: 0;">
+
+        <div style="margin-bottom: 40px;">
+            <span
+                style="background: #facc15; color: #1e3a8a; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">DOMINIO
+                I</span>
+            <h1
+                style="font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; margin-top: 15px; text-transform: uppercase; line-height: 1.1; border-left: 8px solid #facc15; padding-left: 25px;">
+                LIDERAZGO Y RELACIONES SOCIALES EN EL TRABAJO
+            </h1>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 25px; margin-top: 50px;">
+            <!-- Box 1 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 220px; background: white; color: #1e3a8a; padding: 15px; border-radius: 10px; font-weight: 800; font-size: 0.85rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Características de Liderazgo
+                </div>
+                <p style="font-size: 0.9rem; line-height: 1.4; opacity: 0.95;">Gestión de jefes inmediatos:
+                    planificación, resultados, resolución de conflictos, motivación, apoyo y comunicación con sus
+                    colaboradores.</p>
+            </div>
+
+            <!-- Box 2 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 220px; background: white; color: #1e3a8a; padding: 15px; border-radius: 10px; font-weight: 800; font-size: 0.85rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Relaciones Sociales en el Trabajo
+                </div>
+                <p style="font-size: 0.9rem; line-height: 1.4; opacity: 0.95;">Gestión de subordinados en relación con
+                    ejecución del trabajo, interacción, comunicación y resolución de conflictos.</p>
+            </div>
+
+            <!-- Box 3 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 220px; background: white; color: #1e3a8a; padding: 15px; border-radius: 10px; font-weight: 800; font-size: 0.85rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Retroalimentación del Desempeño
+                </div>
+                <p style="font-size: 0.9rem; line-height: 1.4; opacity: 0.95;">Información que el trabajador recibe
+                    sobre su desempeño, permitiendo identificar fortalezas y debilidades para tomar acciones.</p>
+            </div>
+
+            <!-- Box 4 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 220px; background: white; color: #1e3a8a; padding: 15px; border-radius: 10px; font-weight: 800; font-size: 0.85rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Relación con los Colaboradores
+                </div>
+                <p style="font-size: 0.9rem; line-height: 1.4; opacity: 0.95;">Calidad de interacciones con compañeros,
+                    apoyo social, trabajo en equipo, colaboración y cohesión en la actividad laboral.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="page-footer" style="border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; filter: brightness(0) invert(1); opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Dominio I: Liderazgo y Relaciones Sociales</span>
+    </div>
+</div>
+<!-- PAGE 12: LIDERAZGO Y RELACIONES SOCIALES - RESULTS BY DIMENSION -->
+<div class="page" id="page-12">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">DETALLE POR DIMENSIONES: LIDERAZGO Y RELACIONES SOCIALES</h2>
+        <p style="margin-bottom: 25px; font-size: 0.95rem;">Distribución de los niveles de riesgo para cada una de las
+            dimensiones que conforman el dominio de Liderazgo y Relaciones Sociales en el Trabajo:</p>
+
+        <div
+            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
+            <canvas id="leadershipDimensionsChart"></canvas>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 12</span>
+    </div>
+</div>
+<!-- PAGE 13: LIDERAZGO FOCUS - BY AREA -->
+<div class="page" id="page-13">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">DESGLOSE POR PROCESOS: DIMENSIONES DE LIDERAZGO</h2>
+        <p style="margin-bottom: 20px; font-size: 0.95rem;">Análisis comparativo de las dos dimensiones con mayor
+            impacto en el dominio por cada área de la empresa:</p>
+
+        <div style="display: flex; gap: 20px; height: 500px; margin-top: 10px;">
+            <!-- Chart 1: Características de Liderazgo -->
+            <div
+                style="flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column;">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); font-size: 0.9rem; margin-bottom: 10px; text-align: center;">
+                    CARACTERÍSTICAS DE LIDERAZGO</h3>
+                <div style="flex: 1; position: relative; width: 100%;">
+                    <canvas id="charLidAreaChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 2: Relación con Colaboradores -->
+            <div
+                style="flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column;">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); font-size: 0.9rem; margin-bottom: 10px; text-align: center;">
+                    RELACIÓN CON LOS COLABORADORES</h3>
+                <div style="flex: 1; position: relative; width: 100%;">
+                    <canvas id="relColAreaChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.75rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #8b0000; border-radius: 2px;"></span> Muy alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #ef4444; border-radius: 2px;"></span> Alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #facc15; border-radius: 2px;"></span> Medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #22c55e; border-radius: 2px;"></span> Bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 13</span>
+    </div>
+</div>
+<!-- PAGE 14: LIDERAZGO FOCUS (PART 2) - BY AREA -->
+<div class="page" id="page-14">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">DESGLOSE POR PROCESOS: DIMENSIONES DE LIDERAZGO (CONT.)</h2>
+        <p style="margin-bottom: 20px; font-size: 0.95rem;">Análisis comparativo de las dimensiones de relaciones
+            sociales y retroalimentación desglosado por cada área de la empresa:</p>
+
+        <div style="display: flex; gap: 20px; height: 500px; margin-top: 10px;">
+            <!-- Chart 3: Relaciones Sociales en el Trabajo -->
+            <div
+                style="flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column;">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); font-size: 0.9rem; margin-bottom: 10px; text-align: center;">
+                    RELACIONES SOCIALES EN EL TRABAJO</h3>
+                <div style="flex: 1; position: relative; width: 100%;">
+                    <canvas id="relSocAreaChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 4: Retroalimentación del Desempeño -->
+            <div
+                style="flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column;">
+                <h3
+                    style="font-family: 'Montserrat', sans-serif; color: var(--primary); font-size: 0.9rem; margin-bottom: 10px; text-align: center;">
+                    RETROALIMENTACIÓN DEL DESEMPEÑO</h3>
+                <div style="flex: 1; position: relative; width: 100%;">
+                    <canvas id="retroDesAreaChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.75rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #8b0000; border-radius: 2px;"></span> Muy alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #ef4444; border-radius: 2px;"></span> Alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #facc15; border-radius: 2px;"></span> Medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #22c55e; border-radius: 2px;"></span> Bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:10px; height:10px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 14</span>
+    </div>
+</div>
+<!-- PAGE 15: LIDERAZGO Y RELACIONES - COMPARISON FORMA A VS B -->
+<div class="page" id="page-15">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">COMPARATIVA POR PERFIL: LIDERAZGO Y RELACIONES (FORMA A y B)</h2>
+        <p style="margin-bottom: 25px; font-size: 0.95rem;">Comparación de los niveles de riesgo en el dominio de
+            Liderazgo y Relaciones Sociales según el perfil del cargo (Jefes/Profesionales vs. Operativos/Auxiliares):
+        </p>
+
+        <div
+            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
+            <canvas id="leadershipFormComparisonChart"></canvas>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 15</span>
+    </div>
+</div>
+<!-- PAGE 16: DOMAIN COVER - DEMANDAS DEL TRABAJO -->
+<div class="page" id="page-16" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
+    <div class="content"
+        style="display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 50px; color: white; margin-top: 0;">
+
+        <div style="margin-bottom: 30px;">
+            <span
+                style="background: #facc15; color: #1e3a8a; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">DOMINIO
+                II</span>
+            <h1
+                style="font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; margin-top: 15px; text-transform: uppercase; line-height: 1.1; border-left: 8px solid #facc15; padding-left: 25px;">
+                DEMANDAS DEL TRABAJO
+            </h1>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 30px;">
+            <!-- Box 1 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Demandas Cuantitativas
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Exigencias relacionadas con la cantidad
+                    de trabajo y el tiempo disponible para hacerlo.</p>
+            </div>
+
+            <!-- Box 2 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Demandas de la Carga Mental
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Requerimiento de alto procesamiento de
+                    información, análisis y generación de respuestas.</p>
+            </div>
+
+            <!-- Box 3 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Demandas Emocionales
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Condiciones afectivas propias del
+                    trabajo que pueden interferir con los sentimientos del trabajador.</p>
+            </div>
+
+            <!-- Box 4 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Responsabilidad del Cargo
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Obligaciones explícitas de dirección y
+                    manejo de información (Aplica solo forma A).</p>
+            </div>
+
+            <!-- Box 5 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Demandas Ambientales y Físicas
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Condiciones del sitio de trabajo y carga
+                    física que requieren esfuerzo de adaptación.</p>
+            </div>
+
+            <!-- Box 6 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Demandas de la Jornada
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Exigencias de tiempo laboral: duración,
+                    horario, pausas y descanso.</p>
+            </div>
+
+            <!-- Box 7 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Consistencia del Rol
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Compatibilidad entre exigencias de
+                    eficacia, ética y calidad (Aplica solo forma A).</p>
+            </div>
+
+            <!-- Box 8 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Influencia en lo Extralaboral
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Cuando las exigencias de tiempo y
+                    esfuerzo afectan el contexto extralaboral.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="page-footer" style="border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; filter: brightness(0) invert(1); opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 16 | Dominio II: Demandas del Trabajo</span>
+    </div>
+</div>
+<!-- PAGE 17: GENERAL DEMANDAS RISK DISTRIBUTION -->
+<div class="page" id="page-17">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">RESULTADO GENERAL: DOMINIO DEMANDAS DEL TRABAJO</h2>
+        <p style="margin-bottom: 40px; font-size: 1.1rem;">Distribución porcentual de los niveles de riesgo
+            identificados para el dominio de Demandas del Trabajo:</p>
+
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px; gap: 80px;">
+
+            <!-- Left Label (Customized position) -->
+            <div style="text-align: right; min-width: 150px;">
+                <div style="font-weight: 800; color: #334155; font-size: 1rem; text-transform: uppercase;">Nivel
+                    de<br>Priorización Alta</div>
+                <div id="demands-prior-high" style="font-weight: 900; color: #1e3a8a; font-size: 2.5rem;">...%</div>
+            </div>
+
+            <!-- Central Chart Section -->
+            <div
+                style="width: 250px; height: 500px; position: relative; display: flex; flex-direction: column; align-items: center;">
+                <!-- Main Stacked Canvas -->
+                <div style="width: 200px; height: 450px;">
+                    <canvas id="demandsTotalStackedChart"></canvas>
+                </div>
+
+                <!-- Legend beneath chart -->
+                <div
+                    style="margin-top: 20px; width: 450px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-size: 0.75rem; font-weight: 700; color: #475569;">
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo
+                        medio</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo
+                        bajo</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #84cc16; border-radius: 2px;"></span> Sin riesgo
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Label -->
+            <div style="text-align: left; min-width: 150px; border-left: 3px solid #facc15; padding-left: 15px;">
+                <div style="font-weight: 800; color: #334155; font-size: 0.9rem; text-transform: uppercase;">Nivel
+                    de<br>Priorización Baja</div>
+                <div id="demands-prior-low" style="font-weight: 900; color: #1e3a8a; font-size: 1.8rem;">...%</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 17</span>
+    </div>
+</div>
+<!-- PAGE 18: DEMANDAS DEL TRABAJO - RESULTS BY DIMENSION -->
+<div class="page" id="page-18">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">DETALLE POR DIMENSIONES: DEMANDAS DEL TRABAJO</h2>
+        <p style="margin-bottom: 25px; font-size: 0.95rem;">Distribución de los niveles de riesgo para cada una de las
+            dimensiones que conforman el dominio de Demandas del Trabajo:</p>
+
+        <div
+            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
+            <canvas id="demandsDimensionsChart"></canvas>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 18</span>
+    </div>
+</div>
+<!-- PAGE 19: DEMANDAS DEL TRABAJO - BREAKDOWN BY AREA -->
+<div class="page" id="page-19">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">DESGLOSE POR PROCESOS: DOMINIO DEMANDAS DEL TRABAJO</h2>
+        <p style="margin-bottom: 25px; font-size: 0.95rem;">Análisis comparativo de los niveles de riesgo del dominio de
+            Demandas del Trabajo desglosado por cada área de la empresa:</p>
+
+        <div
+            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
+            <canvas id="demandsAreaBreakdownChart"></canvas>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 19</span>
+    </div>
+</div>
+<!-- PAGE 20: DEMANDAS DEL TRABAJO - COMPARISON FORMA A VS B -->
+<div class="page" id="page-20">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">COMPARATIVA POR PERFIL: DEMANDAS DEL TRABAJO (FORMA A y B)</h2>
+        <p style="margin-bottom: 25px; font-size: 0.95rem;">Comparación de los niveles de riesgo en el dominio de
+            Demandas del Trabajo según el perfil del cargo (Jefes/Profesionales vs. Operativos/Auxiliares):</p>
+
+        <div
+            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
+            <canvas id="demandsFormComparisonChart"></canvas>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 20</span>
+    </div>
+</div>
+<!-- PAGE 21: DOMAIN COVER - CONTROL SOBRE EL TRABAJO -->
+<div class="page" id="page-21" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
+    <div class="content"
+        style="display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 50px; color: white; margin-top: 0;">
+
+        <div style="margin-bottom: 30px;">
+            <span
+                style="background: #facc15; color: #1e3a8a; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">DOMINIO
+                III</span>
+            <h1
+                style="font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; margin-top: 15px; text-transform: uppercase; line-height: 1.1; border-left: 8px solid #facc15; padding-left: 25px;">
+                CONTROL SOBRE EL TRABAJO
+            </h1>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 30px;">
+            <!-- Box 1 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Control y autonomía sobre el trabajo
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Decisiones que tiene una persona sobre
+                    aspectos intrínsecos de la tarea, tales como: orden, cantidad, ritmo, forma y pausas.</p>
+            </div>
+
+            <!-- Box 2 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Oportunidad para el uso y desarrollo
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Posibilidad que el trabajo le brinda a
+                    una persona de aprender, aplicar y desarrollar sus habilidades y conocimientos.</p>
+            </div>
+
+            <!-- Box 3 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Participación y manejo del cambio
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Estrategias organizacionales que
+                    facilitan la capacidad de adaptación de los trabajadores ante cambios de entorno.</p>
+            </div>
+
+            <!-- Box 4 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Claridad del Rol
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Definición del papel esperado del
+                    trabajador, orientado a objetivos, funciones, resultados, autonomía e impacto.</p>
+            </div>
+
+            <!-- Box 5 -->
+            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div
+                    style="min-width: 250px; background: white; color: #1e3a8a; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-transform: uppercase;">
+                    Capacitación
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.3; opacity: 0.95;">Actividades dirigidas a fomentar la
+                    adquisición y fortalecimiento de conocimientos y habilidades en el trabajador.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="page-footer" style="border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; filter: brightness(0) invert(1); opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 21 | Dominio III: Control sobre el Trabajo</span>
+    </div>
+</div>
+<!-- PAGE 22: GENERAL CONTROL RISK DISTRIBUTION -->
+<div class="page" id="page-22">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">RESULTADO GENERAL: DOMINIO CONTROL SOBRE EL TRABAJO</h2>
+        <p style="margin-bottom: 40px; font-size: 1.1rem;">Distribución porcentual de los niveles de riesgo
+            identificados para el dominio de Control sobre el Trabajo:</p>
+
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px; gap: 80px;">
+
+            <!-- Left Label -->
+            <div style="text-align: right; min-width: 150px;">
+                <div style="font-weight: 800; color: #334155; font-size: 1rem; text-transform: uppercase;">Nivel
+                    de<br>Priorización Alta</div>
+                <div id="control-prior-high" style="font-weight: 900; color: #1e3a8a; font-size: 2.5rem;">...%</div>
+            </div>
+
+            <!-- Central Chart Section -->
+            <div
+                style="width: 250px; height: 500px; position: relative; display: flex; flex-direction: column; align-items: center;">
+                <!-- Main Stacked Canvas -->
+                <div style="width: 200px; height: 450px;">
+                    <canvas id="controlTotalStackedChart"></canvas>
+                </div>
+
+                <!-- Legend beneath chart -->
+                <div
+                    style="margin-top: 20px; width: 450px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-size: 0.75rem; font-weight: 700; color: #475569;">
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo
+                        alto</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo
+                        medio</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo
+                        bajo</div>
+                    <div style="display: flex; align-items: center; gap: 5px;"><span
+                            style="width:12px; height:12px; background: #84cc16; border-radius: 2px;"></span> Sin riesgo
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Label -->
+            <div style="text-align: left; min-width: 150px; border-left: 3px solid #facc15; padding-left: 15px;">
+                <div style="font-weight: 800; color: #334155; font-size: 0.9rem; text-transform: uppercase;">Nivel
+                    de<br>Priorización Baja</div>
+                <div id="control-prior-low" style="font-weight: 900; color: #1e3a8a; font-size: 1.8rem;">...%</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 22</span>
+    </div>
+</div>
+<!-- PAGE 23: CONTROL SOBRE EL TRABAJO - RESULTS BY DIMENSION -->
+<div class="page" id="page-23">
+    <div class="page-header">4. RESULTADOS FACTORES INTRALABORALES (CONT.)</div>
+    <div class="content">
+        <h2 class="section-title">DETALLE POR DIMENSIONES: CONTROL SOBRE EL TRABAJO</h2>
+        <p style="margin-bottom: 25px; font-size: 0.95rem;">Distribución de los niveles de riesgo para cada una de las
+            dimensiones que conforman el dominio de Control sobre el Trabajo:</p>
+
+        <div
+            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
+            <canvas id="controlDimensionsChart"></canvas>
+        </div>
+
+        <div
+            style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
+            <div style="display: flex; align-items: center; gap: 5px;"><span
+                    style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
+        <span>Página 23</span>
+    </div>
+</div>
+
+    </div>
+
+    <script>
+        window.downloadReport = function () {
+            const element = document.getElementById('report-content');
+            const opt = {
+                margin: 0,
+                filename: 'Reporte_Resultados_Grupal.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF: { unit: 'px', format: 'a4', orientation: 'portrait' }
+            };
+
+            // To prevent charts from breaking on resize, html2pdf will render them exactly as seen.
+            html2pdf().set(opt).from(element).save();
+        };
+
+        // Registra los plugins obligatorios de Chart.js
+        Chart.register(ChartDataLabels);
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const dateStr = new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+
+            const coverDate = document.getElementById('current-date-cover');
+            if (coverDate) coverDate.innerText = `Fecha de emisión: ${dateStr}`;
+
+            try {
+                // Fetch de datos grupales
+                const response = await fetch('/cuestionarios/api/analisis/grupo/resumen');
+                const json = await response.json();
+
+                if (json.success) {
+                    const data = json.data;
+
+                    // Actualizar métricas de cobertura (Página 4)
+                    const totalParticipants = data.total_respondentes;
+                    const totalEmployees = 305; // Fijo temporal
+                    const coverage = Math.round((totalParticipants / totalEmployees) * 100);
+
+                    const elParticipants = document.getElementById('dynamic-participants');
+                    const elCoverage = document.getElementById('dynamic-coverage');
+                    if (elParticipants) elParticipants.innerText = totalParticipants;
+                    if (elCoverage) elCoverage.innerText = `${coverage}%`;
+
+                    const demo = data.demografico || {};
+
+                    // Función constructora de gráficos Doughnut
+                    const createDoughnut = (ctxId, chartData, colors) => {
+                        const ctx = document.getElementById(ctxId);
+                        if (!ctx || !chartData || Object.keys(chartData).length === 0) return;
+
+                        const labels = Object.keys(chartData);
+                        const values = Object.values(chartData);
+
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    data: values,
+                                    backgroundColor: colors,
+                                    borderWidth: 1,
+                                    borderColor: '#ffffff'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                cutout: '50%',
+                                layout: {
+                                    padding: { left: 5, right: 10, top: 5, bottom: 5 }
+                                },
+                                plugins: {
+                                    legend: {
+                                        position: 'right',
+                                        labels: {
+                                            boxWidth: 9,
+                                            font: { size: 9, family: 'sans-serif' },
+                                            padding: 8,
+                                            usePointStyle: true,
+                                            pointStyle: 'rectRounded'
+                                        }
+                                    },
+                                    datalabels: {
+                                        color: '#ffffff',
+                                        font: { weight: 'bold', size: 11 },
+                                        formatter: (value, ctx) => {
+                                            const sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                            const percentage = (value * 100 / sum).toFixed(0) + "%";
+                                            return percentage;
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    };
+
+                    // Función para Barras Horizontales (Residencia)
+                    const createHorizontalBar = (ctxId, chartData) => {
+                        const ctx = document.getElementById(ctxId);
+                        if (!ctx || !chartData || Object.keys(chartData).length === 0) return;
+
+                        const labels = Object.keys(chartData);
+                        const values = Object.values(chartData);
+                        const sum = values.reduce((a, b) => a + b, 0);
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    data: values,
+                                    backgroundColor: '#3b82f6',
+                                    borderRadius: 4
+                                }]
+                            },
+                            options: {
+                                indexAxis: 'y',
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { display: false },
+                                    datalabels: {
+                                        anchor: 'end',
+                                        align: 'end',
+                                        color: '#1e3a8a',
+                                        font: { weight: 'bold', size: 10 },
+                                        formatter: (value) => {
+                                            return (value * 100 / sum).toFixed(1) + "%";
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        display: false,
+                                        grid: { display: false }
+                                    },
+                                    y: {
+                                        grid: { display: false },
+                                        ticks: { font: { size: 10 } }
+                                    }
+                                }
+                            }
+                        });
+                    };
+
+                    // Función para Barra Apilada Vertical (Página 9)
+                    const createStackedBar = (ctxId, distPct) => {
+                        const ctx = document.getElementById(ctxId);
+                        if (!ctx) return;
+
+                        // Orden: Muy Alto (base) -> Alto -> Medio -> Bajo -> Sin Riesgo (top)
+                        const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                        const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Factores Intralaborales'],
+                                datasets: levels.map((lvl, i) => ({
+                                    label: lvl,
+                                    data: [distPct[lvl] || 0],
+                                    backgroundColor: colors[i],
+                                    barThickness: 180
+                                }))
+                            },
+                            options: {
+                                plugins: {
+                                    legend: { display: false },
+                                    datalabels: {
+                                        color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                        font: { weight: '800', size: 16 },
+                                        formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                    }
+                                },
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: { display: false, stacked: true },
+                                    y: { display: false, stacked: true, max: 100 }
+                                }
+                            }
+                        });
+                    };
+
+                    const bluePalette = ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#0ea5e9', '#0284c7'];
+
+                    // Gráficas Demográficas (Página 4)
+                    createDoughnut('sexChart', demo.sexo, ['#1e3a8a', '#ec4899', '#94a3b8']);
+                    createDoughnut('eduChart', demo.nivel_estudios, bluePalette);
+                    createDoughnut('cargoChart', demo.tipo_cargo, bluePalette);
+                    createDoughnut('civilChart', demo.estado_civil, bluePalette);
+
+                    // Gráficas Demográficas (Página 6)
+                    createHorizontalBar('residenceChart', demo.ciudad_residencia);
+                    createDoughnut('estratoChart', demo.estrato, bluePalette);
+                    createDoughnut('viviendaChart', demo.tipo_vivienda, bluePalette);
+
+                    // Resultados Intralaborales (Página 9)
+                    const intra = data.cuestionarios?.intralaboral;
+                    if (intra) {
+                        const dist = intra.distribucion_pct || {};
+                        const n = intra.n || 0;
+                        document.getElementById('intra-total-n').innerText = n;
+
+                        // Priorización: Medio + Alto + Muy Alto
+                        const priorHigh = (dist["Medio"] || 0) + (dist["Alto"] || 0) + (dist["Muy Alto"] || 0);
+                        const priorLow = (dist["Sin Riesgo"] || 0) + (dist["Bajo"] || 0);
+
+                        document.getElementById('val-prior-high').innerText = Math.round(priorHigh) + "%";
+                        document.getElementById('val-prior-low').innerText = Math.round(priorLow) + "%";
+
+                        createStackedBar('intraStackedChart', dist);
+                    }
+
+                    // Gráfica por Áreas (Página 10)
+                    const areaData = data.area_breakdown;
+                    if (areaData && Object.keys(areaData).length > 0) {
+                        const ctx = document.getElementById('areaBreakdownChart');
+                        if (ctx) {
+                            const areas = Object.keys(areaData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: areas.map(a => a.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: areas.map(a => areaData[a][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: { stacked: true, grid: { display: false }, ticks: { font: { size: 9, weight: 'bold' } } },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica de Dimensiones de Liderazgo (Página 12)
+                    const leadershipData = data.leadership_breakdown;
+                    if (leadershipData && Object.keys(leadershipData).length > 0) {
+                        const ctx = document.getElementById('leadershipDimensionsChart');
+                        if (ctx) {
+                            const dims = Object.keys(leadershipData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: dims.map(d => d.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: dims.map(d => leadershipData[d][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 9, weight: 'bold' },
+                                                callback: function (value) {
+                                                    const label = this.getLabelForValue(value);
+                                                    return label.length > 20 ? label.match(/.{1,20}(\s|$)/g) : label;
+                                                }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráficas de Foco por Áreas (Página 13)
+                    const focusData = data.leadership_focus_areas;
+                    if (focusData) {
+                        const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                        const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                        const renderFocusChart = (ctxId, dimData) => {
+                            const ctx = document.getElementById(ctxId);
+                            if (!ctx || !dimData) return;
+                            const areas = Object.keys(dimData);
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: areas.map(a => a.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: areas.map(a => dimData[a][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 9 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 8, weight: 'bold' },
+                                                maxRotation: 45,
+                                                minRotation: 45
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        };
+
+                        renderFocusChart('charLidAreaChart', focusData.liderazgo);
+                        renderFocusChart('relColAreaChart', focusData.colaboradores);
+                        renderFocusChart('relSocAreaChart', focusData.relaciones);
+                        renderFocusChart('retroDesAreaChart', focusData.retroalimentacion);
+                    }
+
+                    // Comparativa Liderazgo Forma A vs B (Página 15)
+                    const leadFormData = data.leadership_form_breakdown;
+                    if (leadFormData && Object.keys(leadFormData).length > 0) {
+                        const ctx = document.getElementById('leadershipFormComparisonChart');
+                        if (ctx) {
+                            const forms = Object.keys(leadFormData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: forms.map(f => f === "A" ? "FORMA A (Jefes/Profesionales)" : "FORMA B (Auxiliares/Operativos)"),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: forms.map(f => leadFormData[f][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                        barThickness: 150
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 12 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: { font: { size: 11, weight: 'bold' } }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica de Dimensiones de Demandas (Página 16)
+                    const demandsData = data.demands_breakdown;
+                    if (demandsData && Object.keys(demandsData).length > 0) {
+                        const ctx = document.getElementById('demandsDimensionsChart');
+                        if (ctx) {
+                            const dims = Object.keys(demandsData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: dims.map(d => d.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: dims.map(d => demandsData[d][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 9 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 8, weight: 'bold' },
+                                                callback: function (value) {
+                                                    const label = this.getLabelForValue(value);
+                                                    return label.length > 15 ? label.match(/.{1,15}(\s|$)/g) : label;
+                                                }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica General de Demandas (Página 16)
+                    const demandsDist = data.demands_dist;
+                    if (demandsDist && Object.keys(demandsDist).length > 0) {
+                        createStackedBar('demandsTotalStackedChart', demandsDist);
+
+                        // Priorización Alta (Muy Alto + Alto + Medio)
+                        const pHigh = (demandsDist["Muy Alto"] || 0) + (demandsDist["Alto"] || 0) + (demandsDist["Medio"] || 0);
+                        // Priorización Baja (Bajo + Sin Riesgo)
+                        const pLow = (demandsDist["Bajo"] || 0) + (demandsDist["Sin Riesgo"] || 0);
+
+                        document.getElementById('demands-prior-high').textContent = `${Math.round(pHigh)}%`;
+                        document.getElementById('demands-prior-low').textContent = `${Math.round(pLow)}%`;
+                    }
+
+                    // Gráfica de Demandas por Área (Página 18)
+                    const demandsAreaData = data.demands_area_breakdown;
+                    if (demandsAreaData && Object.keys(demandsAreaData).length > 0) {
+                        const ctx = document.getElementById('demandsAreaBreakdownChart');
+                        if (ctx) {
+                            const areas = Object.keys(demandsAreaData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: areas.map(a => a.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: areas.map(a => demandsAreaData[a][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 9, weight: 'bold' }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Comparativa Forma A vs B (Página 19)
+                    const demandsFormData = data.demands_form_breakdown;
+                    if (demandsFormData && Object.keys(demandsFormData).length > 0) {
+                        const ctx = document.getElementById('demandsFormComparisonChart');
+                        if (ctx) {
+                            const forms = Object.keys(demandsFormData); // ["A", "B"]
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: forms.map(f => f === "A" ? "FORMA A (Jefes/Profesionales)" : "FORMA B (Auxiliares/Operativos)"),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: forms.map(f => demandsFormData[f][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                        barThickness: 150
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 12 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: { font: { size: 11, weight: 'bold' } }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica General de Control (Página 22)
+                    const controlDist = data.control_dist;
+                    if (controlDist && Object.keys(controlDist).length > 0) {
+                        createStackedBar('controlTotalStackedChart', controlDist);
+
+                        const pHigh = (controlDist["Muy Alto"] || 0) + (controlDist["Alto"] || 0) + (controlDist["Medio"] || 0);
+                        const pLow = (controlDist["Bajo"] || 0) + (controlDist["Sin Riesgo"] || 0);
+
+                        const highEl = document.getElementById('control-prior-high');
+                        const lowEl = document.getElementById('control-prior-low');
+                        if (highEl) highEl.textContent = `${Math.round(pHigh)}%`;
+                        if (lowEl) lowEl.textContent = `${Math.round(pLow)}%`;
+                    }
+
+                    // Gráfica de Dimensiones de Control (Página 23)
+                    const controlData = data.control_breakdown;
+                    if (controlData && Object.keys(controlData).length > 0) {
+                        const ctx = document.getElementById('controlDimensionsChart');
+                        if (ctx) {
+                            const dims = Object.keys(controlData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: dims.map(d => d.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: dims.map(d => controlData[d][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 9, weight: 'bold' },
+                                                callback: function (value) {
+                                                    const label = this.getLabelForValue(value);
+                                                    return label.length > 20 ? label.match(/.{1,20}(\s|$)/g) : label;
+                                                }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("Error cargando los datos grupales", error);
+            }
+        });
+    </script>
+</body>
+
+</html>
