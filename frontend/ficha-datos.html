@@ -988,6 +988,21 @@
 
         // Initialize
         async function init() {
+            // Security/UX check: if they already have an active session that completed this, send them back
+            const storedCedula = localStorage.getItem('current_user_cedula');
+            if (storedCedula) {
+                try {
+                    const res = await fetch(`${API_BASE_URL}/api/session/${storedCedula}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.found && data.completed_forms && data.completed_forms.includes('datos-generales')) {
+                            window.location.href = '/cuestionarios/';
+                            return;
+                        }
+                    }
+                } catch(e) {}
+            }
+
             renderProgressSteps();
             renderSections();
             setDefaultDate();
@@ -1222,9 +1237,26 @@
             }
         }
 
-        function updateFieldValue(fieldId, value) {
+        async function updateFieldValue(fieldId, value) {
             state.formData[fieldId] = value;
             clearFieldError(fieldId);
+
+            // Resumen de sesión automático si ya existe la cédula
+            if (fieldId === 'numero_identificacion' && value.trim().length >= 5) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/session/${value.trim()}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.found && data.completed_forms && data.completed_forms.includes('datos-generales')) {
+                            // Already filled datos generales - BLOQUEO ESTRICTO
+                            alert('Esta cédula ya se encuentra registrada en el sistema. Serás redirigido para continuar con tus cuestionarios pendientes.');
+                            localStorage.setItem('current_user_cedula', value.trim());
+                            window.location.href = '/cuestionarios/'; // force auto-resume
+                            return;
+                        }
+                    }
+                } catch(e) { console.error('Error checking session', e); }
+            }
 
             // Special handling for department changes to reset city value in state
             if (fieldId === 'departamento_residencia') {
@@ -1352,6 +1384,23 @@
         }
 
         async function submitForm() {
+            // Última validación estricta de redundancia
+            const cedula = state.formData['numero_identificacion'];
+            if (cedula && cedula.trim().length >= 5) {
+                try {
+                    const res = await fetch(`${API_BASE_URL}/api/session/${cedula.trim()}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.found && data.completed_forms && data.completed_forms.includes('datos-generales')) {
+                            alert('Esta cédula ya se encuentra registrada en el sistema. Serás redirigido para continuar con tus cuestionarios pendientes.');
+                            localStorage.setItem('current_user_cedula', cedula.trim());
+                            window.location.href = '/cuestionarios/';
+                            return;
+                        }
+                    }
+                } catch(e) {}
+            }
+
             // Validate all sections
             for (let i = 0; i < formConfig.sections.length; i++) {
                 if (!validateSection(i)) {
