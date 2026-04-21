@@ -197,6 +197,8 @@ class AnalysisService:
             "control_dist": self._compute_domain_total_dist(filtered_cedulas, "Control sobre el trabajo"),
             "control_area_breakdown": self._compute_domain_area_breakdown(filtered_cedulas, "Control sobre el trabajo"),
             "control_form_breakdown": self._compute_domain_by_form(filtered_cedulas, "Control sobre el trabajo"),
+            "recompensas_breakdown": self._compute_domain_breakdown(filtered_cedulas, "Recompensas"),
+            "recompensas_dist": self._compute_domain_total_dist(filtered_cedulas, "Recompensas"),
         }
 
     def _compute_domain_by_form(self, filtered_cedulas: List[str], domain_name: str) -> Dict[str, Any]:

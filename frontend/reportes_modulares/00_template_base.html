@@ -143,11 +143,16 @@
                                 indexAxis: 'y',
                                 responsive: true,
                                 maintainAspectRatio: false,
+                                clip: false,
+                                layout: {
+                                    padding: { right: 55 }
+                                },
                                 plugins: {
                                     legend: { display: false },
                                     datalabels: {
                                         anchor: 'end',
                                         align: 'end',
+                                        clamp: false,
                                         color: '#1e3a8a',
                                         font: { weight: 'bold', size: 10 },
                                         formatter: (value) => {
@@ -208,13 +213,16 @@
                         });
                     };
 
-                    const bluePalette = ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#0ea5e9', '#0284c7'];
+                    const bluePalette   = ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#0ea5e9', '#0284c7'];
+                    const tealPalette   = ['#0d9488', '#14b8a6', '#0891b2', '#5eead4', '#06b6d4', '#0e7490', '#22d3ee'];
+                    const orangePalette = ['#c2410c', '#ea580c', '#f97316', '#fb923c', '#d97706', '#b45309', '#fbbf24'];
+                    const violetPalette = ['#7c3aed', '#8b5cf6', '#a78bfa', '#6d28d9', '#c4b5fd', '#9333ea', '#4c1d95'];
 
                     // Gráficas Demográficas (Página 4)
-                    createDoughnut('sexChart', demo.sexo, ['#1e3a8a', '#ec4899', '#94a3b8']);
-                    createDoughnut('eduChart', demo.nivel_estudios, bluePalette);
-                    createDoughnut('cargoChart', demo.tipo_cargo, bluePalette);
-                    createDoughnut('civilChart', demo.estado_civil, bluePalette);
+                    createDoughnut('sexChart',   demo.sexo,          ['#1e3a8a', '#ec4899', '#94a3b8']);
+                    createDoughnut('eduChart',   demo.nivel_estudios, tealPalette);
+                    createDoughnut('cargoChart', demo.tipo_cargo,     orangePalette);
+                    createDoughnut('civilChart', demo.estado_civil,   violetPalette);
 
                     // Gráficas Demográficas (Página 6)
                     createHorizontalBar('residenceChart', demo.ciudad_residencia);
@@ -606,6 +614,69 @@
                                     datasets: levels.map((lvl, i) => ({
                                         label: lvl,
                                         data: dims.map(d => controlData[d][lvl] || 0),
+                                        backgroundColor: colors[i],
+                                    }))
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        datalabels: {
+                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
+                                            font: { weight: 'bold', size: 10 },
+                                            formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            grid: { display: false },
+                                            ticks: {
+                                                font: { size: 9, weight: 'bold' },
+                                                callback: function (value) {
+                                                    const label = this.getLabelForValue(value);
+                                                    return label.length > 20 ? label.match(/.{1,20}(\s|$)/g) : label;
+                                                }
+                                            }
+                                        },
+                                        y: { stacked: true, display: false, max: 100 }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    // Gráfica General de Recompensas (Página 25)
+                    const recompensasDist = data.recompensas_dist;
+                    if (recompensasDist && Object.keys(recompensasDist).length > 0) {
+                        createStackedBar('recompensasTotalStackedChart', recompensasDist);
+
+                        const pHigh = (recompensasDist["Muy Alto"] || 0) + (recompensasDist["Alto"] || 0) + (recompensasDist["Medio"] || 0);
+                        const pLow  = (recompensasDist["Bajo"] || 0) + (recompensasDist["Sin Riesgo"] || 0);
+
+                        const highEl = document.getElementById('recompensas-prior-high');
+                        const lowEl  = document.getElementById('recompensas-prior-low');
+                        if (highEl) highEl.textContent = `${Math.round(pHigh)}%`;
+                        if (lowEl)  lowEl.textContent  = `${Math.round(pLow)}%`;
+                    }
+
+                    // Gráfica de Dimensiones de Recompensas (Página 26)
+                    const recompensasData = data.recompensas_breakdown;
+                    if (recompensasData && Object.keys(recompensasData).length > 0) {
+                        const ctx = document.getElementById('recompensasDimensionsChart');
+                        if (ctx) {
+                            const dims   = Object.keys(recompensasData);
+                            const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
+                            const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: dims.map(d => d.toUpperCase()),
+                                    datasets: levels.map((lvl, i) => ({
+                                        label: lvl,
+                                        data: dims.map(d => recompensasData[d][lvl] || 0),
                                         backgroundColor: colors[i],
                                     }))
                                 },

@@ -30,7 +30,10 @@ def stitch_report():
         '19_demandas_comparativa_formas.html',
         '21_portada_control.html',
         '22_resultado_general_control.html',
-        '23_resultados_control.html'
+        '23_resultados_control.html',
+        '24_portada_recompensas.html',
+        '25_resultado_general_recompensas.html',
+        '26_resultados_recompensas.html'
     ]
     
     content_html = ""

@@ -36,32 +36,33 @@ INVERSE_ITEMS = {
 # Estructura de dominios y dimensiones - Intralaboral A (123 ítems)
 # ──────────────────────────────────────────────────────────────
 INTRA_A_STRUCTURE = {
+    # Tabla 23 Manual Intralaboral — Forma A
     "Demandas del trabajo": {
-        "Demandas ambientales":                            [1,2,3,4,5,6,7,8,9,10,11,12],
-        "Demandas cuantitativas":                          [13,14,15],
-        "Demandas de carga mental":                        [16,17,18,19,20,21],
-        "Demandas emocionales":                            [106,107,108,109,110,111,112,113,114],
-        "Demandas de responsabilidad del cargo":           [22,23,24,25,26],
-        "Demandas de jornada de trabajo":                  [31,32,33,34],
-        "Consistencia del rol":                            [27,28,29,30],
-        "Influencia del trabajo sobre el entorno extralaboral": [35,36,37,38],
+        "Demandas ambientales":                            [1,2,3,4,5,6,7,8,9,10,11,12],      # 12 ítems, factor 48
+        "Demandas cuantitativas":                          [13,14,15,32,43,47],               # 6 ítems, factor 24
+        "Demandas de carga mental":                        [16,17,18,20,21],                  # 5 ítems, factor 20
+        "Demandas emocionales":                            [106,107,108,109,110,111,112,113,114], # 9 ítems, factor 36
+        "Demandas de responsabilidad del cargo":           [19,22,23,24,25,26],               # 6 ítems, factor 24
+        "Demandas de jornada de trabajo":                  [31,33,34],                        # 3 ítems, factor 12
+        "Consistencia del rol":                            [27,28,29,30,52],                  # 5 ítems, factor 20
+        "Influencia del trabajo sobre el entorno extralaboral": [35,36,37,38],               # 4 ítems, factor 16
     },
     "Control sobre el trabajo": {
-        "Oportunidades para el uso y desarrollo de habilidades": [39,40,41,42],
-        "Control y autonomía sobre el trabajo":            [43,44,45,46,47],
-        "Participación y manejo del cambio":               [48,49,50,51,52],
-        "Claridad de rol":                                 [53,54,55,56,57,58,59],
-        "Capacitación":                                    [60,61,62],
+        "Oportunidades para el uso y desarrollo de habilidades": [39,40,41,42],              # 4 ítems, factor 16
+        "Control y autonomía sobre el trabajo":            [44,45,46],                        # 3 ítems, factor 12
+        "Participación y manejo del cambio":               [48,49,50,51],                     # 4 ítems, factor 16
+        "Claridad de rol":                                 [53,54,55,56,57,58,59],            # 7 ítems, factor 28
+        "Capacitación":                                    [60,61,62],                        # 3 ítems, factor 12
     },
     "Liderazgo y relaciones sociales": {
-        "Características del liderazgo":                   [63,64,65,66,67,68,69,70,71,72,73,74,75],
-        "Relaciones sociales en el trabajo":               [76,77,78,79,80,81,82,83,84,85,86,87,88,89],
-        "Retroalimentación del desempeño":                 [90,91,92,93,94],
-        "Relación con los colaboradores":                  [115,116,117,118,119,120,121,122,123],
+        "Características del liderazgo":                   [63,64,65,66,67,68,69,70,71,72,73,74,75],          # 13 ítems, factor 52
+        "Relaciones sociales en el trabajo":               [76,77,78,79,80,81,82,83,84,85,86,87,88,89],       # 14 ítems, factor 56
+        "Retroalimentación del desempeño":                 [90,91,92,93,94],                  # 5 ítems, factor 20
+        "Relación con los colaboradores":                  [115,116,117,118,119,120,121,122,123], # 9 ítems, factor 36
     },
     "Recompensas": {
-        "Recompensas derivadas de la pertenencia a la organización": [95,96,97,98,99,100,101,102],
-        "Reconocimiento y compensación":                   [103,104,105],
+        "Recompensas derivadas de la pertenencia a la organización": [95,102,103,104,105],   # 5 ítems, factor 20
+        "Reconocimiento y compensación":                   [96,97,98,99,100,101],             # 6 ítems, factor 24
     },
 }
 
@@ -69,28 +70,30 @@ INTRA_A_STRUCTURE = {
 # Estructura de dominios y dimensiones - Intralaboral B (97 ítems)
 # ──────────────────────────────────────────────────────────────
 INTRA_B_STRUCTURE = {
+    # Tabla 23 Manual Intralaboral — Forma B
     "Demandas del trabajo": {
-        "Demandas ambientales":                            [1,2,3,4,5,6,7,8,9,10,11,12],
-        "Demandas cuantitativas":                          [13,14,15],
-        "Demandas de carga mental":                        [16,17,18,19,20],
-        "Demandas emocionales":                            [89,90,91,92,93,94,95,96,97],
-        "Demandas de jornada de trabajo":                  [21,22,23,24],
-        "Influencia del trabajo sobre el entorno extralaboral": [25,26,27,28],
+        "Demandas ambientales":                            [1,2,3,4,5,6,7,8,9,10,11,12],      # 12 ítems, factor 48
+        "Demandas cuantitativas":                          [13,14,15],                        # 3 ítems, factor 12
+        "Demandas de carga mental":                        [16,17,18,19,20],                  # 5 ítems, factor 20
+        "Demandas emocionales":                            [89,90,91,92,93,94,95,96,97],      # 9 ítems, factor 36
+        "Demandas de jornada de trabajo":                  [21,22,23,24,33,37],               # 6 ítems, factor 24
+        "Influencia del trabajo sobre el entorno extralaboral": [25,26,27,28],               # 4 ítems, factor 16
     },
     "Control sobre el trabajo": {
-        "Control y autonomía sobre el trabajo":            [29,30,31,32,33,34,35,36,37],
-        "Participación y manejo del cambio":               [38,39,40],
-        "Claridad de rol":                                 [41,42,43,44,45],
-        "Capacitación":                                    [46,47,48],
+        "Oportunidades para el uso y desarrollo de habilidades": [29,30,31,32],              # 4 ítems, factor 16
+        "Control y autonomía sobre el trabajo":            [34,35,36],                        # 3 ítems, factor 12
+        "Participación y manejo del cambio":               [38,39,40],                        # 3 ítems, factor 12
+        "Claridad de rol":                                 [41,42,43,44,45],                  # 5 ítems, factor 20
+        "Capacitación":                                    [46,47,48],                        # 3 ítems, factor 12
     },
     "Liderazgo y relaciones sociales": {
-        "Características del liderazgo":                   [49,50,51,52,53,54,55,56,57,58,59,60,61],
-        "Relaciones sociales en el trabajo":               [62,63,64,65,66,67,68,69,70,71,72,73],
-        "Retroalimentación del desempeño":                 [74,75,76,77,78],
+        "Características del liderazgo":                   [49,50,51,52,53,54,55,56,57,58,59,60,61], # 13 ítems, factor 52
+        "Relaciones sociales en el trabajo":               [62,63,64,65,66,67,68,69,70,71,72,73],    # 12 ítems, factor 48
+        "Retroalimentación del desempeño":                 [74,75,76,77,78],                  # 5 ítems, factor 20
     },
     "Recompensas": {
-        "Reconocimiento y compensación":                   [79,80,81],
-        "Recompensas derivadas de la pertenencia a la organización": [82,83,84,85,86,87,88],
+        "Recompensas derivadas de la pertenencia a la organización": [85,86,87,88],          # 4 ítems, factor 16
+        "Reconocimiento y compensación":                   [79,80,81,82,83,84],               # 6 ítems, factor 24
     },
 }
 
