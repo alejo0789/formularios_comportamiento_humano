@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Cálculo — Cuestionario de Estrés | Acertemos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#002a5c;--gold:#ffcc00;--bg:#f0f4f8;
+  --sin:#27ae60;--bajo:#2ecc71;--medio:#f39c12;--alto:#e74c3c;--muy:#8e44ad;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:#1e293b;min-height:100vh}
+
+/* HEADER */
+header{background:var(--blue);border-bottom:5px solid var(--gold);padding:18px 40px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,42,92,.4)}
+header h1{color:#fff;font-size:1.25rem;font-weight:700}
+header span{color:var(--gold);font-size:.85rem;margin-left:auto;background:rgba(255,204,0,.15);padding:4px 12px;border-radius:20px;border:1px solid rgba(255,204,0,.3)}
+
+/* LAYOUT */
+.container{max-width:1100px;margin:0 auto;padding:32px 24px}
+.grid{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start}
+
+/* PANEL IZQUIERDO */
+.panel{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
+.panel-header{background:var(--blue);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:10px}
+.panel-header .icon{font-size:1.4rem}
+.panel-header h2{font-size:1rem;font-weight:600}
+.panel-body{padding:24px}
+
+/* PROGRESS */
+.progress-bar{background:#e2e8f0;border-radius:999px;height:8px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--gold));border-radius:999px;transition:width .4s ease}
+
+/* STEPS */
+.steps{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.step-btn{padding:6px 14px;border-radius:20px;border:2px solid #e2e8f0;background:#fff;cursor:pointer;font-size:.8rem;font-weight:600;color:#64748b;transition:.2s}
+.step-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.step-btn.done{background:#dcfce7;color:#16a34a;border-color:#86efac}
+
+/* QUESTIONS */
+.question-group{margin-bottom:20px}
+.question-group h3{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.group-badge{background:var(--gold);color:var(--blue);padding:2px 8px;border-radius:20px;font-size:.7rem}
+.q-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:8px;transition:.2s}
+.q-item:hover{border-color:var(--blue);background:#f8faff}
+.q-num{font-size:.75rem;font-weight:700;color:var(--blue);min-width:28px}
+.q-text{font-size:.82rem;color:#374151;flex:1;line-height:1.4}
+.q-select{padding:6px 10px;border:2px solid #e2e8f0;border-radius:8px;font-size:.82rem;font-family:'Inter',sans-serif;background:#fff;cursor:pointer;color:#1e293b;transition:.2s}
+.q-select:focus{outline:none;border-color:var(--blue)}
+
+/* CALCULO BTN */
+.calc-btn{width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;transition:.2s;margin-top:8px}
+.calc-btn:hover{background:#003a80;transform:translateY(-1px)}
+
+/* PANEL DERECHO */
+.result-card{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
+.rc-header{padding:20px 24px;background:linear-gradient(135deg,var(--blue),#003a80);color:#fff}
+.rc-header h2{font-size:1rem;font-weight:700;margin-bottom:4px}
+.rc-header p{font-size:.8rem;opacity:.7}
+
+/* SCORE RING */
+.score-ring-wrap{display:flex;flex-direction:column;align-items:center;padding:24px 24px 12px}
+.ring-svg{width:140px;height:140px;margin-bottom:12px}
+.ring-bg{fill:none;stroke:#e2e8f0;stroke-width:12}
+.ring-fg{fill:none;stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset .8s ease, stroke .4s ease;transform:rotate(-90deg);transform-origin:50% 50%}
+.score-label{font-size:2.2rem;font-weight:800;color:var(--blue)}
+.nivel-badge{padding:6px 18px;border-radius:20px;font-size:.85rem;font-weight:700;margin-top:4px}
+
+/* DESGLOSE */
+.desglose{padding:0 24px 24px}
+.desglose h3{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;margin-bottom:12px}
+.step-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;margin-bottom:8px}
+.step-tag{font-size:.72rem;font-weight:700;background:var(--blue);color:#fff;padding:3px 8px;border-radius:6px;min-width:56px;text-align:center}
+.step-info{flex:1;font-size:.8rem;color:#374151}
+.step-val{font-size:.9rem;font-weight:700;color:var(--blue)}
+
+/* BAREMO TABLE */
+.baremo{margin:0 24px 24px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0}
+.baremo-row{display:flex;align-items:center;padding:8px 12px;border-bottom:1px solid #e2e8f0;font-size:.8rem}
+.baremo-row:last-child{border-bottom:none}
+.baremo-dot{width:12px;height:12px;border-radius:50%;margin-right:10px;flex-shrink:0}
+.baremo-nivel{font-weight:600;flex:1}
+.baremo-range{color:#64748b}
+.baremo-row.active-nivel{font-weight:700}
+
+/* TYPE TOGGLE */
+.type-toggle{display:flex;gap:8px;margin-bottom:20px}
+.type-btn{flex:1;padding:8px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;cursor:pointer;font-size:.82rem;font-weight:600;color:#64748b;transition:.2s;text-align:center}
+.type-btn.active{border-color:var(--blue);background:var(--blue);color:#fff}
+
+/* PLACEHOLDER */
+.placeholder{text-align:center;padding:32px 24px;color:#94a3b8}
+.placeholder .ph-icon{font-size:3rem;margin-bottom:12px}
+.placeholder p{font-size:.9rem}
+
+/* FORMULA BOX */
+.formula-box{background:#f0f4ff;border:1px solid #c7d7ff;border-radius:10px;padding:14px;margin:0 24px 16px;font-size:.8rem;line-height:1.8;color:#1e293b}
+.formula-box strong{color:var(--blue)}
+
+/* INTERPRETACION */
+.interp-box{margin:0 24px 24px;border-radius:12px;padding:16px;border-left:5px solid;animation:fadeIn .4s ease}
+.interp-box .interp-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.interp-box .interp-text{font-size:.82rem;line-height:1.65;color:#374151}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* NIVEL COLORS */
+.nivel-SinRiesgo{background:#dcfce7;color:#16a34a}
+.nivel-Bajo{background:#d1fae5;color:#059669}
+.nivel-Medio{background:#fef3c7;color:#d97706}
+.nivel-Alto{background:#fee2e2;color:#dc2626}
+.nivel-MuyAlto{background:#f3e8ff;color:#9333ea}
+.stroke-SinRiesgo{stroke:#27ae60}
+.stroke-Bajo{stroke:#2ecc71}
+.stroke-Medio{stroke:#f39c12}
+.stroke-Alto{stroke:#e74c3c}
+.stroke-MuyAlto{stroke:#8e44ad}
+</style>
+</head>
+<body>
+
+<header>
+  <span style="font-size:1.6rem">🧠</span>
+  <h1>Demo de Cálculo — Cuestionario de Estrés</h1>
+  <span>Batería Riesgo Psicosocial · MinTrabajo Colombia 2010</span>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <!-- IZQUIERDA: Formulario -->
+    <div>
+      <!-- Tipo de cargo -->
+      <div class="panel" style="margin-bottom:20px">
+        <div class="panel-header"><span class="icon">👤</span><h2>Tipo de Cargo</h2></div>
+        <div class="panel-body">
+          <p style="font-size:.85rem;color:#64748b;margin-bottom:12px">Define qué tabla de baremos se aplica para clasificar el nivel de riesgo.</p>
+          <div class="type-toggle">
+            <button class="type-btn active" id="btn-prof" onclick="setTipo('profesionales_directivos')">
+              🏢 Profesionales / Directivos
+            </button>
+            <button class="type-btn" id="btn-aux" onclick="setTipo('auxiliares_operativos')">
+              🔧 Auxiliares / Operativos
+            </button>
+          </div>
+          <div id="baremo-info" style="font-size:.8rem;color:#374151;background:#f8fafc;padding:10px 14px;border-radius:8px;border:1px solid #e2e8f0"></div>
+        </div>
+      </div>
+
+      <!-- Preguntas -->
+      <div class="panel">
+        <div class="panel-header"><span class="icon">📋</span><h2>31 Ítems del Cuestionario de Estrés</h2></div>
+        <div class="panel-body">
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+          <div id="questions-container"></div>
+          <button class="calc-btn" onclick="calcular()">⚡ Calcular Resultado</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DERECHA: Resultado -->
+    <div style="position:sticky;top:90px">
+      <div class="result-card">
+        <div class="rc-header">
+          <h2>📊 Resultado del Análisis</h2>
+          <p>Completar el formulario y presionar Calcular</p>
+        </div>
+
+        <div id="result-placeholder" class="placeholder">
+          <div class="ph-icon">🎯</div>
+          <p>El resultado aparecerá aquí una vez calculado.</p>
+        </div>
+
+        <div id="result-content" style="display:none">
+          <div class="score-ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="48"/>
+              <circle class="ring-fg" id="ring-fg" cx="60" cy="60" r="48" stroke-dasharray="301.6" stroke-dashoffset="301.6"/>
+            </svg>
+            <div class="score-label" id="score-val">—</div>
+            <div class="nivel-badge" id="nivel-badge">—</div>
+            <p style="font-size:.75rem;color:#94a3b8;margin-top:6px">Puntaje transformado (0–100)</p>
+          </div>
+
+          <!-- Desglose pasos -->
+          <div class="desglose">
+            <h3>Desglose del Cálculo</h3>
+            <div class="step-row">
+              <span class="step-tag">Bloque 1</span>
+              <span class="step-info">Ítems 1–8 (suma directa ponderada)</span>
+              <span class="step-val" id="val-b1">—</span>
+            </div>
+            <div class="step-row">
+              <span class="step-tag">Paso B</span>
+              <span class="step-info">Ítems 9–12 · promedio × 3</span>
+              <span class="step-val" id="val-pb">—</span>
+            </div>
+            <div class="step-row">
+              <span class="step-tag">Paso C</span>
+              <span class="step-info">Ítems 13–22 · promedio × 2</span>
+              <span class="step-val" id="val-pc">—</span>
+            </div>
+            <div class="step-row">
+              <span class="step-tag">Paso D</span>
+              <span class="step-info">Ítems 23–31 · promedio sin factor</span>
+              <span class="step-val" id="val-pd">—</span>
+            </div>
+            <div class="step-row" style="background:#eff6ff;border-color:#c7d7ff">
+              <span class="step-tag" style="background:#1d4ed8">∑ Bruto</span>
+              <span class="step-info">B1 + Paso B + Paso C + Paso D</span>
+              <span class="step-val" id="val-bruto" style="color:#1d4ed8">—</span>
+            </div>
+            <div class="step-row" style="background:#fefce8;border-color:#fde68a">
+              <span class="step-tag" style="background:#d97706">÷ 61.16</span>
+              <span class="step-info">Divisor oficial (máximo teórico) × 100</span>
+              <span class="step-val" id="val-trans" style="color:#d97706">—</span>
+            </div>
+          </div>
+
+          <!-- Fórmula -->
+          <div class="formula-box">
+            <strong>Fórmula oficial:</strong><br>
+            PT = (<em>Σ Bloque1</em> + <em>Paso B</em> + <em>Paso C</em> + <em>Paso D</em>) ÷ 61.16 × 100<br><br>
+            <strong>Escalas de puntuación:</strong><br>
+            Grupo A (×9/6/3/0) · Grupo B (×6/4/2/0) · Grupo C (×3/2/1/0)
+          </div>
+
+          <!-- Baremo -->
+          <div class="desglose" style="padding-top:0">
+            <h3>Tabla de Baremos — <span id="baremo-label">Profesionales</span></h3>
+          </div>
+          <div class="baremo" id="baremo-table"></div>
+
+          <!-- Interpretación clínica -->
+          <div class="desglose" style="padding-top:16px">
+            <h3>📖 Interpretación Oficial</h3>
+          </div>
+          <div class="interp-box" id="interp-box"></div>
+          <div style="height:24px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ─── DATOS ───────────────────────────────────────────────────────────────
+const GRUPOS = {
+  A: {
+    items: [1,2,3,9,13,14,15,23,24],
+    escala: {1:9, 2:6, 3:3, 4:0},
+    label: 'A'
+  },
+  B: {
+    items: [4,5,6,10,11,16,17,18,19,25,26,27,28],
+    escala: {1:6, 2:4, 3:2, 4:0},
+    label: 'B'
+  },
+  C: {
+    items: [7,8,12,20,21,22,29,30,31],
+    escala: {1:3, 2:2, 3:1, 4:0},
+    label: 'C'
+  }
+};
+
+const PREGUNTAS = [
+  "Me es difícil relajarme al final de la jornada de trabajo",
+  "Me es difícil disfrutar del tiempo libre",
+  "Tengo dificultad para desconectarme del trabajo",
+  "Siento que el trabajo me impide dedicar tiempo a mi familia",
+  "Siento que el trabajo me afecta físicamente",
+  "Tengo problemas para dormir bien",
+  "Me siento agotado(a) al final de la jornada",
+  "Siento que mi trabajo es agotador",
+  "Me es difícil concentrarme en el trabajo",
+  "Siento que no tengo suficiente energía para mis labores",
+  "Me siento tenso(a) o bajo presión en el trabajo",
+  "Siento que el trabajo me genera estrés",
+  "Me es difícil tomar decisiones en el trabajo",
+  "Tengo que trabajar más rápido de lo que quisiera",
+  "Tengo demasiado trabajo para hacer en el tiempo disponible",
+  "Siento que mi trabajo requiere demasiado esfuerzo",
+  "Siento que las exigencias del trabajo superan mis capacidades",
+  "Me preocupa cometer errores en el trabajo",
+  "Siento que no tengo tiempo suficiente para descansar",
+  "Siento que el trabajo afecta mi salud",
+  "Me siento irritable o de mal humor en el trabajo",
+  "Siento que el trabajo me genera sentimientos negativos",
+  "Me cuesta trabajo iniciar las actividades laborales",
+  "Siento que el trabajo no me permite crecer personalmente",
+  "Me siento poco motivado(a) para ir a trabajar",
+  "Siento que el trabajo no reconoce mi esfuerzo",
+  "Siento que el trabajo no me permite desarrollarme",
+  "Me siento insatisfecho(a) con las condiciones de trabajo",
+  "Siento que el trabajo afecta mis relaciones familiares",
+  "Siento que el trabajo me genera conflictos con personas cercanas",
+  "En general, el trabajo me genera un alto nivel de estrés"
+];
+
+const BAREMOS = {
+  profesionales_directivos: [
+    {nivel:'Sin Riesgo', range:[0, 12.6], color:'#27ae60'},
+    {nivel:'Bajo',       range:[12.7, 17.7], color:'#2ecc71'},
+    {nivel:'Medio',      range:[17.8, 25.0], color:'#f39c12'},
+    {nivel:'Alto',       range:[25.1, 37.5], color:'#e74c3c'},
+    {nivel:'Muy Alto',   range:[37.6, 100],  color:'#8e44ad'}
+  ],
+  auxiliares_operativos: [
+    {nivel:'Sin Riesgo', range:[0, 7.8],  color:'#27ae60'},
+    {nivel:'Bajo',       range:[7.9, 12.6], color:'#2ecc71'},
+    {nivel:'Medio',      range:[12.7, 17.7], color:'#f39c12'},
+    {nivel:'Alto',       range:[17.8, 25.0], color:'#e74c3c'},
+    {nivel:'Muy Alto',   range:[25.1, 100],  color:'#8e44ad'}
+  ]
+};
+
+// ─── ESTADO ──────────────────────────────────────────────────────────────
+let tipoCargo = 'profesionales_directivos';
+
+function getGrupo(itemNum) {
+  for (const [k, g] of Object.entries(GRUPOS)) {
+    if (g.items.includes(itemNum)) return {key: k, ...g};
+  }
+  return null;
+}
+
+// ─── RENDER PREGUNTAS ─────────────────────────────────────────────────────
+function renderPreguntas() {
+  const container = document.getElementById('questions-container');
+  const grupos = { A: [], B: [], C: [] };
+  for (let i = 1; i <= 31; i++) {
+    const g = getGrupo(i);
+    if (g) grupos[g.key].push(i);
+  }
+
+  const descs = {
+    A: 'Escala: Siempre=9 · Casi siempre=6 · A veces=3 · Nunca=0',
+    B: 'Escala: Siempre=6 · Casi siempre=4 · A veces=2 · Nunca=0',
+    C: 'Escala: Siempre=3 · Casi siempre=2 · A veces=1 · Nunca=0'
+  };
+
+  let html = '';
+  for (const [gk, items] of Object.entries(grupos)) {
+    html += `<div class="question-group">
+      <h3>Grupo ${gk} <span class="group-badge">${descs[gk]}</span></h3>`;
+    for (const num of items) {
+      html += `<div class="q-item" id="qi-${num}">
+        <span class="q-num">${num}</span>
+        <span class="q-text">${PREGUNTAS[num-1]}</span>
+        <select class="q-select" id="q-${num}" onchange="updateProgress()">
+          <option value="">—</option>
+          <option value="1">Siempre</option>
+          <option value="2">Casi siempre</option>
+          <option value="3">A veces</option>
+          <option value="4">Nunca</option>
+        </select>
+      </div>`;
+    }
+    html += '</div>';
+  }
+  container.innerHTML = html;
+  updateProgress();
+}
+
+function updateProgress() {
+  let ans = 0;
+  for (let i = 1; i <= 31; i++) {
+    if (document.getElementById('q-'+i)?.value) ans++;
+  }
+  document.getElementById('progress-fill').style.width = (ans/31*100) + '%';
+}
+
+// ─── TIPO CARGO ───────────────────────────────────────────────────────────
+function setTipo(tipo) {
+  tipoCargo = tipo;
+  document.getElementById('btn-prof').className = 'type-btn' + (tipo === 'profesionales_directivos' ? ' active' : '');
+  document.getElementById('btn-aux').className  = 'type-btn' + (tipo === 'auxiliares_operativos'    ? ' active' : '');
+  updateBaremoInfo();
+}
+
+function updateBaremoInfo() {
+  const b = BAREMOS[tipoCargo];
+  const rows = b.map(r =>
+    `<span style="color:${r.color};font-weight:700">${r.nivel}</span>: ${r.range[0]}–${r.range[1]}`
+  ).join(' &nbsp;|&nbsp; ');
+  document.getElementById('baremo-info').innerHTML = rows;
+}
+
+// ─── CÁLCULO ──────────────────────────────────────────────────────────────
+function calcular() {
+  const resp = {};
+  for (let i = 1; i <= 31; i++) {
+    const v = document.getElementById('q-'+i)?.value;
+    if (v) resp[i] = parseInt(v);
+  }
+
+  const answered = Object.keys(resp).length;
+  if (answered < 31) {
+    alert(`Faltan ${31 - answered} preguntas por responder. Por favor completa todas.`);
+    return;
+  }
+
+  // Bloque 1: ítems 1–8
+  let b1 = 0;
+  [1,2,3,4,5,6,7,8].forEach(q => {
+    const g = getGrupo(q);
+    if (g && resp[q] !== undefined) b1 += g.escala[resp[q]] || 0;
+  });
+
+  // Paso B: ítems 9–12 → promedio × 3
+  const bVals = [9,10,11,12].map(q => {
+    const g = getGrupo(q);
+    return (g && resp[q] !== undefined) ? (g.escala[resp[q]] || 0) : null;
+  }).filter(v => v !== null);
+  const pB = bVals.length ? (bVals.reduce((a,b)=>a+b,0) / bVals.length * 3) : 0;
+
+  // Paso C: ítems 13–22 → promedio × 2
+  const cVals = [];
+  for (let q = 13; q <= 22; q++) {
+    const g = getGrupo(q);
+    if (g && resp[q] !== undefined) cVals.push(g.escala[resp[q]] || 0);
+  }
+  const pC = cVals.length ? (cVals.reduce((a,b)=>a+b,0) / cVals.length * 2) : 0;
+
+  // Paso D: ítems 23–31 → promedio
+  const dVals = [];
+  for (let q = 23; q <= 31; q++) {
+    const g = getGrupo(q);
+    if (g && resp[q] !== undefined) dVals.push(g.escala[resp[q]] || 0);
+  }
+  const pD = dVals.length ? (dVals.reduce((a,b)=>a+b,0) / dVals.length) : 0;
+
+  const bruto = b1 + pB + pC + pD;
+  const trans = Math.min(100, Math.max(0, Math.round((bruto / 61.16) * 1000) / 10));
+
+  // Clasificar
+  const nivel = BAREMOS[tipoCargo].find(r => trans >= r.range[0] && trans <= r.range[1])?.nivel || 'Muy Alto';
+  const color = BAREMOS[tipoCargo].find(r => r.nivel === nivel)?.color || '#8e44ad';
+
+  mostrarResultado(b1, pB, pC, pD, bruto, trans, nivel, color);
+}
+
+const INTERPRETACIONES = {
+  'Sin Riesgo': {
+    icon: '✅',
+    bg: '#f0fdf4', border: '#22c55e', titleColor: '#16a34a',
+    titulo: 'Sin Riesgo — Muy Bajo',
+    texto: 'Ausencia de síntomas de estrés u ocurrencia muy rara que no amerita desarrollar actividades de intervención específicas, salvo acciones o programas de promoción en salud.'
+  },
+  'Bajo': {
+    icon: '🟢',
+    bg: '#f0fdf4', border: '#2ecc71', titleColor: '#059669',
+    titulo: 'Nivel Bajo',
+    texto: 'Indicativo de baja frecuencia de síntomas de estrés y por tanto escasa afectación del estado general de salud. Es pertinente desarrollar acciones o programas de intervención, a fin de mantener la baja frecuencia de síntomas.'
+  },
+  'Medio': {
+    icon: '🟡',
+    bg: '#fffbeb', border: '#f39c12', titleColor: '#d97706',
+    titulo: 'Nivel Medio',
+    texto: 'La presentación de síntomas es indicativa de una respuesta de estrés moderada. Los síntomas más frecuentes y críticos ameritan observación y acciones sistemáticas de intervención para prevenir efectos perjudiciales en la salud. Además, se sugiere identificar los factores de riesgo psicosocial intra y extralaboral que pudieran tener alguna relación con los efectos identificados.'
+  },
+  'Alto': {
+    icon: '🔴',
+    bg: '#fff5f5', border: '#e74c3c', titleColor: '#dc2626',
+    titulo: 'Nivel Alto',
+    texto: 'La cantidad de síntomas y su frecuencia de presentación es indicativa de una respuesta de estrés alto. Los síntomas más críticos y frecuentes requieren intervención en el marco de un sistema de vigilancia epidemiológica. Además es muy importante identificar los factores de riesgo psicosocial intra y extralaboral que pudieran tener alguna relación con los efectos identificados.'
+  },
+  'Muy Alto': {
+    icon: '🟣',
+    bg: '#faf5ff', border: '#8e44ad', titleColor: '#9333ea',
+    titulo: 'Nivel Muy Alto',
+    texto: 'La cantidad de síntomas y su frecuencia de presentación es indicativa de una respuesta de estrés severa y perjudicial para la salud. Los síntomas más críticos y frecuentes requieren intervención inmediata en el marco de un sistema de vigilancia epidemiológica. Así mismo, es imperativo identificar los factores de riesgo psicosocial intra y extralaboral que pudieran tener alguna relación con los efectos identificados.'
+  }
+};
+
+function mostrarResultado(b1, pB, pC, pD, bruto, trans, nivel, color) {
+  document.getElementById('result-placeholder').style.display = 'none';
+  document.getElementById('result-content').style.display = 'block';
+
+  // Score ring
+  const circ = 301.6;
+  const offset = circ - (trans / 100) * circ;
+  const fg = document.getElementById('ring-fg');
+  fg.style.strokeDashoffset = offset;
+  fg.className = 'ring-fg stroke-' + nivel.replace(' ','');
+
+  document.getElementById('score-val').textContent = trans.toFixed(1);
+
+  const badge = document.getElementById('nivel-badge');
+  badge.textContent = nivel;
+  badge.className = 'nivel-badge nivel-' + nivel.replace(' ','');
+
+  document.getElementById('val-b1').textContent   = b1.toFixed(2);
+  document.getElementById('val-pb').textContent   = pB.toFixed(2);
+  document.getElementById('val-pc').textContent   = pC.toFixed(2);
+  document.getElementById('val-pd').textContent   = pD.toFixed(2);
+  document.getElementById('val-bruto').textContent = bruto.toFixed(2);
+  document.getElementById('val-trans').textContent = trans.toFixed(1);
+
+  // Baremo table
+  document.getElementById('baremo-label').textContent =
+    tipoCargo === 'profesionales_directivos' ? 'Profesionales/Directivos' : 'Auxiliares/Operativos';
+
+  const rows = BAREMOS[tipoCargo].map(r => {
+    const isActive = r.nivel === nivel;
+    return `<div class="baremo-row${isActive ? ' active-nivel' : ''}" style="${isActive ? 'background:'+r.color+'22;' : ''}">
+      <span class="baremo-dot" style="background:${r.color}"></span>
+      <span class="baremo-nivel" style="${isActive ? 'color:'+r.color : ''}">${r.nivel}</span>
+      <span class="baremo-range">${r.range[0]} – ${r.range[1]}</span>
+      ${isActive ? `<span style="margin-left:8px;font-size:.75rem;font-weight:700;color:${r.color}">← TU RESULTADO</span>` : ''}
+    </div>`;
+  }).join('');
+  document.getElementById('baremo-table').innerHTML = rows;
+
+  // Interpretación clínica
+  const interp = INTERPRETACIONES[nivel] || INTERPRETACIONES['Muy Alto'];
+  const box = document.getElementById('interp-box');
+  box.style.background = interp.bg;
+  box.style.borderLeftColor = interp.border;
+  box.innerHTML = `
+    <div class="interp-title" style="color:${interp.titleColor}">
+      <span style="font-size:1.1rem">${interp.icon}</span> ${interp.titulo}
+    </div>
+    <p class="interp-text">${interp.texto}</p>`;
+
+  document.getElementById('result-content').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────
+renderPreguntas();
+updateBaremoInfo();
+</script>
+</body>
+</html>
