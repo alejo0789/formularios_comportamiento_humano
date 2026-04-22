@@ -214,15 +214,26 @@
                     };
 
                     const bluePalette   = ['#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#0ea5e9', '#0284c7'];
-                    const tealPalette   = ['#0d9488', '#14b8a6', '#0891b2', '#5eead4', '#06b6d4', '#0e7490', '#22d3ee'];
-                    const orangePalette = ['#c2410c', '#ea580c', '#f97316', '#fb923c', '#d97706', '#b45309', '#fbbf24'];
-                    const violetPalette = ['#7c3aed', '#8b5cf6', '#a78bfa', '#6d28d9', '#c4b5fd', '#9333ea', '#4c1d95'];
+
+                    // Paleta diversa: cada segmento tiene un color radicalmente diferente
+                    const diversePalette = [
+                        '#e63946', // rojo
+                        '#f4a261', // naranja
+                        '#2a9d8f', // teal
+                        '#457b9d', // azul acero
+                        '#8338ec', // púrpura
+                        '#06d6a0', // menta
+                        '#ffb703', // ámbar
+                        '#fb5607', // naranja-rojo
+                        '#3a86ff', // azul brillante
+                        '#ff006e', // rosa
+                    ];
 
                     // Gráficas Demográficas (Página 4)
                     createDoughnut('sexChart',   demo.sexo,          ['#1e3a8a', '#ec4899', '#94a3b8']);
-                    createDoughnut('eduChart',   demo.nivel_estudios, tealPalette);
-                    createDoughnut('cargoChart', demo.tipo_cargo,     orangePalette);
-                    createDoughnut('civilChart', demo.estado_civil,   violetPalette);
+                    createDoughnut('eduChart',   demo.nivel_estudios, diversePalette);
+                    createDoughnut('cargoChart', demo.tipo_cargo,     diversePalette);
+                    createDoughnut('civilChart', demo.estado_civil,   diversePalette);
 
                     // Gráficas Demográficas (Página 6)
                     createHorizontalBar('residenceChart', demo.ciudad_residencia);
@@ -707,6 +718,91 @@
                                     }
                                 }
                             });
+                        }
+                    }
+
+                    // ── ESTRÉS (Páginas 28 y 29) ──────────────────────────
+                    const estresDist = data.estres_dist;
+                    if (estresDist && Object.keys(estresDist).length > 0) {
+                        // P28: stacked bar total
+                        createStackedBar('estresTotalStackedChart', estresDist);
+
+                        const pHigh = (estresDist['Muy Alto'] || 0) + (estresDist['Alto'] || 0) + (estresDist['Medio'] || 0);
+                        const pLow  = (estresDist['Bajo'] || 0) + (estresDist['Sin Riesgo'] || 0);
+                        const highEl = document.getElementById('estres-prior-high');
+                        const lowEl  = document.getElementById('estres-prior-low');
+                        if (highEl) highEl.textContent = `${Math.round(pHigh)}%`;
+                        if (lowEl)  lowEl.textContent  = `${Math.round(pLow)}%`;
+
+                        // Resaltar interpretación del nivel dominante
+                        const nivelMap = {
+                            'Sin Riesgo': 'interp-sinriesgo',
+                            'Bajo':       'interp-bajo',
+                            'Medio':      'interp-medio',
+                            'Alto':       'interp-alto',
+                            'Muy Alto':   'interp-muyalto',
+                        };
+                        // Encontrar nivel con mayor porcentaje
+                        let dominante = 'Sin Riesgo';
+                        let maxPct = -1;
+                        for (const [nivel, pct] of Object.entries(estresDist)) {
+                            if ((pct || 0) > maxPct) { maxPct = pct; dominante = nivel; }
+                        }
+                        // Resaltar dominante, atenuar los demás
+                        for (const [nivel, elId] of Object.entries(nivelMap)) {
+                            const el = document.getElementById(elId);
+                            if (!el) continue;
+                            if (nivel === dominante) {
+                                el.style.opacity = '1';
+                                el.style.boxShadow = '0 2px 10px rgba(0,0,0,0.12)';
+                                el.style.transform = 'scale(1.01)';
+                            } else {
+                                el.style.opacity = '0.38';
+                            }
+                        }
+                    }
+
+                    // Página 29: comparativa por tipo de cargo
+                    const estresCargo = data.estres_tipo_cargo;
+                    const riskColors  = {'Sin Riesgo':'#a3e635','Bajo':'#22c55e','Medio':'#facc15','Alto':'#ef4444','Muy Alto':'#8b0000'};
+                    const riskLevels  = ['Sin Riesgo','Bajo','Medio','Alto','Muy Alto'];
+
+                    function buildEstresDonut(canvasId, dist) {
+                        const ctx = document.getElementById(canvasId);
+                        if (!ctx || !dist) return;
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: riskLevels,
+                                datasets: [{ data: riskLevels.map(l => dist[l] || 0), backgroundColor: riskLevels.map(l => riskColors[l]) }]
+                            },
+                            options: {
+                                responsive: true, maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { display: false },
+                                    datalabels: {
+                                        color: '#fff', font: { weight: 'bold', size: 11 },
+                                        formatter: (val) => val > 3 ? `${Math.round(val)}%` : ''
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    if (estresCargo) {
+                        const prof = estresCargo['profesionales_directivos'];
+                        const aux  = estresCargo['auxiliares_operativos'];
+
+                        buildEstresDonut('estresProfChart', prof);
+                        buildEstresDonut('estresAuxChart',  aux);
+
+                        // Llenar tabla
+                        const map = { sr: 'Sin Riesgo', bajo: 'Bajo', med: 'Medio', alto: 'Alto', muy: 'Muy Alto' };
+                        for (const [k, nivel] of Object.entries(map)) {
+                            const ep = document.getElementById(`tbl-prof-${k}`);
+                            const ea = document.getElementById(`tbl-aux-${k}`);
+                            if (ep && prof) ep.textContent = `${Math.round(prof[nivel] || 0)}%`;
+                            if (ea && aux)  ea.textContent = `${Math.round(aux[nivel]  || 0)}%`;
                         }
                     }
                 }

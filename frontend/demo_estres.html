@@ -266,37 +266,37 @@ const GRUPOS = {
 };
 
 const PREGUNTAS = [
-  "Me es difícil relajarme al final de la jornada de trabajo",
-  "Me es difícil disfrutar del tiempo libre",
-  "Tengo dificultad para desconectarme del trabajo",
-  "Siento que el trabajo me impide dedicar tiempo a mi familia",
-  "Siento que el trabajo me afecta físicamente",
-  "Tengo problemas para dormir bien",
-  "Me siento agotado(a) al final de la jornada",
-  "Siento que mi trabajo es agotador",
-  "Me es difícil concentrarme en el trabajo",
-  "Siento que no tengo suficiente energía para mis labores",
-  "Me siento tenso(a) o bajo presión en el trabajo",
-  "Siento que el trabajo me genera estrés",
-  "Me es difícil tomar decisiones en el trabajo",
-  "Tengo que trabajar más rápido de lo que quisiera",
-  "Tengo demasiado trabajo para hacer en el tiempo disponible",
-  "Siento que mi trabajo requiere demasiado esfuerzo",
-  "Siento que las exigencias del trabajo superan mis capacidades",
-  "Me preocupa cometer errores en el trabajo",
-  "Siento que no tengo tiempo suficiente para descansar",
-  "Siento que el trabajo afecta mi salud",
-  "Me siento irritable o de mal humor en el trabajo",
-  "Siento que el trabajo me genera sentimientos negativos",
-  "Me cuesta trabajo iniciar las actividades laborales",
-  "Siento que el trabajo no me permite crecer personalmente",
-  "Me siento poco motivado(a) para ir a trabajar",
-  "Siento que el trabajo no reconoce mi esfuerzo",
-  "Siento que el trabajo no me permite desarrollarme",
-  "Me siento insatisfecho(a) con las condiciones de trabajo",
-  "Siento que el trabajo afecta mis relaciones familiares",
-  "Siento que el trabajo me genera conflictos con personas cercanas",
-  "En general, el trabajo me genera un alto nivel de estrés"
+  "Dolores en el cuello y espalda o tensión muscular",                                          // 1
+  "Problemas gastrointestinales, úlcera péptica, acidez, problemas digestivos o del colon",    // 2
+  "Problemas respiratorios",                                                                     // 3
+  "Dolor de cabeza",                                                                             // 4
+  "Trastornos del sueño como somnolencia durante el día o desvelo en la noche",                // 5
+  "Palpitaciones en el pecho o problemas cardíacos",                                            // 6
+  "Cambios fuertes del apetito",                                                                 // 7
+  "Problemas relacionados con la función de los órganos genitales (impotencia, frigidez)",     // 8
+  "Dificultad en las relaciones familiares",                                                     // 9
+  "Dificultad para permanecer quieto o dificultad para iniciar actividades",                    // 10
+  "Dificultad en las relaciones con otras personas",                                             // 11
+  "Sensación de aislamiento y desinterés",                                                       // 12
+  "Sentimiento de sobrecarga de trabajo",                                                        // 13
+  "Dificultad para concentrarse, olvidos frecuentes",                                           // 14
+  "Aumento en el número de accidentes de trabajo",                                              // 15
+  "Sentimiento de frustración, de no haber hecho lo que se quería en la vida",                 // 16
+  "Cansancio, tedio o desgano",                                                                 // 17
+  "Disminución del rendimiento en el trabajo o poca creatividad",                               // 18
+  "Deseo de no asistir al trabajo",                                                              // 19
+  "Bajo compromiso o poco interés con lo que se hace",                                          // 20
+  "Dificultad para tomar decisiones",                                                            // 21
+  "Deseo de cambiar de empleo",                                                                  // 22
+  "Sentimiento de soledad y miedo",                                                              // 23
+  "Sentimiento de irritabilidad, actitudes y pensamientos negativos",                           // 24
+  "Sentimiento de angustia, preocupación o tristeza",                                           // 25
+  "Consumo de drogas para aliviar la tensión o los nervios",                                    // 26
+  "Sentimientos de que \"no vale nada\" o \"no sirve para nada\"",                             // 27
+  "Consumo de bebidas alcohólicas o café o cigarrillo",                                        // 28
+  "Sentimiento de que está perdiendo la razón",                                                  // 29
+  "Comportamientos rígidos, obstinación o terquedad",                                           // 30
+  "Sensación de no poder manejar los problemas de la vida"                                      // 31
 ];
 
 const BAREMOS = {
@@ -402,12 +402,12 @@ function calcular() {
     return;
   }
 
-  // Bloque 1: ítems 1–8
-  let b1 = 0;
-  [1,2,3,4,5,6,7,8].forEach(q => {
+  // Paso A: ítems 1–8 → promedio × 4 (Manual Estrés Paso 2a)
+  const aVals = [1,2,3,4,5,6,7,8].map(q => {
     const g = getGrupo(q);
-    if (g && resp[q] !== undefined) b1 += g.escala[resp[q]] || 0;
-  });
+    return (g && resp[q] !== undefined) ? (g.escala[resp[q]] || 0) : null;
+  }).filter(v => v !== null);
+  const b1 = aVals.length ? (aVals.reduce((a,b)=>a+b,0) / aVals.length * 4) : 0;
 
   // Paso B: ítems 9–12 → promedio × 3
   const bVals = [9,10,11,12].map(q => {

@@ -484,16 +484,16 @@ class PsychosocialScoringEngine:
         tipo_grupo = _classify_tipo_cargo(tipo_cargo)
         baremo = self.baremos["estres"][tipo_grupo]
 
-        # Bloque 1: ítems 1–8 sin ponderación (solo primeros 8 ítems del bloque A/B/C según grupo)
-        bloque1_raw = 0
-        for q in ESTRES_BLOQUE1:
+        # Paso a: ítems 1–8 → promedio × 4  (Manual Estrés, Paso 2a)
+        paso_a_vals = []
+        for q in sorted(ESTRES_BLOQUE1):  # {1,2,3,4,5,6,7,8}
             if q in resp_dict:
-                # Determinar el grupo del ítem
                 for grupo_name, grupo_cfg in ESTRES_GRUPOS.items():
                     if q in grupo_cfg["items"]:
                         raw_val = resp_dict[q]
-                        bloque1_raw += grupo_cfg["escala"].get(raw_val, 0)
+                        paso_a_vals.append(grupo_cfg["escala"].get(raw_val, 0))
                         break
+        paso_a = (sum(paso_a_vals) / len(paso_a_vals) * 4) if paso_a_vals else 0
 
         # Paso b: ítems 9–12 → promedio × 3
         paso_b_vals = []
@@ -517,7 +517,7 @@ class PsychosocialScoringEngine:
                         break
         paso_c = (sum(paso_c_vals) / len(paso_c_vals) * 2) if paso_c_vals else 0
 
-        # Paso d: ítems 23–31 → promedio sin factor adicional
+        # Paso d: ítems 23–31 → promedio (× 1)
         paso_d_vals = []
         for q in range(23, 32):
             if q in resp_dict:
@@ -528,7 +528,7 @@ class PsychosocialScoringEngine:
                         break
         paso_d = (sum(paso_d_vals) / len(paso_d_vals)) if paso_d_vals else 0
 
-        puntaje_bruto = bloque1_raw + paso_b + paso_c + paso_d
+        puntaje_bruto = paso_a + paso_b + paso_c + paso_d
         val_str = str((puntaje_bruto / ESTRES_DIVISOR) * 100)
         puntaje_transformado = float(Decimal(val_str).quantize(Decimal('.1'), rounding=ROUND_HALF_UP))
         puntaje_transformado = max(0.0, min(100.0, puntaje_transformado))
@@ -539,7 +539,7 @@ class PsychosocialScoringEngine:
             "cuestionario":           "estres",
             "tipo_cargo_grupo":       tipo_grupo,
             "baremo_aplicado":        tipo_grupo,
-            "bloque1_raw":            round(bloque1_raw, 2),
+            "paso_a":                 round(paso_a, 2),
             "paso_b":                 round(paso_b, 2),
             "paso_c":                 round(paso_c, 2),
             "paso_d":                 round(paso_d, 2),

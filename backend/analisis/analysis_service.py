@@ -199,7 +199,36 @@ class AnalysisService:
             "control_form_breakdown": self._compute_domain_by_form(filtered_cedulas, "Control sobre el trabajo"),
             "recompensas_breakdown": self._compute_domain_breakdown(filtered_cedulas, "Recompensas"),
             "recompensas_dist": self._compute_domain_total_dist(filtered_cedulas, "Recompensas"),
+            "estres_dist": self._compute_estres_dist(filtered_cedulas),
+            "estres_tipo_cargo": self._compute_estres_by_cargo(filtered_cedulas),
         }
+
+    def _compute_estres_dist(self, filtered_cedulas: List[str]) -> Dict[str, Any]:
+        """Distribución total de niveles de estrés del grupo."""
+        results = []
+        for c in filtered_cedulas:
+            indiv = self.analyze_individual(c)
+            e = indiv.get("cuestionarios", {}).get("estres")
+            if e and "nivel_riesgo" in e and "error" not in e:
+                results.append(e)
+        if not results:
+            return {}
+        return self._aggregate_questionnaire(results)["distribucion_pct"]
+
+    def _compute_estres_by_cargo(self, filtered_cedulas: List[str]) -> Dict[str, Any]:
+        """Distribución de estrés separada por tipo de cargo (baremo aplicado)."""
+        groups = {"profesionales_directivos": [], "auxiliares_operativos": []}
+        for c in filtered_cedulas:
+            indiv = self.analyze_individual(c)
+            e = indiv.get("cuestionarios", {}).get("estres")
+            if e and "nivel_riesgo" in e and "error" not in e:
+                grupo = e.get("tipo_cargo_grupo", "auxiliares_operativos")
+                groups[grupo].append(e)
+        breakdown = {}
+        for grupo, res_list in groups.items():
+            if res_list:
+                breakdown[grupo] = self._aggregate_questionnaire(res_list)["distribucion_pct"]
+        return breakdown
 
     def _compute_domain_by_form(self, filtered_cedulas: List[str], domain_name: str) -> Dict[str, Any]:
         """Calcula distribución de niveles separando por Forma A y Forma B."""

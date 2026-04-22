@@ -33,7 +33,10 @@ def stitch_report():
         '23_resultados_control.html',
         '24_portada_recompensas.html',
         '25_resultado_general_recompensas.html',
-        '26_resultados_recompensas.html'
+        '26_resultados_recompensas.html',
+        '27_portada_estres.html',
+        '28_resultado_general_estres.html',
+        '29_estres_comparativa_cargo.html',
     ]
     
     content_html = ""
