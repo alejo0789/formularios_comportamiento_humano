@@ -32,7 +32,7 @@ app = FastAPI(
     title="Sistema de Cuestionarios",
     description="API for managing multiple questionnaires and responses",
     version="2.0.0",
-    root_path="/cuestionarios"
+    root_path="/cuestionarios_brp"
 )
 
 # Ensure directories exist
