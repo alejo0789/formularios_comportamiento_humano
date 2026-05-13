@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Sistema de Cuestionarios - Selecciona un cuestionario para responder">
     <title>Sistema de Cuestionarios</title>
-    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/cuestionarios/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         :root {
             --acertemos-blue: #002147;
@@ -372,7 +372,7 @@
 
     <!-- Brand Header -->
     <header class="brand-header">
-        <img src="/cuestionarios/assets/acertemos logo.png" alt="Acertemos Logo" class="brand-logo">
+        <img src="assets/acertemos_logo.png" alt="Acertemos Logo" class="brand-logo">
     </header>
 
     <div class="selector-app">
@@ -438,7 +438,7 @@
         <div class="featured-section">
             <div class="section-label">Paso 1 - Obligatorio</div>
             <div class="featured-card" id="card-datos-generales"
-                onclick="handleCardClick('datos-generales', '/cuestionarios/ficha-datos')">
+                onclick="handleCardClick('datos-generales', 'ficha-datos.html')">
                 <div class="featured-icon">📝</div>
                 <div class="featured-content">
                     <span class="featured-badge" id="badge-datos-generales">▶ Inicio</span>
@@ -491,7 +491,7 @@
     </div>
 
     <script>
-        const API_BASE_URL = '/cuestionarios';
+        const API_BASE_URL = '';
         const SESSION_SEQUENCE = ["datos-generales", "estres", "extralaborales", "intralaborales-a", "intralaborales-b"];
         let currentSession = null;
 
@@ -673,7 +673,7 @@
                             opacity = '1';
                             btnText = 'Continuar →';
                             btnClass = 'primary';
-                            href = `/cuestionarios/encuesta/${q.id}`;
+                            href = `encuesta.html?id=${q.id}`;
                         }
                     }
 

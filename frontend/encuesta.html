@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Cuestionario interactivo">
     <title>Cuestionario</title>
-    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/cuestionarios/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         .section-message {
             background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="header-actions">
-                    <a href="/cuestionarios/" class="header-btn" title="Volver al inicio">
+                    <a href="index.html" class="header-btn" title="Volver al inicio">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
@@ -182,7 +182,7 @@
          * Cuestionario Dinámico con Secciones y Preguntas Condicionales
          */
 
-        const API_BASE_URL = '/cuestionarios';
+        const API_BASE_URL = '';
         const pathParts = window.location.pathname.split('/');
         const questionnaireId = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
 
@@ -227,7 +227,7 @@
                 // The requirements say "link all... to a single cedula provided in datos-generales".
                 // So strict mode: redirect to index if not found.
                 alert("No hay una sesión activa. Por favor inicia desde el menú principal.");
-                window.location.href = '/cuestionarios/';
+                window.location.href = 'index.html';
                 return;
             }
 
@@ -273,7 +273,7 @@
                         <div class="message-bubble">
                             <div class="message-text">
                                 ❌ Error: No se pudo cargar el cuestionario "${questionnaireId}".<br><br>
-                                <a href="/cuestionarios/" style="color: var(--primary-color);">← Volver al inicio</a>
+                                <a href="index.html" style="color: var(--primary-color);">← Volver al inicio</a>
                             </div>
                         </div>
                     </div>
@@ -411,7 +411,7 @@
                             <div>
                                 <div style="font-weight: 500;">Cédula registrada: ${cedula}</div>
                                 <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
-                                    Tip: Completa la <a href="/cuestionarios/ficha-datos" style="color: var(--primary-color);">Ficha de Datos Generales</a> para que tu información aparezca automáticamente.
+                                    Tip: Completa la <a href="ficha-datos.html" style="color: var(--primary-color);">Ficha de Datos Generales</a> para que tu información aparezca automáticamente.
                                 </div>
                             </div>
                         </div>
@@ -667,11 +667,11 @@
             if (nextStep && nextStep !== 'completed') {
                 await addBotMessage(`Redirigiendo al siguiente paso: <strong>${nextStep}</strong>... ⏳`);
                 await delay(2000);
-                window.location.href = `/cuestionarios/encuesta/${nextStep}`;
+                window.location.href = `encuesta.html?id=${nextStep}`;
             } else {
                 await addBotMessage(`¡Has completado todo el proceso! 🎉`);
                 await delay(2000);
-                window.location.href = `/cuestionarios/`;
+                window.location.href = `index.html`;
             }
 
             // Remove old success actions used previously
