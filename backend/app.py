@@ -28,21 +28,21 @@ QUESTIONNAIRES_DIR = os.path.join(BACKEND_DIR, "questionnaires")
 DATA_DIR = os.path.join(BACKEND_DIR, "data")
 RESULTS_PDF_DIR = os.path.join(DATA_DIR, "resultados_pdf")
 
-# Create the actual application that will be mounted
+# Mount the application directly
+# Previously it was mounted at /cuestionarios_brp which caused issues with different proxy paths
+# By using the main app as the root, it's more flexible for reverse proxies
 app = FastAPI(
     title="Sistema de Cuestionarios",
     description="API for managing multiple questionnaires and responses",
     version="2.0.0"
 )
 
-# Root app to handle the prefix
-root_app = FastAPI()
-root_app.mount("/cuestionarios_brp", app)
-
-@root_app.get("/")
-async def root_redirect():
+# For backwards compatibility or specific proxy setups, we can still handle the prefix
+@app.get("/cuestionarios_brp")
+async def legacy_prefix_redirect():
     from fastapi.responses import RedirectResponse
-    return RedirectResponse(url="/cuestionarios_brp/")
+    return RedirectResponse(url="/")
+
 
 # Ensure directories exist
 os.makedirs(RESULTS_PDF_DIR, exist_ok=True)
@@ -1506,7 +1506,7 @@ if __name__ == "__main__":
     print(f"   {QUESTIONNAIRES_DIR}")
     print("="*60 + "\n")
     
-    uvicorn.run(root_app, host=args.host, port=args.port)
+    uvicorn.run(app, host=args.host, port=args.port)
 
     print("="*60 + "\n")
 

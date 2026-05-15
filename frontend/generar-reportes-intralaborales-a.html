@@ -506,7 +506,14 @@
 
 
     <script>
-        const API_BASE_URL = '/cuestionarios';
+        // Detect base URL for API calls
+        const getApiBaseUrl = () => {
+            const path = window.location.pathname;
+            if (path.includes('/cuestionarios/')) return '/cuestionarios';
+            if (path.includes('/cuestionarios_brp/')) return '/cuestionarios_brp';
+            return '';
+        };
+        const API_BASE_URL = getApiBaseUrl();
         let allResponses = [];
         let questionnaireData = null;
 

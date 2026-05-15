@@ -4,7 +4,14 @@
  */
 
 // API Configuration - Uses relative URL so it works from any host
-const API_BASE_URL = '/cuestionarios';
+// API Configuration - Detects base URL for API calls
+const getApiBaseUrl = () => {
+    const path = window.location.pathname;
+    if (path.includes('/cuestionarios/')) return '/cuestionarios';
+    if (path.includes('/cuestionarios_brp/')) return '/cuestionarios_brp';
+    return '';
+};
+const API_BASE_URL = getApiBaseUrl();
 
 // State Management
 const state = {
