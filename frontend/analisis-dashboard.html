@@ -699,7 +699,7 @@
                 <button class="btn btn-ghost" id="btn-pdf-group" style="display:none" onclick="downloadPdfGroup()">📄
                     PDF Grupal</button>
                 <button class="btn btn-primary" style="background-color: var(--accent-purple);"
-                    onclick="window.open('/cuestionarios/reporte-grupal-total.html', '_blank')">📑 Ver Reporte Total
+                    onclick="window.open('reporte-grupal-total.html', '_blank')">📑 Ver Reporte Total
                     (HTML)</button>
             </div>
 
@@ -722,10 +722,19 @@
     <div class="toast" id="toast"><span id="toast-text"></span></div>
 
     <script>
+        // Detect base URL for API calls
+        const getApiBaseUrl = () => {
+            const path = window.location.pathname;
+            if (path.startsWith('/cuestionarios_brp')) return '/cuestionarios_brp';
+            if (path.startsWith('/cuestionarios')) return '/cuestionarios';
+            return '';
+        };
+        const API_BASE_URL = getApiBaseUrl();
+
         // ═══════════════════════════════════════════════════════
         // CONFIG
         // ═══════════════════════════════════════════════════════
-        const API = '/cuestionarios/api/analisis';
+        const API = `${API_BASE_URL}/api/analisis`;
 
         // Helpers
         const $ = id => document.getElementById(id);

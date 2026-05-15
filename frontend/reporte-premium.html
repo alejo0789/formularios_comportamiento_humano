@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informe Premium de Riesgo Psicosocial 2024</title>
-    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -854,8 +854,16 @@
     </div>
 
     <script>
-        // Registramos el plugin para mostrar etiquetas en los gráficos
         Chart.register(ChartDataLabels);
+
+        // Detect base URL for API calls
+        const getApiBaseUrl = () => {
+            const path = window.location.pathname;
+            if (path.startsWith('/cuestionarios_brp')) return '/cuestionarios_brp';
+            if (path.startsWith('/cuestionarios')) return '/cuestionarios';
+            return '';
+        };
+        const API_BASE_URL = getApiBaseUrl();
 
         document.getElementById('current-date-cover').textContent = new Date().toLocaleDateString('es-ES', {
             year: 'numeric', month: 'long', day: 'numeric'
@@ -866,7 +874,7 @@
             await initAuth();
 
             try {
-                const response = await fetch('/cuestionarios/api/analysis-report');
+                const response = await fetch(`${API_BASE_URL}/api/analysis-report`);
                 const data = await response.json();
 
                 // Helper to checking if object has data
@@ -910,7 +918,7 @@
             // 2. Fetch Config
             let authConfig = {};
             try {
-                const res = await fetch('/cuestionarios/api/auth-config');
+                const res = await fetch(`${API_BASE_URL}/api/auth-config`);
                 if (res.ok) {
                     authConfig = await res.json();
                 }
@@ -1327,7 +1335,7 @@
 
         async function generateAIAnalysis(data) {
             try {
-                const res = await fetch('/cuestionarios/api/ai-analysis', {
+                const res = await fetch(`${API_BASE_URL}/api/ai-analysis`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)

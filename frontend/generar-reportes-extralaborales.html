@@ -509,8 +509,8 @@
         // Detect base URL for API calls
         const getApiBaseUrl = () => {
             const path = window.location.pathname;
-            if (path.includes('/cuestionarios/')) return '/cuestionarios';
-            if (path.includes('/cuestionarios_brp/')) return '/cuestionarios_brp';
+            if (path.startsWith('/cuestionarios_brp')) return '/cuestionarios_brp';
+            if (path.startsWith('/cuestionarios')) return '/cuestionarios';
             return '';
         };
         const API_BASE_URL = getApiBaseUrl();

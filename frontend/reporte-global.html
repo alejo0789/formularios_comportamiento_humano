@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informe Global de Riesgo Psicosocial 2024</title>
-    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/cuestionarios/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -196,7 +196,7 @@
 <body>
     <div class="report-container">
         <div class="back-link-container">
-            <a href="/cuestionarios/resultados-dashboard" class="back-link"
+            <a href="resultados-dashboard" class="back-link"
                 style="color: #6366f1; text-decoration: none; font-weight: 600;">← Volver al Dashboard</a>
         </div>
 
@@ -300,6 +300,15 @@
     </button>
 
     <script>
+        // Detect base URL for API calls
+        const getApiBaseUrl = () => {
+            const path = window.location.pathname;
+            if (path.startsWith('/cuestionarios_brp')) return '/cuestionarios_brp';
+            if (path.startsWith('/cuestionarios')) return '/cuestionarios';
+            return '';
+        };
+        const API_BASE_URL = getApiBaseUrl();
+
         document.getElementById('current-date').textContent = new Date().toLocaleDateString('es-ES', {
             year: 'numeric', month: 'long', day: 'numeric'
         });
@@ -309,7 +318,7 @@
             await initAuth();
 
             try {
-                const response = await fetch('/cuestionarios/api/analysis-report');
+                const response = await fetch(`${API_BASE_URL}/api/analysis-report`);
                 const data = await response.json();
 
                 renderCharts(data);
@@ -330,7 +339,7 @@
             // 2. Fetch Config
             let authConfig = {};
             try {
-                const res = await fetch('/cuestionarios/api/auth-config');
+                const res = await fetch(`${API_BASE_URL}/api/auth-config`);
                 if (res.ok) {
                     authConfig = await res.json();
                 }
