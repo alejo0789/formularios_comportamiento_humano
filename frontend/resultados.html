@@ -351,8 +351,14 @@
         const API_BASE_URL = getApiBaseUrl();
 
         // Get questionnaire ID from URL
-        const pathParts = window.location.pathname.split('/');
-        const questionnaireId = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+        const urlParams = new URLSearchParams(window.location.search);
+        let questionnaireId = urlParams.get('id');
+        
+        if (!questionnaireId) {
+            const pathParts = window.location.pathname.split('/');
+            questionnaireId = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+            if (questionnaireId.includes('.')) questionnaireId = null;
+        }
 
         let questionnaireOptions = [];
 

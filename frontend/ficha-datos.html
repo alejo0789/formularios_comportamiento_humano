@@ -1147,7 +1147,7 @@
                     if (res.ok) {
                         const data = await res.json();
                         if (data.found && data.completed_forms && data.completed_forms.includes('datos-generales')) {
-                            window.location.href = '/cuestionarios/';
+                            window.location.href = 'index.html';
                             return;
                         }
                     }
@@ -1438,7 +1438,7 @@
                             // Already filled datos generales - BLOQUEO ESTRICTO
                             alert('Esta cédula ya se encuentra registrada en el sistema. Serás redirigido para continuar con tus cuestionarios pendientes.');
                             localStorage.setItem('current_user_cedula', value.trim());
-                            window.location.href = '/cuestionarios/'; // force auto-resume
+                            window.location.href = 'index.html'; // force auto-resume
                             return;
                         }
                     }
@@ -1586,7 +1586,7 @@
                         if (data.found && data.completed_forms && data.completed_forms.includes('datos-generales')) {
                             alert('Esta cédula ya se encuentra registrada en el sistema. Serás redirigido para continuar con tus cuestionarios pendientes.');
                             localStorage.setItem('current_user_cedula', cedula.trim());
-                            window.location.href = '/cuestionarios/';
+                            window.location.href = 'index.html';
                             return;
                         }
                     }
@@ -1649,10 +1649,10 @@
             if (nextStep && nextStep !== 'completed') {
                 nextBtn.onclick = (e) => {
                     e.preventDefault();
-                    window.location.href = `/cuestionarios/encuesta/${nextStep}`;
+                    window.location.href = `encuesta.html?id=${nextStep}`;
                 };
             } else {
-                nextBtn.setAttribute('href', '/cuestionarios/');
+                nextBtn.setAttribute('href', 'index.html');
             }
         }
 

@@ -201,7 +201,58 @@ class AnalysisService:
             "recompensas_dist": self._compute_domain_total_dist(filtered_cedulas, "Recompensas"),
             "estres_dist": self._compute_estres_dist(filtered_cedulas),
             "estres_tipo_cargo": self._compute_estres_by_cargo(filtered_cedulas),
+            # ── Factores Extralaborales ──
+            "extralaboral_dist": self._compute_extralaboral_dist(filtered_cedulas),
+            "extralaboral_breakdown": self._compute_extralaboral_breakdown(filtered_cedulas),
+            "extralaboral_area_breakdown": self._compute_extralaboral_area_breakdown(filtered_cedulas),
         }
+
+    def _compute_extralaboral_dist(self, filtered_cedulas: List[str]) -> Dict[str, Any]:
+        """Distribución total de niveles de riesgo extralaboral del grupo."""
+        results = []
+        for c in filtered_cedulas:
+            indiv = self.analyze_individual(c)
+            e = indiv.get("cuestionarios", {}).get("extralaboral")
+            if e and "nivel_riesgo" in e and "error" not in e:
+                results.append(e)
+        if not results:
+            return {}
+        return self._aggregate_questionnaire(results)["distribucion_pct"]
+
+    def _compute_extralaboral_breakdown(self, filtered_cedulas: List[str]) -> Dict[str, Any]:
+        """Distribución de niveles para cada dimensión extralaboral."""
+        dims_results: Dict[str, list] = defaultdict(list)
+        for c in filtered_cedulas:
+            indiv = self.analyze_individual(c)
+            extra = indiv.get("cuestionarios", {}).get("extralaboral")
+            if extra and "dimensiones" in extra and "error" not in extra:
+                for dim_name, dim_data in extra["dimensiones"].items():
+                    if "nivel_riesgo" in dim_data:
+                        dims_results[dim_name].append(dim_data)
+        breakdown = {}
+        for dim_name, res_list in dims_results.items():
+            if res_list:
+                breakdown[dim_name] = self._aggregate_questionnaire(res_list)["distribucion_pct"]
+        return breakdown
+
+    def _compute_extralaboral_area_breakdown(self, filtered_cedulas: List[str]) -> Dict[str, Any]:
+        """Distribución de niveles extralaboral agrupada por área."""
+        cedulas_by_area: Dict[str, list] = defaultdict(list)
+        for c in filtered_cedulas:
+            meta = _get_cedula_metadata(c)
+            area = meta.get("departamento_area") or meta.get("area", "No especificado")
+            cedulas_by_area[str(area)].append(c)
+        breakdown = {}
+        for area, c_list in cedulas_by_area.items():
+            area_results = []
+            for c in c_list:
+                indiv = self.analyze_individual(c)
+                extra = indiv.get("cuestionarios", {}).get("extralaboral")
+                if extra and "nivel_riesgo" in extra and "error" not in extra:
+                    area_results.append(extra)
+            if area_results:
+                breakdown[area] = self._aggregate_questionnaire(area_results)["distribucion_pct"]
+        return breakdown
 
     def _compute_estres_dist(self, filtered_cedulas: List[str]) -> Dict[str, Any]:
         """Distribución total de niveles de estrés del grupo."""

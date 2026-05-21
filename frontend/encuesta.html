@@ -246,6 +246,23 @@
                 return;
             }
 
+            try {
+                showLoading();
+                const sessionRes = await fetch(`${API_BASE_URL}/api/session/${storedCedula}`);
+                if (sessionRes.ok) {
+                    const sessionData = await sessionRes.json();
+                    if (sessionData.found && sessionData.completed_forms && sessionData.completed_forms.includes(questionnaireId)) {
+                        alert("Ya has completado este cuestionario.");
+                        window.location.href = 'index.html';
+                        return;
+                    }
+                }
+                hideLoading();
+            } catch (e) {
+                console.error("Error validando sesión:", e);
+                hideLoading();
+            }
+
             state.respondentInfo.cedula = storedCedula;
             await loadQuestionnaire();
         }

@@ -520,7 +520,7 @@
         // Cargar datos del cuestionario
         async function loadQuestionnaireData() {
             try {
-                const response = await fetch(`${API_BASE_URL}/questionnaires/estres.json`);
+                const response = await fetch(`${API_BASE_URL}/api/questionnaires/estres`);
                 questionnaireData = await response.json();
             } catch (error) {
                 console.error('Error loading questionnaire:', error);
