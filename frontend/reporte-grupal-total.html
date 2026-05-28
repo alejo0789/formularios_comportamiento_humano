@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informe Oficial de Riesgo Psicosocial</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/cuestionarios/assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,7 +27,7 @@
     <div style="margin-bottom: 30px;">
         <img src="assets/logo_nuevo.png" alt="Logo Empresa"
             style="max-width: 250px; height: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));"
-            onerror="this.src='assets/logo_nuevo.png'">
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
     </div>
     <h1 class="cover-title">INFORME DE RESULTADOS</h1>
     <p class="cover-subtitle">Evaluación de Riesgo Psicosocial Batería MinTrabajo</p>
@@ -110,7 +110,7 @@
     </div>
     <div class="page-footer">
         <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;"
-            onerror="this.src='assets/logo_nuevo.png'">
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
         <span>Página 2</span>
     </div>
 </div>
@@ -338,7 +338,7 @@
 
     <div class="page-footer" style="border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">
         <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; filter: brightness(0) invert(1); opacity: 0.8;"
-            onerror="this.src='assets/logo_nuevo.png'">
+            onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
         <span>Sección II: Factores Intralaborales</span>
     </div>
 </div>
@@ -501,6 +501,16 @@
                     style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #1e3a8a; font-size: 3rem;">
                     ...%</div>
             </div>
+        </div>
+
+        <!-- Interpretación dinámica de resultados -->
+        <div id="intra-interpretation-block" style="margin-top: 48px; padding: 28px 32px; background: #f8fafc; border-radius: 12px; border-left: 6px solid #1e3a8a;">
+            <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: #64748b; margin-bottom: 14px; letter-spacing: 0.05em;">
+                Interpretación de Resultados
+            </p>
+            <p id="intra-interp-text" style="font-size: 1rem; color: #1e293b; line-height: 1.75; margin: 0;">
+                Cargando interpretación...
+            </p>
         </div>
     </div>
     <div class="page-footer">
@@ -1420,7 +1430,7 @@
         <p style="margin-bottom: 18px; font-size: 0.92rem;">Distribución porcentual de los niveles de estrés
             identificados en el total de la población evaluada:</p>
 
-        <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 10px;">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 40px;">
 
             <!-- Left Label -->
             <div style="text-align: right; min-width: 140px;">
@@ -1428,11 +1438,11 @@
                     Priorización<br>Alta<br>
                     <span style="font-size: 0.68rem; font-weight: 400; color: #64748b;">(Medio+Alto+Muy Alto)</span>
                 </div>
-                <div id="estres-prior-high" style="font-weight: 900; color: #8e44ad; font-size: 2.2rem; margin-top: 2px;">—</div>
+                <div id="estres-prior-high" style="font-weight: 900; color: #8e44ad; font-size: 2.5rem; margin-top: 4px;">—</div>
             </div>
 
             <!-- Chart -->
-            <div style="width: 200px; height: 260px;">
+            <div style="width: 200px; height: 360px;">
                 <canvas id="estresTotalStackedChart"></canvas>
             </div>
 
@@ -1442,7 +1452,7 @@
                     Priorización<br>Baja<br>
                     <span style="font-size: 0.68rem; font-weight: 400; color: #64748b;">(Sin Riesgo+Bajo)</span>
                 </div>
-                <div id="estres-prior-low" style="font-weight: 900; color: #1e3a8a; font-size: 1.8rem; margin-top: 2px;">—</div>
+                <div id="estres-prior-low" style="font-weight: 900; color: #1e3a8a; font-size: 2rem; margin-top: 4px;">—</div>
             </div>
         </div>
 
@@ -1616,255 +1626,9 @@
 </div>
 
 
-<!-- PAGE 30: PORTADA — FACTORES EXTRALABORALES -->
-<div class="page cover-page" id="page-30" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);">
-    <div class="content"
-        style="display: flex; flex-direction: column; justify-content: center; height: 100%; text-align: left; padding: 40px; color: white; margin-top: 0;">
-
-        <div style="border-left: 8px solid #6ee7b7; padding-left: 30px; margin-bottom: 60px;">
-            <span style="background: #6ee7b7; color: #064e3b; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px;">
-                CUESTIONARIO EXTRALABORAL
-            </span>
-            <h1 style="font-family: 'Montserrat', sans-serif; font-size: 3.2rem; font-weight: 800; line-height: 1.1; text-transform: uppercase;">
-                RESULTADOS GRUPALES<br>FACTORES<br>EXTRALABORALES
-            </h1>
-        </div>
-
-        <div style="margin-bottom: 50px; padding-left: 38px;">
-            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: #6ee7b7; margin-bottom: 25px; letter-spacing: 2px;">
-                DIMENSIONES EVALUADAS:
-            </h2>
-            <ul style="list-style: none; font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 600; line-height: 2.2;">
-                <li style="display: flex; align-items: center; gap: 12px;"><span style="color: #6ee7b7; font-size: 1.5rem;">•</span> Balance entre la vida laboral y familiar</li>
-                <li style="display: flex; align-items: center; gap: 12px;"><span style="color: #6ee7b7; font-size: 1.5rem;">•</span> Relaciones familiares</li>
-                <li style="display: flex; align-items: center; gap: 12px;"><span style="color: #6ee7b7; font-size: 1.5rem;">•</span> Comunicación y relaciones interpersonales</li>
-                <li style="display: flex; align-items: center; gap: 12px;"><span style="color: #6ee7b7; font-size: 1.5rem;">•</span> Situación económica del grupo familiar</li>
-                <li style="display: flex; align-items: center; gap: 12px;"><span style="color: #6ee7b7; font-size: 1.5rem;">•</span> Características de la vivienda y su entorno</li>
-                <li style="display: flex; align-items: center; gap: 12px;"><span style="color: #6ee7b7; font-size: 1.5rem;">•</span> Influencia del entorno extralaboral sobre el trabajo</li>
-                <li style="display: flex; align-items: center; gap: 12px;"><span style="color: #6ee7b7; font-size: 1.5rem;">•</span> Desplazamiento vivienda–trabajo–vivienda</li>
-            </ul>
-        </div>
-
-        <div style="margin-top: 20px; opacity: 0.6; font-size: 1rem; font-style: italic; padding-left: 38px;">
-            Evaluación basada en la Batería de Instrumentos para la Evaluación de Factores de Riesgo Psicosocial — MinTrabajo 2010.
-        </div>
-    </div>
-
-    <div class="page-footer" style="border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);">
-        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; filter: brightness(0) invert(1); opacity: 0.8;"
-            onerror="this.src='assets/logo_nuevo.png'">
-        <span>Sección VI: Factores Extralaborales</span>
-    </div>
-</div>
-
-<!-- PAGE 31: RESULTADO GENERAL EXTRALABORAL -->
-<div class="page" id="page-31">
-    <div class="page-header">6. RESULTADOS FACTORES EXTRALABORALES</div>
-    <div class="content">
-        <h2 class="section-title">RESULTADO GENERAL: FACTORES EXTRALABORALES</h2>
-        <p style="margin-bottom: 18px; font-size: 0.92rem;">Distribución porcentual de los niveles de riesgo identificados
-            para el factor extralaboral en la población total evaluada:</p>
-
-        <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 40px;">
-            <!-- Left -->
-            <div style="text-align: center;">
-                <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; color: #64748b; font-size: 1.2rem; text-transform: uppercase;">TOTAL</div>
-                <div id="extra-total-n" style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #064e3b; font-size: 3.5rem;">...</div>
-            </div>
-
-            <!-- Central stacked chart -->
-            <div style="width: 300px; height: 500px; position: relative; background: #fff; display: flex; flex-direction: column; align-items: center;">
-                <!-- Label left: low priority -->
-                <div style="position: absolute; left: -140px; top: 15%; text-align: right; border-right: 3px solid #22c55e; padding-right: 10px;">
-                    <div style="font-weight: 800; color: #334155; font-size: 0.8rem; text-transform: uppercase;">Nivel de<br>Priorización Baja</div>
-                    <div id="extra-prior-low" style="font-weight: 900; color: #064e3b; font-size: 1.5rem;">...%</div>
-                </div>
-
-                <!-- Chart -->
-                <div style="width: 220px; height: 450px;">
-                    <canvas id="extraStackedChart"></canvas>
-                </div>
-
-                <!-- Legend -->
-                <div style="margin-top: 20px; width: 450px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-size: 0.75rem; font-weight: 700; color: #475569;">
-                    <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto</div>
-                    <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
-                    <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
-                    <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
-                    <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #84cc16; border-radius: 2px;"></span> Sin riesgo</div>
-                </div>
-            </div>
-
-            <!-- Right: high priority -->
-            <div style="text-align: center;">
-                <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; color: #64748b; font-size: 1rem; text-transform: uppercase;">PRIORIZACIÓN<br>DE INTERVENCIÓN</div>
-                <div id="extra-prior-high" style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #064e3b; font-size: 3rem;">...%</div>
-            </div>
-        </div>
-    </div>
-    <div class="page-footer">
-        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;" onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
-        <span>Página 31</span>
-    </div>
-</div>
-
-<!-- PAGE 32: DESGLOSE POR DIMENSIONES EXTRALABORALES -->
-<div class="page" id="page-32">
-    <div class="page-header">6. RESULTADOS FACTORES EXTRALABORALES (CONT.)</div>
-    <div class="content">
-        <h2 class="section-title">DETALLE POR DIMENSIONES: FACTORES EXTRALABORALES</h2>
-        <p style="margin-bottom: 25px; font-size: 0.95rem;">Distribución de los niveles de riesgo para cada una de las
-            7 dimensiones que conforman el cuestionario de Factores Extralaborales:</p>
-
-        <div style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
-            <canvas id="extraDimensionsChart"></canvas>
-        </div>
-
-        <div style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
-        </div>
-    </div>
-    <div class="page-footer">
-        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;" onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
-        <span>Página 32</span>
-    </div>
-</div>
-
-<!-- PAGE 33: EXTRALABORAL POR ÁREA -->
-<div class="page" id="page-33">
-    <div class="page-header">6. RESULTADOS FACTORES EXTRALABORALES (CONT.)</div>
-    <div class="content">
-        <h2 class="section-title">PERCEPCIÓN RIESGO EXTRALABORAL POR ÁREAS / PROCESOS</h2>
-        <p style="margin-bottom: 20px; font-size: 0.95rem;">Distribución proporcional (100%) de los niveles de riesgo extralaboral
-            desglosada por los diferentes departamentos o procesos de la organización:</p>
-
-        <div id="extraAreaChartContainer" style="min-height: 200px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 20px;">
-            <canvas id="extraAreaChart"></canvas>
-        </div>
-
-        <div style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; font-size: 0.8rem; font-weight: 700; color: #475569;">
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #8b0000; border-radius: 2px;"></span> Riesgo muy alto</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #ef4444; border-radius: 2px;"></span> Riesgo alto</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #facc15; border-radius: 2px;"></span> Riesgo medio</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #22c55e; border-radius: 2px;"></span> Riesgo bajo</div>
-            <div style="display: flex; align-items: center; gap: 5px;"><span style="width:12px; height:12px; background: #a3e635; border-radius: 2px;"></span> Sin riesgo</div>
-        </div>
-    </div>
-    <div class="page-footer">
-        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;" onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
-        <span>Página 33</span>
-    </div>
-</div>
-
-<!-- PAGE 34: INTERPRETACIÓN DE NIVELES DE RIESGO — EXTRALABORALES -->
-<div class="page" id="page-34">
-    <div class="page-header">6. RESULTADOS FACTORES EXTRALABORALES (CONT.)</div>
-    <div class="content">
-        <h2 class="section-title">INTERPRETACIÓN DE NIVELES DE RIESGO</h2>
-        <p style="margin-bottom: 10px; font-size: 0.88rem; color: #475569;">
-            Según el <strong>Paso 5 del Manual General de la Batería de Riesgo Psicosocial — MinTrabajo 2010</strong>,
-            una vez comparados los puntajes transformados con los baremos correspondientes, se identifica el nivel de riesgo.
-            Cada nivel tiene interpretaciones y recomendaciones de intervención particulares:
-        </p>
-
-        <!-- Nivel Sin Riesgo -->
-        <div id="interp-extra-sinriesgo" class="extra-interp-block" data-nivel="Sin Riesgo"
-            style="display: flex; gap: 14px; margin-bottom: 10px; padding: 12px 16px; border-radius: 10px; border-left: 5px solid #84cc16; background: #f7ffe6; opacity: 0.45;">
-            <div style="min-width: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
-                <div style="background: #84cc16; color: #1a2e05; padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; text-align: center;">Sin Riesgo</div>
-                <div style="font-size: 0.65rem; color: #4d7c0f; font-weight: 600; text-align: center;">Riesgo despreciable</div>
-            </div>
-            <div>
-                <p style="margin: 0 0 4px 0; font-size: 0.8rem; color: #374151; line-height: 1.6;">
-                    Ausencia de riesgo o riesgo tan bajo que <strong>no amerita desarrollar actividades de intervención específicas</strong>.
-                </p>
-                <p style="margin: 0; font-size: 0.75rem; color: #6b7280; font-style: italic;">
-                    ➤ Las dimensiones en esta categoría son objeto de <strong>acciones o programas de promoción</strong> en salud.
-                </p>
-            </div>
-        </div>
-
-        <!-- Nivel Bajo -->
-        <div id="interp-extra-bajo" class="extra-interp-block" data-nivel="Bajo"
-            style="display: flex; gap: 14px; margin-bottom: 10px; padding: 12px 16px; border-radius: 10px; border-left: 5px solid #22c55e; background: #f0fdf4; opacity: 0.45;">
-            <div style="min-width: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
-                <div style="background: #22c55e; color: white; padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; text-align: center;">Riesgo Bajo</div>
-            </div>
-            <div>
-                <p style="margin: 0 0 4px 0; font-size: 0.8rem; color: #374151; line-height: 1.6;">
-                    No se espera que los factores psicosociales con puntuaciones de este nivel estén relacionados con
-                    <strong>síntomas o respuestas de estrés significativas</strong>.
-                </p>
-                <p style="margin: 0; font-size: 0.75rem; color: #6b7280; font-style: italic;">
-                    ➤ Las dimensiones en esta categoría serán objeto de <strong>acciones o programas de intervención</strong> a fin de mantenerlas en los niveles de riesgo más bajos posibles.
-                </p>
-            </div>
-        </div>
-
-        <!-- Nivel Medio -->
-        <div id="interp-extra-medio" class="extra-interp-block" data-nivel="Medio"
-            style="display: flex; gap: 14px; margin-bottom: 10px; padding: 12px 16px; border-radius: 10px; border-left: 5px solid #facc15; background: #fefce8; opacity: 0.45;">
-            <div style="min-width: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
-                <div style="background: #facc15; color: #713f12; padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; text-align: center;">Riesgo Medio</div>
-            </div>
-            <div>
-                <p style="margin: 0 0 4px 0; font-size: 0.8rem; color: #374151; line-height: 1.6;">
-                    Nivel de riesgo en el que se esperaría una <strong>respuesta de estrés moderada</strong>.
-                </p>
-                <p style="margin: 0; font-size: 0.75rem; color: #6b7280; font-style: italic;">
-                    ➤ Las dimensiones en esta categoría ameritan <strong>observación y acciones sistemáticas de intervención</strong> para prevenir efectos perjudiciales en la salud.
-                </p>
-            </div>
-        </div>
-
-        <!-- Nivel Alto -->
-        <div id="interp-extra-alto" class="extra-interp-block" data-nivel="Alto"
-            style="display: flex; gap: 14px; margin-bottom: 10px; padding: 12px 16px; border-radius: 10px; border-left: 5px solid #ef4444; background: #fef2f2; opacity: 0.45;">
-            <div style="min-width: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
-                <div style="background: #ef4444; color: white; padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; text-align: center;">Riesgo Alto</div>
-            </div>
-            <div>
-                <p style="margin: 0 0 4px 0; font-size: 0.8rem; color: #374151; line-height: 1.6;">
-                    Nivel de riesgo con <strong>importante posibilidad de asociación con respuestas de estrés alto</strong>.
-                </p>
-                <p style="margin: 0; font-size: 0.75rem; color: #6b7280; font-style: italic;">
-                    ➤ Las dimensiones en esta categoría requieren <strong>intervención en el marco de un sistema de vigilancia epidemiológica</strong>.
-                </p>
-            </div>
-        </div>
-
-        <!-- Nivel Muy Alto -->
-        <div id="interp-extra-muyalto" class="extra-interp-block" data-nivel="Muy Alto"
-            style="display: flex; gap: 14px; margin-bottom: 18px; padding: 12px 16px; border-radius: 10px; border-left: 5px solid #8b0000; background: #fff1f2; opacity: 0.45;">
-            <div style="min-width: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
-                <div style="background: #8b0000; color: white; padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 0.72rem; text-transform: uppercase; text-align: center;">Riesgo Muy Alto</div>
-            </div>
-            <div>
-                <p style="margin: 0 0 4px 0; font-size: 0.8rem; color: #374151; line-height: 1.6;">
-                    Nivel de riesgo con <strong>amplia posibilidad de asociarse a respuestas muy altas de estrés</strong>.
-                </p>
-                <p style="margin: 0; font-size: 0.75rem; color: #6b7280; font-style: italic;">
-                    ➤ Las dimensiones en esta categoría requieren <strong>intervención inmediata</strong> en el marco de un sistema de vigilancia epidemiológica.
-                </p>
-            </div>
-        </div>
-
-    </div>
-    <div class="page-footer">
-        <img src="assets/logo_nuevo.png" alt="Logo" style="height: 25px; opacity: 0.8;" onerror="this.src='/cuestionarios/assets/logo_nuevo.png'">
-        <span>Página 34 | Extralaboral — Interpretación según Manual MinTrabajo 2010</span>
-    </div>
-</div>
-
-
     </div>
 
     <script>
-
         window.downloadReport = function () {
             const element = document.getElementById('report-content');
             const opt = {
@@ -1882,15 +1646,6 @@
         // Registra los plugins obligatorios de Chart.js
         Chart.register(ChartDataLabels);
 
-        // Detect base URL for API calls
-        const getApiBaseUrl = () => {
-            const path = window.location.pathname;
-            if (path.startsWith('/cuestionarios_brp')) return '/cuestionarios_brp';
-            if (path.startsWith('/cuestionarios')) return '/cuestionarios';
-            return '';
-        };
-        const API_BASE_URL = getApiBaseUrl();
-
         document.addEventListener('DOMContentLoaded', async () => {
             const dateStr = new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
 
@@ -1899,7 +1654,7 @@
 
             try {
                 // Fetch de datos grupales
-                const response = await fetch(`${API_BASE_URL}/api/analisis/grupo/resumen`);
+                const response = await fetch('/cuestionarios/api/analisis/grupo/resumen');
                 const json = await response.json();
 
                 if (json.success) {
@@ -2103,6 +1858,41 @@
                         document.getElementById('val-prior-low').innerText = Math.round(priorLow) + "%";
 
                         createStackedBar('intraStackedChart', dist);
+
+                        // Interpretación dinámica (Página 9)
+                        const interpEl = document.getElementById('intra-interp-text');
+                        const borderEl = document.getElementById('intra-interpretation-block');
+                        if (interpEl) {
+                            const priorHighPct = Math.round(priorHigh);
+                            const priorLowPct  = Math.round(priorLow);
+
+                            // Determinar nivel dominante
+                            const levels9 = ['Muy Alto', 'Alto', 'Medio', 'Bajo', 'Sin Riesgo'];
+                            let dominante9 = 'Sin Riesgo', maxPct9 = -1;
+                            for (const lvl of levels9) {
+                                if ((dist[lvl] || 0) > maxPct9) { maxPct9 = dist[lvl] || 0; dominante9 = lvl; }
+                            }
+
+                            const colorMap9 = {
+                                'Sin Riesgo': '#16a34a',
+                                'Bajo':       '#22c55e',
+                                'Medio':      '#ca8a04',
+                                'Alto':       '#dc2626',
+                                'Muy Alto':   '#7f1d1d',
+                            };
+                            const borderColor9 = colorMap9[dominante9] || '#1e3a8a';
+                            if (borderEl) borderEl.style.borderLeftColor = borderColor9;
+
+                            const interps9 = {
+                                'Sin Riesgo': `El <strong>${priorLowPct}%</strong> de los trabajadores evaluados (n=${n}) se ubica en niveles de priorización baja. El nivel predominante del grupo es <strong>Sin riesgo o riesgo despreciable</strong>.<br><br><strong>Interpretación oficial:</strong> ausencia de riesgo o riesgo tan bajo que no amerita desarrollar actividades de intervención. Las dimensiones y dominios que se encuentren bajo esta categoría serán objeto de acciones o programas de promoción.`,
+                                'Bajo':       `El <strong>${priorLowPct}%</strong> de los trabajadores evaluados (n=${n}) se ubica en niveles de priorización baja. El nivel predominante del grupo es <strong>Riesgo bajo</strong>.<br><br><strong>Interpretación oficial:</strong> no se espera que los factores psicosociales que obtengan puntuaciones de este nivel estén relacionados con síntomas o respuestas de estrés significativas. Las dimensiones y dominios que se encuentren bajo esta categoría serán objeto de acciones o programas de intervención, a fin de mantenerlos en los niveles de riesgo más bajos posibles.`,
+                                'Medio':      `El <strong>${priorHighPct}%</strong> de los trabajadores evaluados (n=${n}) se sitúa en niveles de priorización de intervención. El nivel predominante del grupo es <strong>Riesgo medio</strong>.<br><br><strong>Interpretación oficial:</strong> nivel de riesgo en el que se esperaría una respuesta de estrés moderada. Las dimensiones y dominios que se encuentren bajo esta categoría ameritan observación y acciones sistemáticas de intervención para prevenir efectos perjudiciales en la salud.`,
+                                'Alto':       `El <strong>${priorHighPct}%</strong> de los trabajadores evaluados (n=${n}) se sitúa en niveles de priorización de intervención. El nivel predominante del grupo es <strong>Riesgo alto</strong>.<br><br><strong>Interpretación oficial:</strong> nivel de riesgo que tiene una importante posibilidad de asociación con respuestas de estrés alto y por tanto, las dimensiones y dominios que se encuentren bajo esta categoría requieren intervención en el marco de un sistema de vigilancia epidemiológica.`,
+                                'Muy Alto':   `El <strong>${priorHighPct}%</strong> de los trabajadores evaluados (n=${n}) se sitúa en niveles de priorización de intervención inmediata. El nivel predominante del grupo es <strong>Riesgo muy alto</strong>.<br><br><strong>Interpretación oficial:</strong> nivel de riesgo con amplia posibilidad de asociarse a respuestas muy altas de estrés. Por consiguiente las dimensiones y dominios que se encuentren bajo esta categoría requieren intervención inmediata en el marco de un sistema de vigilancia epidemiológica.`,
+                            };
+
+                            interpEl.innerHTML = interps9[dominante9] || '';
+                        }
                     }
 
                     // Gráfica por Áreas (Página 10)
@@ -2653,203 +2443,11 @@
                             if (ea && aux)  ea.textContent = `${Math.round(aux[nivel]  || 0)}%`;
                         }
                     }
-
-                    // ═══════════════════════════════════════════════════
-                    // FACTORES EXTRALABORALES (Páginas 31–33)
-                    // ═══════════════════════════════════════════════════
-                    const extraDist = data.extralaboral_dist;
-                    const extraBreakdown = data.extralaboral_breakdown;
-                    const extraAreaBreakdown = data.extralaboral_area_breakdown;
-
-                    // Helper: build stacked bar chart (reusing createStackedBar pattern)
-                    const createStackedBarExtra = (ctxId, distPct, labelText) => {
-                        const ctx = document.getElementById(ctxId);
-                        if (!ctx) return;
-                        const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
-                        const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: [labelText || 'Extralaboral'],
-                                datasets: levels.map((lvl, i) => ({
-                                    label: lvl,
-                                    data: [distPct[lvl] || 0],
-                                    backgroundColor: colors[i],
-                                    barThickness: 180
-                                }))
-                            },
-                            options: {
-                                plugins: {
-                                    legend: { display: false },
-                                    datalabels: {
-                                        color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
-                                        font: { weight: '800', size: 16 },
-                                        formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
-                                    }
-                                },
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                scales: {
-                                    x: { display: false, stacked: true },
-                                    y: { display: false, stacked: true, max: 100 }
-                                }
-                            }
-                        });
-                    };
-
-                    // Helper: build grouped stacked bar chart for dimensions / areas
-                    const createMultiStackedChart = (ctxId, breakdownData, wrapLabels) => {
-                        const ctx = document.getElementById(ctxId);
-                        if (!ctx || !breakdownData || Object.keys(breakdownData).length === 0) return;
-                        const labels = Object.keys(breakdownData);
-                        const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
-                        const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: labels.map(l => l.toUpperCase()),
-                                datasets: levels.map((lvl, i) => ({
-                                    label: lvl,
-                                    data: labels.map(l => breakdownData[l][lvl] || 0),
-                                    backgroundColor: colors[i],
-                                }))
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    legend: { display: false },
-                                    datalabels: {
-                                        color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
-                                        font: { weight: 'bold', size: 10 },
-                                        formatter: (val) => val > 0 ? `${Math.round(val)}%` : ''
-                                    }
-                                },
-                                scales: {
-                                    x: {
-                                        stacked: true,
-                                        grid: { display: false },
-                                        ticks: {
-                                            font: { size: 8, weight: 'bold' },
-                                            maxRotation: 45,
-                                            minRotation: 30,
-                                            callback: wrapLabels ? function(value) {
-                                                const label = this.getLabelForValue(value);
-                                                return label.length > 22 ? label.match(/.{1,22}(\s|$)/g) : label;
-                                            } : undefined
-                                        }
-                                    },
-                                    y: { stacked: true, display: false, max: 100 }
-                                }
-                            }
-                        });
-                    };
-
-                    // PAGE 31 — Resultado General Extralaboral
-                    if (extraDist && Object.keys(extraDist).length > 0) {
-                        // Obtener n de extralaboral desde cuestionarios.extralaboral
-                        const extraN = data.cuestionarios?.extralaboral?.n || '';
-                        const elExtraN = document.getElementById('extra-total-n');
-                        if (elExtraN) elExtraN.innerText = extraN;
-
-                        const priorHigh = (extraDist["Medio"] || 0) + (extraDist["Alto"] || 0) + (extraDist["Muy Alto"] || 0);
-                        const priorLow  = (extraDist["Sin Riesgo"] || 0) + (extraDist["Bajo"] || 0);
-
-                        const elHigh = document.getElementById('extra-prior-high');
-                        const elLow  = document.getElementById('extra-prior-low');
-                        if (elHigh) elHigh.innerText = Math.round(priorHigh) + '%';
-                        if (elLow)  elLow.innerText  = Math.round(priorLow)  + '%';
-
-                        createStackedBarExtra('extraStackedChart', extraDist, 'Factores Extralaborales');
-
-                        // PAGE 34 — Resaltar nivel predominante en la interpretación
-                        const nivelPredominante = Object.entries(extraDist).reduce((a, b) => b[1] > a[1] ? b : a, ['Sin Riesgo', 0])[0];
-                        const idMap = {
-                            'Sin Riesgo': 'interp-extra-sinriesgo',
-                            'Bajo':       'interp-extra-bajo',
-                            'Medio':      'interp-extra-medio',
-                            'Alto':       'interp-extra-alto',
-                            'Muy Alto':   'interp-extra-muyalto',
-                        };
-                        document.querySelectorAll('.extra-interp-block').forEach(el => {
-                            const nivel = el.dataset.nivel;
-                            if (nivel === nivelPredominante) {
-                                el.style.opacity = '1';
-                                el.style.boxShadow = '0 0 0 2px currentColor';
-                                el.style.transform = 'scale(1.01)';
-                            } else {
-                                el.style.opacity = '0.45';
-                            }
-                        });
-                    }
-
-                    // PAGE 32 — Desglose por Dimensiones
-                    if (extraBreakdown && Object.keys(extraBreakdown).length > 0) {
-                        createMultiStackedChart('extraDimensionsChart', extraBreakdown, true);
-                    }
-
-                    // PAGE 33 — Desglose por Área (barras horizontales)
-                    if (extraAreaBreakdown && Object.keys(extraAreaBreakdown).length > 0) {
-                        const areaCtx = document.getElementById('extraAreaChart');
-                        if (areaCtx) {
-                            const areaLabels = Object.keys(extraAreaBreakdown);
-                            const levels = ['Muy Alto', 'Alto', 'Medio', 'Bajo', 'Sin Riesgo'];
-                            const colors  = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
-
-                            // Ajustar altura del contenedor según número de áreas
-                            const containerEl = document.getElementById('extraAreaChartContainer');
-                            if (containerEl) {
-                                const barH = Math.max(42, Math.min(70, 420 / areaLabels.length));
-                                containerEl.style.height = (areaLabels.length * barH + 60) + 'px';
-                            }
-
-                            new Chart(areaCtx, {
-                                type: 'bar',
-                                data: {
-                                    labels: areaLabels,
-                                    datasets: levels.map((lvl, i) => ({
-                                        label: lvl,
-                                        data: areaLabels.map(a => extraAreaBreakdown[a][lvl] || 0),
-                                        backgroundColor: colors[i],
-                                    }))
-                                },
-                                options: {
-                                    indexAxis: 'y',
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    plugins: {
-                                        legend: { display: false },
-                                        datalabels: {
-                                            color: (ctx) => (ctx.datasetIndex >= 2 ? '#333' : '#fff'),
-                                            font: { weight: 'bold', size: 9 },
-                                            formatter: (val) => val > 3 ? `${Math.round(val)}%` : ''
-                                        }
-                                    },
-                                    scales: {
-                                        x: {
-                                            stacked: true,
-                                            display: false,
-                                            max: 100
-                                        },
-                                        y: {
-                                            stacked: true,
-                                            grid: { display: false },
-                                            ticks: {
-                                                font: { size: 10, weight: '600' },
-                                                color: '#334155',
-                                            }
-                                        }
-                                    }
-                                }
-                            });
-                        }
-                    }
                 }
             } catch (error) {
                 console.error("Error cargando los datos grupales", error);
             }
         });
-
     </script>
 </body>
 
