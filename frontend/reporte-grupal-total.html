@@ -527,8 +527,17 @@
         <p style="margin-bottom: 20px; font-size: 0.95rem;">Distribución de los niveles de riesgo intralaboral
             desglosado por los diferentes departamentos o procesos de la organización:</p>
 
+        <div id="top-critical-areas" style="display: none; background: #fef2f2; border: 1px solid #fecaca; border-left: 5px solid #ef4444; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(239, 68, 68, 0.1);">
+            <h3 style="color: #b91c1c; font-size: 1.05rem; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                Áreas de Intervención Prioritaria (Top 3)
+            </h3>
+            <ul id="critical-areas-list" style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #475569; line-height: 1.6;">
+            </ul>
+        </div>
+
         <div
-            style="height: 520px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 20px;">
+            style="height: 440px; width: 100%; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 10px;">
             <canvas id="areaBreakdownChart"></canvas>
         </div>
 
@@ -1903,6 +1912,28 @@
                             const areas = Object.keys(areaData);
                             const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
                             const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
+
+                            // Calcular Top 3 áreas críticas
+                            const criticalAreasBox = document.getElementById('top-critical-areas');
+                            const criticalAreasList = document.getElementById('critical-areas-list');
+                            if (criticalAreasBox && criticalAreasList) {
+                                // 1. Mapear áreas y su suma de riesgo (Alto + Muy Alto)
+                                const areaRisks = areas.map(area => {
+                                    const riskHigh = (areaData[area]["Muy Alto"] || 0) + (areaData[area]["Alto"] || 0);
+                                    return { name: area, risk: riskHigh };
+                                });
+                                // 2. Ordenar descendente y tomar top 3 mayores a 0%
+                                const top3 = areaRisks.sort((a, b) => b.risk - a.risk).filter(a => a.risk > 0).slice(0, 3);
+                                
+                                if (top3.length > 0) {
+                                    criticalAreasBox.style.display = 'block';
+                                    let listHTML = '';
+                                    top3.forEach((area, index) => {
+                                        listHTML += `<li style="margin-bottom: 5px;"><strong>${area.name}:</strong> <span style="color: #b91c1c; font-weight: 600;">${Math.round(area.risk)}%</span> del personal en este departamento se encuentra en riesgo Alto o Muy Alto.</li>`;
+                                    });
+                                    criticalAreasList.innerHTML = listHTML;
+                                }
+                            }
 
                             new Chart(ctx, {
                                 type: 'bar',

@@ -301,6 +301,28 @@
                             const levels = ["Muy Alto", "Alto", "Medio", "Bajo", "Sin Riesgo"];
                             const colors = ['#8b0000', '#ef4444', '#facc15', '#22c55e', '#a3e635'];
 
+                            // Calcular Top 3 áreas críticas
+                            const criticalAreasBox = document.getElementById('top-critical-areas');
+                            const criticalAreasList = document.getElementById('critical-areas-list');
+                            if (criticalAreasBox && criticalAreasList) {
+                                // 1. Mapear áreas y su suma de riesgo (Alto + Muy Alto)
+                                const areaRisks = areas.map(area => {
+                                    const riskHigh = (areaData[area]["Muy Alto"] || 0) + (areaData[area]["Alto"] || 0);
+                                    return { name: area, risk: riskHigh };
+                                });
+                                // 2. Ordenar descendente y tomar top 3 mayores a 0%
+                                const top3 = areaRisks.sort((a, b) => b.risk - a.risk).filter(a => a.risk > 0).slice(0, 3);
+                                
+                                if (top3.length > 0) {
+                                    criticalAreasBox.style.display = 'block';
+                                    let listHTML = '';
+                                    top3.forEach((area, index) => {
+                                        listHTML += `<li style="margin-bottom: 5px;"><strong>${area.name}:</strong> <span style="color: #b91c1c; font-weight: 600;">${Math.round(area.risk)}%</span> del personal en este departamento se encuentra en riesgo Alto o Muy Alto.</li>`;
+                                    });
+                                    criticalAreasList.innerHTML = listHTML;
+                                }
+                            }
+
                             new Chart(ctx, {
                                 type: 'bar',
                                 data: {
