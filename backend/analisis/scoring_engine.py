@@ -23,10 +23,14 @@ INVERSE_ITEMS = {
         94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105
     },
     "intralaboral_b": {
-        4, 5, 6, 9, 12, 14, 21, 23, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+        # Tabla 22 (MinTrabajo 2010) — ítems con escala Siempre=0 → Nunca=4
+        # Verificado contra manual oficial. Correcciones vs versión anterior:
+        #   Removidos: 21, 23, 28, 66, 96  (ítems de riesgo/demanda → escala directa Siempre=4)
+        #   Agregados:  22, 24, 41, 97     (ítems protectores → escala inversa Siempre=0)
+        4, 5, 6, 9, 12, 14, 22, 24, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
         42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61,
-        62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81,
-        82, 83, 84, 85, 86, 87, 88, 96
+        62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81,
+        82, 83, 84, 85, 86, 87, 88, 97
     },
     # Extralaboral: ítems con escala INVERSA (relaciones positivas → menor puntaje = menos riesgo)
     "extralaboral": {14, 15, 16, 17, 22, 25, 27, 29, 30, 31, 24, 26, 28},
@@ -258,6 +262,23 @@ class PsychosocialScoringEngine:
         baremo_dominios = self.baremos["intralaboral_a"]["dominios"]
         baremo_dims = self.baremos["intralaboral_a"]["dimensiones"]
 
+        # ── Regla 2 (Manual MinTrabajo): Si responde "No" a atiende clientes
+        #    → Demandas emocionales (ítems 106-114) = puntaje bruto 0 automáticamente
+        atiende_clientes_a = str(resp_dict.get("atiende_clientes", "si")).strip().lower()
+        dim_emocional_a_forzado_cero = (atiende_clientes_a == "no")
+
+        # ── Regla 3 (Manual MinTrabajo): Si responde "No" a soy jefe
+        #    → Relación con los colaboradores (ítems 115-123) = puntaje bruto 0 automáticamente
+        es_jefe_a = str(resp_dict.get("es_jefe", "si")).strip().lower()
+        dim_colaboradores_forzado_cero = (es_jefe_a == "no")
+
+        # Mapeo dimension name → regla de forzar cero
+        DIMS_FORZAR_CERO_A = {}
+        if dim_emocional_a_forzado_cero:
+            DIMS_FORZAR_CERO_A["Demandas emocionales"] = True
+        if dim_colaboradores_forzado_cero:
+            DIMS_FORZAR_CERO_A["Relación con los colaboradores"] = True
+
         # Puntaje total
         total_raw = 0
         total_max = 0
@@ -270,23 +291,39 @@ class PsychosocialScoringEngine:
             dims_calc = {}
 
             for dim_name, items in dims.items():
-                dim_raw = 0
                 dim_max = len(items) * 4
-                for q in items:
-                    if q in resp_dict:
-                        dim_raw += self._score_item(q, resp_dict[q], cuestionario)
 
-                dim_score = self._transformed_score(dim_raw, dim_max)
-                baremo_dim = baremo_dims.get(dim_name, baremo_total)
-                nivel = self.classify_risk(dim_score, baremo_dim)
+                # Aplicar forzado de cero si corresponde (Regla 2 o Regla 3)
+                if dim_name in DIMS_FORZAR_CERO_A:
+                    dim_raw = 0
+                    dim_score = 0.0
+                    baremo_dim = baremo_dims.get(dim_name, baremo_total)
+                    nivel = self.classify_risk(dim_score, baremo_dim)
+                    dims_calc[dim_name] = {
+                        "puntaje_bruto":        0,
+                        "puntaje_maximo":       dim_max,
+                        "puntaje_transformado": 0.0,
+                        "nivel_riesgo":         nivel,
+                        "color":                self._get_risk_color(nivel),
+                        "nota":                 "Puntaje forzado a 0 por respuesta condicional (manual MinTrabajo)",
+                    }
+                else:
+                    dim_raw = 0
+                    for q in items:
+                        if q in resp_dict:
+                            dim_raw += self._score_item(q, resp_dict[q], cuestionario)
 
-                dims_calc[dim_name] = {
-                    "puntaje_bruto":       round(dim_raw, 2),
-                    "puntaje_maximo":      dim_max,
-                    "puntaje_transformado": dim_score,
-                    "nivel_riesgo":        nivel,
-                    "color":               self._get_risk_color(nivel),
-                }
+                    dim_score = self._transformed_score(dim_raw, dim_max)
+                    baremo_dim = baremo_dims.get(dim_name, baremo_total)
+                    nivel = self.classify_risk(dim_score, baremo_dim)
+                    dims_calc[dim_name] = {
+                        "puntaje_bruto":       round(dim_raw, 2),
+                        "puntaje_maximo":      dim_max,
+                        "puntaje_transformado": dim_score,
+                        "nivel_riesgo":        nivel,
+                        "color":               self._get_risk_color(nivel),
+                    }
+
                 dom_raw += dim_raw
                 dom_max += dim_max
 
@@ -332,6 +369,11 @@ class PsychosocialScoringEngine:
         baremo_dominios = self.baremos["intralaboral_b"]["dominios"]
         baremo_dims = self.baremos["intralaboral_b"]["dimensiones"]
 
+        # ── Regla 2 (Manual MinTrabajo): Si responde "No" a atiende clientes/usuarios
+        #    (pregunta condicional ID="98") → Demandas emocionales (ítems 89-97) = puntaje bruto 0
+        atiende_clientes_b = str(resp_dict.get("98", "si")).strip().lower()
+        dim_emocional_b_forzado_cero = (atiende_clientes_b == "no")
+
         total_raw = 0
         total_max = 0
         dominios_result = {}
@@ -342,23 +384,39 @@ class PsychosocialScoringEngine:
             dims_calc = {}
 
             for dim_name, items in dims.items():
-                dim_raw = 0
                 dim_max = len(items) * 4
-                for q in items:
-                    if q in resp_dict:
-                        dim_raw += self._score_item(q, resp_dict[q], cuestionario)
 
-                dim_score = self._transformed_score(dim_raw, dim_max)
-                baremo_dim = baremo_dims.get(dim_name, baremo_total)
-                nivel = self.classify_risk(dim_score, baremo_dim)
+                # Aplicar forzado de cero si corresponde (Regla 2)
+                if dim_name == "Demandas emocionales" and dim_emocional_b_forzado_cero:
+                    dim_raw = 0
+                    dim_score = 0.0
+                    baremo_dim = baremo_dims.get(dim_name, baremo_total)
+                    nivel = self.classify_risk(dim_score, baremo_dim)
+                    dims_calc[dim_name] = {
+                        "puntaje_bruto":        0,
+                        "puntaje_maximo":       dim_max,
+                        "puntaje_transformado": 0.0,
+                        "nivel_riesgo":         nivel,
+                        "color":                self._get_risk_color(nivel),
+                        "nota":                 "Puntaje forzado a 0 por respuesta condicional (manual MinTrabajo)",
+                    }
+                else:
+                    dim_raw = 0
+                    for q in items:
+                        if q in resp_dict:
+                            dim_raw += self._score_item(q, resp_dict[q], cuestionario)
 
-                dims_calc[dim_name] = {
-                    "puntaje_bruto":       round(dim_raw, 2),
-                    "puntaje_maximo":      dim_max,
-                    "puntaje_transformado": dim_score,
-                    "nivel_riesgo":        nivel,
-                    "color":               self._get_risk_color(nivel),
-                }
+                    dim_score = self._transformed_score(dim_raw, dim_max)
+                    baremo_dim = baremo_dims.get(dim_name, baremo_total)
+                    nivel = self.classify_risk(dim_score, baremo_dim)
+                    dims_calc[dim_name] = {
+                        "puntaje_bruto":       round(dim_raw, 2),
+                        "puntaje_maximo":      dim_max,
+                        "puntaje_transformado": dim_score,
+                        "nivel_riesgo":        nivel,
+                        "color":               self._get_risk_color(nivel),
+                    }
+
                 dom_raw += dim_raw
                 dom_max += dim_max
 

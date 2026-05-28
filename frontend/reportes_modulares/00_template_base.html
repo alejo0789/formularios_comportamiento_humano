@@ -255,6 +255,41 @@
                         document.getElementById('val-prior-low').innerText = Math.round(priorLow) + "%";
 
                         createStackedBar('intraStackedChart', dist);
+
+                        // Interpretación dinámica (Página 9)
+                        const interpEl = document.getElementById('intra-interp-text');
+                        const borderEl = document.getElementById('intra-interpretation-block');
+                        if (interpEl) {
+                            const priorHighPct = Math.round(priorHigh);
+                            const priorLowPct  = Math.round(priorLow);
+
+                            // Determinar nivel dominante
+                            const levels9 = ['Muy Alto', 'Alto', 'Medio', 'Bajo', 'Sin Riesgo'];
+                            let dominante9 = 'Sin Riesgo', maxPct9 = -1;
+                            for (const lvl of levels9) {
+                                if ((dist[lvl] || 0) > maxPct9) { maxPct9 = dist[lvl] || 0; dominante9 = lvl; }
+                            }
+
+                            const colorMap9 = {
+                                'Sin Riesgo': '#16a34a',
+                                'Bajo':       '#22c55e',
+                                'Medio':      '#ca8a04',
+                                'Alto':       '#dc2626',
+                                'Muy Alto':   '#7f1d1d',
+                            };
+                            const borderColor9 = colorMap9[dominante9] || '#1e3a8a';
+                            if (borderEl) borderEl.style.borderLeftColor = borderColor9;
+
+                            const interps9 = {
+                                'Sin Riesgo': `Los resultados indican que el <strong>${priorLowPct}%</strong> de los trabajadores evaluados (n=${n}) se ubica en niveles de riesgo bajo o sin riesgo para los factores intralaborales. El nivel predominante del grupo es <strong>Sin Riesgo</strong>, lo que refleja condiciones laborales favorables. Estas condiciones deben mantenerse mediante acciones de promoción y seguimiento periódico.`,
+                                'Bajo':       `El <strong>${priorLowPct}%</strong> de los trabajadores evaluados (n=${n}) se encuentra en niveles de priorización baja (riesgo bajo o sin riesgo). El nivel predominante del grupo es <strong>Riesgo Bajo</strong>. Aunque la situación es favorable, se recomienda continuar con acciones preventivas para sostener este resultado y evitar su deterioro.`,
+                                'Medio':      `El <strong>${priorHighPct}%</strong> de los trabajadores evaluados (n=${n}) se sitúa en niveles de priorización de intervención (riesgo medio, alto o muy alto). El nivel predominante del grupo es <strong>Riesgo Medio</strong>. Este resultado amerita observación y acciones sistemáticas de intervención para prevenir efectos perjudiciales en la salud de los trabajadores.`,
+                                'Alto':       `El <strong>${priorHighPct}%</strong> de los trabajadores evaluados (n=${n}) se encuentra en niveles que requieren intervención prioritaria (riesgo alto o muy alto). El nivel predominante del grupo es <strong>Riesgo Alto</strong>. Este resultado tiene una importante posibilidad de estar asociado a respuestas de estrés alto y requiere intervención en el marco de un sistema de vigilancia epidemiológica.`,
+                                'Muy Alto':   `El <strong>${priorHighPct}%</strong> de los trabajadores evaluados (n=${n}) presenta niveles de riesgo que exigen atención inmediata. El nivel predominante del grupo es <strong>Riesgo Muy Alto</strong>, lo cual indica una alta probabilidad de asociación con respuestas de estrés muy alto. Se requiere intervención inmediata en el marco de un sistema de vigilancia epidemiológica ocupacional.`,
+                            };
+
+                            interpEl.innerHTML = interps9[dominante9] || '';
+                        }
                     }
 
                     // Gráfica por Áreas (Página 10)
