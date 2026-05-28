@@ -853,10 +853,9 @@ def enforce_intralaboral_exclusion(cedula: str, completed: set) -> set:
     if personal_cargo == "si":
         # Tiene personal a cargo -> hace intralaborales-A, salta B
         completed.add("intralaborales-b")
-        completed.discard("intralaborales-a")
     elif personal_cargo == "no":
+        # No tiene personal -> hace intralaborales-B, salta A
         completed.add("intralaborales-a")
-        completed.discard("intralaborales-b")
     return completed
 
 
