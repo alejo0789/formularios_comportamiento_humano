@@ -37,6 +37,28 @@ app = FastAPI(
     version="2.0.0"
 )
 
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Middleware to support requests both with and without /cuestionarios or /cuestionarios_brp prefix
+@app.middleware("http")
+async def prefix_middleware(request: Request, call_next):
+    path = request.scope.get("path", "")
+    for prefix in ("/cuestionarios", "/cuestionarios_brp"):
+        if path == prefix:
+            request.scope["path"] = "/"
+            break
+        elif path.startswith(prefix + "/"):
+            request.scope["path"] = path[len(prefix):]
+            break
+    return await call_next(request)
+
 # For backwards compatibility or specific proxy setups, we can still handle the prefix
 @app.get("/cuestionarios_brp")
 async def legacy_prefix_redirect():

@@ -53,16 +53,19 @@ class AnalysisService:
     def __init__(self, data_dir: str = DATA_DIR):
         self.data_dir = data_dir
         self.engine = PsychosocialScoringEngine()
+        self._cache: Dict[str, Any] = {}
 
     # ──────────────────────────────────────────────────────────
     # ANÁLISIS INDIVIDUAL
     # ──────────────────────────────────────────────────────────
 
-    def analyze_individual(self, cedula: str) -> Dict[str, Any]:
+    def analyze_individual(self, cedula: str, use_cache: bool = True) -> Dict[str, Any]:
         """
         Calcula el análisis completo de un respondente.
         Retorna resultados de todos los cuestionarios que haya completado.
         """
+        if use_cache and cedula in self._cache:
+            return self._cache[cedula]
         metadata = _get_cedula_metadata(cedula)
         tipo_cargo = metadata.get("tipo_cargo") or metadata.get("nombre_cargo")
 
@@ -119,6 +122,7 @@ class AnalysisService:
                     forma,
                 )
 
+        self._cache[cedula] = results
         return results
 
     # ──────────────────────────────────────────────────────────
@@ -134,6 +138,7 @@ class AnalysisService:
         """
         Devuelve un análisis agregado de todos los respondentes, con filtros opcionales.
         """
+        self._cache.clear()
         # Obtener todos los respondentes
         cedulas = self._get_all_cedulas()
 
